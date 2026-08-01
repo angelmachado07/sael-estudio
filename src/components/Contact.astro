@@ -1,0 +1,309 @@
+<section
+  id="contacto"
+  class="contact section"
+  aria-labelledby="contact-title"
+>
+  <div class="container">
+    <div class="contact-heading">
+      <p class="section-label">
+        <span>05</span>
+        Contacto
+      </p>
+
+      <div class="contact-heading-content">
+        <h2 id="contact-title">
+          ¿Tenés una marca, una idea o un proyecto que necesita verse con más
+          claridad?
+        </h2>
+
+        <p>
+          Contanos en qué etapa estás y qué querés construir. Podemos ayudarte
+          a ordenar la idea, definir una dirección visual o crear una presencia
+          más coherente.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-panel">
+      <div class="contact-message">
+        <div class="contact-symbol" aria-hidden="true">
+          <span class="symbol-line"></span>
+          <span class="symbol-dot"></span>
+          <span class="symbol-line"></span>
+        </div>
+
+        <p>
+          Cada proyecto comienza con una conversación.
+        </p>
+      </div>
+
+      <div class="contact-options">
+        <a
+          class="contact-option contact-option-primary"
+          href="#"
+          aria-label="Contactar a Sael Estudio por WhatsApp"
+        >
+          <span class="contact-option-label">WhatsApp</span>
+
+          <span class="contact-option-text">
+            Conversemos sobre tu proyecto
+          </span>
+
+          <span class="contact-option-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          class="contact-option"
+          href="mailto:contacto@saelestudio.com"
+        >
+          <span class="contact-option-label">Correo</span>
+
+          <span class="contact-option-text">
+            contacto@saelestudio.com
+          </span>
+
+          <span class="contact-option-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          class="contact-option"
+          href="#"
+          aria-label="Visitar Instagram de Sael Estudio"
+        >
+          <span class="contact-option-label">Instagram</span>
+
+          <span class="contact-option-text">
+            @saelestudio
+          </span>
+
+          <span class="contact-option-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-heading {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+    gap: clamp(40px, 8vw, 120px);
+    align-items: start;
+    margin-bottom: clamp(60px, 9vw, 112px);
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 8px 0 0;
+    color: var(--color-olive);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .section-label span {
+    color: var(--color-text);
+  }
+
+  .contact-heading-content {
+    max-width: 1020px;
+  }
+
+  h2 {
+    max-width: 980px;
+    margin-bottom: 30px;
+    font-size: clamp(2.8rem, 5.3vw, 5.8rem);
+    letter-spacing: -0.05em;
+  }
+
+  .contact-heading-content > p {
+    max-width: 700px;
+    margin-bottom: 0;
+    color: rgba(44, 46, 38, 0.72);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .contact-panel {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+    border: 1px solid var(--color-border);
+    border-radius: 34px;
+    overflow: hidden;
+    background-color: var(--color-surface);
+  }
+
+  .contact-message {
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(32px, 5vw, 64px);
+    background-color: var(--color-stone);
+    border-right: 1px solid var(--color-border);
+  }
+
+  .contact-symbol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    width: max-content;
+  }
+
+  .symbol-line {
+    width: 1px;
+    height: 70px;
+    background-color: var(--color-moss);
+  }
+
+  .symbol-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-moss);
+  }
+
+  .contact-message p {
+    max-width: 360px;
+    margin-bottom: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.2vw, 3.3rem);
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+  }
+
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-option {
+    position: relative;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) 28px;
+    gap: 30px;
+    align-items: center;
+    min-height: 170px;
+    padding: 34px clamp(28px, 4vw, 52px);
+    border-bottom: 1px solid var(--color-border);
+    transition:
+      background-color var(--transition-normal),
+      color var(--transition-normal);
+  }
+
+  .contact-option:last-child {
+    border-bottom: 0;
+  }
+
+  .contact-option:hover {
+    background-color: rgba(216, 210, 196, 0.42);
+  }
+
+  .contact-option-primary {
+    background-color: var(--color-moss);
+    color: var(--color-cream);
+  }
+
+  .contact-option-primary:hover {
+    background-color: var(--color-espresso);
+  }
+
+  .contact-option-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    opacity: 0.72;
+  }
+
+  .contact-option-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.45rem, 2.5vw, 2.35rem);
+    line-height: 1.2;
+  }
+
+  .contact-option-arrow {
+    justify-self: end;
+    font-size: 1.25rem;
+    transition: transform var(--transition-fast);
+  }
+
+  .contact-option:hover .contact-option-arrow {
+    transform: translate(4px, -4px);
+  }
+
+  @media (max-width: 900px) {
+    .contact-heading {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .contact-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-message {
+      min-height: 360px;
+      border-right: 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-heading {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .contact-panel {
+      border-radius: 24px;
+    }
+
+    .contact-message {
+      min-height: 300px;
+      padding: 28px;
+    }
+
+    .contact-symbol {
+      flex-direction: row;
+    }
+
+    .symbol-line {
+      width: 50px;
+      height: 1px;
+    }
+
+    .contact-message p {
+      font-size: 2rem;
+    }
+
+    .contact-option {
+      grid-template-columns: 1fr 24px;
+      gap: 16px;
+      min-height: 150px;
+      padding: 28px;
+    }
+
+    .contact-option-label {
+      grid-column: 1 / -1;
+    }
+
+    .contact-option-arrow {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+</style>

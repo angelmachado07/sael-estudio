@@ -1,0 +1,240 @@
+<section
+  id="sobre-sael"
+  class="about section"
+  aria-labelledby="about-title"
+>
+  <div class="container">
+    <div class="about-heading">
+      <p class="section-label">
+        <span>02</span>
+        Sobre Sael
+      </p>
+
+      <h2 id="about-title">
+        Una mirada sensible para construir marcas claras,
+        coherentes y con identidad propia.
+      </h2>
+    </div>
+
+    <div class="about-content">
+      <div class="about-symbol" aria-hidden="true">
+        <span class="symbol-line"></span>
+        <span class="symbol-dot"></span>
+        <span class="symbol-line"></span>
+      </div>
+
+      <div class="about-copy">
+        <p class="about-introduction">
+          Sael Estudio es un proyecto creativo orientado a la identidad,
+          el diseño y el acompañamiento de marcas y proyectos.
+        </p>
+
+        <p>
+          Ayudamos a ordenar ideas, definir una dirección visual y construir
+          una presencia profesional que comunique con mayor claridad.
+          Cada proyecto se trabaja desde la intención, la escucha y la
+          coherencia.
+        </p>
+
+        <p>
+          No buscamos aplicar una fórmula repetida. Buscamos comprender qué
+          hace única a cada marca y transformar esa esencia en decisiones
+          visuales con sentido.
+        </p>
+      </div>
+
+      <aside class="about-note">
+        <span class="about-note-number">01</span>
+
+        <p>
+          Creemos en el diseño como una herramienta para dar claridad,
+          fortalecer una identidad y acompañar el crecimiento de una marca.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    position: relative;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .about-heading {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+    gap: clamp(40px, 8vw, 120px);
+    align-items: start;
+    padding-bottom: clamp(56px, 8vw, 96px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 8px 0 0;
+    color: var(--color-olive);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .section-label span {
+    color: var(--color-text);
+  }
+
+  h2 {
+    max-width: 960px;
+    margin-bottom: 0;
+    font-size: clamp(2.7rem, 5vw, 5.4rem);
+    letter-spacing: -0.045em;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns:
+      minmax(120px, 0.35fr)
+      minmax(0, 1fr)
+      minmax(240px, 0.55fr);
+    gap: clamp(40px, 7vw, 100px);
+    align-items: start;
+    padding-top: clamp(56px, 8vw, 96px);
+  }
+
+  .about-symbol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    justify-self: start;
+    padding-left: 28px;
+  }
+
+  .symbol-line {
+    width: 1px;
+    height: 62px;
+    background-color: var(--color-moss);
+  }
+
+  .symbol-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-moss);
+  }
+
+  .about-copy {
+    max-width: 690px;
+  }
+
+  .about-copy p {
+    margin-bottom: 24px;
+    color: rgba(44, 46, 38, 0.74);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .about-copy .about-introduction {
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: clamp(1.65rem, 2.5vw, 2.35rem);
+    line-height: 1.35;
+  }
+
+  .about-copy p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-note {
+    position: relative;
+    padding: 34px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    background-color: var(--color-background);
+  }
+
+  .about-note-number {
+    display: block;
+    margin-bottom: 54px;
+    color: var(--color-olive);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .about-note p {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    line-height: 1.45;
+  }
+
+  .about-note::after {
+    content: "";
+    position: absolute;
+    top: 34px;
+    right: 34px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-moss);
+  }
+
+  @media (max-width: 900px) {
+    .about-heading {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .about-content {
+      grid-template-columns: 80px minmax(0, 1fr);
+    }
+
+    .about-note {
+      grid-column: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-heading {
+      padding-bottom: 48px;
+    }
+
+    h2 {
+      font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-top: 48px;
+    }
+
+    .about-symbol {
+      flex-direction: row;
+      justify-self: start;
+      padding-left: 0;
+    }
+
+    .symbol-line {
+      width: 52px;
+      height: 1px;
+    }
+
+    .about-copy .about-introduction {
+      font-size: 1.65rem;
+    }
+
+    .about-note {
+      grid-column: auto;
+      padding: 28px;
+    }
+
+    .about-note-number {
+      margin-bottom: 38px;
+    }
+  }
+</style>

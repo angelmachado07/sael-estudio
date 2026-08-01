@@ -1,0 +1,308 @@
+---
+const processSteps = [
+  {
+    number: "01",
+    title: "Escuchamos",
+    description:
+      "Entendemos tu proyecto, tus ideas y lo que necesitás comunicar.",
+  },
+  {
+    number: "02",
+    title: "Ordenamos",
+    description:
+      "Definimos prioridades, concepto, dirección visual y necesidades reales.",
+  },
+  {
+    number: "03",
+    title: "Diseñamos",
+    description:
+      "Creamos piezas, sistemas o soluciones visuales alineadas a tu marca.",
+  },
+  {
+    number: "04",
+    title: "Ajustamos",
+    description:
+      "Revisamos, corregimos y afinamos los detalles necesarios.",
+  },
+  {
+    number: "05",
+    title: "Entregamos",
+    description:
+      "Preparamos los archivos, recursos o materiales finales para que puedas usarlos.",
+  },
+];
+---
+
+<section
+  id="proceso"
+  class="process section"
+  aria-labelledby="process-title"
+>
+  <div class="container">
+    <div class="process-heading">
+      <p class="section-label">
+        <span>04</span>
+        Nuestro proceso
+      </p>
+
+      <div class="process-heading-content">
+        <h2 id="process-title">
+          Ordenamos, definimos y diseñamos con intención.
+        </h2>
+
+        <p>
+          Antes de crear, escuchamos. Antes de proponer, entendemos. Y antes
+          de cerrar, cuidamos que cada decisión visual tenga sentido.
+        </p>
+      </div>
+    </div>
+
+    <div class="process-list">
+      {
+        processSteps.map((step) => (
+          <article class="process-item">
+            <div class="process-number">
+              <span>{step.number}</span>
+            </div>
+
+            <div class="process-marker" aria-hidden="true">
+              <span class="marker-line"></span>
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+
+            <div class="process-content">
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="process-footer">
+      <p>
+        Cada etapa se adapta a las necesidades reales del proyecto.
+      </p>
+
+      <a href="#contacto">
+        Hablemos de tu proyecto
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    background-color: var(--color-moss);
+    color: var(--color-cream);
+    border-bottom: 1px solid rgba(243, 239, 231, 0.18);
+  }
+
+  .process-heading {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+    gap: clamp(40px, 8vw, 120px);
+    align-items: start;
+    margin-bottom: clamp(64px, 9vw, 112px);
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 8px 0 0;
+    color: rgba(243, 239, 231, 0.68);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .section-label span {
+    color: var(--color-cream);
+  }
+
+  .process-heading-content {
+    max-width: 980px;
+  }
+
+  h2 {
+    max-width: 900px;
+    margin-bottom: 30px;
+    color: var(--color-cream);
+    font-size: clamp(2.8rem, 5vw, 5.3rem);
+    letter-spacing: -0.045em;
+  }
+
+  .process-heading-content > p {
+    max-width: 700px;
+    margin-bottom: 0;
+    color: rgba(243, 239, 231, 0.72);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .process-list {
+    border-top: 1px solid rgba(243, 239, 231, 0.25);
+  }
+
+  .process-item {
+    display: grid;
+    grid-template-columns: 90px 70px minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 76px);
+    align-items: center;
+    min-height: 180px;
+    padding-block: 32px;
+    border-bottom: 1px solid rgba(243, 239, 231, 0.25);
+    transition: background-color var(--transition-normal);
+  }
+
+  .process-item:hover {
+    background-color: rgba(243, 239, 231, 0.05);
+  }
+
+  .process-number {
+    align-self: start;
+    padding-top: 10px;
+  }
+
+  .process-number span {
+    color: rgba(243, 239, 231, 0.62);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+  }
+
+  .process-marker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .marker-line {
+    width: 22px;
+    height: 1px;
+    background-color: rgba(243, 239, 231, 0.45);
+  }
+
+  .marker-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: var(--color-cream);
+  }
+
+  .process-content {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1fr);
+    gap: clamp(32px, 7vw, 110px);
+    align-items: center;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    color: var(--color-cream);
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    letter-spacing: -0.035em;
+  }
+
+  .process-content p {
+    max-width: 560px;
+    margin-bottom: 0;
+    color: rgba(243, 239, 231, 0.72);
+    line-height: 1.75;
+  }
+
+  .process-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding-top: 46px;
+  }
+
+  .process-footer p {
+    margin-bottom: 0;
+    color: rgba(243, 239, 231, 0.65);
+    font-size: 0.9rem;
+  }
+
+  .process-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(243, 239, 231, 0.45);
+    color: var(--color-cream);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .process-footer a span {
+    transition: transform var(--transition-fast);
+  }
+
+  .process-footer a:hover span {
+    transform: translate(3px, -3px);
+  }
+
+  @media (max-width: 900px) {
+    .process-heading {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .process-item {
+      grid-template-columns: 60px 50px minmax(0, 1fr);
+    }
+
+    .process-content {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .process-heading {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .process-item {
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      min-height: auto;
+      padding-block: 30px;
+    }
+
+    .process-number {
+      padding-top: 8px;
+    }
+
+    .process-marker {
+      display: none;
+    }
+
+    .process-content {
+      gap: 12px;
+    }
+
+    h3 {
+      font-size: 2.3rem;
+    }
+
+    .process-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 36px;
+    }
+  }
+</style>

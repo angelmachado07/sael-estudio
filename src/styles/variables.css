@@ -1,0 +1,33 @@
+:root {
+  /* Colores principales de Sael Estudio */
+  --color-cream: #f3efe7;
+  --color-stone: #d8d2c4;
+  --color-olive: #6b745c;
+  --color-moss: #4f5a45;
+  --color-espresso: #2c2e26;
+
+  /* Colores funcionales */
+  --color-background: var(--color-cream);
+  --color-surface: #f8f5ef;
+  --color-text: var(--color-espresso);
+  --color-text-soft: var(--color-olive);
+  --color-border: var(--color-stone);
+  --color-primary: var(--color-moss);
+
+  /* Tipografíasprincipales */
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Manrope", Arial, sans-serif;
+
+  /* Tamaños y medidas */
+  --container-width: 1200px;
+  --container-padding: 24px;
+
+  /* Bordes */
+  --radius-small: 8px;
+  --radius-medium: 16px;
+  --radius-large: 28px;
+
+  /* Transiciones */
+  --transition-fast: 180ms ease;
+  --transition-normal: 300ms ease;
+}
