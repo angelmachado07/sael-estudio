@@ -2,9 +2,9 @@
 
 ## Qué es Sael Estudio
 
-Sael Estudio es un estudio creativo boutique dedicado a la identidad, el diseño y el acompañamiento creativo.
+Sael Estudio es un estudio creativo boutique que trabaja entre marca, diseño, comunicación y tecnología para resolver necesidades concretas de proyectos y negocios.
 
-**Bajada:** Identidad, diseño y acompañamiento creativo.
+**Bajada:** Diseño + soluciones.
 
 **Frase de marca:** Diseño con intención. Marcas con alma.
 
@@ -16,18 +16,22 @@ No debe limitarse a informar: debe transmitir el criterio creativo del estudio y
 
 ## Audiencia
 
-La audiencia general incluye marcas, emprendimientos y proyectos que necesitan construir, ordenar o elevar su identidad y comunicación visual. Puede encontrarse tanto en una etapa inicial como en un proceso de evolución o profesionalización.
+La audiencia general incluye marcas, emprendimientos, proyectos y negocios que necesitan construir, ordenar o elevar su identidad, comunicación, presencia digital u operación. Puede encontrarse tanto en una etapa inicial como en un proceso de evolución, profesionalización o transformación digital.
 
 ## Propuesta de valor
 
-Sael acompaña a cada proyecto desde la escucha y la intención para transformar ideas en una identidad y una presencia visual claras, coherentes, sensibles y con personalidad propia.
+Sael escucha y entiende cada necesidad para diseñar la solución que el proyecto realmente necesita. Puede ayudar a una marca a verse y comunicar mejor, y también construir experiencias, aplicaciones, sistemas o herramientas que le permitan funcionar mejor.
+
+Una síntesis explicativa de la propuesta es: **diseñamos soluciones para que marcas y proyectos puedan verse mejor, comunicar mejor y funcionar mejor.**
 
 ## Servicios
 
-1. **Identidad visual:** construimos la imagen visual de marcas y proyectos.
-2. **Diseño gráfico:** diseñamos piezas visuales para comunicar mejor.
-3. **Web y presencia digital:** creamos y ordenamos la presencia digital de tu marca.
-4. **Acompañamiento creativo:** ayudamos a ordenar ideas y darles dirección visual.
+1. **Identidad y marca:** identidad visual y de marca, dirección, sistemas gráficos, aplicaciones y lineamientos para sostener coherencia.
+2. **Diseño y comunicación:** piezas digitales e impresas, redes, contenido visual, materiales comerciales y presencia cotidiana de la marca.
+3. **Web, apps y software:** landing pages, sitios, experiencias digitales, aplicaciones, sistemas internos y software a medida.
+4. **Acompañamiento y soluciones:** dirección e implementación para necesidades que no entran en una única categoría, incluyendo procesos digitales y apoyos operativos puntuales cuando formen parte de una solución acordada.
+
+Sael no se posiciona como agencia de community management ni como call center. La gestión de presencia o atención digital puede aparecer únicamente como complemento personalizado de una solución más amplia.
 
 ## Arquitectura actual de la experiencia
 
@@ -69,9 +73,9 @@ Paleta principal:
 - musgo `#4F5A45`;
 - espresso `#2C2E26`.
 
-La tipografía editorial actual es Cormorant Garamond y la tipografía de texto e interfaz es Manrope.
+La tipografía editorial es Instrument Serif y la tipografía de texto e interfaz es Instrument Sans. La combinación aporta una voz display contemporánea y distintiva, con precisión y legibilidad en textos y controles.
 
-El sistema visual utiliza líneas finas, divisores, punto central, símbolo de línea más punto, marcos suaves, espacio negativo y composiciones editoriales. Puede evolucionar y ampliarse sin perder reconocimiento de marca.
+El sistema visual utiliza líneas finas, divisores, punto central, símbolo de línea más punto, marcos, espacio negativo y composiciones editoriales. Se amplía con planos superpuestos, papeles, retículas, rutas, nodos y pequeñas interfaces abstractas que representan la relación entre marca, comunicación y tecnología.
 
 ## Dirección: Editorial con impacto
 

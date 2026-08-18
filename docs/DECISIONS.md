@@ -33,9 +33,9 @@ Este documento registra decisiones relativamente estables. Las tareas y priorida
 ## 5. Identidad visual base de Sael
 
 - **Fecha:** 2026-08-18
-- **Decisión:** conservar como base la paleta, tipografías y recursos editoriales documentados en `PRODUCT.md`.
+- **Decisión:** conservar como base la paleta y los recursos editoriales documentados en `PRODUCT.md`; el sistema tipográfico puede evolucionar mediante una decisión explícita de identidad.
 - **Contexto:** la evolución visual necesita mantener reconocimiento de marca.
-- **Consecuencia:** ampliar el sistema sin reemplazar arbitrariamente su identidad fundamental.
+- **Consecuencia:** ampliar el sistema sin reemplazar arbitrariamente su identidad fundamental y documentar cualquier cambio tipográfico relevante.
 
 ## 6. Dirección creativa “Editorial con impacto”
 
@@ -85,3 +85,31 @@ Este documento registra decisiones relativamente estables. Las tareas y priorida
 - **Decisión:** permitir que el sistema visual crezca mediante mockups, piezas gráficas, texturas, materiales, símbolos, imágenes conceptuales o motion assets.
 - **Contexto:** el refresh puede necesitar recursos de gran formato para ganar profundidad y recordación sin depender exclusivamente de fotografías.
 - **Consecuencia:** Codex puede detectar y proponer assets, pero debe evitar recursos genéricos y justificar video o motion assets por valor real.
+
+## 13. Motion nativo y gráfica generada con código para Creative Refresh v1
+
+- **Fecha:** 2026-08-18
+- **Decisión:** implementar el primer refresh con CSS y JavaScript nativo, usando composición tipográfica, tramas, líneas, órbitas y símbolos generados con código en lugar de incorporar dependencias o assets externos.
+- **Contexto:** la landing necesita mayor profundidad, ritmo y recordación sin perder rendimiento, mantenibilidad ni coherencia con su escala técnica actual.
+- **Consecuencia:** las apariciones se activan progresivamente con `IntersectionObserver`, el parallax sutil usa `requestAnimationFrame` y todas las animaciones respetan `prefers-reduced-motion`; futuros assets externos deberán aportar un valor visual que este sistema no pueda resolver por sí solo.
+
+## 14. Sael como diseño más soluciones
+
+- **Fecha:** 2026-08-18
+- **Decisión:** ampliar la propuesta de Sael desde identidad y acompañamiento creativo hacia un estudio capaz de resolver necesidades de marca, diseño, comunicación y tecnología.
+- **Contexto:** el estudio puede trabajar tanto en una identidad o presencia social como en sitios, aplicaciones, sistemas internos, software a medida y apoyos digitales específicos.
+- **Consecuencia:** la comunicación debe partir de la necesidad y de la solución adecuada, no de una lista extensa de entregables. Tecnología se presenta como un pilar principal y los apoyos operativos permanecen complementarios, personalizados y sin posicionar a Sael como community manager o call center.
+
+## 15. Instrument Serif e Instrument Sans como sistema tipográfico
+
+- **Fecha:** 2026-08-18
+- **Decisión:** reemplazar Cormorant Garamond y Manrope por Instrument Serif para display e Instrument Sans para texto e interfaz.
+- **Contexto:** la primera combinación resultaba funcional pero demasiado genérica para el nivel de personalidad buscado. Instrument Serif está diseñada para gran escala y ambas familias ofrecen soporte para español y disponibilidad web bajo licencia abierta.
+- **Consecuencia:** los títulos ganan una voz contemporánea y memorable mientras textos, navegación y controles mantienen legibilidad y una precisión coherente con el componente tecnológico de Sael.
+
+## 16. Vocabulario gráfico de planos de solución
+
+- **Fecha:** 2026-08-18
+- **Decisión:** representar la amplitud de Sael mediante capas tipo papel, retículas, nodos, rutas, marcos y pequeñas interfaces abstractas construidas con código.
+- **Contexto:** la personalidad visual no debe depender de acumular palabras ni de introducir imágenes genéricas.
+- **Consecuencia:** el sistema puede expresar marca, comunicación y tecnología con formas coherentes y reutilizables, manteniendo calidez material y un carácter editorial.

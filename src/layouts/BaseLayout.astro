@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title = "Sael Estudio",
-  description = "Identidad, diseño y acompañamiento creativo.",
+  description = "Diseño y soluciones para marcas, proyectos y negocios.",
 } = Astro.props;
 ---
 
@@ -28,7 +28,7 @@ const {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
 
@@ -36,6 +36,7 @@ const {
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
     <slot />
   </body>
 </html>

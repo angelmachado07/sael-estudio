@@ -1,309 +1,157 @@
-<section
-  id="contacto"
-  class="contact section"
-  aria-labelledby="contact-title"
->
-  <div class="container">
-    <div class="contact-heading">
-      <p class="section-label">
-        <span>05</span>
-        Contacto
+<section id="contacto" class="contact" aria-labelledby="contact-title">
+  <div class="container contact-layout">
+    <div class="contact-copy">
+      <p class="section-label" data-reveal><span>05</span> Contacto</p>
+
+      <h2 id="contact-title">
+        <span data-reveal>¿Qué necesita</span>
+        <span data-reveal style="--reveal-delay: 90ms">tu proyecto?</span>
+        <em data-reveal style="--reveal-delay: 180ms">Diseñemos una respuesta.</em>
+      </h2>
+
+      <p class="contact-intro" data-reveal>
+        Puede ser una marca, una pieza, una web o una solución que todavía no
+        tiene nombre. Contanos el punto de partida y vemos cómo resolverlo.
       </p>
-
-      <div class="contact-heading-content">
-        <h2 id="contact-title">
-          ¿Tenés una marca, una idea o un proyecto que necesita verse con más
-          claridad?
-        </h2>
-
-        <p>
-          Contanos en qué etapa estás y qué querés construir. Podemos ayudarte
-          a ordenar la idea, definir una dirección visual o crear una presencia
-          más coherente.
-        </p>
-      </div>
     </div>
 
-    <div class="contact-panel">
-      <div class="contact-message">
-        <div class="contact-symbol" aria-hidden="true">
-          <span class="symbol-line"></span>
-          <span class="symbol-dot"></span>
-          <span class="symbol-line"></span>
-        </div>
+    <div class="contact-assembly" data-parallax aria-hidden="true">
+      <div class="assembly-grid"></div>
+      <span class="assembly-plane plane-a"></span>
+      <span class="assembly-plane plane-b"></span>
+      <span class="assembly-plane plane-c"></span>
+      <div class="assembly-ring"><i></i></div>
+      <div class="assembly-mark"><span></span><b></b><span></span></div>
+    </div>
 
-        <p>
-          Cada proyecto comienza con una conversación.
-        </p>
-      </div>
+    <div class="contact-options">
+      <a href="#" aria-label="Contactar a Sael Estudio por WhatsApp" data-reveal>
+        <span class="contact-label">WhatsApp</span>
+        <span>Conversemos sobre tu proyecto</span>
+        <i aria-hidden="true">↗</i>
+      </a>
 
-      <div class="contact-options">
-        <a
-          class="contact-option contact-option-primary"
-          href="#"
-          aria-label="Contactar a Sael Estudio por WhatsApp"
-        >
-          <span class="contact-option-label">WhatsApp</span>
+      <a href="mailto:contacto@saelestudio.com" data-reveal style="--reveal-delay: 80ms">
+        <span class="contact-label">Correo</span>
+        <span>contacto@saelestudio.com</span>
+        <i aria-hidden="true">↗</i>
+      </a>
 
-          <span class="contact-option-text">
-            Conversemos sobre tu proyecto
-          </span>
-
-          <span class="contact-option-arrow" aria-hidden="true">↗</span>
-        </a>
-
-        <a
-          class="contact-option"
-          href="mailto:contacto@saelestudio.com"
-        >
-          <span class="contact-option-label">Correo</span>
-
-          <span class="contact-option-text">
-            contacto@saelestudio.com
-          </span>
-
-          <span class="contact-option-arrow" aria-hidden="true">↗</span>
-        </a>
-
-        <a
-          class="contact-option"
-          href="#"
-          aria-label="Visitar Instagram de Sael Estudio"
-        >
-          <span class="contact-option-label">Instagram</span>
-
-          <span class="contact-option-text">
-            @saelestudio
-          </span>
-
-          <span class="contact-option-arrow" aria-hidden="true">↗</span>
-        </a>
-      </div>
+      <a href="#" aria-label="Visitar Instagram de Sael Estudio" data-reveal style="--reveal-delay: 160ms">
+        <span class="contact-label">Instagram</span>
+        <span>@saelestudio</span>
+        <i aria-hidden="true">↗</i>
+      </a>
     </div>
   </div>
 </section>
 
 <style>
   .contact {
-    background-color: var(--color-background);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .contact-heading {
-    display: grid;
-    grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
-    gap: clamp(40px, 8vw, 120px);
-    align-items: start;
-    margin-bottom: clamp(60px, 9vw, 112px);
-  }
-
-  .section-label {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin: 8px 0 0;
-    color: var(--color-olive);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .section-label span {
-    color: var(--color-text);
-  }
-
-  .contact-heading-content {
-    max-width: 1020px;
-  }
-
-  h2 {
-    max-width: 980px;
-    margin-bottom: 30px;
-    font-size: clamp(2.8rem, 5.3vw, 5.8rem);
-    letter-spacing: -0.05em;
-  }
-
-  .contact-heading-content > p {
-    max-width: 700px;
-    margin-bottom: 0;
-    color: rgba(44, 46, 38, 0.72);
-    font-size: 1.05rem;
-    line-height: 1.8;
-  }
-
-  .contact-panel {
-    display: grid;
-    grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
-    border: 1px solid var(--color-border);
-    border-radius: 34px;
-    overflow: hidden;
-    background-color: var(--color-surface);
-  }
-
-  .contact-message {
-    min-height: 520px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: clamp(32px, 5vw, 64px);
-    background-color: var(--color-stone);
-    border-right: 1px solid var(--color-border);
-  }
-
-  .contact-symbol {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 13px;
-    width: max-content;
-  }
-
-  .symbol-line {
-    width: 1px;
-    height: 70px;
-    background-color: var(--color-moss);
-  }
-
-  .symbol-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--color-moss);
-  }
-
-  .contact-message p {
-    max-width: 360px;
-    margin-bottom: 0;
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 3.2vw, 3.3rem);
-    line-height: 1.18;
-    letter-spacing: -0.035em;
-  }
-
-  .contact-options {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .contact-option {
     position: relative;
-    flex: 1;
-    display: grid;
-    grid-template-columns: 120px minmax(0, 1fr) 28px;
-    gap: 30px;
-    align-items: center;
-    min-height: 170px;
-    padding: 34px clamp(28px, 4vw, 52px);
-    border-bottom: 1px solid var(--color-border);
-    transition:
-      background-color var(--transition-normal),
-      color var(--transition-normal);
-  }
-
-  .contact-option:last-child {
-    border-bottom: 0;
-  }
-
-  .contact-option:hover {
-    background-color: rgba(216, 210, 196, 0.42);
-  }
-
-  .contact-option-primary {
-    background-color: var(--color-moss);
+    overflow: hidden;
+    background: var(--color-espresso);
     color: var(--color-cream);
   }
 
-  .contact-option-primary:hover {
-    background-color: var(--color-espresso);
+  .contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0,1.08fr) minmax(340px,.72fr);
+    gap: clamp(48px,8vw,126px);
+    padding-block: clamp(96px,11vw,170px) clamp(84px,9vw,132px);
   }
 
-  .contact-option-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    opacity: 0.72;
+  .contact :global(.section-label) { color: rgba(243,239,231,.58); }
+
+  .contact-copy h2 {
+    margin: clamp(48px,7vw,92px) 0 44px;
+    font-size: clamp(4.8rem,8.3vw,9.2rem);
+    line-height: .78;
+    letter-spacing: -.055em;
   }
 
-  .contact-option-text {
+  .contact-copy h2 span, .contact-copy h2 em { display: block; }
+  .contact-copy h2 span:nth-child(2) { margin-left: clamp(20px,6vw,90px); }
+  .contact-copy h2 em { margin-top: .42em; color: var(--color-stone); font-size: .4em; line-height: 1.06; letter-spacing: -.02em; text-align: right; }
+  .contact-intro { max-width: 620px; margin: 0 0 0 clamp(0px,6vw,90px); color: rgba(243,239,231,.65); line-height: 1.75; }
+
+  .contact-assembly {
+    position: relative;
+    align-self: center;
+    width: 100%;
+    aspect-ratio: .86;
+    overflow: hidden;
+    border: 1px solid rgba(243,239,231,.18);
+    background: rgba(243,239,231,.035);
+  }
+
+  .assembly-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(243,239,231,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(243,239,231,.08) 1px,transparent 1px); background-size: 25% 20%; }
+  .assembly-plane { position: absolute; border: 1px solid rgba(243,239,231,.24); box-shadow: 0 22px 55px rgba(0,0,0,.2); }
+  .plane-a { top: 9%; left: 8%; width: 56%; height: 37%; background: var(--color-stone); transform: rotate(-4deg); }
+  .plane-b { top: 36%; right: 7%; width: 50%; height: 39%; background: var(--color-olive); transform: rotate(5deg); }
+  .plane-c { bottom: 7%; left: 13%; width: 56%; height: 28%; background: var(--color-cream); transform: rotate(-2deg); }
+  .assembly-ring { position: absolute; top: 36%; left: 30%; z-index: 3; width: 120px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(243,239,231,.5); border-radius: 50%; background: var(--color-espresso); }
+  .assembly-ring::before { content: "S"; font-family: var(--font-heading); font-size: 4.4rem; font-style: italic; }
+  .assembly-ring i { position: absolute; top: 13px; right: 16px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-stone); animation: core-pulse 2.6s ease-in-out infinite; }
+  .assembly-mark { position: absolute; right: 8%; top: 17%; display: flex; align-items: center; }
+  .assembly-mark span { width: 36px; height: 1px; background: var(--color-cream); }
+  .assembly-mark b { width: 7px; height: 7px; border-radius: 50%; background: var(--color-cream); }
+
+  .contact-options {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: clamp(30px,5vw,70px);
+    border-top: 1px solid rgba(243,239,231,.2);
+    border-bottom: 1px solid rgba(243,239,231,.2);
+  }
+
+  .contact-options a {
+    position: relative;
+    min-height: 180px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-content: space-between;
+    padding: 28px;
+    overflow: hidden;
+    border-right: 1px solid rgba(243,239,231,.2);
     font-family: var(--font-heading);
-    font-size: clamp(1.45rem, 2.5vw, 2.35rem);
-    line-height: 1.2;
+    font-size: clamp(1.5rem,2.2vw,2.3rem);
+    line-height: 1.1;
+    isolation: isolate;
+    transition: color var(--transition-normal), padding var(--transition-normal);
   }
 
-  .contact-option-arrow {
-    justify-self: end;
-    font-size: 1.25rem;
-    transition: transform var(--transition-fast);
-  }
+  .contact-options a:last-child { border-right: 0; }
+  .contact-options a::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--color-stone); transform: translateY(102%); transition: transform 700ms var(--ease-out); }
+  .contact-options a:hover, .contact-options a:focus-visible { color: var(--color-espresso); padding-top: 34px; }
+  .contact-options a:hover::before, .contact-options a:focus-visible::before { transform: none; }
+  .contact-options i { font-family: var(--font-body); font-size: 1rem; font-style: normal; transition: transform var(--transition-normal); }
+  .contact-options a:hover i { transform: translate(4px,-4px); }
+  .contact-label { grid-column: 1 / -1; color: currentColor; font-family: var(--font-body); font-size: .61rem; font-weight: 600; letter-spacing: .13em; opacity: .55; text-transform: uppercase; }
 
-  .contact-option:hover .contact-option-arrow {
-    transform: translate(4px, -4px);
-  }
+  @keyframes core-pulse { 50% { transform: scale(1.7); opacity: .3; } }
 
   @media (max-width: 900px) {
-    .contact-heading {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .contact-panel {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-message {
-      min-height: 360px;
-      border-right: 0;
-      border-bottom: 1px solid var(--color-border);
-    }
+    .contact-layout { grid-template-columns: 1fr .7fr; gap: 48px; }
+    .contact-copy h2 { font-size: clamp(4.3rem,10vw,7rem); }
+    .contact-options { grid-template-columns: 1fr; }
+    .contact-options a { min-height: 130px; border-right: 0; border-bottom: 1px solid rgba(243,239,231,.2); }
+    .contact-options a:last-child { border-bottom: 0; }
   }
 
-  @media (max-width: 640px) {
-    .contact-heading {
-      margin-bottom: 48px;
-    }
-
-    h2 {
-      font-size: clamp(2.5rem, 12vw, 4rem);
-    }
-
-    .contact-panel {
-      border-radius: 24px;
-    }
-
-    .contact-message {
-      min-height: 300px;
-      padding: 28px;
-    }
-
-    .contact-symbol {
-      flex-direction: row;
-    }
-
-    .symbol-line {
-      width: 50px;
-      height: 1px;
-    }
-
-    .contact-message p {
-      font-size: 2rem;
-    }
-
-    .contact-option {
-      grid-template-columns: 1fr 24px;
-      gap: 16px;
-      min-height: 150px;
-      padding: 28px;
-    }
-
-    .contact-option-label {
-      grid-column: 1 / -1;
-    }
-
-    .contact-option-arrow {
-      grid-column: 2;
-      grid-row: 2;
-    }
+  @media (max-width: 680px) {
+    .contact-layout { grid-template-columns: 1fr; }
+    .contact-copy h2 { font-size: clamp(4rem,18vw,5.4rem); }
+    .contact-copy h2 span:nth-child(2) { margin-left: 0; }
+    .contact-copy h2 em { font-size: .48em; text-align: left; }
+    .contact-intro { margin-left: 0; }
+    .contact-assembly { width: calc(100% - 20px); margin-left: 20px; aspect-ratio: 1; }
+    .assembly-ring { width: 82px; }
+    .assembly-ring::before { font-size: 3rem; }
+    .contact-options { grid-column: 1; }
+    .contact-options a { padding-inline: 0; }
+    .contact-options a:hover, .contact-options a:focus-visible { padding-inline: 16px; }
   }
 </style>

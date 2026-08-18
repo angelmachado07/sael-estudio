@@ -16,14 +16,14 @@ El roadmap expresa dirección y prioridad, no una promesa de alcance o fecha. La
 
 Próximos objetivos:
 
-- [ ] Revisar y rediseñar el Hero.
-- [ ] Mejorar el aprovechamiento del viewport.
-- [ ] Elevar visualmente la presentación de Servicios.
-- [ ] Introducir un sistema de motion coherente.
-- [ ] Crear al menos un momento visual memorable durante el recorrido.
-- [ ] Mejorar las transiciones entre secciones.
-- [ ] Explorar el uso de imágenes, mockups y otros assets.
-- [ ] Mantener responsive y accesibilidad durante la evolución visual.
+- [x] Revisar y rediseñar el Hero.
+- [x] Mejorar el aprovechamiento del viewport.
+- [x] Elevar visualmente la presentación de Servicios.
+- [x] Introducir un sistema de motion coherente.
+- [x] Crear al menos un momento visual memorable durante el recorrido.
+- [x] Mejorar las transiciones entre secciones.
+- [x] Explorar el uso de imágenes, mockups y otros assets.
+- [x] Mantener responsive y accesibilidad durante la evolución visual.
 - [ ] Resolver los enlaces reales de contacto.
 - [ ] Corregir los problemas técnicos detectados en la auditoría que interfieran con la experiencia.
 

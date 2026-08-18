@@ -2,71 +2,68 @@
 const navigation = [
   { label: "Inicio", href: "#inicio" },
   { label: "Sobre Sael", href: "#sobre-sael" },
-  { label: "Servicios", href: "#servicios" },
+  { label: "Soluciones", href: "#servicios" },
   { label: "Proceso", href: "#proceso" },
   { label: "Contacto", href: "#contacto" },
 ];
 ---
 
 <header class="site-header">
-  <div class="container header-container">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <div class="header-shell">
     <a class="brand" href="#inicio" aria-label="Ir al inicio de Sael Estudio">
+      <span class="brand-mark" aria-hidden="true"><i></i><b></b><i></i></span>
       <span class="brand-name">Sael</span>
       <span class="brand-detail">Estudio</span>
     </a>
 
     <nav class="desktop-navigation" aria-label="Navegación principal">
       <ul>
-        {
-          navigation.map((item) => (
-            <li>
-              <a href={item.href}>{item.label}</a>
-            </li>
-          ))
-        }
+        {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
       </ul>
     </nav>
 
     <a class="header-contact" href="#contacto">
-      Conversemos
+      <span>Iniciar un proyecto</span>
+      <span aria-hidden="true">↗</span>
     </a>
 
     <details id="mobile-menu" class="mobile-menu">
       <summary aria-label="Abrir menú de navegación">
         <span class="menu-label">Menú</span>
-
-        <span class="menu-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-        </span>
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
       </summary>
 
       <div class="mobile-menu-panel">
-        <nav aria-label="Navegación móvil">
-          <ul>
-            {
-              navigation.map((item, index) => (
-                <li>
-                  <a href={item.href}>
-                    <span class="mobile-link-number">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+        <div class="mobile-menu-art" aria-hidden="true">
+          <div class="menu-art-grid"></div>
+          <span class="menu-art-card card-one"></span>
+          <span class="menu-art-card card-two"></span>
+          <span class="menu-art-card card-three"></span>
+          <div class="menu-art-core">S<i></i></div>
+        </div>
 
-                    <span>{item.label}</span>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </nav>
+        <div class="mobile-menu-content">
+          <nav aria-label="Navegación móvil">
+            <ul>
+              {
+                navigation.map((item, index) => (
+                  <li style={`--item-index: ${index}`}>
+                    <a href={item.href}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
 
-        <div class="mobile-menu-footer">
-          <p>Identidad, diseño y acompañamiento creativo.</p>
-
-          <a href="#contacto">
-            Hablemos de tu proyecto
-            <span aria-hidden="true">↗</span>
-          </a>
+          <div class="mobile-menu-footer">
+            <p>Diseñamos la solución que cada proyecto necesita.</p>
+            <a href="#contacto">Conversemos <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
     </details>
@@ -78,273 +75,151 @@ const navigation = [
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: rgba(243, 239, 231, 0.94);
-    border-bottom: 1px solid rgba(216, 210, 196, 0.8);
-    backdrop-filter: blur(12px);
+    height: var(--header-height);
+    background: rgba(216, 210, 196, 0.92);
+    border-bottom: 1px solid rgba(44, 46, 38, 0.2);
+    backdrop-filter: blur(18px);
   }
 
-  .header-container {
-    position: relative;
-    min-height: 82px;
-    display: flex;
+  .header-shell {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 32px;
+    padding-inline: var(--container-padding);
   }
 
-  .brand {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 7px;
-    flex-shrink: 0;
-  }
-
-  .brand-name {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    line-height: 1;
-    letter-spacing: -0.03em;
-  }
-
-  .brand-detail {
-    color: var(--color-olive);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  .desktop-navigation ul {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .desktop-navigation a {
-    position: relative;
-    display: inline-block;
-    padding-block: 8px;
-    font-size: 0.88rem;
-    color: var(--color-text);
-    transition: color var(--transition-fast);
-  }
-
-  .desktop-navigation a::after {
-    content: "";
+  .scroll-progress {
     position: absolute;
     right: 0;
-    bottom: 2px;
+    bottom: -1px;
     left: 0;
-    height: 1px;
-    background-color: var(--color-moss);
+    z-index: 2;
+    height: 2px;
+    background: var(--color-moss);
     transform: scaleX(0);
-    transform-origin: right;
-    transition: transform var(--transition-normal);
-  }
-
-  .desktop-navigation a:hover {
-    color: var(--color-moss);
-  }
-
-  .desktop-navigation a:hover::after {
-    transform: scaleX(1);
     transform-origin: left;
   }
 
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress { animation: scroll-progress linear both; animation-timeline: scroll(root block); }
+  }
+
+  @keyframes scroll-progress { to { transform: scaleX(1); } }
+
+  .brand {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: clamp(210px, 20vw, 310px);
+    margin-left: calc(var(--container-padding) * -1);
+    padding-left: var(--container-padding);
+    background: var(--color-espresso);
+    color: var(--color-cream);
+  }
+
+  .brand-mark { display: flex; align-items: center; gap: 5px; margin-right: 3px; }
+  .brand-mark i { width: 13px; height: 1px; background: var(--color-stone); }
+  .brand-mark b { width: 5px; height: 5px; border-radius: 50%; background: var(--color-stone); }
+  .brand-name { font-family: var(--font-heading); font-size: 2.15rem; line-height: 1; }
+  .brand-detail { color: rgba(243, 239, 231, 0.62); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  .desktop-navigation { justify-self: center; }
+  .desktop-navigation ul { display: flex; gap: clamp(24px, 3vw, 46px); margin: 0; padding: 0; list-style: none; }
+  .desktop-navigation a { position: relative; padding-block: 12px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.015em; }
+  .desktop-navigation a::after { content: ""; position: absolute; right: 0; bottom: 5px; left: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform var(--transition-normal); }
+  .desktop-navigation a:hover::after, .desktop-navigation a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
   .header-contact {
-    min-height: 44px;
+    align-self: stretch;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding-inline: 20px;
-    border: 1px solid var(--color-moss);
-    border-radius: 999px;
-    background-color: var(--color-moss);
+    gap: 26px;
+    margin-right: calc(var(--container-padding) * -1);
+    padding-inline: clamp(22px, 3vw, 44px) var(--container-padding);
+    background: var(--color-moss);
     color: var(--color-cream);
-    font-size: 0.86rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    transition:
-      background-color var(--transition-fast),
-      color var(--transition-fast);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background-color var(--transition-normal);
   }
 
-  .header-contact:hover {
-    background-color: transparent;
-    color: var(--color-moss);
-  }
-
-  /* Menú móvil */
-
-  .mobile-menu {
-    display: none;
-  }
+  .header-contact:hover { background: var(--color-espresso); }
+  .mobile-menu { display: none; justify-self: end; }
 
   .mobile-menu summary {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    color: var(--color-text);
+    gap: 14px;
+    min-height: 44px;
+    padding: 0 14px;
+    background: var(--color-espresso);
+    color: var(--color-cream);
     cursor: pointer;
     list-style: none;
-    user-select: none;
   }
 
-  .mobile-menu summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .menu-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .menu-icon {
-    position: relative;
-    width: 26px;
-    height: 18px;
-    display: block;
-  }
-
-  .menu-icon span {
-    position: absolute;
-    left: 0;
-    width: 26px;
-    height: 1px;
-    background-color: var(--color-text);
-    transition:
-      top var(--transition-normal),
-      transform var(--transition-normal);
-  }
-
-  .menu-icon span:first-child {
-    top: 5px;
-  }
-
-  .menu-icon span:last-child {
-    top: 13px;
-  }
-
-  .mobile-menu[open] .menu-icon span:first-child {
-    top: 9px;
-    transform: rotate(45deg);
-  }
-
-  .mobile-menu[open] .menu-icon span:last-child {
-    top: 9px;
-    transform: rotate(-45deg);
-  }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .menu-label { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; }
+  .menu-icon { position: relative; width: 24px; height: 16px; }
+  .menu-icon i { position: absolute; left: 0; width: 24px; height: 1px; background: currentColor; transition: top var(--transition-normal), transform var(--transition-normal); }
+  .menu-icon i:first-child { top: 5px; }
+  .menu-icon i:last-child { top: 11px; }
+  .mobile-menu[open] .menu-icon i:first-child { top: 8px; transform: rotate(45deg); }
+  .mobile-menu[open] .menu-icon i:last-child { top: 8px; transform: rotate(-45deg); }
 
   .mobile-menu-panel {
     position: fixed;
-    top: 72px;
+    top: var(--header-height);
     right: 0;
     left: 0;
-    height: calc(100dvh - 72px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding:
-      32px
-      var(--container-padding)
-      28px;
-    overflow-y: auto;
-    background-color: var(--color-cream);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .mobile-menu-panel ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .mobile-menu-panel li {
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .mobile-menu-panel nav a {
+    height: calc(100dvh - var(--header-height));
     display: grid;
-    grid-template-columns: 42px minmax(0, 1fr);
-    gap: 16px;
-    align-items: baseline;
-    padding-block: 21px;
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 10vw, 3.2rem);
-    line-height: 1;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(380px, 1.2fr);
+    overflow-y: auto;
+    background: var(--color-espresso);
+    color: var(--color-cream);
   }
 
-  .mobile-link-number {
-    color: var(--color-olive);
-    font-family: var(--font-body);
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
+  .mobile-menu-art { position: relative; overflow: hidden; background: var(--color-olive); border-right: 1px solid rgba(243, 239, 231, 0.2); }
+  .menu-art-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(243,239,231,.12) 1px,transparent 1px), linear-gradient(90deg,rgba(243,239,231,.12) 1px,transparent 1px); background-size: 25% 25%; }
+  .menu-art-card { position: absolute; border: 1px solid rgba(243, 239, 231, 0.5); box-shadow: 0 16px 50px rgba(44,46,38,.2); }
+  .card-one { top: 13%; left: 12%; width: 48%; height: 30%; background: var(--color-cream); transform: rotate(-4deg); }
+  .card-two { top: 37%; right: 9%; width: 46%; height: 31%; background: var(--color-stone); transform: rotate(4deg); }
+  .card-three { bottom: 9%; left: 16%; width: 54%; height: 25%; background: var(--color-moss); transform: rotate(-2deg); }
+  .menu-art-core { position: absolute; top: 42%; left: 38%; width: 94px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--color-espresso); font-family: var(--font-heading); font-size: 3.5rem; font-style: italic; }
+  .menu-art-core i { position: absolute; top: 12px; right: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--color-stone); }
+
+  .mobile-menu-content { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(30px, 5vw, 70px) var(--container-padding) 28px; }
+  .mobile-menu-panel ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(243,239,231,.2); }
+  .mobile-menu-panel li { border-bottom: 1px solid rgba(243,239,231,.2); opacity: 0; transform: translateY(18px); transition: opacity 450ms var(--ease-out) calc(var(--item-index) * 55ms), transform 550ms var(--ease-out) calc(var(--item-index) * 55ms); }
+  .mobile-menu[open] .mobile-menu-panel li { opacity: 1; transform: none; }
+  .mobile-menu-panel nav a { display: grid; grid-template-columns: 40px 1fr; align-items: baseline; padding-block: clamp(15px, 3vh, 24px); font-family: var(--font-heading); font-size: clamp(2rem, 5.5vw, 4.4rem); line-height: .94; }
+  .mobile-menu-panel nav a > span { font-family: var(--font-body); font-size: .56rem; font-weight: 600; letter-spacing: .12em; opacity: .48; }
+  .mobile-menu-footer { display: flex; justify-content: space-between; gap: 28px; align-items: end; padding-top: 32px; }
+  .mobile-menu-footer p { max-width: 290px; margin: 0; color: rgba(243,239,231,.58); font-size: .82rem; line-height: 1.6; }
+  .mobile-menu-footer a { display: inline-flex; gap: 16px; padding-bottom: 5px; border-bottom: 1px solid currentColor; font-size: .66rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
+
+  @media (max-width: 1080px) {
+    .header-shell { grid-template-columns: auto 1fr; }
+    .desktop-navigation, .header-contact { display: none; }
+    .mobile-menu { display: block; }
   }
 
-  .mobile-menu-footer {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    padding-top: 40px;
-  }
-
-  .mobile-menu-footer p {
-    max-width: 220px;
-    margin: 0;
-    color: var(--color-olive);
-    font-size: 0.78rem;
-    line-height: 1.6;
-  }
-
-  .mobile-menu-footer > a {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--color-moss);
-    color: var(--color-moss);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  @media (max-width: 1024px) {
-    .desktop-navigation,
-    .header-contact {
-      display: none;
-    }
-
-    .mobile-menu {
-      display: block;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .header-container {
-      min-height: 72px;
-      gap: 16px;
-    }
-
-    .brand-name {
-      font-size: 1.7rem;
-    }
-
-    .brand-detail {
-      font-size: 0.62rem;
-    }
-
-    .mobile-menu-footer {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+  @media (max-width: 700px) {
+    .brand { min-width: 0; margin-left: calc(var(--container-padding) * -1); padding-right: 18px; }
+    .brand-mark { display: none; }
+    .brand-name { font-size: 1.9rem; }
+    .brand-detail { font-size: .5rem; }
+    .mobile-menu-panel { grid-template-columns: 1fr; }
+    .mobile-menu-art { min-height: 28svh; border-right: 0; border-bottom: 1px solid rgba(243,239,231,.2); }
+    .menu-art-core { top: 30%; width: 64px; font-size: 2.5rem; }
+    .mobile-menu-content { padding-top: 22px; }
+    .mobile-menu-panel nav a { padding-block: 13px; font-size: clamp(1.85rem, 9vw, 2.8rem); }
+    .mobile-menu-footer p { display: none; }
   }
 </style>
 
@@ -352,34 +227,55 @@ const navigation = [
   const mobileMenu = document.querySelector<HTMLDetailsElement>("#mobile-menu");
 
   if (mobileMenu) {
-    const menuLinks =
-      mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href^='#']");
+    const menuSummary = mobileMenu.querySelector<HTMLElement>("summary");
+    const menuLinks = Array.from(
+      mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href^='#']"),
+    );
 
-    const updatePageScroll = () => {
+    const updateMenuState = () => {
       document.body.classList.toggle("menu-open", mobileMenu.open);
+      menuSummary?.setAttribute(
+        "aria-label",
+        mobileMenu.open
+          ? "Cerrar menú de navegación"
+          : "Abrir menú de navegación",
+      );
     };
 
-    menuLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.open = false;
-        updatePageScroll();
-      });
-    });
+    const closeMenu = (restoreFocus = false) => {
+      mobileMenu.open = false;
+      updateMenuState();
+      if (restoreFocus) menuSummary?.focus();
+    };
 
-    mobileMenu.addEventListener("toggle", updatePageScroll);
+    menuLinks.forEach((link) => link.addEventListener("click", () => closeMenu()));
+    mobileMenu.addEventListener("toggle", updateMenuState);
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && mobileMenu.open) {
-        mobileMenu.open = false;
-        updatePageScroll();
+      if (!mobileMenu.open) return;
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu(true);
+        return;
+      }
+
+      if (event.key !== "Tab" || !menuSummary || menuLinks.length === 0) return;
+      const lastFocusable = menuLinks.at(-1);
+
+      if (event.shiftKey && document.activeElement === menuSummary) {
+        event.preventDefault();
+        lastFocusable?.focus();
+      } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+        event.preventDefault();
+        menuSummary.focus();
       }
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 1024 && mobileMenu.open) {
-        mobileMenu.open = false;
-        updatePageScroll();
-      }
+      if (window.innerWidth > 1080 && mobileMenu.open) closeMenu();
     });
+
+    updateMenuState();
   }
 </script>

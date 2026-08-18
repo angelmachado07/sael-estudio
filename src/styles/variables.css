@@ -1,5 +1,5 @@
 :root {
-  /* Colores principales de Sael Estudio */
+  /* Identidad cromática */
   --color-cream: #f3efe7;
   --color-stone: #d8d2c4;
   --color-olive: #6b745c;
@@ -8,26 +8,32 @@
 
   /* Colores funcionales */
   --color-background: var(--color-cream);
-  --color-surface: #f8f5ef;
+  --color-surface: var(--color-cream);
+  --color-surface-deep: #e5dfd2;
   --color-text: var(--color-espresso);
   --color-text-soft: var(--color-olive);
-  --color-border: var(--color-stone);
+  --color-border: rgba(107, 116, 92, 0.34);
   --color-primary: var(--color-moss);
 
-  /* Tipografíasprincipales */
-  --font-heading: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Manrope", Arial, sans-serif;
+  /* Tipografías principales */
+  --font-heading: "Instrument Serif", Georgia, serif;
+  --font-body: "Instrument Sans", Arial, sans-serif;
 
-  /* Tamaños y medidas */
-  --container-width: 1200px;
-  --container-padding: 24px;
+  /* Layout */
+  --container-width: 1340px;
+  --container-narrow: 1120px;
+  --container-padding: clamp(22px, 4vw, 64px);
+  --header-height: 78px;
 
   /* Bordes */
   --radius-small: 8px;
-  --radius-medium: 16px;
-  --radius-large: 28px;
+  --radius-medium: 18px;
+  --radius-large: 34px;
 
-  /* Transiciones */
+  /* Movimiento */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
   --transition-fast: 180ms ease;
-  --transition-normal: 300ms ease;
+  --transition-normal: 420ms var(--ease-out);
+  --transition-slow: 900ms var(--ease-out);
 }

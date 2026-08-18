@@ -56,7 +56,7 @@ Preguntas que deben resolverse antes o durante la implementación.
 
 ## Creative Refresh v1
 
-**Estado:** Ready
+**Estado:** In progress
 
 **Problema**
 
@@ -65,6 +65,8 @@ La landing actual es clara y funcional, pero se percibe relativamente estática 
 **Objetivo**
 
 Transformar la landing actual en una experiencia editorial más memorable, dinámica y visualmente distintiva, manteniendo claridad, identidad de marca, accesibilidad y rendimiento.
+
+La segunda iteración debe además comunicar a Sael como **diseño + soluciones**, ampliar explícitamente su alcance hacia comunicación y tecnología, reducir el uso de texto como decoración, reforzar la materialidad cálida de la paleta y consolidar una idea visual protagonista en el Hero.
 
 El nivel de impacto debe ser **alto pero sofisticado**: sorprender mediante dirección de arte, composición, interacción y atención al detalle, no mediante acumulación de efectos. La tecnología debe permanecer al servicio de Sael y nunca convertirse en protagonista.
 
@@ -79,15 +81,19 @@ El nivel de impacto debe ser **alto pero sofisticado**: sorprender mediante dire
 - Ampliar, cuando aporte valor, los recursos gráficos y visuales de la identidad.
 - Diseñar adaptaciones específicas para mobile y tablet.
 - Preservar o mejorar accesibilidad, semántica y rendimiento.
+- Replantear los cuatro pilares de servicio como Identidad y marca, Diseño y comunicación, Web, apps y software, y Acompañamiento y soluciones.
+- Actualizar el copy necesario para representar la propuesta ampliada sin convertir la landing en una lista de capacidades.
+- Evolucionar el sistema tipográfico y documentar la decisión.
+- Convertir Header y menú mobile en recursos visibles de identidad.
+- Aumentar la proporción de elementos gráficos frente al texto decorativo.
 
 **Fuera de alcance**
 
-- Modificar servicios, propuesta de valor o mensajes comerciales principales.
-- Cambiar sustancialmente la paleta, sustituir el sistema tipográfico principal o alterar el tono de marca.
 - Eliminar una sección principal.
 - Incorporar nuevas rutas, backend, CMS o funcionalidades de negocio.
 - Convertir ideas futuras del roadmap en requisitos.
 - Definir destinos reales de contacto que todavía no hayan sido aprobados; su resolución puede ejecutarse como tarea independiente dentro de la fase.
+- Posicionar a Sael como agencia de community management, call center o proveedor genérico de desarrollo.
 
 **Dirección de composición y viewport**
 
@@ -189,6 +195,8 @@ Referencias para estudiar comportamiento, composición, viewport, motion, imáge
 - No se introducen errores de consola, overflow horizontal ni degradaciones de rendimiento injustificadas.
 - No existe scroll hijacking y el contenido principal sigue siendo comprensible sin depender de motion.
 - La implementación mantiene Astro como base y no incorpora dependencias sin justificación previa.
+- La propuesta ampliada de Sael y el rol principal de tecnología se comprenden sin listas extensas ni lenguaje excesivamente técnico.
+- El Hero contiene una idea visual protagonista y el sistema cromático usa crema y piedra como superficies reales, no blanco como base dominante.
 
 **Decisiones abiertas**
 
