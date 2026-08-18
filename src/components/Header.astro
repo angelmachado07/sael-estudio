@@ -355,15 +355,30 @@ const navigation = [
     const menuLinks =
       mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href^='#']");
 
+    const updatePageScroll = () => {
+      document.body.classList.toggle("menu-open", mobileMenu.open);
+    };
+
     menuLinks.forEach((link) => {
       link.addEventListener("click", () => {
         mobileMenu.open = false;
+        updatePageScroll();
       });
     });
+
+    mobileMenu.addEventListener("toggle", updatePageScroll);
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && mobileMenu.open) {
         mobileMenu.open = false;
+        updatePageScroll();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1024 && mobileMenu.open) {
+        mobileMenu.open = false;
+        updatePageScroll();
       }
     });
   }
