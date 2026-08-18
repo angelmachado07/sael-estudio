@@ -40,23 +40,23 @@ Este documento registra decisiones relativamente estables. Las tareas y priorida
 ## 6. Dirección creativa “Editorial con impacto”
 
 - **Fecha:** 2026-08-18
-- **Decisión:** orientar la evolución de la web hacia una experiencia editorial, amplia y memorable.
+- **Decisión:** orientar la evolución de la web hacia una experiencia editorial de impacto alto pero sofisticado.
 - **Contexto:** una landing solamente limpia y correcta no expresa todo el potencial creativo de Sael.
-- **Consecuencia:** trabajar composición, escala, ritmo, viewport y momentos visuales distintivos sin perder claridad.
+- **Consecuencia:** trabajar composición, gran escala, ritmo, uso amplio del viewport y momentos distintivos sin acumular efectos ni convertir la tecnología en protagonista.
 
 ## 7. Motion e interacción como identidad digital
 
 - **Fecha:** 2026-08-18
-- **Decisión:** considerar el movimiento y la interacción partes del lenguaje visual, no adornos aislados.
+- **Decisión:** considerar el movimiento y la interacción partes visibles de un lenguaje visual global y coherente, no adornos aislados.
 - **Contexto:** la experiencia debe mantener interés y expresar personalidad durante el recorrido.
-- **Consecuencia:** usar motion con intención, respetar reducción de movimiento y evitar efectos gratuitos o costosos.
+- **Consecuencia:** usar entradas controladas, reveals, clipping, líneas, máscaras, transformaciones, scroll-linked animation, parallax sutil y hovers cuando aporten valor; respetar reducción de movimiento y evitar scroll hijacking, frenesí o efectos simultáneos excesivos.
 
 ## 8. Margen de criterio UX/UI para Codex
 
 - **Fecha:** 2026-08-18
-- **Decisión:** permitir que Codex tome decisiones profesionales de UX, UI, layout, responsive, motion, accesibilidad y rendimiento dentro de los límites de marca.
+- **Decisión:** permitir que Codex decida composición, layout, jerarquía, motion, microinteracciones, duración, easing, hovers, breakpoints, comportamiento responsive, recursos decorativos e implementación CSS/JS dentro de los límites de marca.
 - **Contexto:** las tareas bien definidas deben poder ejecutarse con autonomía.
-- **Consecuencia:** no exigir definición al píxel cuando una solución coherente pueda resolverse profesionalmente dentro del alcance.
+- **Consecuencia:** no exigir definición al píxel cuando una solución coherente pueda resolverse profesionalmente; consultar antes de alterar servicios, propuesta de valor, secciones principales, tono, paleta fundamental, tipografías principales o funcionalidades relevantes.
 
 ## 9. Mobile como composición específica
 
@@ -70,4 +70,18 @@ Este documento registra decisiones relativamente estables. Las tareas y priorida
 - **Fecha:** 2026-08-18
 - **Decisión:** evitar complejidad técnica sin una necesidad concreta.
 - **Contexto:** el proyecto sigue siendo una landing estática relativamente simple.
-- **Consecuencia:** justificar dependencias, frameworks, abstracciones y sistemas nuevos por valor real para el producto.
+- **Consecuencia:** priorizar Astro, CSS, JavaScript nativo y progressive enhancement; justificar antes de incorporar una dependencia de animación u otra complejidad por un beneficio sustancial frente a soluciones nativas.
+
+## 11. Jerarquía de intensidad por sección
+
+- **Fecha:** 2026-08-18
+- **Decisión:** usar Hero y Servicios como momentos principales de impacto, Sobre Sael y Proceso como respiraciones narrativas, y Contacto como cierre de intensidad renovada.
+- **Contexto:** el recorrido necesita variación y ritmo, no intensidad uniforme ni bloques equivalentes.
+- **Consecuencia:** distribuir composición, motion e interacción según el rol narrativo de cada sección, manteniendo comprensión inmediata del contenido.
+
+## 12. Assets como extensión de la identidad
+
+- **Fecha:** 2026-08-18
+- **Decisión:** permitir que el sistema visual crezca mediante mockups, piezas gráficas, texturas, materiales, símbolos, imágenes conceptuales o motion assets.
+- **Contexto:** el refresh puede necesitar recursos de gran formato para ganar profundidad y recordación sin depender exclusivamente de fotografías.
+- **Consecuencia:** Codex puede detectar y proponer assets, pero debe evitar recursos genéricos y justificar video o motion assets por valor real.

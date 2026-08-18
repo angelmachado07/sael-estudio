@@ -75,18 +75,24 @@ El sistema visual utiliza líneas finas, divisores, punto central, símbolo de l
 
 ## Dirección: Editorial con impacto
 
-La evolución del producto debe aprovechar mejor el viewport, especialmente en desktop, mediante composiciones amplias, ritmo visual, jerarquía tipográfica y recursos gráficos o interactivos con intención.
+El nivel de impacto visual buscado es alto pero sofisticado. La web debe sorprender por dirección de arte, composición, interacción y atención al detalle, no por acumulación de efectos. La tecnología debe sostener la experiencia sin competir con Sael como protagonista.
 
-Se busca superar una sucesión plana de bloques rectangulares y construir un recorrido con personalidad. El movimiento y la interacción forman parte del lenguaje digital de Sael, pero deben sostener el contenido y nunca competir con él.
+La evolución del producto debe aprovechar mejor el viewport, especialmente en desktop, mediante composiciones full-width, tipografía de gran escala, asimetrías, superposiciones y recursos gráficos o visuales de gran formato cuando aporten valor. Se busca superar una sucesión plana de bloques rectangulares y construir un recorrido con personalidad.
+
+Hero y Servicios son los principales momentos de impacto. Sobre Sael y Proceso funcionan como respiraciones narrativas, mientras que Contacto debe recuperar intensidad para cerrar con una invitación clara a trabajar con el estudio.
+
+El movimiento y la interacción son partes visibles del lenguaje digital de Sael. Deben formar un sistema coherente, con entradas controladas, reveals, líneas, máscaras, transformaciones y hovers refinados según corresponda. No se permite scroll hijacking y siempre debe existir una experiencia adecuada para `prefers-reduced-motion`.
+
+El sistema puede ampliarse con mockups, piezas de identidad, materiales impresos, texturas sutiles, símbolos, tipografía, imágenes conceptuales o motion assets. Los recursos deben sentirse propios de Sael; no se incorporarán assets genéricos solo para llenar espacio.
 
 ## Principios UX/UI
 
 - Comunicar con claridad antes que impresionar por exceso.
 - Crear impacto mediante composición, escala, ritmo y detalle.
-- Dar una intención concreta a cada movimiento e interacción.
+- Dar una intención concreta a cada movimiento e interacción y mantener un lenguaje de motion global.
 - Mantener continuidad visual durante todo el recorrido.
 - Usar recursos contemporáneos sin adoptar una estética SaaS o tecnológica.
-- Evitar saturación, movimiento frenético, partículas genéricas, neón, glassmorphism o 3D sin propósito.
+- Evitar saturación, movimiento frenético, scroll hijacking, partículas genéricas, neón, glassmorphism o 3D sin propósito.
 - Mantener navegación, lectura y llamados a la acción evidentes.
 - Integrar accesibilidad y rendimiento como parte de la calidad de la experiencia.
 
