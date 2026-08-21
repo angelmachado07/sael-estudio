@@ -16,14 +16,17 @@
   --color-primary: var(--color-moss);
 
   /* Tipografías principales */
-  --font-heading: "Instrument Serif", Georgia, serif;
-  --font-body: "Instrument Sans", Arial, sans-serif;
+  --font-heading: "Bricolage Grotesque", Arial, sans-serif;
+  --font-body: "Figtree", Arial, sans-serif;
+  --font-size-label: clamp(0.9rem, 1.05vw, 1rem);
+  --font-size-ui: 0.88rem;
+  --font-size-meta: 0.82rem;
 
   /* Layout */
   --container-width: 1340px;
   --container-narrow: 1120px;
   --container-padding: clamp(22px, 4vw, 64px);
-  --header-height: 78px;
+  --header-height: 86px;
 
   /* Bordes */
   --radius-small: 8px;

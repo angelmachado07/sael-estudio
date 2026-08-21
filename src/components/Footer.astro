@@ -1,108 +1,25 @@
 ---
-const currentYear = new Date().getFullYear();
-const navigation = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Sobre Sael", href: "#sobre-sael" },
-  { label: "Soluciones", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Contacto", href: "#contacto" },
-];
+const currentYear=new Date().getFullYear();
 ---
-
 <footer class="site-footer">
-  <div class="container footer-container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#inicio" aria-label="Volver al inicio de Sael Estudio">
-          <span>Sael</span><i>Estudio</i>
-        </a>
-        <p>Diseño + soluciones para marcas, proyectos y negocios.</p>
-      </div>
-
-      <nav aria-label="Navegación del pie de página">
-        <p class="footer-label">Recorrido</p>
-        <ul>{navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
-      </nav>
-
-      <div class="footer-contact">
-        <p class="footer-label">Contacto</p>
-        <a href="mailto:contacto@saelestudio.com">contacto@saelestudio.com</a>
-        <a href="#">Instagram</a>
-        <a href="#">WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="footer-composition" aria-hidden="true">
-      <div class="footer-grid"></div>
-      <span class="footer-card card-a"></span>
-      <span class="footer-card card-b"></span>
-      <span class="footer-card card-c"></span>
-      <div class="footer-core">S</div>
-      <div class="footer-line"><i></i></div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© {currentYear} Sael Estudio. Todos los derechos reservados.</p>
-      <span class="footer-signature" aria-hidden="true"><i></i><b></b><i></i></span>
-      <a href="#inicio">Volver arriba <span aria-hidden="true">↑</span></a>
-    </div>
+  <div class="container footer-shell">
+    <div class="footer-top"><a href="#inicio">Sael<i></i>Estudio</a><p>Diseño + soluciones</p></div>
+    <div class="footer-word" aria-hidden="true">SAEL</div>
+    <div class="footer-bottom"><p>© {currentYear} Sael Estudio</p><div><a href="mailto:contacto@saelestudio.com">Email</a><a href="#">Instagram</a><a href="#">WhatsApp</a></div><a href="#inicio">Arriba ↑</a></div>
   </div>
 </footer>
-
 <style>
-  .site-footer { overflow: hidden; background: var(--color-espresso); color: var(--color-cream); border-top: 1px solid rgba(243,239,231,.14); }
-  .footer-container { padding-top: clamp(70px,8vw,118px); }
-  .footer-top { display: grid; grid-template-columns: minmax(280px,1.4fr) .6fr .8fr; gap: clamp(48px,8vw,120px); padding-bottom: clamp(62px,8vw,108px); }
-  .footer-brand > a { display: inline-flex; align-items: baseline; gap: 9px; margin-bottom: 22px; }
-  .footer-brand > a span { font-family: var(--font-heading); font-size: 3.5rem; line-height: 1; }
-  .footer-brand > a i { color: rgba(243,239,231,.5); font-family: var(--font-body); font-size: .61rem; font-style: normal; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
-  .footer-brand p { max-width: 360px; margin: 0; color: rgba(243,239,231,.57); line-height: 1.7; }
-  .footer-label { margin-bottom: 22px; color: rgba(243,239,231,.4); font-size: .6rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
-  .footer-top ul, .footer-contact { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; margin: 0; padding: 0; list-style: none; }
-  .footer-contact .footer-label { margin-bottom: 11px; }
-  .footer-top nav a, .footer-contact a { color: rgba(243,239,231,.7); font-size: .86rem; transition: color var(--transition-fast); }
-  .footer-top nav a:hover, .footer-contact a:hover { color: var(--color-cream); }
-
-  .footer-composition {
-    position: relative;
-    height: clamp(230px,27vw,390px);
-    overflow: hidden;
-    border: 1px solid rgba(243,239,231,.15);
-    border-bottom: 0;
-    background: rgba(243,239,231,.025);
-  }
-
-  .footer-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(243,239,231,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(243,239,231,.07) 1px,transparent 1px); background-size: 12.5% 33.333%; }
-  .footer-card { position: absolute; bottom: -7%; height: 72%; border: 1px solid rgba(243,239,231,.24); box-shadow: 0 18px 50px rgba(0,0,0,.22); }
-  .card-a { left: 8%; width: 25%; background: var(--color-stone); transform: rotate(-5deg); }
-  .card-b { left: 38%; width: 29%; background: var(--color-olive); transform: rotate(3deg); }
-  .card-c { right: 7%; width: 24%; background: var(--color-cream); transform: rotate(-2deg); }
-  .footer-core { position: absolute; top: 28%; left: 45%; z-index: 2; width: clamp(78px,9vw,126px); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--color-espresso); border: 1px solid rgba(243,239,231,.35); font-family: var(--font-heading); font-size: clamp(3rem,5vw,5rem); font-style: italic; }
-  .footer-line { position: absolute; top: 49%; right: 4%; left: 4%; height: 1px; background: rgba(243,239,231,.3); }
-  .footer-line i { position: absolute; right: 0; top: -4px; width: 9px; height: 9px; border-radius: 50%; background: var(--color-stone); }
-
-  .footer-bottom { min-height: 86px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; border-top: 1px solid rgba(243,239,231,.15); }
-  .footer-bottom p { margin: 0; color: rgba(243,239,231,.4); font-size: .66rem; }
-  .footer-bottom > a { justify-self: end; display: inline-flex; gap: 12px; color: rgba(243,239,231,.65); font-size: .64rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
-  .footer-signature { display: flex; align-items: center; }
-  .footer-signature i { width: 30px; height: 1px; background: rgba(243,239,231,.3); }
-  .footer-signature b { width: 6px; height: 6px; border-radius: 50%; background: var(--color-stone); }
-
-  @media (max-width: 780px) {
-    .footer-top { grid-template-columns: 1fr 1fr; }
-    .footer-brand { grid-column: 1 / -1; }
-    .footer-composition { height: 300px; }
-  }
-
-  @media (max-width: 560px) {
-    .footer-top { grid-template-columns: 1fr; gap: 40px; }
-    .footer-brand { grid-column: auto; }
-    .footer-composition { height: 260px; }
-    .card-a { left: 2%; width: 33%; }
-    .card-b { left: 34%; width: 36%; }
-    .card-c { right: 1%; width: 31%; }
-    .footer-bottom { grid-template-columns: 1fr; gap: 18px; padding-block: 26px; }
-    .footer-signature { grid-row: 1; }
-    .footer-bottom > a { justify-self: start; }
-  }
+  .site-footer { overflow:hidden; background:var(--color-espresso); color:var(--color-cream); }
+  .footer-shell { padding-top:clamp(70px,8vw,112px); }
+  .footer-top { display:flex; align-items:center; justify-content:space-between; gap:30px; }
+  .footer-top > a { display:flex; align-items:center; gap:9px; font-family:var(--font-heading); font-size:2rem; font-weight:600; letter-spacing:-.06em; }
+  .footer-top i { width:5px; height:5px; border-radius:50%; background:currentColor; }
+  .footer-top p { margin:0; color:rgba(243,239,231,.58); font-size:var(--font-size-ui); }
+  .footer-word { margin:clamp(90px,11vw,170px) 0 -.1em; font-family:var(--font-heading); font-size:clamp(8rem,27.5vw,25rem); font-weight:650; line-height:.67; letter-spacing:-.095em; }
+  .footer-bottom { min-height:86px; display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center; border-top:1px solid rgba(243,239,231,.15); }
+  .footer-bottom p { margin:0; color:rgba(243,239,231,.48); font-size:var(--font-size-meta); }
+  .footer-bottom div { display:flex; gap:22px; }
+  .footer-bottom a { color:rgba(243,239,231,.68); font-size:var(--font-size-meta); }
+  .footer-bottom > a { justify-self:end; }
+  @media (max-width:600px) { .footer-word { font-size:31vw; } .footer-bottom { grid-template-columns:1fr auto; padding-block:24px; } .footer-bottom div { grid-column:1/-1; grid-row:1; } .footer-bottom > a { grid-column:2; } }
 </style>

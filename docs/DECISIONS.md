@@ -100,16 +100,16 @@ Este documento registra decisiones relativamente estables. Las tareas y priorida
 - **Contexto:** el estudio puede trabajar tanto en una identidad o presencia social como en sitios, aplicaciones, sistemas internos, software a medida y apoyos digitales específicos.
 - **Consecuencia:** la comunicación debe partir de la necesidad y de la solución adecuada, no de una lista extensa de entregables. Tecnología se presenta como un pilar principal y los apoyos operativos permanecen complementarios, personalizados y sin posicionar a Sael como community manager o call center.
 
-## 15. Instrument Serif e Instrument Sans como sistema tipográfico
+## 15. Bricolage Grotesque y Figtree como sistema tipográfico
 
 - **Fecha:** 2026-08-18
-- **Decisión:** reemplazar Cormorant Garamond y Manrope por Instrument Serif para display e Instrument Sans para texto e interfaz.
-- **Contexto:** la primera combinación resultaba funcional pero demasiado genérica para el nivel de personalidad buscado. Instrument Serif está diseñada para gran escala y ambas familias ofrecen soporte para español y disponibilidad web bajo licencia abierta.
-- **Consecuencia:** los títulos ganan una voz contemporánea y memorable mientras textos, navegación y controles mantienen legibilidad y una precisión coherente con el componente tecnológico de Sael.
+- **Decisión:** utilizar Bricolage Grotesque para títulos y Figtree para texto e interfaz, cargadas desde Google Fonts con soporte latino y licencias abiertas.
+- **Contexto:** Instrument Serif aportaba elegancia, pero acercaba la experiencia a un editorial clásico y no producía una firma digital suficientemente contemporánea.
+- **Consecuencia:** los títulos funcionan como objetos espaciales y admiten gran escala, máscaras y movimiento; Figtree conserva legibilidad y una voz moderna sin competir con la display.
 
-## 16. Vocabulario gráfico de planos de solución
+## 16. Campo adaptativo como sistema gráfico de Creative Refresh v1
 
 - **Fecha:** 2026-08-18
-- **Decisión:** representar la amplitud de Sael mediante capas tipo papel, retículas, nodos, rutas, marcos y pequeñas interfaces abstractas construidas con código.
-- **Contexto:** la personalidad visual no debe depender de acumular palabras ni de introducir imágenes genéricas.
-- **Consecuencia:** el sistema puede expresar marca, comunicación y tecnología con formas coherentes y reutilizables, manteniendo calidez material y un carácter editorial.
+- **Decisión:** usar un campo circular adaptable que revela un segundo estado de la composición, complementado por líneas y nodos de coordenadas.
+- **Contexto:** la ventana adaptativa anterior seguía percibiéndose como un póster colocado junto al texto; tipografía y objeto no formaban todavía una sola experiencia.
+- **Consecuencia:** el Hero integra mensaje, color, cursor y scroll en una máscara común; el campo reaparece de forma controlada en navegación y Contacto para dar continuidad sin sumar recursos ajenos al sistema.

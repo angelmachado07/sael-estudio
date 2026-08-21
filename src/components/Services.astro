@@ -1,284 +1,83 @@
 ---
+import { Image } from "astro:assets";
+import identidadMarca from "../assets/services/identidad-marca.png";
+import disenoComunicacion from "../assets/services/diseno-comunicacion.png";
+import webSoftware from "../assets/services/web-software.png";
+import acompanamiento from "../assets/services/acompanamiento.png";
+
 const services = [
-  {
-    number: "01",
-    title: "Identidad y marca",
-    lead: "Una identidad que se reconoce, se entiende y puede crecer.",
-    description:
-      "Construimos el universo visual de una marca: desde su concepto y dirección hasta las piezas y lineamientos que le permiten sostener una presencia coherente.",
-    keywords: ["Identidad visual", "Dirección", "Sistemas gráficos", "Aplicaciones"],
-    visual: "brand",
-  },
-  {
-    number: "02",
-    title: "Diseño y comunicación",
-    lead: "Ideas claras, convertidas en piezas que comunican mejor.",
-    description:
-      "Diseñamos la presencia cotidiana de un negocio en medios digitales e impresos: contenido visual, redes, materiales comerciales y cada punto donde la marca necesita expresarse.",
-    keywords: ["Contenido visual", "Redes", "Piezas digitales", "Material impreso"],
-    visual: "communication",
-  },
-  {
-    number: "03",
-    title: "Web, apps y software",
-    lead: "Tecnología pensada desde la necesidad, no desde la herramienta.",
-    description:
-      "Creamos landings, sitios, aplicaciones, sistemas internos y software a medida. La solución puede ser simple o compleja: lo importante es que funcione para el proyecto y su operación.",
-    keywords: ["Sitios web", "Aplicaciones", "Sistemas internos", "Software a medida"],
-    visual: "digital",
-  },
-  {
-    number: "04",
-    title: "Acompañamiento y soluciones",
-    lead: "Cuando la necesidad no entra en una categoría, diseñamos el camino.",
-    description:
-      "Podemos ordenar una idea, implementar una presencia digital o sumar apoyos operativos puntuales. Cada alcance se define a medida, como parte de una solución concreta y no como un servicio genérico.",
-    keywords: ["Dirección", "Implementación", "Procesos digitales", "Seguimiento"],
-    visual: "solutions",
-  },
+  { title: "Identidad y marca", lead: "Una presencia que se reconoce.", description: "Estrategia, identidad visual y sistemas de marca pensados para crecer.", image: identidadMarca },
+  { title: "Diseño y comunicación", lead: "Ideas que encuentran su forma.", description: "Dirección de arte, contenido, piezas y campañas para comunicar con coherencia.", image: disenoComunicacion },
+  { title: "Web, apps y software", lead: "Diseño que también funciona.", description: "Experiencias, productos y sistemas digitales construidos con intención.", image: webSoftware },
+  { title: "Acompañamiento y soluciones", lead: "El equipo que el proyecto necesita.", description: "Criterio, diseño y ejecución flexible para desafíos que no vienen en una caja.", image: acompanamiento },
 ];
 ---
 
 <section id="servicios" class="services" aria-labelledby="services-title">
-  <div class="services-layout">
-    <header class="services-intro">
-      <p class="section-label" data-reveal><span>03</span> Soluciones</p>
+  <div class="container services-heading">
+    <p class="section-label" data-reveal>Servicios</p>
+    <h2 id="services-title" data-reveal="mask">Una necesidad.<br />Cuatro formas de avanzar.</h2>
+  </div>
 
-      <h2 id="services-title" data-reveal>
-        Diseñamos lo que cada proyecto <em>realmente necesita.</em>
-      </h2>
+  <div class="service-panels" data-service-panels>
+    {services.map((service,index)=>(
+      <article class="service-panel" tabindex="0" data-service-panel style={`--panel:${index}`}>
+        <span class="service-number">0{index+1}</span>
 
-      <p class="services-summary" data-reveal>
-        Marca, comunicación y tecnología trabajan juntas. Partimos del problema,
-        definimos el alcance y construimos una solución con sentido.
-      </p>
+        <div class="service-visual" aria-hidden="true">
+          <Image
+            src={service.image}
+            alt=""
+            widths={[240, 360, 560]}
+            sizes="(max-width: 680px) 80vw, (max-width: 940px) 42vw, 24vw"
+            format="webp"
+            quality={80}
+            loading="lazy"
+          />
+        </div>
 
-      <div class="services-map" aria-hidden="true" data-reveal>
-        <span></span><i></i><span></span><i></i><span></span>
-      </div>
-    </header>
-
-    <div class="services-list">
-      {
-        services.map((service, index) => (
-          <article class={`service-item service-${index + 1}`} data-reveal>
-            <div class="service-copy">
-              <div class="service-topline">
-                <span>{service.number}</span>
-                <span>Solución / 04</span>
-              </div>
-
-              <h3>{service.title}</h3>
-              <p class="service-lead">{service.lead}</p>
-              <p class="service-description">{service.description}</p>
-
-              <ul aria-label={`Áreas de ${service.title}`}>
-                {service.keywords.map((keyword) => <li>{keyword}</li>)}
-              </ul>
-
-              <a class="service-link" href="#contacto">
-                Hablemos de esta solución <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-
-            <div class={`service-visual visual-${service.visual}`} aria-hidden="true">
-              <div class="visual-grid"></div>
-              <div class="visual-frame frame-a"></div>
-              <div class="visual-frame frame-b"></div>
-              <div class="visual-node node-a"></div>
-              <div class="visual-node node-b"></div>
-              <div class="visual-node node-c"></div>
-              <div class="visual-path"></div>
-              <div class="visual-core">S</div>
-            </div>
-          </article>
-        ))
-      }
-    </div>
+        <h3>{service.title}</h3>
+        <div class="service-detail"><p>{service.lead}</p><p>{service.description}</p></div>
+        <span class="service-arrow" aria-hidden="true">↗</span>
+      </article>
+    ))}
   </div>
 </section>
 
 <style>
-  .services {
-    position: relative;
-    background: var(--color-moss);
-  }
+  .services { position:relative; z-index:4; padding-top:clamp(110px,12vw,180px); background:var(--color-espresso); color:var(--color-cream); }
+  .services-heading { display:grid; grid-template-columns:.32fr 1fr; gap:clamp(60px,8vw,130px); padding-bottom:clamp(80px,10vw,145px); }
+  .services .section-label { color:rgba(243,239,231,.76); }
+  .services h2 { margin:0; font-size:clamp(4.8rem,8.2vw,8.5rem); font-weight:500; line-height:.8; letter-spacing:-.065em; }
+  .service-panels { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); min-height:min(86svh,860px); border-block:1px solid rgba(243,239,231,.2); transition:grid-template-columns 900ms var(--ease-out); }
+  .service-panel { position:relative; min-width:0; display:grid; grid-template-rows:auto minmax(180px,1fr) auto auto; gap:clamp(24px,3vw,42px); overflow:hidden; padding:clamp(28px,3vw,48px); border-right:1px solid rgba(243,239,231,.18); outline-offset:-7px; transition:background-color 700ms var(--ease-out); }
+  .service-panel:last-child { border-right:0; }
+  .service-panel::before { content:""; position:absolute; inset:auto -20% -45% 35%; aspect-ratio:1; border:1px solid rgba(243,239,231,.14); border-radius:50%; transform:scale(.55); opacity:0; transition:transform 900ms var(--ease-out),opacity 700ms var(--ease-out); }
+  .service-panel:hover,.service-panel:focus-visible { background:rgba(243,239,231,.07); }
+  .service-panel:hover::before,.service-panel:focus-visible::before { transform:scale(1); opacity:1; }
+  .service-panels:has(.service-panel:nth-child(1):hover),.service-panels:has(.service-panel:nth-child(1):focus-visible) { grid-template-columns:1.6fr .8fr .8fr .8fr; }
+  .service-panels:has(.service-panel:nth-child(2):hover),.service-panels:has(.service-panel:nth-child(2):focus-visible) { grid-template-columns:.8fr 1.6fr .8fr .8fr; }
+  .service-panels:has(.service-panel:nth-child(3):hover),.service-panels:has(.service-panel:nth-child(3):focus-visible) { grid-template-columns:.8fr .8fr 1.6fr .8fr; }
+  .service-panels:has(.service-panel:nth-child(4):hover),.service-panels:has(.service-panel:nth-child(4):focus-visible) { grid-template-columns:.8fr .8fr .8fr 1.6fr; }
+  .service-number { position:relative; z-index:2; font-size:var(--font-size-meta); opacity:.62; }
+  .service-visual { position:relative; z-index:1; align-self:center; justify-self:center; width:min(100%,320px); aspect-ratio:1; overflow:hidden; border:1px solid rgba(243,239,231,.24); border-radius:2px; background:var(--color-cream); box-shadow:0 22px 54px rgba(0,0,0,.14); transition:transform 850ms var(--ease-out),opacity 650ms var(--ease-out); }
+  .service-visual :global(img) { display:block; width:100%; height:100%; object-fit:cover; filter:saturate(.9) contrast(.98); transition:transform 1s var(--ease-out),filter 700ms ease; }
+  .service-panel:hover .service-visual,.service-panel:focus-visible .service-visual { transform:scale(1.06); }
+  .service-panel:hover .service-visual :global(img),.service-panel:focus-visible .service-visual :global(img) { transform:scale(1.035); filter:saturate(1) contrast(1); }
+  .service-panels:has(.service-panel:hover) .service-panel:not(:hover) .service-visual,
+  .service-panels:has(.service-panel:focus-visible) .service-panel:not(:focus-visible) .service-visual { opacity:.36; transform:scale(.82); }
 
-  .services-layout {
-    display: grid;
-    grid-template-columns: minmax(350px, 0.39fr) minmax(0, 0.61fr);
-  }
-
-  .services-intro {
-    position: sticky;
-    top: var(--header-height);
-    height: calc(100svh - var(--header-height));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: clamp(56px, 7vw, 108px) clamp(38px, 6vw, 94px);
-    overflow: hidden;
-    color: var(--color-cream);
-    background:
-      radial-gradient(circle at 0 100%, rgba(216,210,196,.18), transparent 36%),
-      var(--color-moss);
-  }
-
-  .services-intro::after {
-    content: "";
-    position: absolute;
-    right: -120px;
-    bottom: -150px;
-    width: 360px;
-    aspect-ratio: 1;
-    border: 1px solid rgba(243,239,231,.13);
-    border-radius: 50%;
-  }
-
-  .services :global(.section-label) { color: rgba(243,239,231,.64); }
-
-  .services-intro h2 {
-    max-width: 620px;
-    margin: clamp(40px, 6vh, 70px) 0 34px;
-    color: var(--color-cream);
-    font-size: clamp(3.7rem, 5.8vw, 6.5rem);
-    line-height: .88;
-    letter-spacing: -.045em;
-  }
-
-  .services-intro h2 em { display: block; color: var(--color-stone); font-weight: 400; }
-  .services-summary { max-width: 520px; margin: 0; color: rgba(243,239,231,.67); line-height: 1.75; }
-
-  .services-map { display: flex; align-items: center; gap: 0; margin-top: clamp(44px, 8vh, 80px); }
-  .services-map span { width: clamp(40px, 5vw, 72px); height: 1px; background: rgba(243,239,231,.36); }
-  .services-map i { width: 7px; height: 7px; border-radius: 50%; background: var(--color-stone); }
-
-  .services-list { min-width: 0; background: var(--color-stone); }
-
-  .service-item {
-    position: relative;
-    min-height: min(860px, 94svh);
-    display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(260px, .88fr);
-    gap: clamp(36px, 5vw, 78px);
-    align-items: center;
-    padding: clamp(48px, 6vw, 94px);
-    overflow: hidden;
-    color: var(--color-espresso);
-    border-bottom: 1px solid rgba(44,46,38,.18);
-    box-shadow: 0 -60px 100px rgba(44,46,38,.04);
-    isolation: isolate;
-  }
-
-  .service-1 { background: #eee9df; }
-  .service-2 { background: var(--color-stone); }
-  .service-3 { background: #c5c5b7; }
-  .service-4 { background: #e5ded1; }
-
-  .service-copy { position: relative; z-index: 2; }
-  .service-topline { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid rgba(44,46,38,.22); color: rgba(44,46,38,.52); font-size: .61rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
-
-  .service-item h3 {
-    margin: clamp(42px, 6vw, 78px) 0 24px;
-    font-size: clamp(4rem, 7.2vw, 8.2rem);
-    line-height: .83;
-    letter-spacing: -.05em;
-  }
-
-  .service-lead {
-    max-width: 610px;
-    margin: 0 0 28px;
-    color: var(--color-moss);
-    font-family: var(--font-heading);
-    font-size: clamp(1.55rem, 2.25vw, 2.35rem);
-    font-style: italic;
-    line-height: 1.14;
-  }
-
-  .service-description { max-width: 620px; margin: 0; color: rgba(44,46,38,.72); line-height: 1.75; }
-
-  .service-item ul {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin: 42px 0 0;
-    padding: 0;
-    list-style: none;
-    border-top: 1px solid rgba(44,46,38,.2);
-  }
-
-  .service-item li { padding-block: 10px; border-bottom: 1px solid rgba(44,46,38,.2); color: rgba(44,46,38,.58); font-size: .63rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-  .service-link { display: inline-flex; gap: 18px; margin-top: 42px; padding-bottom: 6px; border-bottom: 1px solid currentColor; font-size: .67rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-  .service-link span { transition: transform var(--transition-normal); }
-  .service-link:hover span { transform: translate(4px,-4px); }
-
-  .service-visual {
-    position: relative;
-    z-index: 1;
-    width: min(100%, 390px);
-    aspect-ratio: .82;
-    justify-self: end;
-    overflow: hidden;
-    border: 1px solid rgba(44,46,38,.26);
-    background: rgba(243,239,231,.42);
-    box-shadow: 0 28px 60px rgba(44,46,38,.12);
-    transition: transform 900ms var(--ease-out), box-shadow 900ms var(--ease-out);
-  }
-
-  .service-item:hover .service-visual { transform: translateY(-10px) rotate(.6deg); box-shadow: 0 42px 90px rgba(44,46,38,.18); }
-  .visual-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(44,46,38,.1) 1px,transparent 1px), linear-gradient(90deg,rgba(44,46,38,.1) 1px,transparent 1px); background-size: 25% 20%; }
-  .visual-frame { position: absolute; border: 1px solid currentColor; opacity: .5; transition: transform 900ms var(--ease-out); }
-  .visual-node { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
-  .visual-path { position: absolute; top: 20%; bottom: 18%; left: 49%; width: 1px; background: currentColor; opacity: .4; }
-  .visual-core { position: absolute; display: grid; place-items: center; border-radius: 50%; background: var(--color-espresso); color: var(--color-cream); font-family: var(--font-heading); font-size: 3.8rem; font-style: italic; }
-
-  .frame-a { top: 12%; left: 10%; width: 54%; height: 42%; }
-  .frame-b { right: 9%; bottom: 9%; width: 48%; height: 48%; border-radius: 50% 50% 0 0; }
-  .node-a { top: 18%; right: 16%; }
-  .node-b { top: 54%; left: 18%; }
-  .node-c { right: 24%; bottom: 15%; }
-  .visual-core { top: 39%; left: 35%; width: 92px; aspect-ratio: 1; }
-
-  .visual-brand .frame-a { border-radius: 50% 50% 0 0; background: var(--color-cream); }
-  .visual-brand .frame-b { background: var(--color-stone); transform: rotate(7deg); }
-  .visual-brand .visual-core { background: var(--color-moss); }
-
-  .visual-communication .frame-a { width: 42%; height: 62%; background: var(--color-cream); transform: rotate(-5deg); }
-  .visual-communication .frame-b { width: 52%; height: 58%; border-radius: 0; background: var(--color-olive); transform: rotate(5deg); }
-  .visual-communication .visual-core { top: 42%; left: 39%; background: var(--color-stone); color: var(--color-espresso); }
-
-  .visual-digital { background: var(--color-espresso); color: var(--color-cream); }
-  .visual-digital .visual-grid { background-image: linear-gradient(rgba(243,239,231,.09) 1px,transparent 1px), linear-gradient(90deg,rgba(243,239,231,.09) 1px,transparent 1px); }
-  .visual-digital .frame-a { inset: 11% 9% auto; width: auto; height: 35%; background: rgba(243,239,231,.08); }
-  .visual-digital .frame-b { right: 9%; bottom: 10%; width: 60%; height: 31%; border-radius: 0; background: rgba(107,116,92,.42); }
-  .visual-digital .visual-core { background: var(--color-cream); color: var(--color-espresso); }
-
-  .visual-solutions .frame-a { top: 8%; left: 8%; width: 46%; height: 34%; background: var(--color-stone); transform: rotate(-4deg); }
-  .visual-solutions .frame-b { right: 7%; bottom: 8%; width: 58%; height: 44%; background: var(--color-moss); border-radius: 0; transform: rotate(4deg); }
-  .visual-solutions .visual-core { top: 39%; left: 34%; }
-
-  .service-item:hover .frame-a { transform: translate(-7px,-7px) rotate(-3deg); }
-  .service-item:hover .frame-b { transform: translate(7px,7px) rotate(3deg); }
-
-  @media (max-width: 1120px) {
-    .services-layout { grid-template-columns: 1fr; }
-    .services-intro { position: relative; top: auto; height: auto; min-height: 72svh; }
-    .service-item { min-height: 760px; }
-  }
-
-  @media (max-width: 760px) {
-    .services-intro { min-height: auto; padding: 88px var(--container-padding); }
-    .services-intro h2 { font-size: clamp(3.6rem, 15vw, 5.5rem); }
-    .service-item { min-height: auto; grid-template-columns: 1fr; gap: 50px; padding: 54px var(--container-padding) 68px; }
-    .service-item h3 { margin-top: 44px; font-size: clamp(3.7rem, 15vw, 5.4rem); }
-    .service-description { font-size: .94rem; }
-    .service-visual { justify-self: stretch; width: 100%; max-width: 430px; aspect-ratio: 1.05; }
-  }
-
-  @media (max-width: 440px) {
-    .services-intro h2 { font-size: 3.7rem; }
-    .service-item h3 { font-size: 3.7rem; }
-    .service-item ul { grid-template-columns: 1fr; }
-    .service-visual { aspect-ratio: 1; }
-  }
+  .service-panel h3 { position:relative; z-index:2; margin:0; font-size:clamp(2.25rem,3.5vw,4.4rem); font-weight:500; line-height:.88; letter-spacing:-.06em; transition:font-size 700ms var(--ease-out); }
+  .service-panel:nth-child(4) h3 { font-size:clamp(1.95rem,2.25vw,3.15rem); }
+  .service-panels:has(.service-panel:hover) .service-panel:not(:hover) h3,
+  .service-panels:has(.service-panel:focus-visible) .service-panel:not(:focus-visible) h3 { font-size:1.7rem; }
+  .service-panels:has(.service-panel:hover) .service-panel:nth-child(4):not(:hover) h3,
+  .service-panels:has(.service-panel:focus-visible) .service-panel:nth-child(4):not(:focus-visible) h3 { font-size:1.4rem; }
+  .service-detail { position:relative; z-index:2; min-width:225px; }
+  .service-detail p:first-child { margin:0 0 12px; font-size:.96rem; font-weight:600; }
+  .service-detail p:last-child { max-width:300px; margin:0; color:rgba(243,239,231,.68); font-size:.92rem; line-height:1.6; }
+  .service-arrow { position:absolute; top:clamp(28px,3vw,48px); right:clamp(28px,3vw,48px); font-size:1rem; }
+  @media (max-width:940px) { .service-panels { grid-template-columns:repeat(2,1fr)!important; } .service-panel { min-height:680px; border-bottom:1px solid rgba(243,239,231,.18); } .service-panel:nth-child(2) { border-right:0; } .service-visual { width:min(100%,360px); } }
+  @media (max-width:680px) { .services-heading { grid-template-columns:1fr; gap:38px; } .services h2 { font-size:clamp(3.8rem,15.5vw,5rem); } .service-panels { grid-template-columns:1fr!important; } .service-panel { min-height:82svh; grid-template-rows:auto minmax(210px,1fr) auto auto; padding:30px var(--container-padding); border-right:0; } .service-visual { width:min(80vw,340px); } .service-panel h3 { font-size:clamp(3.1rem,12.5vw,4.1rem); } .service-panel:nth-child(4) h3 { font-size:clamp(2.4rem,10vw,3.1rem); } .service-detail { min-width:0; } }
+  @media (prefers-reduced-motion:reduce) { .service-visual,.service-visual :global(img) { transition:none!important; } }
 </style>

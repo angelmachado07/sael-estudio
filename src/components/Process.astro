@@ -1,152 +1,57 @@
 ---
 const steps = [
-  { number: "01", title: "Escuchar", text: "Entendemos el proyecto, su contexto y la necesidad real." },
-  { number: "02", title: "Enfocar", text: "Ordenamos prioridades y definimos qué vale la pena construir." },
-  { number: "03", title: "Diseñar", text: "Damos forma a una dirección y a la solución adecuada." },
-  { number: "04", title: "Implementar", text: "Convertimos la idea en una pieza, experiencia o herramienta real." },
-  { number: "05", title: "Ajustar", text: "Probamos, afinamos y preparamos todo para que pueda usarse bien." },
+  { title:"Escuchar", text:"Entender la necesidad real." },
+  { title:"Enfocar", text:"Definir qué importa." },
+  { title:"Diseñar", text:"Convertir estrategia en forma." },
+  { title:"Construir", text:"Probar, ajustar y resolver." },
+  { title:"Acompañar", text:"Entregar y seguir avanzando." },
 ];
 ---
 
-<section id="proceso" class="process section" aria-labelledby="process-title">
-  <div class="container process-container">
-    <header class="process-heading">
-      <p class="section-label" data-reveal><span>04</span> Proceso</p>
-      <h2 id="process-title" data-reveal>
-        Entender antes<br />de hacer<span>.</span>
-      </h2>
-      <p data-reveal>
-        El proceso se adapta al proyecto, pero mantiene una lógica simple:
-        comprender, decidir y construir con intención.
-      </p>
-    </header>
-
-    <div class="process-board">
-      <div class="process-route" aria-hidden="true"><span></span><i></i></div>
-
-      <ol>
-        {
-          steps.map((step, index) => (
-            <li data-reveal style={`--step: ${index}`}>
-              <span class="step-number">{step.number}</span>
-              <div class="step-node" aria-hidden="true"><i></i></div>
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
+<section id="proceso" class="process" aria-labelledby="process-title">
+  <div class="process-motion" data-scroll-linked aria-hidden="true">
+    <span></span><i></i><b></b>
+  </div>
+  <div class="container process-shell">
+    <div class="process-heading">
+      <p class="section-label" data-reveal>Cómo trabajamos</p>
+      <h2 id="process-title" data-reveal="mask">Claridad para<br />moverse mejor.</h2>
     </div>
 
-    <div class="process-close" data-reveal>
-      <div class="process-mark" aria-hidden="true"><span></span><i></i><span></span></div>
-      <p>Una solución clara no empieza por una herramienta. Empieza por una buena pregunta.</p>
-      <a href="#contacto">Hablemos de tu proyecto <span aria-hidden="true">↗</span></a>
-    </div>
+    <ol class="process-steps">
+      {steps.map((step,index)=>(
+        <li data-reveal style={`--reveal-delay:${index*60}ms`}>
+          <span>0{index+1}</span><h3>{step.title}</h3><p>{step.text}</p><i aria-hidden="true"></i>
+        </li>
+      ))}
+    </ol>
   </div>
 </section>
 
 <style>
-  .process {
-    position: relative;
-    overflow: hidden;
-    background:
-      linear-gradient(135deg, rgba(243,239,231,.45), transparent 42%),
-      var(--color-stone);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .process-heading {
-    display: grid;
-    grid-template-columns: minmax(160px,.28fr) minmax(0,1fr) minmax(250px,.48fr);
-    gap: clamp(36px,7vw,108px);
-    align-items: end;
-    padding-bottom: clamp(72px,9vw,126px);
-  }
-
-  .process-heading h2 {
-    margin: 0;
-    font-size: clamp(4.4rem,7.7vw,8.5rem);
-    line-height: .78;
-    letter-spacing: -.052em;
-  }
-
-  .process-heading h2 span { color: var(--color-moss); }
-  .process-heading > p:last-child { margin: 0; color: rgba(44,46,38,.67); line-height: 1.75; }
-
-  .process-board {
-    position: relative;
-    padding: clamp(42px,6vw,80px) 0;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .process-route { position: absolute; top: 50%; right: 3%; left: 3%; display: flex; align-items: center; }
-  .process-route span { width: 100%; height: 1px; background: rgba(79,90,69,.42); transform-origin: left; animation: draw-line 1.8s var(--ease-out) both; }
-  .process-route i { width: 9px; height: 9px; flex: 0 0 auto; border-radius: 50%; background: var(--color-moss); }
-
-  .process-board ol {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(5,minmax(0,1fr));
-    gap: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .process-board li {
-    min-height: 420px;
-    display: grid;
-    grid-template-rows: 1fr auto 1fr;
-    padding-inline: clamp(12px,2vw,30px);
-    border-left: 1px solid rgba(79,90,69,.2);
-  }
-
-  .process-board li:last-child { border-right: 1px solid rgba(79,90,69,.2); }
-  .step-number { align-self: start; color: rgba(44,46,38,.43); font-size: .62rem; font-weight: 600; letter-spacing: .13em; }
-  .step-node { width: 22px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--color-moss); border-radius: 50%; background: var(--color-stone); }
-  .step-node i { width: 6px; height: 6px; border-radius: 50%; background: var(--color-moss); }
-  .process-board li > div:last-child { align-self: end; }
-  .process-board h3 { margin: 0 0 15px; font-size: clamp(1.8rem,2.5vw,2.8rem); }
-  .process-board p { margin: 0; color: rgba(44,46,38,.64); font-size: .84rem; line-height: 1.65; }
-
-  .process-close {
-    display: grid;
-    grid-template-columns: auto minmax(280px, .75fr) auto;
-    gap: clamp(28px,5vw,74px);
-    align-items: center;
-    padding-top: clamp(58px,8vw,100px);
-  }
-
-  .process-mark { display: flex; align-items: center; }
-  .process-mark span { width: 38px; height: 1px; background: var(--color-moss); }
-  .process-mark i { width: 7px; height: 7px; border-radius: 50%; background: var(--color-moss); }
-  .process-close p { margin: 0; font-family: var(--font-heading); font-size: clamp(1.55rem,2.3vw,2.3rem); font-style: italic; line-height: 1.15; }
-  .process-close a { display: inline-flex; gap: 18px; padding-bottom: 6px; border-bottom: 1px solid currentColor; font-size: .67rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-
-  @media (max-width: 980px) {
-    .process-heading { grid-template-columns: 1fr 1.3fr; }
-    .process-heading > p:last-child { grid-column: 2; }
-    .process-board ol { grid-template-columns: repeat(2,1fr); }
-    .process-board li { min-height: 280px; grid-template-rows: auto auto 1fr; gap: 30px; padding: 26px; border-bottom: 1px solid rgba(79,90,69,.2); }
-    .process-board li:last-child { grid-column: 1 / -1; }
-    .process-route { display: none; }
-  }
-
-  @media (max-width: 650px) {
-    .process-heading { grid-template-columns: 1fr; gap: 34px; }
-    .process-heading h2 { font-size: clamp(4rem,18vw,5.4rem); }
-    .process-heading > p:last-child { grid-column: 1; }
-    .process-board { padding: 0; }
-    .process-board ol { grid-template-columns: 1fr; }
-    .process-board li, .process-board li:last-child { grid-column: auto; min-height: auto; grid-template-columns: 42px 1fr; grid-template-rows: auto auto; gap: 20px 8px; padding: 32px 0; border-left: 0; border-right: 0; }
-    .step-number { grid-column: 1; }
-    .step-node { grid-column: 1; grid-row: 2; }
-    .process-board li > div:last-child { grid-column: 2; grid-row: 1 / span 2; }
-    .process-close { grid-template-columns: 1fr; }
-  }
+  .process { position:relative; overflow:hidden; padding-block:clamp(110px,13vw,190px); background:var(--color-cream); }
+  .process-shell { position:relative; z-index:1; }
+  .process-motion { position:absolute; top:8%; right:-8vw; width:min(42vw,590px); aspect-ratio:1; border:1px solid rgba(79,90,69,.2); border-radius:50%; transform:translateY(var(--scroll-inverse-offset,-80px)) rotate(var(--scroll-rotate,0deg)); will-change:transform; }
+  .process-motion::before { content:""; position:absolute; inset:17%; border:1px solid rgba(79,90,69,.16); border-radius:50%; }
+  .process-motion span { position:absolute; top:50%; right:-10%; left:-10%; height:1px; background:rgba(79,90,69,.25); }
+  .process-motion i { position:absolute; top:calc(50% - 7px); left:16%; width:14px; height:14px; border-radius:50%; background:var(--color-moss); animation:process-node 4s var(--ease-in-out) infinite alternate; }
+  .process-motion b { position:absolute; right:17%; bottom:20%; width:20%; aspect-ratio:1; border:1px solid rgba(79,90,69,.28); transform:rotate(45deg); animation:process-shape 8s var(--ease-in-out) infinite alternate; }
+  .process-heading { display:grid; grid-template-columns:.32fr 1fr; gap:clamp(60px,8vw,130px); }
+  .process-heading h2 { margin:0; font-size:clamp(5rem,8.7vw,9rem); font-weight:500; line-height:.79; letter-spacing:-.07em; }
+  .process-steps { margin:clamp(90px,12vw,170px) 0 0; padding:0; list-style:none; border-top:1px solid rgba(44,46,38,.22); }
+  .process-steps li { position:relative; display:grid; grid-template-columns:64px 1fr 1fr 22px; gap:24px; align-items:center; min-height:126px; border-bottom:1px solid rgba(44,46,38,.22); overflow:hidden; }
+  .process-steps li::before { content:""; position:absolute; inset:0; background:var(--color-stone); transform:translateY(102%); transition:transform 650ms var(--ease-out); }
+  .process-steps li:hover::before { transform:none; }
+  .process-steps span,.process-steps h3,.process-steps p,.process-steps i { position:relative; z-index:1; }
+  .process-steps span { font-size:var(--font-size-meta); opacity:.58; }
+  .process-steps h3 { margin:0; font-size:clamp(2.6rem,4.2vw,5rem); font-weight:500; letter-spacing:-.055em; transition:transform 650ms var(--ease-out); }
+  .process-steps p { margin:0; color:rgba(44,46,38,.58); transition:transform 650ms var(--ease-out),color 450ms ease; }
+  .process-steps i { width:10px; height:10px; border-radius:50%; background:var(--color-moss); transform:scale(.45); transition:transform 600ms var(--ease-out); }
+  .process-steps li:hover i { transform:scale(1); }
+  .process-steps li:hover h3 { transform:translateX(16px); }
+  .process-steps li:hover p { color:var(--color-espresso); transform:translateX(-8px); }
+  @keyframes process-node { to { left:76%; transform:scale(1.35); } }
+  @keyframes process-shape { to { transform:rotate(135deg) scale(.72); } }
+  @media (max-width:760px) { .process-motion { top:18%; right:-35vw; width:95vw; opacity:.65; } .process-heading { grid-template-columns:1fr; gap:38px; } .process-heading h2 { font-size:clamp(4.3rem,17vw,5.8rem); } .process-steps { margin-top:72px; } .process-steps li { grid-template-columns:34px 1fr 12px; gap:14px; min-height:112px; } .process-steps p { grid-column:2; margin-top:-20px; font-size:.92rem; } .process-steps i { grid-column:3; grid-row:1/3; } }
+  @media (prefers-reduced-motion:reduce) { .process-motion { transform:none; } .process-motion i,.process-motion b { animation:none; } }
 </style>

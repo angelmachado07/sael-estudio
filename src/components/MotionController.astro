@@ -9,6 +9,9 @@
   const tiltElements = Array.from(
     document.querySelectorAll<HTMLElement>("[data-tilt]"),
   );
+  const scrollLinkedElements = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-scroll-linked]"),
+  );
 
   document.documentElement.classList.add("motion-ready");
 
@@ -30,7 +33,7 @@
       },
       {
         rootMargin: "0px 0px -10%",
-        threshold: 0.12,
+        threshold: 0,
       },
     );
 
@@ -51,6 +54,17 @@
       element.style.setProperty("--parallax-offset", `${offset.toFixed(2)}px`);
     });
 
+    scrollLinkedElements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      const rawProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+      const progress = Math.max(0, Math.min(1, rawProgress));
+      element.style.setProperty("--scroll-progress", progress.toFixed(3));
+      const travel = window.innerWidth < 560 ? 80 : 230;
+      element.style.setProperty("--scroll-offset", `${(progress * travel).toFixed(2)}px`);
+      element.style.setProperty("--scroll-inverse-offset", `${((progress - 1) * travel).toFixed(2)}px`);
+      element.style.setProperty("--scroll-rotate", `${(progress * 180).toFixed(2)}deg`);
+    });
+
     ticking = false;
   };
 
@@ -61,7 +75,7 @@
     window.requestAnimationFrame(updateParallax);
   };
 
-  if (!reducedMotion.matches && parallaxElements.length > 0) {
+  if (!reducedMotion.matches && (parallaxElements.length > 0 || scrollLinkedElements.length > 0)) {
     updateParallax();
     window.addEventListener("scroll", requestParallaxUpdate, { passive: true });
     window.addEventListener("resize", requestParallaxUpdate);

@@ -68,6 +68,10 @@ Transformar la landing actual en una experiencia editorial más memorable, diná
 
 La segunda iteración debe además comunicar a Sael como **diseño + soluciones**, ampliar explícitamente su alcance hacia comunicación y tecnología, reducir el uso de texto como decoración, reforzar la materialidad cálida de la paleta y consolidar una idea visual protagonista en el Hero.
 
+La tercera iteración consolida la dirección como **editorial contemporáneo + digital craft**. Debe obtener personalidad mediante composición, escala, proporción, espacio, interacción y uno o dos recursos visuales fuertes; no mediante acumulación de tarjetas, etiquetas, símbolos o animaciones.
+
+La cuarta iteración eleva el riesgo creativo mediante un **campo adaptativo**: una máscara espacial que integra tipografía, color, cursor y scroll como una sola experiencia. El sistema tipográfico pasa a Bricolage Grotesque y Figtree; el Header se resuelve como una única capa flotante de controles coherentes y Servicios como una composición expansiva de cuatro paneles. La claridad de producto, accesibilidad y reduced motion permanecen como límites obligatorios.
+
 El nivel de impacto debe ser **alto pero sofisticado**: sorprender mediante dirección de arte, composición, interacción y atención al detalle, no mediante acumulación de efectos. La tecnología debe permanecer al servicio de Sael y nunca convertirse en protagonista.
 
 **Alcance**

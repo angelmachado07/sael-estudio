@@ -1,157 +1,31 @@
 <section id="contacto" class="contact" aria-labelledby="contact-title">
-  <div class="container contact-layout">
-    <div class="contact-copy">
-      <p class="section-label" data-reveal><span>05</span> Contacto</p>
-
-      <h2 id="contact-title">
-        <span data-reveal>¿Qué necesita</span>
-        <span data-reveal style="--reveal-delay: 90ms">tu proyecto?</span>
-        <em data-reveal style="--reveal-delay: 180ms">Diseñemos una respuesta.</em>
-      </h2>
-
-      <p class="contact-intro" data-reveal>
-        Puede ser una marca, una pieza, una web o una solución que todavía no
-        tiene nombre. Contanos el punto de partida y vemos cómo resolverlo.
-      </p>
-    </div>
-
-    <div class="contact-assembly" data-parallax aria-hidden="true">
-      <div class="assembly-grid"></div>
-      <span class="assembly-plane plane-a"></span>
-      <span class="assembly-plane plane-b"></span>
-      <span class="assembly-plane plane-c"></span>
-      <div class="assembly-ring"><i></i></div>
-      <div class="assembly-mark"><span></span><b></b><span></span></div>
-    </div>
-
-    <div class="contact-options">
-      <a href="#" aria-label="Contactar a Sael Estudio por WhatsApp" data-reveal>
-        <span class="contact-label">WhatsApp</span>
-        <span>Conversemos sobre tu proyecto</span>
-        <i aria-hidden="true">↗</i>
-      </a>
-
-      <a href="mailto:contacto@saelestudio.com" data-reveal style="--reveal-delay: 80ms">
-        <span class="contact-label">Correo</span>
-        <span>contacto@saelestudio.com</span>
-        <i aria-hidden="true">↗</i>
-      </a>
-
-      <a href="#" aria-label="Visitar Instagram de Sael Estudio" data-reveal style="--reveal-delay: 160ms">
-        <span class="contact-label">Instagram</span>
-        <span>@saelestudio</span>
-        <i aria-hidden="true">↗</i>
-      </a>
+  <div class="contact-field" aria-hidden="true"></div>
+  <div class="container contact-shell">
+    <p class="section-label" data-reveal>El próximo movimiento</p>
+    <h2 id="contact-title"><span data-reveal="mask">Hagamos que</span><span data-reveal="mask" style="--reveal-delay:70ms">avance.</span></h2>
+    <p class="contact-copy" data-reveal>Contanos qué necesita tu proyecto. Podemos empezar por una conversación simple.</p>
+    <div class="contact-actions">
+      <a href="mailto:contacto@saelestudio.com">Escribinos por email <span aria-hidden="true">↗</span></a>
+      <a href="#">WhatsApp <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>
 
 <style>
-  .contact {
-    position: relative;
-    overflow: hidden;
-    background: var(--color-espresso);
-    color: var(--color-cream);
-  }
-
-  .contact-layout {
-    display: grid;
-    grid-template-columns: minmax(0,1.08fr) minmax(340px,.72fr);
-    gap: clamp(48px,8vw,126px);
-    padding-block: clamp(96px,11vw,170px) clamp(84px,9vw,132px);
-  }
-
-  .contact :global(.section-label) { color: rgba(243,239,231,.58); }
-
-  .contact-copy h2 {
-    margin: clamp(48px,7vw,92px) 0 44px;
-    font-size: clamp(4.8rem,8.3vw,9.2rem);
-    line-height: .78;
-    letter-spacing: -.055em;
-  }
-
-  .contact-copy h2 span, .contact-copy h2 em { display: block; }
-  .contact-copy h2 span:nth-child(2) { margin-left: clamp(20px,6vw,90px); }
-  .contact-copy h2 em { margin-top: .42em; color: var(--color-stone); font-size: .4em; line-height: 1.06; letter-spacing: -.02em; text-align: right; }
-  .contact-intro { max-width: 620px; margin: 0 0 0 clamp(0px,6vw,90px); color: rgba(243,239,231,.65); line-height: 1.75; }
-
-  .contact-assembly {
-    position: relative;
-    align-self: center;
-    width: 100%;
-    aspect-ratio: .86;
-    overflow: hidden;
-    border: 1px solid rgba(243,239,231,.18);
-    background: rgba(243,239,231,.035);
-  }
-
-  .assembly-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(243,239,231,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(243,239,231,.08) 1px,transparent 1px); background-size: 25% 20%; }
-  .assembly-plane { position: absolute; border: 1px solid rgba(243,239,231,.24); box-shadow: 0 22px 55px rgba(0,0,0,.2); }
-  .plane-a { top: 9%; left: 8%; width: 56%; height: 37%; background: var(--color-stone); transform: rotate(-4deg); }
-  .plane-b { top: 36%; right: 7%; width: 50%; height: 39%; background: var(--color-olive); transform: rotate(5deg); }
-  .plane-c { bottom: 7%; left: 13%; width: 56%; height: 28%; background: var(--color-cream); transform: rotate(-2deg); }
-  .assembly-ring { position: absolute; top: 36%; left: 30%; z-index: 3; width: 120px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(243,239,231,.5); border-radius: 50%; background: var(--color-espresso); }
-  .assembly-ring::before { content: "S"; font-family: var(--font-heading); font-size: 4.4rem; font-style: italic; }
-  .assembly-ring i { position: absolute; top: 13px; right: 16px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-stone); animation: core-pulse 2.6s ease-in-out infinite; }
-  .assembly-mark { position: absolute; right: 8%; top: 17%; display: flex; align-items: center; }
-  .assembly-mark span { width: 36px; height: 1px; background: var(--color-cream); }
-  .assembly-mark b { width: 7px; height: 7px; border-radius: 50%; background: var(--color-cream); }
-
-  .contact-options {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    margin-top: clamp(30px,5vw,70px);
-    border-top: 1px solid rgba(243,239,231,.2);
-    border-bottom: 1px solid rgba(243,239,231,.2);
-  }
-
-  .contact-options a {
-    position: relative;
-    min-height: 180px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 24px;
-    align-content: space-between;
-    padding: 28px;
-    overflow: hidden;
-    border-right: 1px solid rgba(243,239,231,.2);
-    font-family: var(--font-heading);
-    font-size: clamp(1.5rem,2.2vw,2.3rem);
-    line-height: 1.1;
-    isolation: isolate;
-    transition: color var(--transition-normal), padding var(--transition-normal);
-  }
-
-  .contact-options a:last-child { border-right: 0; }
-  .contact-options a::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--color-stone); transform: translateY(102%); transition: transform 700ms var(--ease-out); }
-  .contact-options a:hover, .contact-options a:focus-visible { color: var(--color-espresso); padding-top: 34px; }
-  .contact-options a:hover::before, .contact-options a:focus-visible::before { transform: none; }
-  .contact-options i { font-family: var(--font-body); font-size: 1rem; font-style: normal; transition: transform var(--transition-normal); }
-  .contact-options a:hover i { transform: translate(4px,-4px); }
-  .contact-label { grid-column: 1 / -1; color: currentColor; font-family: var(--font-body); font-size: .61rem; font-weight: 600; letter-spacing: .13em; opacity: .55; text-transform: uppercase; }
-
-  @keyframes core-pulse { 50% { transform: scale(1.7); opacity: .3; } }
-
-  @media (max-width: 900px) {
-    .contact-layout { grid-template-columns: 1fr .7fr; gap: 48px; }
-    .contact-copy h2 { font-size: clamp(4.3rem,10vw,7rem); }
-    .contact-options { grid-template-columns: 1fr; }
-    .contact-options a { min-height: 130px; border-right: 0; border-bottom: 1px solid rgba(243,239,231,.2); }
-    .contact-options a:last-child { border-bottom: 0; }
-  }
-
-  @media (max-width: 680px) {
-    .contact-layout { grid-template-columns: 1fr; }
-    .contact-copy h2 { font-size: clamp(4rem,18vw,5.4rem); }
-    .contact-copy h2 span:nth-child(2) { margin-left: 0; }
-    .contact-copy h2 em { font-size: .48em; text-align: left; }
-    .contact-intro { margin-left: 0; }
-    .contact-assembly { width: calc(100% - 20px); margin-left: 20px; aspect-ratio: 1; }
-    .assembly-ring { width: 82px; }
-    .assembly-ring::before { font-size: 3rem; }
-    .contact-options { grid-column: 1; }
-    .contact-options a { padding-inline: 0; }
-    .contact-options a:hover, .contact-options a:focus-visible { padding-inline: 16px; }
-  }
+  .contact { position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden; padding-block:clamp(120px,15vw,210px); background:var(--color-stone); }
+  .contact-field { position:absolute; left:56%; top:50%; width:min(64vw,920px); aspect-ratio:1; border-radius:50%; background:var(--color-moss); transform:translate(-50%,-50%); }
+  .contact-field::before { content:""; position:absolute; inset:14%; border:1px solid rgba(243,239,231,.3); border-radius:50%; animation:field-pulse 7s var(--ease-in-out) infinite alternate; }
+  .contact-shell { position:relative; z-index:1; }
+  .contact .section-label { color:rgba(243,239,231,.78); }
+  .contact h2 { margin:clamp(48px,7vw,100px) 0 0; color:var(--color-cream); font-size:clamp(7rem,13.2vw,13rem); font-weight:550; line-height:.74; letter-spacing:-.074em; }
+  .contact h2 span { display:block; width:max-content; max-width:calc(100% - .08em); padding:.015em .04em .14em; margin-bottom:-.14em; }
+  .contact h2 span:last-child { margin-left:clamp(34px,15vw,240px); }
+  .contact-copy { max-width:430px; margin:clamp(58px,7vw,95px) 0 0 clamp(120px,18vw,250px); padding-left:20px; border-left:1px solid rgba(243,239,231,.68); color:var(--color-cream); font-size:clamp(1.05rem,1.25vw,1.2rem); line-height:1.7; text-shadow:0 1px 18px rgba(44,46,38,.2); }
+  .contact-actions { display:flex; gap:12px; justify-content:flex-end; margin-top:-52px; }
+  .contact-actions a { display:inline-flex; align-items:center; justify-content:space-between; gap:30px; min-height:52px; padding:0 18px 0 21px; border:1px solid rgba(243,239,231,.65); border-radius:999px; color:var(--color-cream); font-size:var(--font-size-ui); font-weight:600; transition:background-color var(--transition-normal),color var(--transition-normal),transform var(--transition-normal); }
+  .contact-actions a:last-child { border-color:var(--color-espresso); background:var(--color-espresso); color:var(--color-cream); }
+  .contact-actions a:hover { background:var(--color-cream); color:var(--color-espresso); transform:translateY(-3px); }
+  @keyframes field-pulse { to { inset:5%; opacity:.35; } }
+  @media (max-width:760px) { .contact { min-height:92svh; } .contact-field { left:68%; width:120vw; } .contact h2 { font-size:clamp(5rem,21vw,6.6rem); line-height:.78; } .contact h2 span:last-child { margin-left:0; } .contact-copy { max-width:310px; margin-left:0; } .contact-actions { justify-content:flex-start; flex-direction:column; margin-top:42px; } .contact-actions a { width:100%; } }
+  @media (prefers-reduced-motion:reduce) { .contact-field::before { animation:none; } }
 </style>
