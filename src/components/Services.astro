@@ -1,15 +1,36 @@
 ---
 import { Image } from "astro:assets";
+import ArrowIcon from "./ArrowIcon.astro";
 import identidadMarca from "../assets/services/identidad-marca.png";
 import disenoComunicacion from "../assets/services/diseno-comunicacion.png";
 import webSoftware from "../assets/services/web-software.png";
 import acompanamiento from "../assets/services/acompanamiento.png";
 
 const services = [
-  { title: "Identidad y marca", lead: "Una presencia que se reconoce.", description: "Estrategia, identidad visual y sistemas de marca pensados para crecer.", image: identidadMarca },
-  { title: "Diseño y comunicación", lead: "Ideas que encuentran su forma.", description: "Dirección de arte, contenido, piezas y campañas para comunicar con coherencia.", image: disenoComunicacion },
-  { title: "Web, apps y software", lead: "Diseño que también funciona.", description: "Experiencias, productos y sistemas digitales construidos con intención.", image: webSoftware },
-  { title: "Acompañamiento y soluciones", lead: "El equipo que el proyecto necesita.", description: "Criterio, diseño y ejecución flexible para desafíos que no vienen en una caja.", image: acompanamiento },
+  {
+    title: "Identidad y marca",
+    lead: "Una presencia que se reconoce.",
+    description: "Definimos la dirección visual de la marca y construimos un sistema capaz de sostenerla en el tiempo. Identidad, aplicaciones y lineamientos trabajan juntos para darle coherencia, personalidad y espacio para crecer.",
+    image: identidadMarca,
+  },
+  {
+    title: "Diseño y comunicación",
+    lead: "Ideas que encuentran su forma.",
+    description: "Convertimos mensajes, campañas y contenidos en piezas claras y consistentes. Diseñamos recursos digitales e impresos que ayudan a comunicar mejor y mantienen una presencia cuidada en cada punto de contacto.",
+    image: disenoComunicacion,
+  },
+  {
+    title: "Web, apps y software",
+    lead: "Diseño que también funciona.",
+    description: "Diseñamos y construimos experiencias digitales que unen claridad, identidad y utilidad. Desde una landing hasta una aplicación o sistema a medida, cada decisión responde a una necesidad concreta del proyecto.",
+    image: webSoftware,
+  },
+  {
+    title: "Acompañamiento y soluciones",
+    lead: "El equipo que el proyecto necesita.",
+    description: "Acompañamos desafíos que necesitan dirección, criterio y capacidad de ejecución más allá de una categoría cerrada. Ordenamos la necesidad, definimos prioridades y armamos una solución flexible para hacerla avanzar.",
+    image: acompanamiento,
+  },
 ];
 ---
 
@@ -19,65 +40,414 @@ const services = [
     <h2 id="services-title" data-reveal="mask">Una necesidad.<br />Cuatro formas de avanzar.</h2>
   </div>
 
-  <div class="service-panels" data-service-panels>
-    {services.map((service,index)=>(
-      <article class="service-panel" tabindex="0" data-service-panel style={`--panel:${index}`}>
-        <span class="service-number">0{index+1}</span>
+  <div class="service-list" data-service-list>
+    {services.map((service, index) => (
+      <details class="service-item">
+        <summary>
+          <span class="service-number">0{index + 1}</span>
+          <h3>{service.title}</h3>
+          <span class="service-state" aria-hidden="true"><ArrowIcon /></span>
+        </summary>
 
-        <div class="service-visual" aria-hidden="true">
-          <Image
-            src={service.image}
-            alt=""
-            widths={[240, 360, 560]}
-            sizes="(max-width: 680px) 80vw, (max-width: 940px) 42vw, 24vw"
-            format="webp"
-            quality={80}
-            loading="lazy"
-          />
+        <div class="service-content">
+          <div class="service-visual">
+            <Image
+              src={service.image}
+              alt=""
+              widths={[320, 560, 760]}
+              sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 940px) 48vw, 42vw"
+              format="webp"
+              quality={80}
+              loading="lazy"
+            />
+          </div>
+
+          <div class="service-detail">
+            <p>{service.lead}</p>
+            <p>{service.description}</p>
+          </div>
         </div>
-
-        <h3>{service.title}</h3>
-        <div class="service-detail"><p>{service.lead}</p><p>{service.description}</p></div>
-        <span class="service-arrow" aria-hidden="true">↗</span>
-      </article>
+      </details>
     ))}
   </div>
 </section>
 
 <style>
-  .services { position:relative; z-index:4; padding-top:clamp(110px,12vw,180px); background:var(--color-espresso); color:var(--color-cream); }
-  .services-heading { display:grid; grid-template-columns:.32fr 1fr; gap:clamp(60px,8vw,130px); padding-bottom:clamp(80px,10vw,145px); }
-  .services .section-label { color:rgba(243,239,231,.76); }
-  .services h2 { margin:0; font-size:clamp(4.8rem,8.2vw,8.5rem); font-weight:500; line-height:.8; letter-spacing:-.065em; }
-  .service-panels { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); min-height:min(86svh,860px); border-block:1px solid rgba(243,239,231,.2); transition:grid-template-columns 900ms var(--ease-out); }
-  .service-panel { position:relative; min-width:0; display:grid; grid-template-rows:auto minmax(180px,1fr) auto auto; gap:clamp(24px,3vw,42px); overflow:hidden; padding:clamp(28px,3vw,48px); border-right:1px solid rgba(243,239,231,.18); outline-offset:-7px; transition:background-color 700ms var(--ease-out); }
-  .service-panel:last-child { border-right:0; }
-  .service-panel::before { content:""; position:absolute; inset:auto -20% -45% 35%; aspect-ratio:1; border:1px solid rgba(243,239,231,.14); border-radius:50%; transform:scale(.55); opacity:0; transition:transform 900ms var(--ease-out),opacity 700ms var(--ease-out); }
-  .service-panel:hover,.service-panel:focus-visible { background:rgba(243,239,231,.07); }
-  .service-panel:hover::before,.service-panel:focus-visible::before { transform:scale(1); opacity:1; }
-  .service-panels:has(.service-panel:nth-child(1):hover),.service-panels:has(.service-panel:nth-child(1):focus-visible) { grid-template-columns:1.6fr .8fr .8fr .8fr; }
-  .service-panels:has(.service-panel:nth-child(2):hover),.service-panels:has(.service-panel:nth-child(2):focus-visible) { grid-template-columns:.8fr 1.6fr .8fr .8fr; }
-  .service-panels:has(.service-panel:nth-child(3):hover),.service-panels:has(.service-panel:nth-child(3):focus-visible) { grid-template-columns:.8fr .8fr 1.6fr .8fr; }
-  .service-panels:has(.service-panel:nth-child(4):hover),.service-panels:has(.service-panel:nth-child(4):focus-visible) { grid-template-columns:.8fr .8fr .8fr 1.6fr; }
-  .service-number { position:relative; z-index:2; font-size:var(--font-size-meta); opacity:.62; }
-  .service-visual { position:relative; z-index:1; align-self:center; justify-self:center; width:min(100%,320px); aspect-ratio:1; overflow:hidden; border:1px solid rgba(243,239,231,.24); border-radius:2px; background:var(--color-cream); box-shadow:0 22px 54px rgba(0,0,0,.14); transition:transform 850ms var(--ease-out),opacity 650ms var(--ease-out); }
-  .service-visual :global(img) { display:block; width:100%; height:100%; object-fit:cover; filter:saturate(.9) contrast(.98); transition:transform 1s var(--ease-out),filter 700ms ease; }
-  .service-panel:hover .service-visual,.service-panel:focus-visible .service-visual { transform:scale(1.06); }
-  .service-panel:hover .service-visual :global(img),.service-panel:focus-visible .service-visual :global(img) { transform:scale(1.035); filter:saturate(1) contrast(1); }
-  .service-panels:has(.service-panel:hover) .service-panel:not(:hover) .service-visual,
-  .service-panels:has(.service-panel:focus-visible) .service-panel:not(:focus-visible) .service-visual { opacity:.36; transform:scale(.82); }
+  .services {
+    position: relative;
+    z-index: 4;
+    padding-top: clamp(110px, 12vw, 180px);
+    background: var(--color-espresso);
+    color: var(--color-cream);
+  }
 
-  .service-panel h3 { position:relative; z-index:2; margin:0; font-size:clamp(2.25rem,3.5vw,4.4rem); font-weight:500; line-height:.88; letter-spacing:-.06em; transition:font-size 700ms var(--ease-out); }
-  .service-panel:nth-child(4) h3 { font-size:clamp(1.95rem,2.25vw,3.15rem); }
-  .service-panels:has(.service-panel:hover) .service-panel:not(:hover) h3,
-  .service-panels:has(.service-panel:focus-visible) .service-panel:not(:focus-visible) h3 { font-size:1.7rem; }
-  .service-panels:has(.service-panel:hover) .service-panel:nth-child(4):not(:hover) h3,
-  .service-panels:has(.service-panel:focus-visible) .service-panel:nth-child(4):not(:focus-visible) h3 { font-size:1.4rem; }
-  .service-detail { position:relative; z-index:2; min-width:225px; }
-  .service-detail p:first-child { margin:0 0 12px; font-size:.96rem; font-weight:600; }
-  .service-detail p:last-child { max-width:300px; margin:0; color:rgba(243,239,231,.68); font-size:.92rem; line-height:1.6; }
-  .service-arrow { position:absolute; top:clamp(28px,3vw,48px); right:clamp(28px,3vw,48px); font-size:1rem; }
-  @media (max-width:940px) { .service-panels { grid-template-columns:repeat(2,1fr)!important; } .service-panel { min-height:680px; border-bottom:1px solid rgba(243,239,231,.18); } .service-panel:nth-child(2) { border-right:0; } .service-visual { width:min(100%,360px); } }
-  @media (max-width:680px) { .services-heading { grid-template-columns:1fr; gap:38px; } .services h2 { font-size:clamp(3.8rem,15.5vw,5rem); } .service-panels { grid-template-columns:1fr!important; } .service-panel { min-height:82svh; grid-template-rows:auto minmax(210px,1fr) auto auto; padding:30px var(--container-padding); border-right:0; } .service-visual { width:min(80vw,340px); } .service-panel h3 { font-size:clamp(3.1rem,12.5vw,4.1rem); } .service-panel:nth-child(4) h3 { font-size:clamp(2.4rem,10vw,3.1rem); } .service-detail { min-width:0; } }
-  @media (prefers-reduced-motion:reduce) { .service-visual,.service-visual :global(img) { transition:none!important; } }
+  .services-heading {
+    display: grid;
+    grid-template-columns: .32fr 1fr;
+    gap: clamp(60px, 8vw, 130px);
+    padding-bottom: clamp(80px, 10vw, 145px);
+  }
+
+  .services .section-label {
+    color: rgba(243, 239, 231, .76);
+  }
+
+  .services h2 {
+    margin: 0;
+    font-size: clamp(4.8rem, 8.2vw, 8.5rem);
+    font-weight: 500;
+    line-height: .8;
+    letter-spacing: -.065em;
+  }
+
+  .service-list {
+    border-top: 1px solid rgba(243, 239, 231, .22);
+  }
+
+  .service-item {
+    border-bottom: 1px solid rgba(243, 239, 231, .22);
+    background: transparent;
+    transition: background-color 500ms var(--ease-out);
+  }
+
+  .service-item[open] {
+    background: rgba(243, 239, 231, .055);
+  }
+
+  .service-item summary {
+    display: grid;
+    grid-template-columns: clamp(54px, 7vw, 108px) minmax(0, 1fr) 54px;
+    gap: clamp(18px, 3vw, 48px);
+    align-items: center;
+    min-height: clamp(132px, 15vw, 220px);
+    padding: 28px var(--container-padding);
+    cursor: pointer;
+    list-style: none;
+    transition: background-color var(--transition-normal);
+  }
+
+  .service-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .service-item summary::marker {
+    content: "";
+  }
+
+  .service-item summary:hover,
+  .service-item summary:focus-visible {
+    background: rgba(243, 239, 231, .045);
+  }
+
+  .service-number {
+    align-self: start;
+    padding-top: .72em;
+    font-size: var(--font-size-meta);
+    opacity: .6;
+  }
+
+  .service-item h3 {
+    margin: 0;
+    font-size: clamp(3.2rem, 7vw, 8rem);
+    font-weight: 500;
+    line-height: .84;
+    letter-spacing: -.068em;
+    transition: transform 650ms var(--ease-out);
+  }
+
+  .service-item summary:hover h3,
+  .service-item summary:focus-visible h3,
+  .service-item[open] summary h3 {
+    transform: translateX(clamp(4px, .8vw, 12px));
+  }
+
+  .service-state {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(243, 239, 231, .5);
+    border-radius: 50%;
+    font-size: 1.15rem;
+    transition: background-color var(--transition-normal), color var(--transition-normal), transform var(--transition-normal);
+  }
+
+  .service-item[open] .service-state {
+    background: var(--color-cream);
+    color: var(--color-espresso);
+    transform: rotate(90deg);
+  }
+
+  .service-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(280px, .95fr) minmax(260px, .65fr);
+    gap: clamp(38px, 8vw, 130px);
+    align-items: end;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding) clamp(64px, 8vw, 120px) calc(var(--container-padding) + clamp(72px, 10vw, 156px));
+  }
+
+  .service-content::before {
+    content: "";
+    position: absolute;
+    right: clamp(40px, 8vw, 130px);
+    bottom: clamp(36px, 6vw, 90px);
+    width: clamp(110px, 16vw, 240px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(243, 239, 231, .12);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(.72);
+    pointer-events: none;
+  }
+
+  .service-item.is-entering .service-content::before {
+    animation: service-orbit-settle 1250ms cubic-bezier(.2, .65, .25, 1) both;
+  }
+
+  .service-visual {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    aspect-ratio: 1;
+    border: 1px solid rgba(243, 239, 231, .24);
+    background: var(--color-cream);
+    box-shadow: 0 22px 54px rgba(0, 0, 0, .16);
+    transform-origin: 44% 58%;
+  }
+
+  .service-visual :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: saturate(.92) contrast(.99);
+    transition: transform 1200ms cubic-bezier(.2, .65, .25, 1), filter 900ms ease;
+  }
+
+  .service-item.is-entering .service-visual {
+    animation: service-image-settle 1350ms cubic-bezier(.2, .65, .25, 1) both;
+  }
+
+  .service-item[open] .service-visual :global(img) {
+    transform: scale(1.012);
+    filter: saturate(1) contrast(1);
+  }
+
+  .service-detail {
+    position: relative;
+    z-index: 1;
+    max-width: 540px;
+    padding-bottom: clamp(6px, 2vw, 28px);
+  }
+
+  .service-item.is-entering .service-detail {
+    animation: service-copy-settle 1100ms cubic-bezier(.2, .65, .25, 1) both;
+  }
+
+  .service-detail p:first-child {
+    margin: 0 0 16px;
+    font-size: clamp(1.15rem, 1.7vw, 1.65rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .service-detail p:last-child {
+    max-width: 540px;
+    margin: 0;
+    color: rgba(243, 239, 231, .72);
+    font-size: clamp(1rem, 1.15vw, 1.15rem);
+    line-height: 1.65;
+  }
+
+  @keyframes service-image-settle {
+    from {
+      opacity: .08;
+      clip-path: inset(4% 8% 6% 0);
+      transform: translate3d(-38px, 32px, 0) rotate(-1.3deg) scale(.94);
+    }
+    72% {
+      opacity: 1;
+      clip-path: inset(0);
+      transform: translate3d(2px, -1px, 0) rotate(.1deg) scale(1.002);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0);
+      transform: none;
+    }
+  }
+
+  @keyframes service-copy-settle {
+    from {
+      opacity: 0;
+      transform: translate3d(28px, 20px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes service-orbit-settle {
+    from {
+      opacity: 0;
+      transform: scale(.82);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .service-item[open] .service-visual:hover :global(img) {
+      transform: translate3d(0, -4px, 0) scale(1.028);
+      filter: saturate(1.02) contrast(1);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .services-heading {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+
+    .services h2 {
+      font-size: clamp(3.8rem, 15.5vw, 6.2rem);
+    }
+
+    .service-item summary {
+      grid-template-columns: 38px minmax(0, 1fr) 46px;
+      min-height: 136px;
+      padding-block: 26px;
+    }
+
+    .service-item h3 {
+      font-size: clamp(2.8rem, 10.8vw, 5rem);
+    }
+
+    .service-state {
+      width: 44px;
+      height: 44px;
+    }
+
+    .service-content {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-left: var(--container-padding);
+      padding-bottom: 64px;
+    }
+
+    .service-content::before {
+      right: -12vw;
+      bottom: 22px;
+      width: 48vw;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .service-item summary {
+      grid-template-columns: 28px minmax(0, 1fr) 42px;
+      gap: 12px;
+    }
+
+    .service-item h3 {
+      font-size: clamp(2.5rem, 11.5vw, 3.45rem);
+    }
+
+    .service-item:nth-child(4) h3 {
+      font-size: clamp(2.15rem, 9.8vw, 3rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-item,
+    .service-state,
+    .service-item h3,
+    .service-visual :global(img) {
+      transition: none;
+    }
+
+    .service-item.is-entering .service-visual,
+    .service-item.is-entering .service-detail,
+    .service-item.is-entering .service-content::before {
+      animation: none;
+    }
+  }
 </style>
+
+<script>
+  const serviceItems = Array.from(
+    document.querySelectorAll<HTMLDetailsElement>("[data-service-list] details"),
+  );
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const servicesSection = document.querySelector<HTMLElement>("#servicios");
+
+  serviceItems.forEach((item) => {
+    const summary = item.querySelector<HTMLElement>("summary");
+
+    summary?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      item.open = !item.open;
+    });
+
+    item.addEventListener("toggle", () => {
+      if (!item.open) {
+        item.classList.remove("is-entering");
+        return;
+      }
+
+      serviceItems.forEach((otherItem) => {
+        if (otherItem !== item) otherItem.open = false;
+      });
+
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          item.scrollIntoView({
+            behavior: reducedMotion.matches ? "auto" : "smooth",
+            block: "start",
+          });
+
+          if (reducedMotion.matches) return;
+
+          item.classList.remove("is-entering");
+          void item.offsetWidth;
+          item.classList.add("is-entering");
+        });
+      });
+    });
+  });
+
+  if (servicesSection && "IntersectionObserver" in window) {
+    let servicesWasVisible = false;
+
+    const servicesObserver = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) {
+        servicesWasVisible = true;
+        return;
+      }
+
+      if (!servicesWasVisible) return;
+
+      const sectionBottom = servicesSection.getBoundingClientRect().bottom;
+      const expandedHeight = servicesSection.offsetHeight;
+
+      serviceItems.forEach((item) => {
+        item.open = false;
+        item.classList.remove("is-entering");
+      });
+
+      if (sectionBottom <= 0) {
+        const collapsedHeight = servicesSection.offsetHeight;
+        window.scrollBy({ top: collapsedHeight - expandedHeight, behavior: "auto" });
+      }
+
+      servicesWasVisible = false;
+    });
+
+    servicesObserver.observe(servicesSection);
+  }
+</script>

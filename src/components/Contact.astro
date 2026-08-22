@@ -1,3 +1,7 @@
+---
+import ArrowIcon from "./ArrowIcon.astro";
+---
+
 <section id="contacto" class="contact" aria-labelledby="contact-title">
   <div class="contact-field" aria-hidden="true"></div>
   <div class="container contact-shell">
@@ -5,15 +9,15 @@
     <h2 id="contact-title"><span data-reveal="mask">Hagamos que</span><span data-reveal="mask" style="--reveal-delay:70ms">avance.</span></h2>
     <p class="contact-copy" data-reveal>Contanos qué necesita tu proyecto. Podemos empezar por una conversación simple.</p>
     <div class="contact-actions">
-      <a href="mailto:contacto@saelestudio.com">Escribinos por email <span aria-hidden="true">↗</span></a>
-      <a href="#">WhatsApp <span aria-hidden="true">↗</span></a>
+      <a href="mailto:contacto@saelestudio.com">Escribinos por email <ArrowIcon /></a>
+      <a href="#">WhatsApp <ArrowIcon /></a>
     </div>
   </div>
 </section>
 
 <style>
-  .contact { position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden; padding-block:clamp(120px,15vw,210px); background:var(--color-stone); }
-  .contact-field { position:absolute; left:56%; top:50%; width:min(64vw,920px); aspect-ratio:1; border-radius:50%; background:var(--color-moss); transform:translate(-50%,-50%); }
+  .contact { position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden; padding-block:clamp(120px,15vw,210px); background:var(--color-moss); }
+  .contact-field { position:absolute; left:62%; top:50%; width:min(64vw,920px); aspect-ratio:1; border-radius:50%; background:var(--color-espresso); opacity:.34; transform:translate(-50%,-50%); }
   .contact-field::before { content:""; position:absolute; inset:14%; border:1px solid rgba(243,239,231,.3); border-radius:50%; animation:field-pulse 7s var(--ease-in-out) infinite alternate; }
   .contact-shell { position:relative; z-index:1; }
   .contact .section-label { color:rgba(243,239,231,.78); }
@@ -26,6 +30,6 @@
   .contact-actions a:last-child { border-color:var(--color-espresso); background:var(--color-espresso); color:var(--color-cream); }
   .contact-actions a:hover { background:var(--color-cream); color:var(--color-espresso); transform:translateY(-3px); }
   @keyframes field-pulse { to { inset:5%; opacity:.35; } }
-  @media (max-width:760px) { .contact { min-height:92svh; } .contact-field { left:68%; width:120vw; } .contact h2 { font-size:clamp(5rem,21vw,6.6rem); line-height:.78; } .contact h2 span:last-child { margin-left:0; } .contact-copy { max-width:310px; margin-left:0; } .contact-actions { justify-content:flex-start; flex-direction:column; margin-top:42px; } .contact-actions a { width:100%; } }
+  @media (max-width:760px) { .contact { min-height:92svh; } .contact-field { left:86%; width:118vw; opacity:.2; } .contact h2 { font-size:clamp(5rem,21vw,6.6rem); line-height:.78; } .contact h2 span:last-child { margin-left:0; } .contact-copy { max-width:310px; margin-left:0; } .contact-actions { justify-content:flex-start; flex-direction:column; margin-top:42px; } .contact-actions a { width:100%; } }
   @media (prefers-reduced-motion:reduce) { .contact-field::before { animation:none; } }
 </style>

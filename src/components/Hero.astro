@@ -1,3 +1,7 @@
+---
+import ArrowIcon from "./ArrowIcon.astro";
+---
+
 <section id="inicio" class="hero" aria-labelledby="hero-title" data-hero>
   <div class="hero-layer hero-base">
     <div class="hero-stage container">
@@ -5,7 +9,7 @@
       <h1 id="hero-title"><span>Diseñamos</span><span>soluciones.</span></h1>
       <div class="hero-footer">
         <p>Identidad, comunicación y tecnología para que cada proyecto pueda avanzar.</p>
-        <a href="#contacto">Iniciar un proyecto <span aria-hidden="true">↗</span></a>
+        <a href="#contacto">Iniciar un proyecto <ArrowIcon /></a>
       </div>
     </div>
   </div>
@@ -27,8 +31,8 @@
   .hero-layer { position:absolute; inset:0; }
   .hero-base { background:var(--color-stone); }
   .hero-reveal { z-index:2; pointer-events:none; background:var(--color-moss); color:var(--color-cream); clip-path:circle(var(--lens-size) at var(--lens-x) var(--lens-y)); will-change:clip-path; }
-  .hero-stage { position:relative; height:100%; min-height:100svh; padding-top:clamp(145px,16vh,190px); padding-bottom:38px; font-size:18px; }
-  .hero-kicker { position:absolute; top:calc(var(--header-height) + 34px); left:0; margin:0; font-size:var(--font-size-ui); font-weight:600; }
+  .hero-stage { position:relative; height:100%; min-height:100svh; padding-top:calc(var(--header-height) + clamp(48px,7vh,82px)); padding-bottom:38px; font-size:18px; }
+  .hero-kicker { margin:0 0 clamp(38px,5vh,58px); font-size:var(--font-size-ui); font-weight:600; }
   h1 { position:relative; z-index:1; margin:0; font-size:clamp(7.6rem,14.3vw,13.6rem); font-weight:550; line-height:.69; letter-spacing:-.078em; }
   h1 span { display:block; width:max-content; max-width:100%; }
   h1 span:first-child { padding-inline:0; border:0; border-radius:0; }
@@ -49,8 +53,10 @@
   @media (max-width:900px) { .hero { --lens-x:70%; --lens-y:49%; --lens-size:38vw; } h1 { font-size:clamp(6.7rem,16.2vw,9rem); } }
   @media (max-width:680px) {
     .hero { --lens-x:72%; --lens-y:44%; --lens-size:43vw; }
-    .hero-stage { padding-top:clamp(150px,21vh,188px); padding-bottom:28px; }
-    .hero-kicker { top:calc(var(--header-height) + 30px); }
+    .hero::after { content:""; position:absolute; z-index:0; top:26%; right:-29vw; width:92vw; aspect-ratio:1; border-radius:50%; background:var(--color-moss); pointer-events:none; }
+    .hero-stage { z-index:1; padding-top:calc(var(--header-height) + 40px); padding-bottom:28px; }
+    .hero-kicker { margin-bottom:clamp(44px,8vh,68px); }
+    .hero-reveal,.hero-coordinate { display:none; }
     h1 { font-size:clamp(4.1rem,19vw,5.4rem); line-height:.75; letter-spacing:-.072em; }
     h1 span:last-child { margin-top:.12em; margin-left:0; }
     .hero-footer { bottom:30px; flex-direction:column; align-items:flex-start; gap:24px; }

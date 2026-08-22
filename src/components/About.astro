@@ -50,13 +50,13 @@
   .about-mark .route-end { fill:var(--color-stone); stroke:var(--color-stone); }
   h2 { min-width:0; margin:0; font-size:clamp(5.1rem,9.2vw,9.4rem); font-weight:500; line-height:.82; letter-spacing:-.07em; }
   h2 span { display:block; width:max-content; max-width:100%; padding-bottom:.12em; margin-bottom:-.12em; }
-  .creative-flow { width:100%; margin-top:clamp(90px,12vw,170px); overflow:hidden; border-block:1px solid rgba(79,90,69,.22); background:var(--color-cream); color:var(--color-moss); }
-  .creative-flow-track { width:max-content; display:flex; animation:creative-flow 30s linear infinite; will-change:transform; }
+  .creative-flow { width:100%; margin-top:clamp(58px,8vw,110px); overflow:hidden; border-block:1px solid rgba(79,90,69,.22); background:var(--color-cream); color:var(--color-moss); }
+  .creative-flow-track { width:max-content; display:flex; animation:creative-flow 26s linear infinite; will-change:transform; }
   .creative-flow-set { display:flex; align-items:center; flex:none; gap:clamp(12px,1.5vw,22px); padding:clamp(10px,1.25vw,14px) clamp(14px,1.7vw,24px); font-family:var(--font-heading); font-size:clamp(1.4rem,2.2vw,2.4rem); font-weight:500; line-height:1; letter-spacing:-.035em; white-space:nowrap; }
   .creative-flow-set i { color:var(--color-olive); font-family:var(--font-body); font-size:.55em; font-style:normal; }
   @keyframes creative-flow { from { transform:translateX(-50%); } to { transform:translateX(0); } }
   @keyframes route-draw { 45%,100% { stroke-dashoffset:0; } }
   @media (max-width:800px) { .about-shell { grid-template-columns:1fr; } .about-intro { min-height:280px; } h2 { font-size:clamp(4.8rem,15vw,7.2rem); } }
-  @media (max-width:560px) { .about-shell { gap:64px; } .about-intro { min-height:0; } .about-principle { margin-top:44px; } .about-mark { margin-top:26px; } h2 { font-size:clamp(4.05rem,18vw,5.2rem); } .creative-flow { margin-top:82px; } .creative-flow-set { gap:12px; padding:10px 14px; font-size:clamp(1.35rem,6vw,1.65rem); } }
+  @media (max-width:560px) { .about-shell { gap:64px; } .about-intro { min-height:0; } .about-principle { margin-top:44px; } .about-mark { margin-top:26px; } h2 { font-size:clamp(4.05rem,18vw,5.2rem); } .creative-flow { margin-top:58px; } .creative-flow-set { gap:12px; padding:10px 14px; font-size:clamp(1.35rem,6vw,1.65rem); } }
   @media (prefers-reduced-motion:reduce) { .creative-flow-track,.about-mark .route-active { animation:none; } .about-mark .route-active { stroke-dashoffset:0; } }
 </style>

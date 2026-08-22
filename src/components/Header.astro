@@ -1,8 +1,10 @@
 ---
+import ArrowIcon from "./ArrowIcon.astro";
+
 const navigation = [
   { label: "Inicio", href: "#inicio" },
   { label: "Estudio", href: "#sobre-sael" },
-  { label: "Soluciones", href: "#servicios" },
+  { label: "Servicios", href: "#servicios" },
   { label: "Proceso", href: "#proceso" },
   { label: "Contacto", href: "#contacto" },
 ];
@@ -19,7 +21,7 @@ const navigation = [
       <ul>{navigation.slice(1, 4).map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
     </nav>
 
-    <a class="header-contact" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a>
+    <a class="header-contact" href="#contacto">Hablemos <ArrowIcon /></a>
 
     <details id="mobile-menu" class="mobile-menu">
       <summary aria-label="Abrir menú de navegación"><span>Menú</span><i aria-hidden="true"></i></summary>
@@ -33,7 +35,7 @@ const navigation = [
           </ul>
         </nav>
         <p>Diseño, comunicación y tecnología para construir la solución correcta.</p>
-        <a class="menu-contact" href="#contacto">Iniciar un proyecto <span aria-hidden="true">↗</span></a>
+        <a class="menu-contact" href="#contacto">Iniciar un proyecto <ArrowIcon /></a>
       </div>
     </details>
   </div>
@@ -59,9 +61,9 @@ const navigation = [
   .mobile-menu summary { position: relative; z-index: 2; min-width: 100px; min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 15px; border: 1px solid currentColor; border-radius: 999px; cursor: pointer; list-style: none; font-size: var(--font-size-ui); font-weight: 600; }
   .mobile-menu summary::-webkit-details-marker { display:none; }
   .mobile-menu summary i { position: relative; width: 20px; height: 12px; }
-  .mobile-menu summary i::before, .mobile-menu summary i::after { content:""; position:absolute; left:0; width:20px; height:1px; background:currentColor; transition:top var(--transition-normal),transform var(--transition-normal); }
+  .mobile-menu summary i::before, .mobile-menu summary i::after { content:""; position:absolute; left:0; width:20px; height:2px; background:currentColor; transform:translateZ(0) scaleY(.5); transform-origin:center; transition:top var(--transition-normal),transform var(--transition-normal); }
   .mobile-menu summary i::before { top:3px; } .mobile-menu summary i::after { top:9px; }
-  .mobile-menu[open] summary i::before { top:6px; transform:rotate(45deg); } .mobile-menu[open] summary i::after { top:6px; transform:rotate(-45deg); }
+  .mobile-menu[open] summary i::before { top:6px; transform:rotate(45deg) scaleY(.5); } .mobile-menu[open] summary i::after { top:6px; transform:rotate(-45deg) scaleY(.5); }
   .mobile-menu:not([open]) .mobile-menu-panel { display:none; }
   .mobile-menu-panel { position:fixed; inset:0; min-height:100dvh; display:grid; grid-template-columns:1fr auto; grid-template-rows:1fr auto; gap:40px; overflow-x:hidden; overflow-y:auto; padding:calc(var(--header-height) + 52px) var(--container-padding) 32px; background:var(--color-espresso); color:var(--color-cream); }
   .mobile-menu-panel nav { position:relative; z-index:1; align-self:center; }
@@ -82,6 +84,7 @@ const navigation = [
 <script>
   const header = document.querySelector<HTMLElement>("[data-header]");
   const mobileMenu = document.querySelector<HTMLDetailsElement>("#mobile-menu");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 24);
   window.addEventListener("scroll", updateHeader, { passive: true });
   updateHeader();
@@ -90,7 +93,24 @@ const navigation = [
     const links = Array.from(mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href^='#']"));
     const sync = () => { document.body.classList.toggle("menu-open",mobileMenu.open); summary?.setAttribute("aria-label",mobileMenu.open ? "Cerrar menú de navegación" : "Abrir menú de navegación"); };
     const close = (restore=false) => { mobileMenu.open=false; sync(); if (restore) summary?.focus(); };
-    links.forEach(link=>link.addEventListener("click",()=>close()));
+    links.forEach((link) =>
+      link.addEventListener("click", (event) => {
+        const targetId = link.hash.slice(1);
+        const target = document.getElementById(targetId);
+
+        if (!target) return;
+
+        event.preventDefault();
+        close();
+        window.requestAnimationFrame(() => {
+          target.scrollIntoView({
+            behavior: reducedMotion.matches ? "auto" : "smooth",
+            block: "start",
+          });
+          window.history.replaceState(null, "", `#${targetId}`);
+        });
+      }),
+    );
     mobileMenu.addEventListener("toggle",sync);
     document.addEventListener("keydown",event=>{
       if (!mobileMenu.open) return;

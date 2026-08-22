@@ -54,6 +54,83 @@ Preguntas que deben resolverse antes o durante la implementación.
 
 ---
 
+## Correcciones cross-browser y responsive
+
+**Estado:** Done
+
+**Problema**
+
+La experiencia presentaba fallos de lectura e interacción en Safari iPhone, Brave Android y desktop: contraste insuficiente en Contacto, flechas sustituidas por emoji, contenido de Servicios siempre visible y dependiente de hover, campo del Hero superpuesto al texto en mobile, separación insuficiente en el Hero y el Footer, discontinuidad en la banda editorial y navegación mobile inconsistente.
+
+**Objetivo**
+
+Estabilizar la landing entre navegadores y tamaños de pantalla sin perder la dirección editorial, haciendo que el contenido, la navegación y el movimiento sean legibles, previsibles y accesibles.
+
+**Alcance**
+
+- Convertir Servicios en una interacción explícita cerrada por defecto.
+- Eliminar la expansión por hover y cualquier interferencia con el scroll.
+- Sustituir flechas tipográficas por un icono vectorial monocromo.
+- Adaptar el campo del Hero para que en mobile no condicione la lectura.
+- Mejorar contraste de Contacto y espaciado de Hero, ticker y Footer.
+- Preservar la proporción completa de las imágenes de Servicios e incorporar una entrada con movimiento controlado.
+- Reservar espacio inferior seguro en el Footer mobile para barras del navegador y dispositivos con notch.
+- Unificar la etiqueta “Servicios” y asegurar el destino correcto de las anclas del menú mobile.
+
+**Fuera de alcance**
+
+- Definir los destinos todavía pendientes de WhatsApp e Instagram.
+- Cambiar servicios, propuesta de valor, tipografías, paleta o secciones principales.
+- Añadir dependencias o rutas.
+
+**Comportamiento esperado**
+
+- Los cuatro servicios muestran inicialmente solo número, nombre y control de apertura.
+- Al activar un servicio aparece su imagen y descripción; abrir otro cierra el anterior.
+- La imagen cuadrada se muestra completa y entra con un movimiento breve antes de quedar estable; el texto acompaña con un reveal más sutil.
+- Cada apertura reposiciona el servicio debajo del Header y reinicia inmediatamente un movimiento coordinado, suave y pausado de imagen y texto, sin retraso artificial, incluso si el mismo servicio ya se había abierto.
+- En dispositivos con puntero preciso, la imagen abierta responde al hover con un desplazamiento sutil; la interacción táctil permanece estable.
+- Al abandonar la sección Servicios, cualquier detalle abierto se cierra para que el próximo ingreso comience en estado limpio, sin desplazar bruscamente el contenido que se está leyendo.
+- La interacción funciona con mouse, touch y teclado y no modifica el desplazamiento natural.
+- En mobile, el campo del Hero queda detrás del contenido y no oculta ni sustituye texto.
+- Las flechas mantienen el mismo aspecto en Safari, Chromium y Firefox.
+
+**Responsive**
+
+- El acordeón usa una composición amplia en desktop y una columna en tablet/mobile.
+- No existe overflow horizontal a partir de 320 px.
+- Las áreas táctiles conservan al menos 44 px y el contenido abierto no queda recortado.
+
+**Accesibilidad**
+
+- Servicios usa elementos details y summary nativos.
+- Se conserva foco visible, navegación por teclado y reducción de movimiento.
+- El contraste del texto de Contacto se mantiene sobre una superficie oscura continua.
+- Los SVG decorativos quedan fuera del árbol accesible.
+
+**Restricciones**
+
+- Astro, CSS y JavaScript nativo, sin dependencias nuevas.
+- Mantener el contenido comercial y la identidad documentados.
+- No usar scroll hijacking ni interacción que dependa exclusivamente de hover.
+
+**Criterios de aceptación**
+
+- Ninguna flecha diagonal se renderiza como emoji.
+- Menú mobile usa “Servicios” y cada enlace desplaza a su sección real.
+- Servicios comienza cerrado y responde a click, touch, Enter y Space.
+- Al abrir cualquier servicio, su encabezado queda al comienzo del viewport útil y la animación vuelve a ejecutarse; al salir de la sección, todos los servicios vuelven a quedar cerrados.
+- Contacto es legible tanto dentro como fuera del círculo decorativo.
+- Hero, ticker, transición Servicios/Proceso y Footer no presentan solapamientos, huecos anómalos ni bloqueo de scroll.
+- La banda editorial avanza de izquierda a derecha y el Footer puede verse completo hasta 320 px, incluyendo el área segura inferior.
+- Build, consola, teclado y vistas mobile/tablet/desktop no presentan regresiones.
+
+**Decisiones abiertas**
+
+No hay decisiones abiertas dentro de esta corrección. Los enlaces reales de WhatsApp e Instagram permanecen como tarea separada del roadmap.
+
+---
+
 ## Creative Refresh v1
 
 **Estado:** In progress
