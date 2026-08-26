@@ -21,7 +21,7 @@ import ArrowIcon from "./ArrowIcon.astro";
   .contact-field::before { content:""; position:absolute; inset:14%; border:1px solid rgba(243,239,231,.3); border-radius:50%; animation:field-pulse 7s var(--ease-in-out) infinite alternate; }
   .contact-shell { position:relative; z-index:1; }
   .contact .section-label { color:rgba(243,239,231,.78); }
-  .contact h2 { margin:clamp(48px,7vw,100px) 0 0; color:var(--color-cream); font-size:clamp(7rem,13.2vw,13rem); font-weight:550; line-height:.74; letter-spacing:-.074em; }
+  .contact h2 { margin:clamp(48px,7vw,100px) 0 0; color:var(--color-cream); font-size:clamp(5rem,9.4vw,9rem); font-weight:550; line-height:.78; letter-spacing:-.066em; }
   .contact h2 span { display:block; width:max-content; max-width:calc(100% - .08em); padding:.015em .04em .14em; margin-bottom:-.14em; }
   .contact h2 span:last-child { margin-left:clamp(34px,15vw,240px); }
   .contact-copy { max-width:430px; margin:clamp(58px,7vw,95px) 0 0 clamp(120px,18vw,250px); padding-left:20px; border-left:1px solid rgba(243,239,231,.68); color:var(--color-cream); font-size:clamp(1.05rem,1.25vw,1.2rem); line-height:1.7; text-shadow:0 1px 18px rgba(44,46,38,.2); }
@@ -30,6 +30,6 @@ import ArrowIcon from "./ArrowIcon.astro";
   .contact-actions a:last-child { border-color:var(--color-espresso); background:var(--color-espresso); color:var(--color-cream); }
   .contact-actions a:hover { background:var(--color-cream); color:var(--color-espresso); transform:translateY(-3px); }
   @keyframes field-pulse { to { inset:5%; opacity:.35; } }
-  @media (max-width:760px) { .contact { min-height:92svh; } .contact-field { left:86%; width:118vw; opacity:.2; } .contact h2 { font-size:clamp(5rem,21vw,6.6rem); line-height:.78; } .contact h2 span:last-child { margin-left:0; } .contact-copy { max-width:310px; margin-left:0; } .contact-actions { justify-content:flex-start; flex-direction:column; margin-top:42px; } .contact-actions a { width:100%; } }
+  @media (max-width:760px) { .contact { min-height:92svh; } .contact-field { left:86%; width:118vw; opacity:.2; } .contact h2 { font-size:clamp(3.4rem,13vw,4.4rem); line-height:.8; } .contact h2 span:last-child { margin-left:0; } .contact-copy { max-width:310px; margin-left:0; } .contact-actions { justify-content:flex-start; flex-direction:column; margin-top:42px; } .contact-actions a { width:100%; } }
   @media (prefers-reduced-motion:reduce) { .contact-field::before { animation:none; } }
 </style>

@@ -164,6 +164,7 @@ El nivel de impacto debe ser **alto pero sofisticado**: sorprender mediante dire
 - Preservar o mejorar accesibilidad, semántica y rendimiento.
 - Replantear los cuatro pilares de servicio como Identidad y marca, Diseño y comunicación, Web, apps y software, y Acompañamiento y soluciones.
 - Actualizar el copy necesario para representar la propuesta ampliada sin convertir la landing en una lista de capacidades.
+- Integrar webs y portfolios profesionales, SEO, presencia local y Google Business dentro de los pilares 03 y 04, como partes posibles de una solución y sin prometer resultados de posicionamiento.
 - Evolucionar el sistema tipográfico y documentar la decisión.
 - Convertir Header y menú mobile en recursos visibles de identidad.
 - Aumentar la proporción de elementos gráficos frente al texto decorativo.
@@ -277,6 +278,7 @@ Referencias para estudiar comportamiento, composición, viewport, motion, imáge
 - No existe scroll hijacking y el contenido principal sigue siendo comprensible sin depender de motion.
 - La implementación mantiene Astro como base y no incorpora dependencias sin justificación previa.
 - La propuesta ampliada de Sael y el rol principal de tecnología se comprenden sin listas extensas ni lenguaje excesivamente técnico.
+- Profesionales independientes, estudios y pequeños negocios pueden reconocer una solución de presencia digital completa sin que Servicios pierda sus cuatro pilares ni se convierta en una lista de rubros.
 - El Hero contiene una idea visual protagonista y el sistema cromático usa crema y piedra como superficies reales, no blanco como base dominante.
 
 **Decisiones abiertas**
@@ -295,3 +297,88 @@ Las siguientes decisiones quedan deliberadamente delegadas a la exploración y e
 - diferencias concretas entre desktop, tablet y mobile;
 - breakpoints y solución técnica CSS/JS;
 - priorización de ajustes técnicos de la auditoría que interfieran directamente con el refresh.
+
+---
+
+## Proyectos seleccionados
+
+**Estado:** Done
+
+**Problema**
+
+La Home comunicaba capacidades y proceso, pero no aportaba prueba visible de trabajo real ni mostraba con claridad la amplitud entre diseño, identidad y ejecución técnica.
+
+**Objetivo**
+
+Conectar Servicios con Proceso mediante una selección editorial de proyectos reales que aporte credibilidad, variedad y riqueza visual sin convertirse en una grilla convencional de portfolio.
+
+**Alcance**
+
+- Incorporar Olimpo Construcciones y Favorita.
+- Mantener nombres, descripciones y enlaces como HTML indexable.
+- Crear representaciones gráficas propias, sin capturas crudas.
+- Integrar la sección en la navegación principal.
+- Preparar una fuente local simple para sumar futuros casos.
+
+**Comportamiento esperado**
+
+- En desktop, una lista editorial activa controla un escenario visual grande y fijo.
+- Hover, foco o activación explícita cambian el proyecto mediante máscara, desplazamiento y opacidad.
+- En tablet y mobile, cada caso presenta información, visual y CTA secuencialmente sin depender de hover.
+
+**Accesibilidad y restricciones**
+
+- Jerarquía semántica, enlaces externos identificados, foco visible y áreas táctiles adecuadas.
+- Visuales decorativos fuera del árbol accesible; contenido esencial siempre visible.
+- Movimiento reducido respetado.
+- Astro, CSS y JavaScript nativo, sin dependencias, CMS, API ni rutas nuevas.
+
+**Criterios de aceptación**
+
+- La sección aparece entre Servicios y Proceso y mantiene el lenguaje visual de Sael.
+- Ambos proyectos comunican disciplinas distintas sin comparación explicativa redundante.
+- Interacción operable con mouse y teclado; composición secuencial usable en touch.
+- Links reales presentes con apertura segura en pestaña nueva.
+- Sin overflow horizontal ni errores de consola en los tamaños de revisión.
+
+---
+
+## Jerarquía tipográfica y Servicios visibles
+
+**Estado:** Done
+
+**Problema**
+
+Los headings secundarios competían con el Hero y Servicios exigía activar cada ítem para comprender su contenido comercial.
+
+**Objetivo**
+
+Restablecer una jerarquía clara con el Hero como máximo impacto y convertir Servicios en un momento visual prioritario cuya información principal esté siempre disponible.
+
+**Alcance**
+
+- Crear escalas compartidas para títulos de sección y títulos destacados.
+- Aplicarlas a Sobre Sael, Servicios, Proyectos y Proceso, y reducir Contacto de forma coherente.
+- Mantener intacta la escala del Hero y las escalas de navegación, labels, botones y microcopy.
+- Presentar nombre, descripción, visual y CTA en cada uno de los cuatro servicios sin click.
+- Preparar mensajes contextuales y configuración central para WhatsApp sin inventar un número.
+
+**Comportamiento esperado**
+
+- Los cuatro servicios se leen como capítulos editoriales amplios y alternados en desktop.
+- En tablet y mobile se apilan con imagen, contenido y CTA visibles en cada bloque.
+- La entrada por scroll modifica superficie, escala y línea gráfica sin ocultar información ni alterar el desplazamiento natural.
+- Cuando no existe número oficial, el CTA comunica su estado pendiente y no navega a un destino falso.
+
+**Accesibilidad y restricciones**
+
+- HTML semántico, foco visible, targets de al menos 44 px y contenido independiente de hover o motion.
+- `prefers-reduced-motion` desactiva transiciones y transformaciones decorativas.
+- Astro, CSS y JavaScript nativo, sin dependencias nuevas ni cambios en la definición comercial.
+
+**Criterios de aceptación**
+
+- El Hero conserva una diferencia tipográfica clara respecto de todos los headings posteriores.
+- No quedan controles de apertura ni contenido comercial oculto en Servicios.
+- Cada servicio incluye visual, descripción, capacidades y CTA visible.
+- Sin overflow horizontal ni errores de consola en desktop, notebook, tablet y mobile.

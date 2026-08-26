@@ -16,7 +16,7 @@ No debe limitarse a informar: debe transmitir el criterio creativo del estudio y
 
 ## Audiencia
 
-La audiencia general incluye marcas, emprendimientos, proyectos y negocios que necesitan construir, ordenar o elevar su identidad, comunicación, presencia digital u operación. Puede encontrarse tanto en una etapa inicial como en un proceso de evolución, profesionalización o transformación digital.
+La audiencia general incluye marcas, emprendimientos, proyectos, profesionales independientes y pequeños negocios que necesitan construir, ordenar o elevar su identidad, comunicación, presencia digital u operación. Puede encontrarse tanto en una etapa inicial como en un proceso de evolución, profesionalización o transformación digital.
 
 ## Propuesta de valor
 
@@ -28,10 +28,12 @@ Una síntesis explicativa de la propuesta es: **diseñamos soluciones para que m
 
 1. **Identidad y marca:** identidad visual y de marca, dirección, sistemas gráficos, aplicaciones y lineamientos para sostener coherencia.
 2. **Diseño y comunicación:** piezas digitales e impresas, redes, contenido visual, materiales comerciales y presencia cotidiana de la marca.
-3. **Web, apps y software:** landing pages, sitios, experiencias digitales, aplicaciones, sistemas internos y software a medida.
-4. **Acompañamiento y soluciones:** dirección e implementación para necesidades que no entran en una única categoría, incluyendo procesos digitales y apoyos operativos puntuales cuando formen parte de una solución acordada.
+3. **Web, apps y software:** desde landing pages, webs institucionales y portfolios profesionales hasta aplicaciones, sistemas internos, herramientas digitales y software a medida. Puede integrar estructura SEO, SEO local, Google Business Profile, Maps y otros puntos de la presencia digital cuando el proyecto lo requiera.
+4. **Acompañamiento y soluciones:** dirección e implementación para necesidades que no entran en una única categoría. Puede incluir ordenar canales y prioridades, configurar herramientas, articular presencia local, contacto y procesos, y dar seguimiento adaptado al proyecto como parte de una solución acordada.
 
-Sael no se posiciona como agencia de community management ni como call center. La gestión de presencia o atención digital puede aparecer únicamente como complemento personalizado de una solución más amplia.
+Para profesionales independientes, estudios y oficios especializados, Sael puede articular una presencia profesional completa —identidad, portfolio o web, contacto, Google Business, SEO local y redes cuando corresponda— sin convertir cada elemento en un servicio aislado.
+
+Sael no se posiciona como agencia SEO o de community management, call center ni soporte administrativo general. La optimización, configuración o gestión de presencia digital aparece como complemento personalizado de una solución más amplia y no implica garantías de posicionamiento.
 
 ## Arquitectura actual de la experiencia
 
@@ -41,6 +43,7 @@ La web es una landing estática con una única ruta. El recorrido actual está c
 - Hero;
 - Sobre Sael;
 - Servicios;
+- Proyectos seleccionados;
 - Proceso;
 - Contacto;
 - Footer.
@@ -73,7 +76,7 @@ Paleta principal:
 - musgo `#4F5A45`;
 - espresso `#2C2E26`.
 
-La tipografía editorial es Instrument Serif y la tipografía de texto e interfaz es Instrument Sans. La combinación aporta una voz display contemporánea y distintiva, con precisión y legibilidad en textos y controles.
+La tipografía display es Bricolage Grotesque y la tipografía de texto e interfaz es Figtree. La combinación aporta una voz digital contemporánea y distintiva, con precisión y legibilidad en textos y controles.
 
 El sistema visual utiliza líneas finas, divisores, punto central, símbolo de línea más punto, marcos, espacio negativo y composiciones editoriales. Se amplía con planos superpuestos, papeles, retículas, rutas, nodos y pequeñas interfaces abstractas que representan la relación entre marca, comunicación y tecnología.
 
@@ -83,7 +86,7 @@ El nivel de impacto visual buscado es alto pero sofisticado. La web debe sorpren
 
 La evolución del producto debe aprovechar mejor el viewport, especialmente en desktop, mediante composiciones full-width, tipografía de gran escala, asimetrías, superposiciones y recursos gráficos o visuales de gran formato cuando aporten valor. Se busca superar una sucesión plana de bloques rectangulares y construir un recorrido con personalidad.
 
-Hero y Servicios son los principales momentos de impacto. Sobre Sael y Proceso funcionan como respiraciones narrativas, mientras que Contacto debe recuperar intensidad para cerrar con una invitación clara a trabajar con el estudio.
+Hero, Servicios y Proyectos seleccionados son los principales momentos de impacto. La selección curada conecta capacidades con trabajo real mediante casos reconocibles; Sobre Sael y Proceso funcionan como respiraciones narrativas, mientras que Contacto recupera intensidad para cerrar con una invitación clara a trabajar con el estudio.
 
 El movimiento y la interacción son partes visibles del lenguaje digital de Sael. Deben formar un sistema coherente, con entradas controladas, reveals, líneas, máscaras, transformaciones y hovers refinados según corresponda. No se permite scroll hijacking y siempre debe existir una experiencia adecuada para `prefers-reduced-motion`.
 

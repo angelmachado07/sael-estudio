@@ -113,3 +113,17 @@ Este documento registra decisiones relativamente estables. Las tareas y priorida
 - **Decisión:** usar un campo circular adaptable que revela un segundo estado de la composición, complementado por líneas y nodos de coordenadas.
 - **Contexto:** la ventana adaptativa anterior seguía percibiéndose como un póster colocado junto al texto; tipografía y objeto no formaban todavía una sola experiencia.
 - **Consecuencia:** el Hero integra mensaje, color, cursor y scroll en una máscara común; el campo reaparece de forma controlada en navegación y Contacto para dar continuidad sin sumar recursos ajenos al sistema.
+
+## 17. Proyectos reales como puente entre capacidades y proceso
+
+- **Fecha:** 2026-08-24
+- **Decisión:** incorporar una selección curada de trabajo real entre Servicios y Proceso, con lista editorial y visual dinámico en desktop y casos secuenciales en mobile.
+- **Contexto:** la landing explicaba qué puede resolver Sael y cómo trabaja, pero no mostraba evidencia concreta de ejecución.
+- **Consecuencia:** los proyectos se definen en una fuente local estructurada, se representan con composiciones propias del sistema Sael y pueden ampliarse sin agregar rutas, CMS ni componentes rígidos por cliente.
+
+## 18. Servicios visibles como capítulos editoriales
+
+- **Fecha:** 2026-08-25
+- **Decisión:** presentar los cuatro servicios como capítulos completos y secuenciales, con visual, descripción y CTA siempre visibles, sin acordeón ni activación obligatoria.
+- **Contexto:** Servicios es uno de los principales momentos comerciales de la landing y la interacción cerrada retrasaba la comprensión de la oferta.
+- **Consecuencia:** el scroll aporta ritmo y protagonismo progresivo, pero no controla la disponibilidad del contenido; la integración futura con WhatsApp se centraliza y permanece inactiva hasta disponer del número oficial.

@@ -5,6 +5,7 @@ const navigation = [
   { label: "Inicio", href: "#inicio" },
   { label: "Estudio", href: "#sobre-sael" },
   { label: "Servicios", href: "#servicios" },
+  { label: "Proyectos", href: "#proyectos" },
   { label: "Proceso", href: "#proceso" },
   { label: "Contacto", href: "#contacto" },
 ];
@@ -18,7 +19,7 @@ const navigation = [
     </a>
 
     <nav class="desktop-navigation" aria-label="Navegación principal">
-      <ul>{navigation.slice(1, 4).map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
+      <ul>{navigation.slice(1, 5).map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
     </nav>
 
     <a class="header-contact" href="#contacto">Hablemos <ArrowIcon /></a>

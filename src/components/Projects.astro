@@ -1,0 +1,198 @@
+---
+import ArrowIcon from "./ArrowIcon.astro";
+import ProjectVisual from "./ProjectVisual.astro";
+
+const projects = [
+  {
+    name: "Olimpo Construcciones",
+    type: "Web institucional / Landing page",
+    categories: ["Web", "UX/UI", "Desarrollo"],
+    description: "Desarrollo integral de una web institucional para una empresa de construcción, desde el relevamiento hasta el diseño, desarrollo y publicación.",
+    url: "https://www.olimpoconstrucciones.com.uy/",
+    cta: "Visitar sitio",
+    visual: "olimpo" as const,
+  },
+  {
+    name: "Favorita",
+    type: "Identidad visual / Instagram",
+    categories: ["Identidad", "Dirección visual", "Redes"],
+    description: "Creación de la identidad visual de Favorita y traslado del sistema de marca a su presencia inicial en Instagram.",
+    url: "https://www.instagram.com/accesoriosfavorita/",
+    cta: "Ver en Instagram",
+    visual: "favorita" as const,
+  },
+];
+---
+
+<section id="proyectos" class="projects" aria-labelledby="projects-title" data-projects>
+  <div class="container projects-heading">
+    <p class="section-label" data-reveal>Galería <span>01—02</span></p>
+    <h2 id="projects-title" data-reveal="mask">Proyectos<br />seleccionados</h2>
+  </div>
+
+  <div class="container projects-layout">
+    <div class="project-list">
+      {projects.map((project, index) => (
+        <article class:list={["project-entry", { "is-active": index === 0 }]} data-project-entry data-project-index={index}>
+          <div class="project-selector">
+            <span>0{index + 1}</span>
+            <h3>{project.name}</h3>
+            <button type="button" aria-label={`Mostrar visual de ${project.name}`} aria-pressed={index === 0 ? "true" : "false"} aria-controls={`project-visual-${index}`}><i aria-hidden="true"></i></button>
+          </div>
+          <div class="project-copy" inert={index !== 0} aria-hidden={index !== 0 ? "true" : "false"}>
+            <div class="project-copy-inner">
+              <p class="project-type">{project.type}</p>
+              <ul aria-label={`Disciplinas de ${project.name}`}>
+                {project.categories.map((category) => <li>{category}</li>)}
+              </ul>
+              <p class="project-description">{project.description}</p>
+              <div class="project-mobile-visual" data-reveal="mask"><ProjectVisual visual={project.visual} /></div>
+              <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.cta}: ${project.name} (abre en una pestaña nueva)`}>
+                {project.cta} <ArrowIcon />
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="project-stage" data-project-stage aria-hidden="true">
+      <div class="project-stage-frame">
+        {projects.map((project, index) => (
+          <div id={`project-visual-${index}`} class:list={["project-panel", { "is-active": index === 0 }]} data-project-panel data-project-index={index}>
+            <ProjectVisual visual={project.visual} />
+          </div>
+        ))}
+      </div>
+      <p><span data-project-count>01</span><i></i><span>02</span></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects { position:relative; z-index:3; padding-block:clamp(112px,12vw,180px); overflow:hidden; background:var(--color-moss); color:var(--color-cream); }
+  .projects::before { content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 86% 14%,rgba(243,239,231,.08) 0 14%,transparent 14.2%),linear-gradient(110deg,rgba(44,46,38,.2),transparent 42%); }
+  .projects-heading { position:relative; display:grid; grid-template-columns:.32fr 1fr; gap:clamp(60px,8vw,130px); margin-bottom:clamp(80px,10vw,140px); }
+  .projects .section-label { color:rgba(243,239,231,.72); }
+  .projects-heading h2 { margin:0; font-size:var(--font-size-section-title); font-weight:500; line-height:.84; letter-spacing:-.062em; }
+  .projects-layout { position:relative; display:grid; grid-template-columns:minmax(360px,.82fr) minmax(520px,1.18fr); gap:clamp(52px,7vw,110px); align-items:start; }
+  .project-list { border-top:1px solid rgba(243,239,231,.28); }
+  .project-entry { border-bottom:1px solid rgba(243,239,231,.28); }
+  .project-selector { width:100%; min-height:112px; display:grid; grid-template-columns:42px 1fr 18px; gap:16px; align-items:center; padding:34px 0 26px; color:inherit; cursor:pointer; text-align:left; }
+  .project-selector span:first-child { align-self:start; padding-top:.55em; font-size:var(--font-size-meta); opacity:.5; }
+  .project-selector h3 { margin:0; font-size:var(--font-size-feature-title); font-weight:500; line-height:.92; letter-spacing:-.052em; opacity:.48; transform-origin:left; transition:opacity 500ms ease,transform 700ms var(--ease-out); }
+  .project-selector button { display:grid; place-items:center; width:32px; height:44px; margin-left:-12px; padding:0; border:0; background:transparent; color:inherit; cursor:pointer; }
+  .project-selector i { width:9px; height:9px; border:1px solid currentColor; border-radius:50%; opacity:.55; transition:background-color 450ms ease,transform 650ms var(--ease-out); }
+  .project-entry.is-active .project-selector h3,.project-selector:hover h3,.project-selector:has(button:focus-visible) h3 { opacity:1; transform:translateX(7px); }
+  .project-entry.is-active .project-selector i { background:currentColor; transform:scale(1.35); }
+  .project-copy { display:grid; grid-template-rows:0fr; opacity:0; transition:grid-template-rows 750ms var(--ease-out),opacity 500ms ease; }
+  .project-copy-inner { min-height:0; overflow:hidden; }
+  .project-entry.is-active .project-copy { grid-template-rows:1fr; opacity:1; }
+  .project-entry.is-active .project-copy-inner { padding:0 0 38px 58px; }
+  .project-type { margin:0 0 13px; color:rgba(243,239,231,.7); font-size:.86rem; font-weight:600; }
+  .project-copy ul { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px; padding:0; list-style:none; }
+  .project-copy li { padding:5px 10px; border:1px solid rgba(243,239,231,.25); border-radius:999px; font-size:.68rem; line-height:1.2; }
+  .project-description { max-width:500px; margin:0 0 25px; color:rgba(243,239,231,.76); font-size:clamp(.98rem,1.1vw,1.08rem); line-height:1.65; }
+  .project-copy a { display:inline-flex; align-items:center; justify-content:space-between; gap:24px; width:max-content; min-height:44px; padding:0 16px; border:1px solid rgba(243,239,231,.55); border-radius:999px; font-size:.8rem; font-weight:600; transition:background-color var(--transition-normal),color var(--transition-normal),transform var(--transition-normal); }
+  .project-copy a:hover,.project-copy a:focus-visible { background:var(--color-cream); color:var(--color-espresso); transform:translateY(-2px); }
+  .project-mobile-visual { display:none; }
+  .project-stage { position:sticky; top:calc(var(--header-height) + 36px); }
+  .project-stage-frame { position:relative; height:min(64vh,650px); min-height:520px; overflow:hidden; border:1px solid rgba(243,239,231,.22); background:var(--color-stone); box-shadow:0 32px 80px rgba(44,46,38,.25); }
+  .project-stage-frame::after { content:""; position:absolute; z-index:10; inset:0; border:10px solid rgba(79,90,69,.22); pointer-events:none; }
+  .project-panel { position:absolute; inset:0; visibility:hidden; opacity:0; clip-path:inset(0 0 100% 0); transform:translateY(7%) scale(1.035); transition:clip-path 900ms var(--ease-in-out),opacity 500ms ease,transform 1100ms var(--ease-out),visibility 0s 900ms; }
+  .project-panel.is-active { visibility:visible; opacity:1; clip-path:inset(0); transform:none; transition-delay:0s; }
+  .project-stage > p { display:flex; align-items:center; gap:12px; margin:17px 0 0; font-size:.68rem; letter-spacing:.12em; }
+  .project-stage > p i { flex:1; height:1px; background:rgba(243,239,231,.28); }
+  @media (max-width:1050px) { .projects-layout{grid-template-columns:minmax(300px,.78fr) minmax(430px,1.22fr);gap:45px}.project-entry.is-active .project-copy-inner{padding-left:0}.project-stage-frame{min-height:460px;height:58vh} }
+  @media (max-width:900px) {
+    .projects { padding-block:100px; }
+    .projects-heading { grid-template-columns:1fr; gap:38px; margin-bottom:70px; }
+    .projects-layout { display:block; }
+    .project-stage { display:none; }
+    .project-entry { padding-block:44px; }
+    .project-entry:first-child { padding-top:0; }
+    .project-selector { min-height:auto; grid-template-columns:36px 1fr 12px; padding:28px 0 28px; cursor:default; }
+    .project-selector h3 { opacity:1; transform:none; }
+    .project-selector button { display:none; }
+    .project-copy,.project-entry.is-active .project-copy { display:block; opacity:1; padding:0; }
+    .project-entry.is-active .project-copy-inner,.project-copy-inner { padding:0; overflow:visible; }
+    .project-description { max-width:630px; margin-bottom:30px; }
+    .project-mobile-visual { display:block; height:clamp(440px,74vw,620px); margin:30px 0 27px; overflow:hidden; border:1px solid rgba(243,239,231,.22); box-shadow:0 24px 58px rgba(44,46,38,.24); }
+    html.motion-ready .project-mobile-visual.is-visible :global(.project-art) { animation:project-mobile-surface 1050ms var(--ease-out) both; }
+    html.motion-ready .project-mobile-visual.is-visible :global(.browser-frame) { animation:project-browser-arrival 1250ms var(--ease-out) 90ms both; }
+    html.motion-ready .project-mobile-visual.is-visible :global(.favorita-sheet) { animation:project-sheet-arrival 1200ms var(--ease-out) 80ms both; }
+    html.motion-ready .project-mobile-visual.is-visible :global(.phone-frame) { animation:project-phone-arrival 1300ms var(--ease-out) 170ms both; }
+    html.motion-ready .project-mobile-visual.is-visible :global(.brand-card) { animation:project-card-arrival 1050ms var(--ease-out) 280ms both; }
+  }
+  @keyframes project-mobile-surface { from { transform:scale(1.055); } to { transform:none; } }
+  @keyframes project-browser-arrival { from { opacity:.15; transform:translate3d(9%,10%,0) rotate(2deg) scale(.92); } to { opacity:1; transform:rotate(-1.5deg); } }
+  @keyframes project-sheet-arrival { from { opacity:.2; transform:translate3d(-10%,9%,0) rotate(-9deg) scale(.94); } to { opacity:1; transform:rotate(-4deg); } }
+  @keyframes project-phone-arrival { from { opacity:0; transform:translate3d(13%,13%,0) rotate(10deg) scale(.9); } to { opacity:1; transform:rotate(5deg); } }
+  @keyframes project-card-arrival { from { opacity:0; transform:translate3d(0,22px,0) rotate(-14deg) scale(.82); } to { opacity:1; transform:rotate(-8deg); } }
+  @media (max-width:480px) { .project-entry{padding-block:38px}.project-selector{grid-template-columns:28px 1fr;gap:10px}.project-mobile-visual{height:390px;margin-inline:calc(var(--container-padding) * -.3)} }
+  @media (prefers-reduced-motion:reduce) { .project-selector h3,.project-selector i,.project-copy,.project-panel,.project-copy a { transition:none; }.project-panel{transform:none;}.project-panel.is-active{clip-path:none;}html.motion-ready .project-mobile-visual.is-visible :global(.project-art),html.motion-ready .project-mobile-visual.is-visible :global(.browser-frame),html.motion-ready .project-mobile-visual.is-visible :global(.favorita-sheet),html.motion-ready .project-mobile-visual.is-visible :global(.phone-frame),html.motion-ready .project-mobile-visual.is-visible :global(.brand-card){animation:none;} }
+</style>
+
+<script>
+  const projectsSection = document.querySelector<HTMLElement>("[data-projects]");
+  if (projectsSection) {
+    const entries = Array.from(projectsSection.querySelectorAll<HTMLElement>("[data-project-entry]"));
+    const panels = Array.from(projectsSection.querySelectorAll<HTMLElement>("[data-project-panel]"));
+    const stage = projectsSection.querySelector<HTMLElement>("[data-project-stage]");
+    const count = projectsSection.querySelector<HTMLElement>("[data-project-count]");
+    const desktop = window.matchMedia("(min-width: 901px)");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const activate = (index: number) => {
+      if (!desktop.matches) return;
+      entries.forEach((entry, entryIndex) => {
+        const active = entryIndex === index;
+        entry.classList.toggle("is-active", active);
+        entry.querySelector("button")?.setAttribute("aria-pressed", String(active));
+        const copy = entry.querySelector<HTMLElement>(".project-copy");
+        if (copy) {
+          copy.toggleAttribute("inert", !active);
+          copy.setAttribute("aria-hidden", String(!active));
+        }
+      });
+      panels.forEach((panel, panelIndex) => panel.classList.toggle("is-active", panelIndex === index));
+      if (count) count.textContent = String(index + 1).padStart(2, "0");
+    };
+
+    entries.forEach((entry, index) => {
+      entry.querySelector("button")?.addEventListener("click", () => activate(index));
+      entry.addEventListener("focusin", () => activate(index));
+      entry.addEventListener("mouseenter", () => activate(index));
+    });
+
+    const syncMode = () => {
+      if (desktop.matches) {
+        const activeIndex = Math.max(0, entries.findIndex((entry) => entry.classList.contains("is-active")));
+        activate(activeIndex);
+        return;
+      }
+      entries.forEach((entry) => {
+        const copy = entry.querySelector<HTMLElement>(".project-copy");
+        if (copy) {
+          copy.removeAttribute("inert");
+          copy.setAttribute("aria-hidden", "false");
+        }
+      });
+    };
+
+    desktop.addEventListener("change", syncMode);
+    syncMode();
+
+    stage?.addEventListener("pointermove", (event) => {
+      if (!finePointer.matches || reducedMotion.matches) return;
+      const bounds = stage.getBoundingClientRect();
+      stage.style.setProperty("--pointer-x", String((event.clientX - bounds.left) / bounds.width - .5));
+      stage.style.setProperty("--pointer-y", String((event.clientY - bounds.top) / bounds.height - .5));
+    });
+    stage?.addEventListener("pointerleave", () => {
+      stage.style.setProperty("--pointer-x", "0");
+      stage.style.setProperty("--pointer-y", "0");
+    });
+  }
+</script>

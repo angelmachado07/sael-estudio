@@ -1,0 +1,101 @@
+---
+interface Props {
+  visual: "olimpo" | "favorita";
+}
+
+const { visual } = Astro.props;
+---
+
+{visual === "olimpo" ? (
+  <div class="project-art project-art--olimpo" aria-hidden="true">
+    <span class="art-index">WEB / 01</span>
+    <div class="browser-frame">
+      <div class="browser-bar">
+        <span></span><span></span><span></span>
+        <i>olimpoconstrucciones.com.uy</i>
+      </div>
+      <div class="olimpo-site">
+        <header>
+          <strong>OLIMPO</strong>
+          <span>CONSTRUCCIONES</span>
+          <nav><i></i><i></i><i></i></nav>
+        </header>
+        <div class="olimpo-hero">
+          <p>CONSTRUIMOS<br />CONFIANZA.</p>
+          <div class="building-mark"><i></i><i></i><i></i></div>
+          <span>OBRAS · PROYECTOS · CONTACTO</span>
+        </div>
+        <div class="olimpo-grid">
+          <i></i><i></i><i></i>
+        </div>
+      </div>
+    </div>
+    <div class="art-caption"><span>Diseño + desarrollo</span><i></i><span>Responsive</span></div>
+  </div>
+) : (
+  <div class="project-art project-art--favorita" aria-hidden="true">
+    <span class="art-index">IDENTIDAD / 02</span>
+    <div class="favorita-sheet">
+      <span class="favorita-symbol">f.</span>
+      <strong>favorita</strong>
+      <p>objetos lindos<br />para todos los días</p>
+      <div class="palette"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="phone-frame">
+      <div class="phone-top"><i></i></div>
+      <div class="social-profile">
+        <header><span>f.</span><div><strong>favorita</strong><i></i><i></i></div></header>
+        <div class="story-row"><i></i><i></i><i></i><i></i></div>
+        <div class="social-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="brand-card"><span>F</span><i>01—05</i></div>
+    <div class="art-caption"><span>Sistema de marca</span><i></i><span>Presencia digital</span></div>
+  </div>
+)}
+
+<style>
+  .project-art { position:relative; width:100%; height:100%; min-height:520px; overflow:hidden; background:var(--color-stone); color:var(--color-espresso); transform:translate3d(calc(var(--pointer-x, 0) * 8px),calc(var(--pointer-y, 0) * 8px),0); transition:transform 900ms var(--ease-out); }
+  .project-art::before { content:""; position:absolute; inset:0; background:linear-gradient(125deg,rgba(255,255,255,.24),transparent 42%),repeating-linear-gradient(90deg,transparent 0 87px,rgba(44,46,38,.06) 88px); }
+  .art-index { position:absolute; z-index:5; top:24px; left:26px; font-size:.68rem; font-weight:600; letter-spacing:.14em; }
+  .art-caption { position:absolute; z-index:6; right:24px; bottom:20px; left:24px; display:flex; align-items:center; gap:14px; font-size:.68rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+  .art-caption i { flex:1; height:1px; background:currentColor; opacity:.28; }
+  .browser-frame { position:absolute; z-index:2; top:12%; right:7%; width:82%; overflow:hidden; border:1px solid rgba(44,46,38,.34); border-radius:10px; background:#f0ede5; box-shadow:0 28px 70px rgba(44,46,38,.22); transform:rotate(-1.5deg) translate3d(calc(var(--pointer-x, 0) * -10px),calc(var(--pointer-y, 0) * -8px),0); transition:transform 900ms var(--ease-out); }
+  .browser-bar { height:34px; display:flex; align-items:center; gap:5px; padding:0 12px; border-bottom:1px solid rgba(44,46,38,.14); background:#e8e4da; }
+  .browser-bar > span { width:6px; height:6px; border:1px solid rgba(44,46,38,.44); border-radius:50%; }
+  .browser-bar i { width:46%; margin:auto; padding:3px 10px; border-radius:999px; background:rgba(255,255,255,.5); color:rgba(44,46,38,.52); font-size:.47rem; font-style:normal; text-align:center; }
+  .olimpo-site { padding:17px; background:#f4f1e9; }
+  .olimpo-site header { display:flex; align-items:baseline; gap:7px; padding-bottom:14px; border-bottom:1px solid rgba(44,46,38,.18); font-size:.47rem; }
+  .olimpo-site header strong { font-family:var(--font-heading); font-size:.95rem; letter-spacing:-.06em; }
+  .olimpo-site header nav { display:flex; gap:12px; margin-left:auto; }
+  .olimpo-site header nav i { width:26px; height:1px; background:rgba(44,46,38,.4); }
+  .olimpo-hero { position:relative; height:280px; padding:38px 24px; overflow:hidden; background:#555c4d; color:#f3efe7; }
+  .olimpo-hero p { position:relative; z-index:2; margin:0; font-family:var(--font-heading); font-size:clamp(2.1rem,4vw,4.2rem); font-weight:600; line-height:.82; letter-spacing:-.07em; }
+  .olimpo-hero > span { position:absolute; z-index:2; left:25px; bottom:20px; font-size:.48rem; letter-spacing:.11em; }
+  .building-mark { position:absolute; right:-2%; bottom:0; width:54%; height:86%; display:flex; align-items:flex-end; gap:5px; opacity:.9; }
+  .building-mark i { flex:1; border:1px solid rgba(243,239,231,.4); background:repeating-linear-gradient(0deg,transparent 0 17px,rgba(243,239,231,.22) 18px); }
+  .building-mark i:nth-child(1) { height:58%; } .building-mark i:nth-child(2) { height:88%; } .building-mark i:nth-child(3) { height:72%; }
+  .olimpo-grid { display:grid; grid-template-columns:1.2fr .8fr .8fr; gap:8px; margin-top:8px; }
+  .olimpo-grid i { height:52px; background:linear-gradient(145deg,#b8b5aa,#777d70); }
+  .olimpo-grid i:nth-child(2) { background:linear-gradient(145deg,#d9d3c7,#9b968b); } .olimpo-grid i:nth-child(3) { background:linear-gradient(145deg,#777d70,#454b40); }
+  .project-art--favorita { background:#d8d2c4; }
+  .project-art--favorita::before { background:radial-gradient(circle at 25% 22%,rgba(243,239,231,.8) 0 12%,transparent 12.2%),linear-gradient(135deg,rgba(255,255,255,.18),transparent 50%); }
+  .favorita-sheet { position:absolute; z-index:1; top:11%; left:7%; width:54%; height:66%; padding:38px 30px; background:#ece5dc; box-shadow:0 24px 60px rgba(44,46,38,.16); transform:rotate(-4deg) translate3d(calc(var(--pointer-x, 0) * -7px),calc(var(--pointer-y, 0) * -6px),0); transition:transform 900ms var(--ease-out); }
+  .favorita-sheet::after { content:""; position:absolute; right:-1px; bottom:-1px; width:48%; aspect-ratio:1; border-radius:100% 0 0; background:#8c765e; opacity:.75; }
+  .favorita-symbol { display:grid; place-items:center; width:64px; aspect-ratio:1; border-radius:50%; background:#6f7962; color:#f3efe7; font-family:var(--font-heading); font-size:2.8rem; font-weight:600; line-height:1; }
+  .favorita-sheet strong { display:block; margin-top:34px; font-family:var(--font-heading); font-size:clamp(2.7rem,6vw,5.7rem); line-height:.8; letter-spacing:-.075em; }
+  .favorita-sheet p { margin:18px 0 0; font-size:.72rem; line-height:1.4; }
+  .palette { position:absolute; left:30px; bottom:26px; display:flex; gap:7px; }
+  .palette i { width:24px; aspect-ratio:1; border-radius:50%; background:#6f7962; } .palette i:nth-child(2){background:#c2a58d}.palette i:nth-child(3){background:#f3eee8}.palette i:nth-child(4){background:#453f39}
+  .phone-frame { position:absolute; z-index:3; top:8%; right:8%; width:33%; min-width:190px; overflow:hidden; border:5px solid #33362f; border-radius:30px; background:#f4f0e9; box-shadow:0 30px 64px rgba(44,46,38,.3); transform:rotate(5deg) translate3d(calc(var(--pointer-x, 0) * 12px),calc(var(--pointer-y, 0) * 10px),0); transition:transform 900ms var(--ease-out); }
+  .phone-top { height:27px; display:grid; place-items:center; }.phone-top i{width:36%;height:7px;border-radius:99px;background:#33362f}
+  .social-profile { padding:12px 11px 20px; }
+  .social-profile header { display:flex; gap:8px; align-items:center; }.social-profile header>span{display:grid;place-items:center;width:38px;aspect-ratio:1;border-radius:50%;background:#6f7962;color:#fff;font-family:var(--font-heading);font-size:1.5rem}.social-profile header div{flex:1}.social-profile header strong{display:block;font-size:.58rem}.social-profile header i{display:block;width:80%;height:3px;margin-top:4px;background:#d8d2c4}.social-profile header i:last-child{width:55%}
+  .story-row { display:flex; gap:7px; margin:14px 0 12px; }.story-row i{width:27px;aspect-ratio:1;border:2px solid #a78d76;border-radius:50%;background:#ebe4db}
+  .social-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.social-grid i{aspect-ratio:1;background:#b99d84}.social-grid i:nth-child(2),.social-grid i:nth-child(6){background:#6f7962}.social-grid i:nth-child(3){background:linear-gradient(135deg,#e8ddd3 50%,#9d826c 50%)}.social-grid i:nth-child(4){background:#e8ddd3}.social-grid i:nth-child(5){background:radial-gradient(circle,#f0e9e1 0 23%,#a98d75 24%)}
+  .brand-card { position:absolute; z-index:4; right:31%; bottom:15%; width:120px; aspect-ratio:1.45; display:flex; align-items:center; justify-content:center; background:#4f5a45; color:#f3efe7; box-shadow:0 18px 40px rgba(44,46,38,.2); transform:rotate(-8deg); }.brand-card span{font-family:var(--font-heading);font-size:3.4rem;font-weight:600}.brand-card i{position:absolute;right:8px;bottom:6px;font-size:.48rem;font-style:normal;opacity:.65}
+  @media (max-width:1100px) { .project-art { min-height:460px; }.olimpo-hero{height:235px}.favorita-sheet{width:58%}.phone-frame{right:5%;width:35%} }
+  @media (max-width:760px) { .project-art { min-height:440px; }.browser-frame{top:14%;right:4%;width:89%}.olimpo-hero{height:230px}.favorita-sheet{left:4%;width:63%;height:68%;padding:30px 22px}.phone-frame{top:8%;right:4%;width:39%;min-width:155px}.brand-card{right:29%;bottom:13%;width:95px}.art-index{top:18px;left:19px}.art-caption{right:18px;bottom:16px;left:18px} }
+  @media (max-width:420px) { .project-art{min-height:390px}.browser-frame{top:16%;width:92%}.olimpo-site{padding:10px}.olimpo-hero{height:205px;padding:30px 18px}.olimpo-grid i{height:36px}.favorita-sheet{top:12%;width:65%;height:65%;padding:26px 17px}.favorita-symbol{width:48px;font-size:2rem}.favorita-sheet strong{margin-top:24px;font-size:2.7rem}.favorita-sheet p{font-size:.62rem}.palette{left:17px;bottom:19px}.palette i{width:18px}.phone-frame{min-width:140px;border-width:4px}.brand-card{right:27%;bottom:14%;width:82px}.art-caption{font-size:.57rem} }
+  @media (prefers-reduced-motion:reduce) { .project-art,.browser-frame,.favorita-sheet,.phone-frame { transform:none; transition:none; } }
+</style>

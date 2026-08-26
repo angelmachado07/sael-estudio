@@ -23,6 +23,7 @@ Próximos objetivos:
 - [x] Crear al menos un momento visual memorable durante el recorrido.
 - [x] Mejorar las transiciones entre secciones.
 - [x] Explorar el uso de imágenes, mockups y otros assets.
+- [x] Incorporar una selección curada y escalable de proyectos reales.
 - [x] Mantener responsive y accesibilidad durante la evolución visual.
 - [ ] Resolver los enlaces reales de contacto.
 - [ ] Corregir los problemas técnicos detectados en la auditoría que interfieran con la experiencia.
@@ -43,9 +44,9 @@ La definición de soluciones visuales y animaciones concretas corresponde a la s
 
 Las siguientes posibilidades no forman parte del alcance actual:
 
-- casos o proyectos;
 - páginas individuales de servicios;
-- portfolio;
+- páginas individuales de proyectos o casos;
+- archivo de portfolio completo;
 - testimonios;
 - contenido editorial;
 - nuevas páginas.
