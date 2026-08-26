@@ -97,10 +97,18 @@ const projects = [
   .project-copy a:hover,.project-copy a:focus-visible { background:var(--color-cream); color:var(--color-espresso); transform:translateY(-2px); }
   .project-mobile-visual { display:none; }
   .project-stage { position:sticky; top:calc(var(--header-height) + 36px); }
-  .project-stage-frame { position:relative; height:min(64vh,650px); min-height:520px; overflow:hidden; border:1px solid rgba(243,239,231,.22); background:var(--color-stone); box-shadow:0 32px 80px rgba(44,46,38,.25); }
+  .project-stage-frame { position:relative; height:min(64vh,650px); min-height:520px; overflow:hidden; border:1px solid rgba(243,239,231,.22); background:var(--color-stone); box-shadow:0 32px 80px rgba(44,46,38,.25); opacity:.5; clip-path:inset(5% 6% 5% 6%); transform:translate3d(0,30px,0) scale(.975); transition:clip-path 1100ms var(--ease-in-out),opacity 700ms ease,transform 1100ms var(--ease-out),box-shadow 900ms ease; }
+  .projects.is-in-view .project-stage-frame { opacity:1; clip-path:inset(0); transform:none; box-shadow:0 42px 100px rgba(44,46,38,.31); }
+  .project-stage-frame::before { content:""; position:absolute; z-index:11; top:-30%; bottom:-30%; left:-30%; width:18%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent); pointer-events:none; transform:translateX(-250%) rotate(12deg); }
+  .projects.is-in-view .project-stage-frame::before { transform:translateX(820%) rotate(12deg); transition:transform 1550ms var(--ease-out) 220ms; }
   .project-stage-frame::after { content:""; position:absolute; z-index:10; inset:0; border:10px solid rgba(79,90,69,.22); pointer-events:none; }
   .project-panel { position:absolute; inset:0; visibility:hidden; opacity:0; clip-path:inset(0 0 100% 0); transform:translateY(7%) scale(1.035); transition:clip-path 900ms var(--ease-in-out),opacity 500ms ease,transform 1100ms var(--ease-out),visibility 0s 900ms; }
   .project-panel.is-active { visibility:visible; opacity:1; clip-path:inset(0); transform:none; transition-delay:0s; }
+  .projects.is-in-view .project-panel.is-active :global(.project-art) { animation:project-desktop-surface 1050ms var(--ease-out) both; }
+  .projects.is-in-view .project-panel.is-active :global(.browser-frame) { animation:project-desktop-browser 1250ms var(--ease-out) 80ms both; }
+  .projects.is-in-view .project-panel.is-active :global(.favorita-sheet) { animation:project-desktop-sheet 1200ms var(--ease-out) 70ms both; }
+  .projects.is-in-view .project-panel.is-active :global(.phone-frame) { animation:project-desktop-phone 1300ms var(--ease-out) 150ms both; }
+  .projects.is-in-view .project-panel.is-active :global(.brand-card) { animation:project-card-arrival 1050ms var(--ease-out) 260ms both; }
   .project-stage > p { display:flex; align-items:center; gap:12px; margin:17px 0 0; font-size:.68rem; letter-spacing:.12em; }
   .project-stage > p i { flex:1; height:1px; background:rgba(243,239,231,.28); }
   @media (max-width:1050px) { .projects-layout{grid-template-columns:minmax(300px,.78fr) minmax(430px,1.22fr);gap:45px}.project-entry.is-active .project-copy-inner{padding-left:0}.project-stage-frame{min-height:460px;height:58vh} }
@@ -117,20 +125,26 @@ const projects = [
     .project-copy,.project-entry.is-active .project-copy { display:block; opacity:1; padding:0; }
     .project-entry.is-active .project-copy-inner,.project-copy-inner { padding:0; overflow:visible; }
     .project-description { max-width:630px; margin-bottom:30px; }
-    .project-mobile-visual { display:block; height:clamp(440px,74vw,620px); margin:30px 0 27px; overflow:hidden; border:1px solid rgba(243,239,231,.22); box-shadow:0 24px 58px rgba(44,46,38,.24); }
+    .project-mobile-visual { position:relative; display:block; height:clamp(440px,74vw,620px); margin:30px 0 27px; overflow:hidden; border:1px solid rgba(243,239,231,.22); box-shadow:0 24px 58px rgba(44,46,38,.24); }
+    .project-mobile-visual::after { content:""; position:absolute; z-index:12; top:-30%; bottom:-30%; left:-35%; width:20%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent); pointer-events:none; transform:translateX(-250%) rotate(12deg); }
+    html.motion-ready .project-mobile-visual.is-visible::after { transform:translateX(780%) rotate(12deg); transition:transform 1450ms var(--ease-out) 180ms; }
     html.motion-ready .project-mobile-visual.is-visible :global(.project-art) { animation:project-mobile-surface 1050ms var(--ease-out) both; }
     html.motion-ready .project-mobile-visual.is-visible :global(.browser-frame) { animation:project-browser-arrival 1250ms var(--ease-out) 90ms both; }
     html.motion-ready .project-mobile-visual.is-visible :global(.favorita-sheet) { animation:project-sheet-arrival 1200ms var(--ease-out) 80ms both; }
     html.motion-ready .project-mobile-visual.is-visible :global(.phone-frame) { animation:project-phone-arrival 1300ms var(--ease-out) 170ms both; }
     html.motion-ready .project-mobile-visual.is-visible :global(.brand-card) { animation:project-card-arrival 1050ms var(--ease-out) 280ms both; }
   }
+  @keyframes project-desktop-surface { from { opacity:.45; transform:translate3d(calc(var(--pointer-x, 0) * 8px),calc(34px + var(--pointer-y, 0) * 8px),0) scale(1.06); } to { opacity:1; transform:translate3d(calc(var(--pointer-x, 0) * 8px),calc(var(--pointer-y, 0) * 8px),0); } }
+  @keyframes project-desktop-browser { from { opacity:.18; transform:translate3d(calc(9% + var(--pointer-x, 0) * -10px),calc(10% + var(--pointer-y, 0) * -8px),0) rotate(2deg) scale(.92); } to { opacity:1; transform:rotate(-1.5deg) translate3d(calc(var(--pointer-x, 0) * -10px),calc(var(--pointer-y, 0) * -8px),0); } }
+  @keyframes project-desktop-sheet { from { opacity:.2; transform:translate3d(calc(-10% + var(--pointer-x, 0) * -7px),calc(9% + var(--pointer-y, 0) * -6px),0) rotate(-9deg) scale(.94); } to { opacity:1; transform:rotate(-4deg) translate3d(calc(var(--pointer-x, 0) * -7px),calc(var(--pointer-y, 0) * -6px),0); } }
+  @keyframes project-desktop-phone { from { opacity:0; transform:translate3d(calc(13% + var(--pointer-x, 0) * 12px),calc(13% + var(--pointer-y, 0) * 10px),0) rotate(10deg) scale(.9); } to { opacity:1; transform:rotate(5deg) translate3d(calc(var(--pointer-x, 0) * 12px),calc(var(--pointer-y, 0) * 10px),0); } }
   @keyframes project-mobile-surface { from { transform:scale(1.055); } to { transform:none; } }
   @keyframes project-browser-arrival { from { opacity:.15; transform:translate3d(9%,10%,0) rotate(2deg) scale(.92); } to { opacity:1; transform:rotate(-1.5deg); } }
   @keyframes project-sheet-arrival { from { opacity:.2; transform:translate3d(-10%,9%,0) rotate(-9deg) scale(.94); } to { opacity:1; transform:rotate(-4deg); } }
   @keyframes project-phone-arrival { from { opacity:0; transform:translate3d(13%,13%,0) rotate(10deg) scale(.9); } to { opacity:1; transform:rotate(5deg); } }
   @keyframes project-card-arrival { from { opacity:0; transform:translate3d(0,22px,0) rotate(-14deg) scale(.82); } to { opacity:1; transform:rotate(-8deg); } }
   @media (max-width:480px) { .project-entry{padding-block:38px}.project-selector{grid-template-columns:28px 1fr;gap:10px}.project-mobile-visual{height:390px;margin-inline:calc(var(--container-padding) * -.3)} }
-  @media (prefers-reduced-motion:reduce) { .project-selector h3,.project-selector i,.project-copy,.project-panel,.project-copy a { transition:none; }.project-panel{transform:none;}.project-panel.is-active{clip-path:none;}html.motion-ready .project-mobile-visual.is-visible :global(.project-art),html.motion-ready .project-mobile-visual.is-visible :global(.browser-frame),html.motion-ready .project-mobile-visual.is-visible :global(.favorita-sheet),html.motion-ready .project-mobile-visual.is-visible :global(.phone-frame),html.motion-ready .project-mobile-visual.is-visible :global(.brand-card){animation:none;} }
+  @media (prefers-reduced-motion:reduce) { .project-selector h3,.project-selector i,.project-copy,.project-panel,.project-copy a,.project-stage-frame { transition:none; }.project-stage-frame{opacity:1;clip-path:none;transform:none}.project-stage-frame::before,.project-mobile-visual::after{display:none}.project-panel{transform:none;}.project-panel.is-active{clip-path:none;}.projects.is-in-view .project-panel.is-active :global(.project-art),.projects.is-in-view .project-panel.is-active :global(.browser-frame),.projects.is-in-view .project-panel.is-active :global(.favorita-sheet),.projects.is-in-view .project-panel.is-active :global(.phone-frame),.projects.is-in-view .project-panel.is-active :global(.brand-card),html.motion-ready .project-mobile-visual.is-visible :global(.project-art),html.motion-ready .project-mobile-visual.is-visible :global(.browser-frame),html.motion-ready .project-mobile-visual.is-visible :global(.favorita-sheet),html.motion-ready .project-mobile-visual.is-visible :global(.phone-frame),html.motion-ready .project-mobile-visual.is-visible :global(.brand-card){animation:none;} }
 </style>
 
 <script>
@@ -143,6 +157,19 @@ const projects = [
     const desktop = window.matchMedia("(min-width: 901px)");
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+      projectsSection.classList.add("is-in-view");
+    } else {
+      const sectionObserver = new IntersectionObserver((observerEntries) => {
+        observerEntries.forEach((observerEntry) => {
+          if (!observerEntry.isIntersecting) return;
+          projectsSection.classList.add("is-in-view");
+          sectionObserver.disconnect();
+        });
+      }, { rootMargin: "0px 0px -16%", threshold: 0 });
+      sectionObserver.observe(projectsSection);
+    }
 
     const activate = (index: number) => {
       if (!desktop.matches) return;

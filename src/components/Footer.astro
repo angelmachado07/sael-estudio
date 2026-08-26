@@ -1,11 +1,13 @@
 ---
+import { CONTACT_EMAIL } from "../config/contact";
+
 const currentYear=new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container footer-shell">
     <div class="footer-top"><a href="#inicio">Sael<i></i>Estudio</a><p>Diseño + soluciones</p></div>
     <div class="footer-word" aria-hidden="true">SAEL</div>
-    <div class="footer-bottom"><p>© {currentYear} Sael Estudio</p><div><a href="mailto:contacto@saelestudio.com">Email</a><a href="#">Instagram</a><a href="#">WhatsApp</a></div><a href="#inicio">Arriba ↑</a></div>
+    <div class="footer-bottom"><p>© {currentYear} Sael Estudio</p><div><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a><a href="#">Instagram</a><a href="#">WhatsApp</a></div><a href="#inicio">Arriba ↑</a></div>
   </div>
 </footer>
 <style>

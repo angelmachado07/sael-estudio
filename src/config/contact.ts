@@ -1,3 +1,4 @@
+export const CONTACT_EMAIL = "saelestudiouy@gmail.com";
 export const WHATSAPP_NUMBER = "";
 
 export const createWhatsAppUrl = (message: string) => {

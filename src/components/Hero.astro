@@ -53,20 +53,29 @@ import ArrowIcon from "./ArrowIcon.astro";
   @media (max-width:900px) { .hero { --lens-x:70%; --lens-y:49%; --lens-size:38vw; } h1 { font-size:clamp(6.7rem,16.2vw,9rem); } }
   @media (max-width:680px) {
     .hero { --lens-x:72%; --lens-y:44%; --lens-size:43vw; }
-    .hero::after { content:""; position:absolute; z-index:0; top:26%; right:-29vw; width:92vw; aspect-ratio:1; border-radius:50%; background:var(--color-moss); pointer-events:none; }
+    .hero::after { content:""; position:absolute; z-index:3; top:21%; right:-37vw; width:104vw; aspect-ratio:1; border:1px solid rgba(79,90,69,.34); border-radius:50%; pointer-events:none; animation:mobile-orbit-drift 9s var(--ease-in-out) 1.2s infinite alternate; }
     .hero-stage { z-index:1; padding-top:calc(var(--header-height) + 40px); padding-bottom:28px; }
-    .hero-kicker { margin-bottom:clamp(44px,8vh,68px); }
-    .hero-reveal,.hero-coordinate { display:none; }
+    .hero-kicker { margin-bottom:clamp(44px,8vh,68px); animation:mobile-copy-arrival 700ms var(--ease-out) 80ms both; }
+    .hero-reveal { display:block; clip-path:circle(43vw at 72% 44%); animation:mobile-lens-arrival 1450ms var(--ease-out) both,mobile-lens-drift 8s var(--ease-in-out) 1450ms infinite alternate; }
+    .hero-coordinate { display:none; }
     h1 { font-size:clamp(4.1rem,19vw,5.4rem); line-height:.75; letter-spacing:-.072em; }
+    h1 span { animation:mobile-title-arrival 1050ms var(--ease-out) 180ms both; }
+    h1 span:last-child { animation-delay:320ms; }
     h1 span:last-child { margin-top:.12em; margin-left:0; }
     .hero-footer { bottom:30px; flex-direction:column; align-items:flex-start; gap:24px; }
-    .hero-footer p { max-width:310px; }
-    .hero-footer a { width:100%; }
+    .hero-footer p { max-width:310px; animation:mobile-copy-arrival 850ms var(--ease-out) 610ms both; }
+    .hero-footer a { width:100%; animation:mobile-cta-arrival 900ms var(--ease-out) 750ms both; }
     .hero-reveal .hero-footer { display:none; }
     .hero-hint { display:none; }
   }
   @media (max-width:420px) { h1 { font-size:clamp(4rem,17.5vw,4.6rem); } }
-  @media (prefers-reduced-motion:reduce) { .hero { --lens-x:72%; --lens-y:43%; --lens-size:29vw; } .hero-coordinate { display:none; } }
+  @keyframes mobile-lens-arrival { from { clip-path:circle(0 at 88% 30%); } to { clip-path:circle(43vw at 72% 44%); } }
+  @keyframes mobile-lens-drift { from { clip-path:circle(39vw at 76% 41%); } to { clip-path:circle(49vw at 64% 49%); } }
+  @keyframes mobile-orbit-drift { to { transform:translate3d(-9vw,7vw,0) rotate(24deg) scale(.9); } }
+  @keyframes mobile-title-arrival { from { opacity:0; transform:translate3d(0,42px,0) skewY(2deg); } to { opacity:1; transform:none; } }
+  @keyframes mobile-copy-arrival { from { opacity:0; transform:translate3d(0,20px,0); } to { opacity:1; transform:none; } }
+  @keyframes mobile-cta-arrival { from { opacity:0; transform:translate3d(0,24px,0) scale(.97); } to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion:reduce) { .hero { --lens-x:72%; --lens-y:43%; --lens-size:29vw; } .hero-coordinate { display:none; } .hero::after,.hero-reveal,.hero-kicker,h1 span,.hero-footer p,.hero-footer a { animation:none; } }
 </style>
 
 <script>
@@ -81,15 +90,22 @@ import ArrowIcon from "./ArrowIcon.astro";
       if (Math.abs(targetX-currentX)>.05 || Math.abs(targetY-currentY)>.05) frame=requestAnimationFrame(render); else frame=0;
     };
     hero.addEventListener("pointermove",event=>{
+      if (window.innerWidth <= 680 || event.pointerType === "touch") return;
       const bounds=hero.getBoundingClientRect();
       targetX=((event.clientX-bounds.left)/bounds.width)*100;
       targetY=((event.clientY-bounds.top)/bounds.height)*100;
       if (!frame) frame=requestAnimationFrame(render);
     });
-    hero.addEventListener("pointerleave",()=>{ targetX=68; targetY=43; if (!frame) frame=requestAnimationFrame(render); });
+    hero.addEventListener("pointerleave",()=>{
+      if (window.innerWidth <= 680) return;
+      targetX=68;
+      targetY=43;
+      if (!frame) frame=requestAnimationFrame(render);
+    });
     const updateLens=()=>{
       const progress=Math.max(0,Math.min(1,-hero.getBoundingClientRect().top/hero.offsetHeight));
-      const base=window.innerWidth<680 ? 43 : 31;
+      if (window.innerWidth <= 680) return;
+      const base=31;
       hero.style.setProperty("--lens-size",`${base + progress*70}vw`);
     };
     let scrollFrame=0;

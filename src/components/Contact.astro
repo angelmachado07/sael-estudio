@@ -1,5 +1,6 @@
 ---
 import ArrowIcon from "./ArrowIcon.astro";
+import { CONTACT_EMAIL } from "../config/contact";
 ---
 
 <section id="contacto" class="contact" aria-labelledby="contact-title">
@@ -9,7 +10,7 @@ import ArrowIcon from "./ArrowIcon.astro";
     <h2 id="contact-title"><span data-reveal="mask">Hagamos que</span><span data-reveal="mask" style="--reveal-delay:70ms">avance.</span></h2>
     <p class="contact-copy" data-reveal>Contanos qué necesita tu proyecto. Podemos empezar por una conversación simple.</p>
     <div class="contact-actions">
-      <a href="mailto:contacto@saelestudio.com">Escribinos por email <ArrowIcon /></a>
+      <a href={`mailto:${CONTACT_EMAIL}`} aria-label={`Escribir a ${CONTACT_EMAIL}`}>Escribinos por email <ArrowIcon /></a>
       <a href="#">WhatsApp <ArrowIcon /></a>
     </div>
   </div>
