@@ -1,5 +1,8 @@
 ---
 import ArrowIcon from "./ArrowIcon.astro";
+import { createWhatsAppUrl, PROJECT_WHATSAPP_MESSAGE } from "../config/contact";
+
+const projectWhatsAppUrl = createWhatsAppUrl(PROJECT_WHATSAPP_MESSAGE);
 ---
 
 <section id="inicio" class="hero" aria-labelledby="hero-title" data-hero>
@@ -9,7 +12,7 @@ import ArrowIcon from "./ArrowIcon.astro";
       <h1 id="hero-title"><span>Diseñamos</span><span>soluciones.</span></h1>
       <div class="hero-footer">
         <p>Identidad, comunicación y tecnología para que cada proyecto pueda avanzar.</p>
-        <a href="#contacto">Iniciar un proyecto <ArrowIcon /></a>
+        <a href={projectWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Iniciar un proyecto por WhatsApp (abre en una pestaña nueva)">Iniciar un proyecto <ArrowIcon /></a>
       </div>
     </div>
   </div>

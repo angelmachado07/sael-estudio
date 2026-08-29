@@ -25,7 +25,7 @@ Próximos objetivos:
 - [x] Explorar el uso de imágenes, mockups y otros assets.
 - [x] Incorporar una selección curada y escalable de proyectos reales.
 - [x] Mantener responsive y accesibilidad durante la evolución visual.
-- [ ] Resolver los enlaces reales de contacto.
+- [x] Resolver los enlaces reales de contacto.
 - [ ] Corregir los problemas técnicos detectados en la auditoría que interfieran con la experiencia.
 
 La definición de soluciones visuales y animaciones concretas corresponde a la spec **Creative Refresh v1** y a su etapa de exploración.

@@ -126,4 +126,11 @@ Este documento registra decisiones relativamente estables. Las tareas y priorida
 - **Fecha:** 2026-08-25
 - **Decisión:** presentar los cuatro servicios como capítulos completos y secuenciales, con visual, descripción y CTA siempre visibles, sin acordeón ni activación obligatoria.
 - **Contexto:** Servicios es uno de los principales momentos comerciales de la landing y la interacción cerrada retrasaba la comprensión de la oferta.
-- **Consecuencia:** el scroll aporta ritmo y protagonismo progresivo, pero no controla la disponibilidad del contenido; la integración futura con WhatsApp se centraliza y permanece inactiva hasta disponer del número oficial.
+- **Consecuencia:** el scroll aporta ritmo y protagonismo progresivo, pero no controla la disponibilidad del contenido; la integración con WhatsApp se centraliza y cada CTA abre una consulta contextual con el número oficial.
+
+## 19. Monograma S + e + punto como símbolo oficial
+
+- **Fecha:** 2026-08-28
+- **Decisión:** adoptar el monograma construido a partir de S, e y punto como símbolo oficial de Sael Estudio.
+- **Contexto:** la marca necesita una firma gráfica propia y reconocible que pueda funcionar desde la navegación hasta avatares y favicon sin depender únicamente del nombre compuesto.
+- **Consecuencia:** el monograma se usa como firma, avatar y favicon dentro de la paleta vigente, y convive con el nombre visible “Sael Estudio” mientras se construye reconocimiento; en espacios mínimos puede recurrirse a una variante compacta con nombre accesible.

@@ -81,7 +81,7 @@ const projects = [
   .project-selector { width:100%; min-height:112px; display:grid; grid-template-columns:42px 1fr 18px; gap:16px; align-items:center; padding:34px 0 26px; color:inherit; cursor:pointer; text-align:left; }
   .project-selector span:first-child { align-self:start; padding-top:.55em; font-size:var(--font-size-meta); opacity:.5; }
   .project-selector h3 { margin:0; font-size:var(--font-size-feature-title); font-weight:500; line-height:.92; letter-spacing:-.052em; opacity:.48; transform-origin:left; transition:opacity 500ms ease,transform 700ms var(--ease-out); }
-  .project-selector button { display:grid; place-items:center; width:32px; height:44px; margin-left:-12px; padding:0; border:0; background:transparent; color:inherit; cursor:pointer; }
+  .project-selector button { display:grid; place-items:center; width:44px; height:44px; margin-left:-18px; padding:0; border:0; background:transparent; color:inherit; cursor:pointer; }
   .project-selector i { width:9px; height:9px; border:1px solid currentColor; border-radius:50%; opacity:.55; transition:background-color 450ms ease,transform 650ms var(--ease-out); }
   .project-entry.is-active .project-selector h3,.project-selector:hover h3,.project-selector:has(button:focus-visible) h3 { opacity:1; transform:translateX(7px); }
   .project-entry.is-active .project-selector i { background:currentColor; transform:scale(1.35); }
@@ -144,6 +144,7 @@ const projects = [
   @keyframes project-phone-arrival { from { opacity:0; transform:translate3d(13%,13%,0) rotate(10deg) scale(.9); } to { opacity:1; transform:rotate(5deg); } }
   @keyframes project-card-arrival { from { opacity:0; transform:translate3d(0,22px,0) rotate(-14deg) scale(.82); } to { opacity:1; transform:rotate(-8deg); } }
   @media (max-width:480px) { .project-entry{padding-block:38px}.project-selector{grid-template-columns:28px 1fr;gap:10px}.project-mobile-visual{height:390px;margin-inline:calc(var(--container-padding) * -.3)} }
+  @media (max-width:360px) { .projects-heading h2 { font-size:2.9rem; } }
   @media (prefers-reduced-motion:reduce) { .project-selector h3,.project-selector i,.project-copy,.project-panel,.project-copy a,.project-stage-frame { transition:none; }.project-stage-frame{opacity:1;clip-path:none;transform:none}.project-stage-frame::before,.project-mobile-visual::after{display:none}.project-panel{transform:none;}.project-panel.is-active{clip-path:none;}.projects.is-in-view .project-panel.is-active :global(.project-art),.projects.is-in-view .project-panel.is-active :global(.browser-frame),.projects.is-in-view .project-panel.is-active :global(.favorita-sheet),.projects.is-in-view .project-panel.is-active :global(.phone-frame),.projects.is-in-view .project-panel.is-active :global(.brand-card),html.motion-ready .project-mobile-visual.is-visible :global(.project-art),html.motion-ready .project-mobile-visual.is-visible :global(.browser-frame),html.motion-ready .project-mobile-visual.is-visible :global(.favorita-sheet),html.motion-ready .project-mobile-visual.is-visible :global(.phone-frame),html.motion-ready .project-mobile-visual.is-visible :global(.brand-card){animation:none;} }
 </style>
 

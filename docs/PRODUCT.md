@@ -80,6 +80,8 @@ La tipografía display es Bricolage Grotesque y la tipografía de texto e interf
 
 El sistema visual utiliza líneas finas, divisores, punto central, símbolo de línea más punto, marcos, espacio negativo y composiciones editoriales. Se amplía con planos superpuestos, papeles, retículas, rutas, nodos y pequeñas interfaces abstractas que representan la relación entre marca, comunicación y tecnología.
 
+El símbolo oficial es un monograma construido a partir de **S + e + punto**. Funciona como firma, avatar y favicon, y convive con el nombre visible **Sael Estudio** mientras la marca consolida reconocimiento. En interfaces pequeñas puede utilizarse una firma compacta, siempre manteniendo el nombre disponible visual o accesiblemente según el contexto.
+
 ## Dirección: Editorial con impacto
 
 El nivel de impacto visual buscado es alto pero sofisticado. La web debe sorprender por dirección de arte, composición, interacción y atención al detalle, no por acumulación de efectos. La tecnología debe sostener la experiencia sin competir con Sael como protagonista.

@@ -1,5 +1,10 @@
 ---
 import ArrowIcon from "./ArrowIcon.astro";
+import BrandMonogram from "./BrandMonogram.astro";
+import { createWhatsAppUrl, GENERAL_WHATSAPP_MESSAGE, PROJECT_WHATSAPP_MESSAGE } from "../config/contact";
+
+const generalWhatsAppUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
+const projectWhatsAppUrl = createWhatsAppUrl(PROJECT_WHATSAPP_MESSAGE);
 
 const navigation = [
   { label: "Inicio", href: "#inicio" },
@@ -15,14 +20,15 @@ const navigation = [
   <div class="scroll-progress" aria-hidden="true"></div>
   <div class="header-shell container">
     <a class="brand" href="#inicio" aria-label="Ir al inicio de Sael Estudio">
-      <span>Sael</span><i></i><small>Estudio</small>
+      <BrandMonogram class="brand-symbol" />
+      <span>Sael</span><i aria-hidden="true"></i><small>Estudio</small>
     </a>
 
     <nav class="desktop-navigation" aria-label="Navegación principal">
       <ul>{navigation.slice(1, 5).map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
     </nav>
 
-    <a class="header-contact" href="#contacto">Hablemos <ArrowIcon /></a>
+    <a class="header-contact" href={generalWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Hablemos por WhatsApp (abre en una pestaña nueva)">Hablemos <ArrowIcon /></a>
 
     <details id="mobile-menu" class="mobile-menu">
       <summary aria-label="Abrir menú de navegación"><span>Menú</span><i aria-hidden="true"></i></summary>
@@ -36,7 +42,7 @@ const navigation = [
           </ul>
         </nav>
         <p>Diseño, comunicación y tecnología para construir la solución correcta.</p>
-        <a class="menu-contact" href="#contacto">Iniciar un proyecto <ArrowIcon /></a>
+        <a class="menu-contact" href={projectWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Iniciar un proyecto por WhatsApp (abre en una pestaña nueva)">Iniciar un proyecto <ArrowIcon /></a>
       </div>
     </details>
   </div>
@@ -49,14 +55,15 @@ const navigation = [
   .scroll-progress { position: absolute; inset: auto 0 0; height: 2px; background: var(--color-moss); transform: scaleX(0); transform-origin: left; }
   @supports (animation-timeline:scroll()) { .scroll-progress { animation:progress linear both; animation-timeline:scroll(root block); } }
   @keyframes progress { to { transform:scaleX(1); } }
-  .brand { position:relative; z-index:3; justify-self:start; display:inline-flex; align-items:center; gap:9px; margin-left:-12px; padding:7px 12px; border-radius:999px; background:rgba(243,239,231,.72); backdrop-filter:blur(12px); font-family:var(--font-heading); }
+  .brand { position:relative; z-index:3; justify-self:start; display:inline-flex; align-items:center; gap:8px; margin-left:-12px; padding:6px 12px 6px 9px; border-radius:999px; background:rgba(243,239,231,.72); backdrop-filter:blur(12px); font-family:var(--font-heading); }
+  .brand :global(.brand-symbol) { width:34px; height:auto; flex:none; color:var(--color-moss); --monogram-dot-color:var(--color-olive); }
   .brand > span { font-size: 1.85rem; font-weight: 650; letter-spacing: -.065em; }
   .brand i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
   .brand small { font-family: var(--font-body); font-size: var(--font-size-meta); font-weight: 500; }
   .desktop-navigation ul { display: flex; gap: 8px; margin: 0; padding: 5px; border: 1px solid rgba(44,46,38,.2); border-radius: 999px; background:rgba(243,239,231,.72); backdrop-filter:blur(12px); list-style: none; }
   .desktop-navigation a { display: block; padding: 8px 16px; border-radius: 999px; font-size: var(--font-size-ui); font-weight: 500; transition: background-color var(--transition-normal), color var(--transition-normal); }
   .desktop-navigation a:hover, .desktop-navigation a:focus-visible { background: var(--color-espresso); color: var(--color-cream); }
-  .header-contact { justify-self: end; display: inline-flex; align-items: center; gap: 24px; min-height: 42px; padding: 0 16px 0 19px; border: 1px solid currentColor; border-radius: 999px; background:rgba(243,239,231,.72); backdrop-filter:blur(12px); font-size: var(--font-size-ui); font-weight: 600; transition: background-color var(--transition-normal), color var(--transition-normal), transform var(--transition-normal); }
+  .header-contact { justify-self: end; display: inline-flex; align-items: center; gap: 24px; min-height: 44px; padding: 0 16px 0 19px; border: 1px solid currentColor; border-radius: 999px; background:rgba(243,239,231,.72); backdrop-filter:blur(12px); font-size: var(--font-size-ui); font-weight: 600; transition: background-color var(--transition-normal), color var(--transition-normal), transform var(--transition-normal); }
   .header-contact:hover { background: var(--color-espresso); color: var(--color-cream); transform: translateY(-2px); }
   .mobile-menu { display: none; justify-self: end; }
   .mobile-menu summary { position: relative; z-index: 2; min-width: 100px; min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 15px; border: 1px solid currentColor; border-radius: 999px; cursor: pointer; list-style: none; font-size: var(--font-size-ui); font-weight: 600; }
@@ -78,8 +85,10 @@ const navigation = [
   .menu-contact { position:relative; z-index:1; align-self:end; display:inline-flex; align-items:center; gap:26px; min-height:46px; padding:0 18px; border:1px solid rgba(243,239,231,.5); border-radius:999px; font-size:var(--font-size-ui); font-weight:600; }
   .site-header:has(.mobile-menu[open]) { color:var(--color-cream); background:transparent; box-shadow:none; backdrop-filter:none; }
   .site-header:has(.mobile-menu[open]) .brand { background:transparent; backdrop-filter:none; }
+  .site-header:has(.mobile-menu[open]) .brand :global(.brand-symbol) { color:var(--color-cream); --monogram-dot-color:var(--color-stone); }
   @media (max-width:900px) { .header-shell { grid-template-columns:1fr auto; } .desktop-navigation,.header-contact { display:none; } .mobile-menu { display:block; } }
   @media (max-width:600px) { .brand > span { font-size:1.7rem; } .mobile-menu-panel { grid-template-columns:1fr; grid-template-rows:1fr auto auto; gap:24px; } .mobile-menu-panel nav a { grid-template-columns:38px 1fr; font-size:clamp(3.2rem,15vw,4.6rem); } .menu-orbit { right:-40vw; bottom:-10vw; width:100vw; } .mobile-menu-panel > p { display:none; } .menu-contact { justify-self:start; } }
+  @media (max-width:360px) { .brand { gap:7px; padding-right:10px; } .brand :global(.brand-symbol) { width:30px; } .brand i,.brand small { display:none; } }
 </style>
 
 <script>
@@ -91,10 +100,12 @@ const navigation = [
   updateHeader();
   if (mobileMenu) {
     const summary = mobileMenu.querySelector<HTMLElement>("summary");
-    const links = Array.from(mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href^='#']"));
+    const internalLinks = Array.from(mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href^='#']"));
+    const focusableLinks = Array.from(mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href]"));
+    const menuContact = mobileMenu.querySelector<HTMLAnchorElement>(".menu-contact");
     const sync = () => { document.body.classList.toggle("menu-open",mobileMenu.open); summary?.setAttribute("aria-label",mobileMenu.open ? "Cerrar menú de navegación" : "Abrir menú de navegación"); };
     const close = (restore=false) => { mobileMenu.open=false; sync(); if (restore) summary?.focus(); };
-    links.forEach((link) =>
+    internalLinks.forEach((link) =>
       link.addEventListener("click", (event) => {
         const targetId = link.hash.slice(1);
         const target = document.getElementById(targetId);
@@ -112,12 +123,13 @@ const navigation = [
         });
       }),
     );
+    menuContact?.addEventListener("click", () => close());
     mobileMenu.addEventListener("toggle",sync);
     document.addEventListener("keydown",event=>{
       if (!mobileMenu.open) return;
       if (event.key==="Escape") { event.preventDefault(); close(true); return; }
-      if (event.key!=="Tab" || !summary || links.length===0) return;
-      const last=links.at(-1);
+      if (event.key!=="Tab" || !summary || focusableLinks.length===0) return;
+      const last=focusableLinks.at(-1);
       if (event.shiftKey && document.activeElement===summary) { event.preventDefault(); last?.focus(); }
       else if (!event.shiftKey && document.activeElement===last) { event.preventDefault(); summary.focus(); }
     });

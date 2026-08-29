@@ -48,13 +48,7 @@ const services = [
                 {service.capabilities.map((capability) => <li>{capability}</li>)}
               </ul>
               {service.note && <p class="service-note">{service.note}</p>}
-              {whatsappUrl ? (
-                <a class="service-cta" href={whatsappUrl} target="_blank" rel="noreferrer">Pedir presupuesto <ArrowIcon /></a>
-              ) : (
-                <button class="service-cta is-pending" type="button" aria-disabled="true" title="Disponible cuando incorporemos el WhatsApp oficial">
-                  Pedir presupuesto <ArrowIcon /><span>WhatsApp próximamente</span>
-                </button>
-              )}
+              <a class="service-cta" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Pedir presupuesto para ${service.title} por WhatsApp (abre en una pestaña nueva)`}>Pedir presupuesto <ArrowIcon /></a>
             </div>
           </div>
         </article>
@@ -98,9 +92,6 @@ const services = [
   .service-note { margin:22px 0 0; padding:16px 0 0 20px; border-top:1px solid rgba(243,239,231,.17); color:rgba(243,239,231,.75); font-size:.9rem; line-height:1.55; }
   .service-cta { display:inline-flex; align-items:center; justify-content:space-between; gap:28px; min-width:210px; min-height:52px; margin-top:clamp(30px,4vw,48px); padding:0 18px 0 21px; border:1px solid var(--color-cream); border-radius:999px; background:transparent; color:var(--color-cream); font-size:var(--font-size-ui); font-weight:600; cursor:pointer; transition:background-color var(--transition-normal),color var(--transition-normal),transform var(--transition-normal); }
   .service-cta:hover,.service-cta:focus-visible { background:var(--color-cream); color:var(--color-espresso); transform:translateY(-3px); }
-  .service-cta.is-pending { position:relative; cursor:not-allowed; opacity:.72; }
-  .service-cta.is-pending:hover { background:transparent; color:var(--color-cream); transform:none; }
-  .service-cta > span { position:absolute; top:calc(100% + 8px); left:20px; color:rgba(243,239,231,.62); font-size:.7rem; font-weight:500; white-space:nowrap; }
   @media (max-width:1000px) { .service-chapter-inner{grid-template-columns:minmax(330px,1fr) minmax(310px,.82fr);column-gap:55px}.service-visual{max-width:500px}.service-chapter{min-height:auto} }
   @media (max-width:860px) { .services-heading{grid-template-columns:1fr;gap:38px}.service-chapter-inner,.service-chapter:nth-child(even) .service-chapter-inner{grid-template-columns:1fr;grid-template-areas:"heading" "visual" "body";row-gap:40px;padding-block:82px}.service-heading-copy,.service-body{width:100%;max-width:650px}.service-visual{width:min(74vw,500px);aspect-ratio:1.08;clip-path:inset(5% 7% 5% 7%)}.service-visual::before{width:18%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent)}.service-chapter.is-current .service-visual{clip-path:inset(0);transform:none;animation:service-mobile-frame-arrival 1050ms var(--ease-out) both}.service-chapter.is-current .service-visual :global(img){transform:none;animation:service-mobile-image-arrival 1250ms var(--ease-out) 70ms both} }
   @media (max-width:560px) { .services{padding-top:96px}.services-heading{padding-bottom:78px}.service-chapter-inner,.service-chapter:nth-child(even) .service-chapter-inner{row-gap:32px;padding-block:64px}.service-visual{width:min(80vw,310px);aspect-ratio:1}.service-heading-copy h3{max-width:350px}.service-number{margin-bottom:20px}.service-lead{margin-top:0}.service-cta{width:100%;margin-top:36px}.service-note{padding-left:16px} }
