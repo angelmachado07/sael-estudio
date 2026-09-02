@@ -1,54 +1,78 @@
 # Roadmap
 
-El roadmap expresa dirección y prioridad, no una promesa de alcance o fecha. Las ideas futuras no son requisitos actuales.
+El roadmap expresa prioridad y secuencia. El lanzamiento oficial sucede cuando la web aprobada, el SEO técnico y la integración inicial con Instagram estén listos.
 
-## Fase 0 — Base técnica
+## Fase 0 — Base actual
 
 - [x] Landing inicial.
-- [x] Responsive inicial.
-- [x] Menú mobile.
+- [x] Responsive y menú mobile.
 - [x] Identidad visual inicial.
-- [x] Auditoría técnica.
-- [x] `AGENTS.md` específico del repositorio.
+- [x] Creative Refresh v1.
+- [x] Proyectos seleccionados.
+- [x] Contactos reales.
 - [x] Documentación base.
 
-## Fase 1 — Creative Refresh
+## Fase 1 — Definición v2
 
-Próximos objetivos:
+- [x] Actualizar `PRODUCT.md`.
+- [x] Crear `DESIGN.md`.
+- [x] Actualizar `DECISIONS.md`.
+- [x] Crear spec v2.
+- [x] Actualizar arquitectura y roadmap.
 
-- [x] Revisar y rediseñar el Hero.
-- [x] Mejorar el aprovechamiento del viewport.
-- [x] Elevar visualmente la presentación de Servicios.
-- [x] Introducir un sistema de motion coherente.
-- [x] Crear al menos un momento visual memorable durante el recorrido.
-- [x] Mejorar las transiciones entre secciones.
-- [x] Explorar el uso de imágenes, mockups y otros assets.
-- [x] Incorporar una selección curada y escalable de proyectos reales.
-- [x] Mantener responsive y accesibilidad durante la evolución visual.
-- [x] Resolver los enlaces reales de contacto.
-- [ ] Corregir los problemas técnicos detectados en la auditoría que interfieran con la experiencia.
+## Fase 2 — Preservación y desarrollo
 
-La definición de soluciones visuales y animaciones concretas corresponde a la spec **Creative Refresh v1** y a su etapa de exploración.
+- [x] Preservar versión actual en `archive/sael-version-01`.
+- [x] Crear etiqueta de versión 01.
+- [x] Crear rama `feat/redesign-v2`.
+- [ ] Configurar o verificar Preview de Vercel.
+- [ ] Implementar Instrument Serif + Manrope.
+- [ ] Implementar Hero variable y medallón.
+- [ ] Implementar morph de marca y Header unificado.
+- [ ] Implementar continuidad, escenas y motion.
+- [ ] Actualizar Servicios y Presencia digital inicial.
+- [ ] Actualizar Footer.
 
-## Fase 2 — Pulido
+## Fase 3 — Arquitectura de servicios
 
-- [ ] Completar SEO técnico y social.
-- [ ] Realizar una revisión integral de accesibilidad.
-- [ ] Revisar y optimizar performance.
-- [ ] Optimizar fuentes y assets.
-- [ ] Realizar revisión cross-device.
-- [ ] Aplicar polish final al sistema de motion.
-- [ ] Incorporar contenido real definitivo.
+- [ ] Crear página general de servicios.
+- [ ] Crear página de Desarrollo digital.
+- [ ] Crear página de Identidad de marca.
+- [ ] Crear página de UX/UI y comunicación visual.
+- [ ] Crear página de Acompañamiento digital.
+- [ ] Actualizar navegación y enlaces internos.
+- [ ] Verificar copy único y responsive.
 
-## Futuro / ideas no comprometidas
+## Fase 4 — SEO y calidad
 
-Las siguientes posibilidades no forman parte del alcance actual:
+- [ ] Aplicar correcciones del análisis SEO previo.
+- [ ] Crear metadata única, canonical y Open Graph.
+- [ ] Crear imagen social.
+- [ ] Validar headings y schema.
+- [ ] Crear sitemap y `robots.txt`.
+- [ ] Revisar accesibilidad.
+- [ ] Optimizar fuentes, assets y rendimiento.
+- [ ] Revisar cross-device y reduced motion.
+- [ ] Verificar Preview final.
 
-- páginas individuales de servicios;
-- páginas individuales de proyectos o casos;
-- archivo de portfolio completo;
-- testimonios;
-- contenido editorial;
-- nuevas páginas.
+## Fase 5 — Instagram y lanzamiento
 
-Cada idea deberá evaluarse y definirse explícitamente antes de convertirse en requisito.
+- [ ] Adaptar el sistema visual a Instagram.
+- [ ] Actualizar bio, servicios y destacadas.
+- [ ] Preparar publicaciones iniciales y fijadas.
+- [ ] Coordinar enlaces y mensajes con la web.
+- [ ] Aprobar web e Instagram.
+- [ ] Fusionar a `main`.
+- [ ] Verificar producción.
+- [ ] Configurar Search Console.
+- [ ] Enviar sitemap y solicitar indexación.
+- [ ] Lanzar oficialmente Sael.
+
+## Después del lanzamiento
+
+1. Casos de estudio más completos.
+2. Posible formulario de diagnóstico.
+3. Versión en portugués.
+4. Versión en inglés.
+5. Revisión de la necesidad de selector de tema.
+6. Ampliación orgánica del portfolio.

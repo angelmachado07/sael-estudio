@@ -134,3 +134,73 @@ Este documento registra decisiones relativamente estables. Las tareas y priorida
 - **Decisión:** adoptar el monograma construido a partir de S, e y punto como símbolo oficial de Sael Estudio.
 - **Contexto:** la marca necesita una firma gráfica propia y reconocible que pueda funcionar desde la navegación hasta avatares y favicon sin depender únicamente del nombre compuesto.
 - **Consecuencia:** el monograma se usa como firma, avatar y favicon dentro de la paleta vigente, y convive con el nombre visible “Sael Estudio” mientras se construye reconocimiento; en espacios mínimos puede recurrirse a una variante compacta con nombre accesible.
+
+## 20. Sael como estudio de diseño y tecnología para presencia digital integral
+
+- **Fecha:** 2026-09-02
+- **Decisión:** posicionar a Sael como estudio de diseño y tecnología capaz de resolver desde identidad y primeros canales hasta webs, aplicaciones y sistemas.
+- **Contexto:** la propuesta anterior comunicaba amplitud, pero no jerarquizaba con suficiente claridad la construcción de productos y soluciones digitales.
+- **Consecuencia:** la web, el SEO e Instagram deben comunicar necesidades puntuales y proyectos integrales sin presentar a Sael exclusivamente como agencia, estudio de branding o software factory.
+
+## 21. Cuatro servicios reorganizados y presencia digital inicial como modalidad
+
+- **Fecha:** 2026-09-02
+- **Decisión:** organizar la oferta en Web, apps y software; Identidad y estrategia de marca; UX/UI y comunicación visual; y Acompañamiento creativo y digital. Presencia digital inicial se comunica dentro de Identidad y Acompañamiento, sin crear un quinto servicio.
+- **Contexto:** Sael necesita atender desde emprendimientos que comienzan hasta organizaciones con necesidades técnicas complejas.
+- **Consecuencia:** actualizar copy, navegación, páginas de servicios, SEO e Instagram con los mismos nombres y jerarquía.
+
+## 22. Instrument Serif y Manrope como sistema tipográfico
+
+- **Fecha:** 2026-09-02
+- **Decisión:** utilizar Instrument Serif como display y Manrope como texto e interfaz, alojadas localmente.
+- **Contexto:** el sistema Bricolage Grotesque + Figtree no dialoga suficientemente con el monograma ni con la nueva narrativa editorial y tecnológica.
+- **Consecuencia:** esta decisión reemplaza la decisión 15. Actualizar variables, carga de fuentes, jerarquía y documentación; verificar caracteres españoles y rendimiento.
+
+## 23. Hero variable y medallón del monograma
+
+- **Fecha:** 2026-09-02
+- **Decisión:** reemplazar el campo circular adaptativo por un Hero con “Diseñamos y desarrollamos”, conceptos variables y un medallón 2.5D basado en el monograma.
+- **Contexto:** el círculo actual genera impacto por escala, pero no expresa una identidad suficientemente propia.
+- **Consecuencia:** esta decisión reemplaza la decisión 16. Priorizar CSS, SVG y JavaScript nativo; no introducir 3D pesado sin justificación y aprobación.
+
+## 24. Continuidad narrativa y escenas cromáticas dirigidas
+
+- **Fecha:** 2026-09-02
+- **Decisión:** construir continuidad entre secciones mediante elementos persistentes, fondos graduales, superposición y movimiento controlado. Usar escenas claras y oscuras sin selector de tema en el lanzamiento.
+- **Contexto:** la experiencia debe sentirse como un recorrido único y no como bloques apilados.
+- **Consecuencia:** diseñar y verificar transiciones, contraste, responsive y reduced motion como sistema global.
+
+## 25. Páginas de servicios antes del lanzamiento
+
+- **Fecha:** 2026-09-02
+- **Decisión:** incorporar una página general y cuatro páginas específicas de servicios antes del lanzamiento oficial.
+- **Contexto:** la Home debe atraer y presentar; las páginas interiores deben explicar, convertir y crear entradas orgánicas sin sobrecargar la portada.
+- **Consecuencia:** la arquitectura deja de ser de una sola ruta. Cada página requiere contenido único, metadata, canonical, enlaces internos y presencia en sitemap.
+
+## 26. Español en el lanzamiento e idiomas futuros
+
+- **Fecha:** 2026-09-02
+- **Decisión:** lanzar la mejor versión posible en español. Portugués e inglés quedan como metas futuras.
+- **Contexto:** traducir correctamente también implica copy, layout, metadata, hreflang y mantenimiento.
+- **Consecuencia:** no mostrar selector ni rutas incompletas. Mantener componentes tolerantes a longitudes variables y textos desacoplados de scripts cuando sea razonable.
+
+## 27. Preservación de versión 01 y desarrollo en rama de rediseño
+
+- **Fecha:** 2026-09-02
+- **Decisión:** preservar el estado anterior mediante `archive/sael-version-01` y una etiqueta versionada; desarrollar la v2 en una rama de feature y revisarla con Preview antes de fusionar a `main`.
+- **Contexto:** `main` alimenta producción en Vercel y no debe publicar estados intermedios.
+- **Consecuencia:** no implementar directamente en `main`, no fusionar ni desplegar a producción sin aprobación final.
+
+## 28. Integración con Instagram como requisito de lanzamiento
+
+- **Fecha:** 2026-09-02
+- **Decisión:** adaptar el sistema visual, posicionamiento y servicios aprobados a Instagram antes del lanzamiento oficial.
+- **Contexto:** web e Instagram funcionarán como un único sistema comercial de captación.
+- **Consecuencia:** corregir bio, publicaciones, destacadas, tipografía y narrativa después de estabilizar la dirección visual web.
+
+## 29. Navegación unificada y footer mediante íconos
+
+- **Fecha:** 2026-09-02
+- **Decisión:** la navegación se integra con el Hero arriba y se convierte en una única cápsula al bajar. El footer muestra Instagram, WhatsApp y correo mediante íconos accesibles.
+- **Contexto:** los controles actuales se perciben separados y el cierre puede simplificarse.
+- **Consecuencia:** conservar claridad, nombres accesibles, foco, áreas táctiles y CTA previo al footer.
