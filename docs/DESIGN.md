@@ -75,7 +75,7 @@ Texto de apoyo:
 
 > Desde una identidad y sus primeros canales hasta una web, una app o un sistema completo. Construimos contigo la solución que tu proyecto necesita.
 
-CTA principal: `Contanos tu proyecto`.  
+CTA principal: `Contanos tu proyecto`.
 CTA secundario: `Ver proyectos`.
 
 ### Comportamiento

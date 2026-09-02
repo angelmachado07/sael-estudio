@@ -26,33 +26,33 @@ El roadmap expresa prioridad y secuencia. El lanzamiento oficial sucede cuando l
 - [x] Crear etiqueta de versión 01.
 - [x] Crear rama `feat/redesign-v2`.
 - [ ] Configurar o verificar Preview de Vercel.
-- [ ] Implementar Instrument Serif + Manrope.
-- [ ] Implementar Hero variable y medallón.
-- [ ] Implementar morph de marca y Header unificado.
-- [ ] Implementar continuidad, escenas y motion.
-- [ ] Actualizar Servicios y Presencia digital inicial.
-- [ ] Actualizar Footer.
+- [x] Implementar Instrument Serif + Manrope.
+- [x] Implementar Hero variable y medallón.
+- [x] Implementar morph de marca y Header unificado.
+- [x] Implementar continuidad, escenas y motion.
+- [x] Actualizar Servicios y Presencia digital inicial.
+- [x] Actualizar Footer.
 
 ## Fase 3 — Arquitectura de servicios
 
-- [ ] Crear página general de servicios.
-- [ ] Crear página de Desarrollo digital.
-- [ ] Crear página de Identidad de marca.
-- [ ] Crear página de UX/UI y comunicación visual.
-- [ ] Crear página de Acompañamiento digital.
-- [ ] Actualizar navegación y enlaces internos.
-- [ ] Verificar copy único y responsive.
+- [x] Crear página general de servicios.
+- [x] Crear página de Desarrollo digital.
+- [x] Crear página de Identidad de marca.
+- [x] Crear página de UX/UI y comunicación visual.
+- [x] Crear página de Acompañamiento digital.
+- [x] Actualizar navegación y enlaces internos.
+- [x] Verificar copy único y responsive.
 
 ## Fase 4 — SEO y calidad
 
-- [ ] Aplicar correcciones del análisis SEO previo.
-- [ ] Crear metadata única, canonical y Open Graph.
-- [ ] Crear imagen social.
-- [ ] Validar headings y schema.
-- [ ] Crear sitemap y `robots.txt`.
-- [ ] Revisar accesibilidad.
-- [ ] Optimizar fuentes, assets y rendimiento.
-- [ ] Revisar cross-device y reduced motion.
+- [x] Aplicar correcciones del análisis SEO previo.
+- [x] Crear metadata única, canonical y Open Graph.
+- [x] Crear imagen social.
+- [x] Validar headings y schema.
+- [x] Crear sitemap y `robots.txt`.
+- [x] Revisar accesibilidad.
+- [x] Optimizar fuentes, assets y rendimiento.
+- [x] Revisar cross-device y reduced motion.
 - [ ] Verificar Preview final.
 
 ## Fase 5 — Instagram y lanzamiento
