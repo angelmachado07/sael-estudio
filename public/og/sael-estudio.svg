@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Sael Estudio</title>
+  <desc id="desc">Diseño, marca y tecnología en Uruguay</desc>
+  <rect width="1200" height="630" fill="#F3EFE7"/>
+  <circle cx="1060" cy="50" r="390" fill="#D8D2C4" opacity=".58"/>
+  <path d="M0 498C269 408 459 568 721 466c178-69 263-205 479-197v361H0Z" fill="#6B745C" opacity=".16"/>
+  <g transform="translate(800 116)">
+    <circle cx="166" cy="166" r="166" fill="#4F5A45"/>
+    <circle cx="166" cy="166" r="145" fill="none" stroke="#F3EFE7" stroke-opacity=".35"/>
+    <text x="166" y="206" fill="#F3EFE7" font-family="Georgia,serif" font-size="126" font-style="italic" text-anchor="middle">Se</text>
+    <circle cx="252" cy="213" r="8" fill="#D8D2C4"/>
+  </g>
+  <text x="92" y="235" fill="#2C2E26" font-family="Georgia,serif" font-size="120" font-style="italic">Sael Estudio</text>
+  <line x1="96" y1="285" x2="536" y2="285" stroke="#6B745C"/>
+  <text x="96" y="343" fill="#4F5A45" font-family="Arial,sans-serif" font-size="23" font-weight="600" letter-spacing="3">DISEÑO · MARCA · TECNOLOGÍA</text>
+  <text x="96" y="409" fill="#2C2E26" font-family="Arial,sans-serif" font-size="27">Ideas claras. Formas propias. Soluciones útiles.</text>
+  <text x="96" y="532" fill="#6B745C" font-family="Arial,sans-serif" font-size="19" letter-spacing="2">URUGUAY · SAELestudio.com.uy</text>
+</svg>

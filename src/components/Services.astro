@@ -1,54 +1,75 @@
 ---
 import { Image } from "astro:assets";
 import ArrowIcon from "./ArrowIcon.astro";
+import webSoftware from "../assets/services/web-software.png";
 import identidadMarca from "../assets/services/identidad-marca.png";
 import disenoComunicacion from "../assets/services/diseno-comunicacion.png";
-import webSoftware from "../assets/services/web-software.png";
 import acompanamiento from "../assets/services/acompanamiento.png";
-import { createWhatsAppUrl } from "../config/contact";
+import { services, servicePath } from "../config/site";
 
-const services = [
-  { title: "Identidad y marca", lead: "Una presencia que se reconoce.", description: "Definimos la dirección visual de la marca y construimos un sistema capaz de sostenerla en el tiempo. Identidad, aplicaciones y lineamientos trabajan juntos para darle coherencia, personalidad y espacio para crecer.", capabilities: ["Identidad visual", "Sistemas de marca", "Aplicaciones"], message: "Hola, quiero consultar por un proyecto de identidad y marca.", image: identidadMarca },
-  { title: "Diseño y comunicación", lead: "Ideas que encuentran su forma.", description: "Convertimos mensajes, campañas y contenidos en piezas claras y consistentes. Diseñamos recursos digitales e impresos que ayudan a comunicar mejor y mantienen una presencia cuidada en cada punto de contacto.", capabilities: ["Piezas y campañas", "Contenido visual", "Materiales de marca"], message: "Hola, quiero consultar por diseño y comunicación.", image: disenoComunicacion },
-  { title: "Web, apps y software", lead: "De una presencia profesional a una solución a medida.", description: "Creamos landing pages, webs institucionales y portfolios para profesionales, estudios y pequeños negocios; también aplicaciones, sistemas internos y software a medida. Cuando el proyecto lo necesita, integramos estructura SEO, Google Business y Maps para construir una presencia digital coherente y mejor preparada para ser encontrada.", capabilities: ["Webs y portfolios", "Apps y sistemas", "SEO y presencia en Google"], note: "Una presencia profesional completa puede reunir identidad, web, portfolio, contacto y visibilidad local para presentar el trabajo con seriedad y facilitar nuevas consultas.", message: "Hola, quiero consultar por una solución web o digital.", image: webSoftware },
-  { title: "Acompañamiento y soluciones", lead: "El equipo que el proyecto necesita.", description: "Acompañamos la puesta en marcha de proyectos que necesitan dirección, criterio y capacidad de ejecución. Ordenamos canales y prioridades, configuramos herramientas y coordinamos la implementación y el seguimiento; Google Business, presencia local, procesos o contactos se integran cuando aportan a la solución.", capabilities: ["Prioridades y canales", "Configuración e implementación", "Seguimiento adaptado"], message: "Hola, quiero consultar por acompañamiento y soluciones.", image: acompanamiento },
+const images = [webSoftware, identidadMarca, disenoComunicacion, acompanamiento];
+const homeCopy = [
+  {
+    lead: "De una primera web a una solución a medida.",
+    text: "Diseñamos y desarrollamos sitios web, aplicaciones, sistemas e integraciones alrededor de una necesidad concreta.",
+    capabilities: ["Sitios y portfolios", "Apps y sistemas", "Software a medida"],
+  },
+  {
+    lead: "Una marca clara para crecer con coherencia.",
+    text: "Definimos estrategia, concepto e identidad visual para construir una presencia reconocible en cada punto de contacto.",
+    capabilities: ["Estrategia", "Identidad visual", "Sistemas de marca"],
+    note: "Presencia digital inicial puede combinar esta base de identidad con los primeros canales del proyecto.",
+  },
+  {
+    lead: "Experiencias que se entienden y se recuerdan.",
+    text: "Ordenamos información, recorridos y mensajes para convertirlos en interfaces, prototipos y piezas visuales claras.",
+    capabilities: ["UX/UI", "Prototipos", "Comunicación visual"],
+  },
+  {
+    lead: "Dirección para ordenar, lanzar y evolucionar.",
+    text: "Articulamos prioridades, canales y herramientas para que la presencia digital avance como un sistema y no como tareas aisladas.",
+    capabilities: ["Dirección digital", "Canales y lanzamiento", "Evolución"],
+    note: "Presencia digital inicial acompaña a emprendimientos y profesionales que necesitan empezar con claridad.",
+  },
 ];
 ---
 
 <section id="servicios" class="services" aria-labelledby="services-title">
+  <div class="services-transition" aria-hidden="true"><span></span></div>
   <div class="container services-heading">
     <p class="section-label" data-reveal>Servicios</p>
     <div>
-      <h2 id="services-title" data-reveal="mask">Una necesidad.<br />Cuatro formas de avanzar.</h2>
-      <p class="services-intro" data-reveal>Marca, comunicación y tecnología articuladas para resolver lo que cada proyecto necesita.</p>
+      <h2 id="services-title" data-reveal="mask">Una necesidad.<br /><em>Cuatro caminos.</em></h2>
+      <p class="services-intro" data-reveal>Trabajamos tanto en necesidades puntuales como en proyectos integrales, adaptando el alcance a la etapa y los objetivos de cada cliente.</p>
+      <a class="services-all" href="/servicios/">Explorar todos los servicios <ArrowIcon /></a>
     </div>
   </div>
 
   <div class="service-chapters">
     {services.map((service, index) => {
-      const whatsappUrl = createWhatsAppUrl(service.message);
+      const copy = homeCopy[index];
       return (
         <article class="service-chapter" data-service-chapter>
           <div class="service-chapter-inner container">
             <div class="service-heading-copy" data-reveal>
-              <p class="service-number">Servicio / 0{index + 1}</p>
+              <p class="service-number">Servicio / {service.number}</p>
               <h3>{service.title}</h3>
             </div>
 
-            <div class="service-visual">
-              <span class="service-visual-index" aria-hidden="true">0{index + 1}</span>
-              <Image src={service.image} alt={`Representación visual de ${service.title}`} widths={[480, 720, 960]} sizes="(max-width: 860px) calc(100vw - 40px), 48vw" format="webp" quality={84} loading="lazy" />
-              <span class="service-visual-line" aria-hidden="true"></span>
+            <div class="service-visual" aria-hidden="true">
+              <span class="service-visual-index">{service.number}</span>
+              <Image src={images[index]} alt="" widths={[480, 720, 960]} sizes="(max-width: 860px) calc(100vw - 40px), 46vw" format="webp" quality={82} loading="lazy" />
+              <span class="service-visual-line"></span>
             </div>
 
             <div class="service-body" data-reveal>
-              <p class="service-lead">{service.lead}</p>
-              <p class="service-description">{service.description}</p>
-              <ul class="service-capabilities" aria-label={`Capacidades de ${service.title}`}>
-                {service.capabilities.map((capability) => <li>{capability}</li>)}
+              <p class="service-lead">{copy.lead}</p>
+              <p class="service-description">{copy.text}</p>
+              <ul class="service-capabilities" aria-label={`Qué puede incluir ${service.title}`}>
+                {copy.capabilities.map((capability) => <li>{capability}</li>)}
               </ul>
-              {service.note && <p class="service-note">{service.note}</p>}
-              <a class="service-cta" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Pedir presupuesto para ${service.title} por WhatsApp (abre en una pestaña nueva)`}>Pedir presupuesto <ArrowIcon /></a>
+              {copy.note && <p class="service-note"><strong>Presencia digital inicial</strong>{copy.note.replace("Presencia digital inicial", "")}</p>}
+              <a class="service-cta" href={servicePath(service.slug)}>Conocer el servicio <ArrowIcon /></a>
             </div>
           </div>
         </article>
@@ -59,99 +80,55 @@ const services = [
 
 <style>
   .services { position:relative; z-index:4; padding-top:clamp(110px,12vw,180px); overflow:clip; background:var(--color-espresso); color:var(--color-cream); }
-  .services-heading { display:grid; grid-template-columns:.32fr 1fr; gap:clamp(60px,8vw,130px); padding-bottom:clamp(88px,11vw,160px); }
-  .services .section-label { color:rgba(243,239,231,.76); }
-  .services-heading h2 { margin:0; max-width:970px; font-size:var(--font-size-section-title); font-weight:500; line-height:.84; letter-spacing:-.062em; }
-  .services-intro { max-width:560px; margin:clamp(34px,4vw,58px) 0 0; color:rgba(243,239,231,.7); font-size:clamp(1rem,1.25vw,1.18rem); line-height:1.65; }
-  .service-chapters { border-top:1px solid rgba(243,239,231,.2); }
-  .service-chapter { position:relative; display:flex; min-height:min(800px,90svh); border-bottom:1px solid rgba(243,239,231,.2); isolation:isolate; }
-  .service-chapter::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(115deg,rgba(243,239,231,.045),transparent 44%); opacity:0; transition:opacity 900ms ease; }
-  .service-chapter:nth-child(even)::before { background:linear-gradient(245deg,rgba(107,116,92,.18),transparent 48%); }
+  .services-transition { position:absolute; top:-1px; right:0; left:0; height:100px; overflow:hidden; transform:translateY(-98%); }
+  .services-transition::before { position:absolute; inset:55% -10% -80%; border-radius:50% 50% 0 0; background:var(--color-espresso); content:""; }
+  .services-transition span { position:absolute; top:50%; left:18%; width:10px; height:10px; border-radius:50%; background:var(--color-stone); }
+  .services-heading { display:grid; grid-template-columns:.3fr 1fr; gap:clamp(60px,8vw,130px); padding-bottom:clamp(88px,11vw,150px); }
+  .services .section-label { color:rgba(243,239,231,.72); }
+  .services-heading h2 { margin:0; max-width:930px; font-size:var(--font-size-section-title); font-weight:400; line-height:.83; letter-spacing:-.045em; }
+  .services-heading h2 em { color:var(--color-stone); font-weight:400; }
+  .services-intro { max-width:620px; margin:clamp(34px,4vw,58px) 0 0; color:rgba(243,239,231,.72); font-size:clamp(1rem,1.25vw,1.18rem); line-height:1.7; }
+  .services-all { display:inline-flex; align-items:center; gap:20px; min-height:44px; margin-top:25px; border-bottom:1px solid rgba(243,239,231,.45); font-size:.78rem; font-weight:650; }
+  .service-chapters { border-top:1px solid rgba(243,239,231,.18); }
+  .service-chapter { position:relative; display:flex; min-height:min(790px,92svh); border-bottom:1px solid rgba(243,239,231,.18); isolation:isolate; }
+  .service-chapter::before { position:absolute; inset:0; z-index:-1; background:linear-gradient(120deg,rgba(243,239,231,.045),transparent 45%); content:""; opacity:0; transition:opacity 800ms ease; }
+  .service-chapter:nth-child(even)::before { background:linear-gradient(245deg,rgba(107,116,92,.2),transparent 52%); }
   .service-chapter.is-current::before { opacity:1; }
-  .service-chapter-inner { display:grid; grid-template-columns:minmax(360px,.95fr) minmax(350px,.75fr); grid-template-areas:"visual heading" "visual body"; column-gap:clamp(64px,9vw,150px); align-items:center; padding-block:clamp(76px,8vw,120px); }
+  .service-chapter-inner { display:grid; grid-template-columns:minmax(360px,.92fr) minmax(350px,.78fr); grid-template-areas:"visual heading" "visual body"; column-gap:clamp(64px,9vw,145px); align-items:center; padding-block:clamp(72px,8vw,116px); }
   .service-chapter:nth-child(even) .service-chapter-inner { grid-template-areas:"heading visual" "body visual"; }
-  .service-heading-copy { grid-area:heading; align-self:end; max-width:560px; }
-  .service-body { grid-area:body; align-self:start; max-width:560px; }
-  .service-visual { grid-area:visual; position:relative; justify-self:center; width:min(100%,580px); overflow:hidden; aspect-ratio:1.08; border:1px solid rgba(243,239,231,.24); background:var(--color-cream); box-shadow:0 32px 80px rgba(0,0,0,.2); opacity:.72; clip-path:inset(4% 7% 4% 7%); transform:translate3d(0,18px,0) scale(.97); transform-origin:center; transition:transform 280ms cubic-bezier(.2,.7,.2,1),box-shadow 700ms ease,clip-path 1050ms var(--ease-in-out),opacity 650ms ease; will-change:transform; }
-  .service-chapter.is-current .service-visual { opacity:1; clip-path:inset(0); transform:translate3d(var(--visual-shift-x,0px),calc(-6px + var(--visual-shift-y,0px)),0) rotate(var(--visual-rotate,0deg)) scale(1.012); box-shadow:0 42px 100px rgba(0,0,0,.27); }
-  .service-visual::before { content:""; position:absolute; z-index:2; top:-25%; bottom:-25%; left:-35%; width:22%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent); pointer-events:none; transform:translateX(-250%) rotate(12deg); }
-  .service-chapter.is-current .service-visual::before { transform:translateX(720%) rotate(12deg); transition:transform 1450ms var(--ease-out) 180ms; }
-  .service-visual::after { content:""; position:absolute; inset:0; border:clamp(7px,1vw,13px) solid rgba(44,46,38,.08); pointer-events:none; }
-  .service-visual :global(img) { width:100%; height:100%; object-fit:contain; transform:scale(1.065); transition:transform 360ms cubic-bezier(.2,.7,.2,1),filter 700ms ease; will-change:transform; }
-  .service-chapter.is-current .service-visual :global(img) { transform:translate3d(var(--image-shift-x,0px),var(--image-shift-y,0px),0) scale(1.018); filter:saturate(1.03) contrast(1.01); }
-  .service-visual-index { position:absolute; z-index:2; top:20px; left:22px; display:grid; place-items:center; width:42px; aspect-ratio:1; border:1px solid rgba(44,46,38,.34); border-radius:50%; color:var(--color-espresso); font-size:var(--font-size-meta); background:rgba(243,239,231,.76); backdrop-filter:blur(8px); }
-  .service-visual-line { position:absolute; z-index:2; right:22px; bottom:22px; width:clamp(70px,10vw,150px); height:1px; background:var(--color-moss); transform:scaleX(.35); transform-origin:right; transition:transform 1100ms var(--ease-out); }
-  .service-visual-line::before { content:""; position:absolute; left:0; top:-4px; width:9px; height:9px; border:1px solid var(--color-moss); border-radius:50%; background:var(--color-cream); }
+  .service-heading-copy { grid-area:heading; align-self:end; max-width:590px; }
+  .service-body { grid-area:body; align-self:start; max-width:570px; }
+  .service-number { margin:0 0 clamp(24px,3vw,40px); color:rgba(243,239,231,.55); font-size:.68rem; font-weight:650; letter-spacing:.12em; text-transform:uppercase; }
+  .service-heading-copy h3 { margin:0; font-size:var(--font-size-feature-title); font-weight:400; line-height:.88; letter-spacing:-.045em; }
+  .service-visual { grid-area:visual; position:relative; justify-self:center; width:min(100%,570px); overflow:hidden; aspect-ratio:1.05; border:1px solid rgba(243,239,231,.22); background:var(--color-cream); box-shadow:0 32px 80px rgba(0,0,0,.22); opacity:.72; clip-path:inset(5% 7%); transform:translateY(22px) scale(.97); transition:transform 800ms var(--ease-out),clip-path 1000ms var(--ease-in-out),opacity 600ms ease; }
+  .service-chapter.is-current .service-visual { opacity:1; clip-path:inset(0); transform:translateY(-5px); }
+  .service-visual :global(img) { width:100%; height:100%; object-fit:contain; transform:scale(1.06); transition:transform 1100ms var(--ease-out); }
+  .service-chapter.is-current .service-visual :global(img) { transform:scale(1.015); }
+  .service-visual-index { position:absolute; z-index:2; top:20px; left:22px; display:grid; place-items:center; width:42px; aspect-ratio:1; border:1px solid rgba(44,46,38,.3); border-radius:50%; background:rgba(243,239,231,.82); color:var(--color-espresso); font-size:.68rem; }
+  .service-visual-line { position:absolute; z-index:2; right:22px; bottom:22px; width:30%; height:1px; background:var(--color-moss); transform:scaleX(.3); transform-origin:right; transition:transform 900ms var(--ease-out); }
   .service-chapter.is-current .service-visual-line { transform:scaleX(1); }
-  .service-number { margin:0 0 clamp(26px,3vw,44px); color:rgba(243,239,231,.56); font-size:var(--font-size-meta); letter-spacing:.05em; }
-  .service-heading-copy h3 { margin:0; font-size:var(--font-size-feature-title); font-weight:500; line-height:.9; letter-spacing:-.058em; }
-  .service-lead { margin:clamp(28px,3.4vw,48px) 0 12px; font-size:clamp(1.15rem,1.5vw,1.45rem); font-weight:600; line-height:1.3; }
-  .service-description { margin:0; color:rgba(243,239,231,.72); font-size:clamp(.98rem,1.08vw,1.08rem); line-height:1.68; }
-  .service-capabilities { display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 0; padding:0; list-style:none; }
-  .service-capabilities li { padding:7px 11px; border:1px solid rgba(243,239,231,.22); border-radius:999px; color:rgba(243,239,231,.82); font-size:.76rem; font-weight:600; line-height:1.2; }
-  .service-note { margin:22px 0 0; padding:16px 0 0 20px; border-top:1px solid rgba(243,239,231,.17); color:rgba(243,239,231,.75); font-size:.9rem; line-height:1.55; }
-  .service-cta { display:inline-flex; align-items:center; justify-content:space-between; gap:28px; min-width:210px; min-height:52px; margin-top:clamp(30px,4vw,48px); padding:0 18px 0 21px; border:1px solid var(--color-cream); border-radius:999px; background:transparent; color:var(--color-cream); font-size:var(--font-size-ui); font-weight:600; cursor:pointer; transition:background-color var(--transition-normal),color var(--transition-normal),transform var(--transition-normal); }
+  .service-lead { margin:clamp(28px,3.4vw,46px) 0 12px; font-size:clamp(1.12rem,1.5vw,1.42rem); font-weight:650; line-height:1.35; }
+  .service-description { margin:0; color:rgba(243,239,231,.72); line-height:1.7; }
+  .service-capabilities { display:flex; flex-wrap:wrap; gap:8px; margin:25px 0 0; padding:0; list-style:none; }
+  .service-capabilities li { padding:7px 11px; border:1px solid rgba(243,239,231,.2); border-radius:999px; color:rgba(243,239,231,.82); font-size:.72rem; font-weight:600; }
+  .service-note { margin:22px 0 0; padding:17px 0 0 20px; border-top:1px solid rgba(243,239,231,.16); color:rgba(243,239,231,.7); font-size:.88rem; line-height:1.6; }
+  .service-note strong { display:block; margin-bottom:5px; color:var(--color-cream); }
+  .service-cta { display:inline-flex; align-items:center; justify-content:space-between; gap:28px; min-height:50px; margin-top:32px; padding:0 18px 0 20px; border:1px solid var(--color-cream); border-radius:999px; font-size:.78rem; font-weight:650; transition:background var(--transition-normal),color var(--transition-normal),transform var(--transition-normal); }
   .service-cta:hover,.service-cta:focus-visible { background:var(--color-cream); color:var(--color-espresso); transform:translateY(-3px); }
-  @media (max-width:1000px) { .service-chapter-inner{grid-template-columns:minmax(330px,1fr) minmax(310px,.82fr);column-gap:55px}.service-visual{max-width:500px}.service-chapter{min-height:auto} }
-  @media (max-width:860px) { .services-heading{grid-template-columns:1fr;gap:38px}.service-chapter-inner,.service-chapter:nth-child(even) .service-chapter-inner{grid-template-columns:1fr;grid-template-areas:"heading" "visual" "body";row-gap:40px;padding-block:82px}.service-heading-copy,.service-body{width:100%;max-width:650px}.service-visual{width:min(74vw,500px);aspect-ratio:1.08;clip-path:inset(5% 7% 5% 7%)}.service-visual::before{width:18%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent)}.service-chapter.is-current .service-visual{clip-path:inset(0);transform:none;animation:service-mobile-frame-arrival 1050ms var(--ease-out) both}.service-chapter.is-current .service-visual :global(img){transform:none;animation:service-mobile-image-arrival 1250ms var(--ease-out) 70ms both} }
-  @media (max-width:560px) { .services{padding-top:96px}.services-heading{padding-bottom:78px}.service-chapter-inner,.service-chapter:nth-child(even) .service-chapter-inner{row-gap:32px;padding-block:64px}.service-visual{width:min(80vw,310px);aspect-ratio:1}.service-heading-copy h3{max-width:350px}.service-number{margin-bottom:20px}.service-lead{margin-top:0}.service-cta{width:100%;margin-top:36px}.service-note{padding-left:16px} }
-  @keyframes service-mobile-frame-arrival { from { opacity:.35; transform:translate3d(0,30px,0) scale(.955); } to { opacity:1; transform:none; } }
-  @keyframes service-mobile-image-arrival { from { filter:saturate(.84); transform:translate3d(0,20px,0) scale(1.105); } to { filter:saturate(1.03) contrast(1.01); transform:none; } }
-  @media (prefers-reduced-motion:reduce) { .service-chapter::before,.service-visual,.service-visual::before,.service-visual :global(img),.service-visual-line,.service-cta{transition:none}.service-visual{clip-path:none}.service-visual::before{display:none}.service-chapter.is-current .service-visual{transform:none;animation:none}.service-visual :global(img),.service-chapter.is-current .service-visual :global(img){transform:none;animation:none} }
+  @media(max-width:900px){.services-heading{grid-template-columns:1fr;gap:36px}.service-chapter{min-height:auto}.service-chapter-inner,.service-chapter:nth-child(even) .service-chapter-inner{grid-template-columns:1fr;grid-template-areas:"heading" "visual" "body";row-gap:36px;padding-block:78px}.service-heading-copy,.service-body{max-width:660px}.service-visual{width:min(76vw,520px)}.service-lead{margin-top:0}}
+  @media(max-width:560px){.services{padding-top:96px}.services-heading{padding-bottom:74px}.service-chapter-inner,.service-chapter:nth-child(even) .service-chapter-inner{row-gap:28px;padding-block:58px}.service-visual{width:min(82vw,330px);aspect-ratio:1}.service-cta{width:100%}}
+  @media(prefers-reduced-motion:reduce){.service-chapter::before,.service-visual,.service-visual :global(img),.service-visual-line{transition:none}.service-visual{opacity:1;clip-path:none;transform:none}.service-visual :global(img){transform:none}}
 </style>
 
 <script>
-  const chapters = Array.from(document.querySelectorAll<HTMLElement>("[data-service-chapter]"));
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (reducedMotion.matches || !("IntersectionObserver" in window)) {
-    chapters.forEach((chapter) => chapter.classList.add("is-current"));
+  const serviceChapters = Array.from(document.querySelectorAll<HTMLElement>("[data-service-chapter]"));
+  const serviceReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (serviceReducedMotion.matches || !("IntersectionObserver" in window)) {
+    serviceChapters.forEach((chapter) => chapter.classList.add("is-current"));
   } else {
-    const chapterObserver = new IntersectionObserver((entries) => {
+    const serviceObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => entry.target.classList.toggle("is-current", entry.isIntersecting));
-    }, { rootMargin: "-18% 0px -18%", threshold: .18 });
-    chapters.forEach((chapter) => chapterObserver.observe(chapter));
-
-    chapters.forEach((chapter) => {
-      const visual = chapter.querySelector<HTMLElement>(".service-visual");
-      if (!visual) return;
-
-      let bounds: DOMRect | null = null;
-      let pointerFrame = 0;
-      let nextX = 0;
-      let nextY = 0;
-
-      visual.addEventListener("pointerenter", (event) => {
-        if (window.innerWidth <= 860 || event.pointerType === "touch") return;
-        bounds = visual.getBoundingClientRect();
-      });
-
-      visual.addEventListener("pointermove", (event) => {
-        if (window.innerWidth <= 860 || event.pointerType === "touch") return;
-        bounds ??= visual.getBoundingClientRect();
-        nextX = (event.clientX - bounds.left) / bounds.width - .5;
-        nextY = (event.clientY - bounds.top) / bounds.height - .5;
-        if (pointerFrame) return;
-
-        pointerFrame = window.requestAnimationFrame(() => {
-          visual.style.setProperty("--visual-shift-x", `${(nextX * 10).toFixed(2)}px`);
-          visual.style.setProperty("--visual-shift-y", `${(nextY * 8).toFixed(2)}px`);
-          visual.style.setProperty("--visual-rotate", `${(nextX * .8).toFixed(2)}deg`);
-          visual.style.setProperty("--image-shift-x", `${(nextX * -12).toFixed(2)}px`);
-          visual.style.setProperty("--image-shift-y", `${(nextY * -10).toFixed(2)}px`);
-          pointerFrame = 0;
-        });
-      });
-
-      visual.addEventListener("pointerleave", () => {
-        bounds = null;
-        if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
-        pointerFrame = 0;
-        visual.style.removeProperty("--visual-shift-x");
-        visual.style.removeProperty("--visual-shift-y");
-        visual.style.removeProperty("--visual-rotate");
-        visual.style.removeProperty("--image-shift-x");
-        visual.style.removeProperty("--image-shift-y");
-      });
-    });
+    }, { rootMargin: "-16% 0px -16%", threshold: .12 });
+    serviceChapters.forEach((chapter) => serviceObserver.observe(chapter));
   }
 </script>

@@ -6,9 +6,9 @@ const creativeFlowCopies = Array.from({ length: 4 });
 <section id="sobre-sael" class="about" aria-labelledby="about-title">
   <div class="container about-shell">
     <div class="about-intro">
-      <p class="section-label" data-reveal>Descubrir Sael</p>
+      <p class="section-label" data-reveal>El estudio</p>
       <div class="about-principle">
-        <p>No partimos de una receta fija. Escuchamos el contexto y construimos la respuesta que cada proyecto necesita.</p>
+        <p>Sael integra marca, diseño y tecnología en un mismo proceso. Escuchamos la necesidad, definimos la solución adecuada y acompañamos su implementación.</p>
         <div class="about-mark" aria-hidden="true">
           <svg viewBox="0 0 320 138" focusable="false">
             <path class="route-base" d="M18 70H92C126 70 126 25 160 25H302" />
@@ -23,8 +23,8 @@ const creativeFlowCopies = Array.from({ length: 4 });
     </div>
 
     <h2 id="about-title">
-      <span data-reveal="mask">No trabajamos</span>
-      <span data-reveal="mask" style="--reveal-delay:70ms">desde una fórmula.</span>
+      <span data-reveal="mask">Una idea puede</span>
+      <span data-reveal="mask" style="--reveal-delay:70ms">tomar muchas formas.</span>
     </h2>
   </div>
 
@@ -52,11 +52,11 @@ const creativeFlowCopies = Array.from({ length: 4 });
   .about-mark .route-active { stroke:var(--color-stone); stroke-width:2; stroke-dasharray:340; stroke-dashoffset:340; animation:route-draw 4.8s var(--ease-in-out) infinite; }
   .about-mark circle { fill:var(--color-moss); stroke:rgba(243,239,231,.58); stroke-width:1.5; }
   .about-mark .route-end { fill:var(--color-stone); stroke:var(--color-stone); }
-  h2 { min-width:0; margin:0; font-size:var(--font-size-section-title); font-weight:500; line-height:.84; letter-spacing:-.062em; }
+  h2 { min-width:0; margin:0; font-size:var(--font-size-section-title); font-weight:400; line-height:.84; letter-spacing:-.045em; }
   h2 span { display:block; width:max-content; max-width:100%; padding-bottom:.12em; margin-bottom:-.12em; }
   .creative-flow { width:100%; margin-top:clamp(58px,8vw,110px); overflow:hidden; border-block:1px solid rgba(79,90,69,.22); background:var(--color-cream); color:var(--color-moss); }
   .creative-flow-track { width:max-content; display:flex; align-items:center; gap:clamp(12px,1.5vw,22px); padding-block:clamp(10px,1.25vw,14px); animation:creative-flow 26s linear infinite; will-change:transform; }
-  .creative-flow-set { display:flex; align-items:center; flex:none; gap:clamp(12px,1.5vw,22px); font-family:var(--font-heading); font-size:clamp(1.4rem,2.2vw,2.4rem); font-weight:500; line-height:1; letter-spacing:-.035em; white-space:nowrap; }
+  .creative-flow-set { display:flex; align-items:center; flex:none; gap:clamp(12px,1.5vw,22px); font-family:var(--font-heading); font-size:clamp(1.6rem,2.5vw,2.7rem); font-style:italic; font-weight:400; line-height:1; letter-spacing:-.025em; white-space:nowrap; }
   .creative-flow-set i { color:var(--color-olive); font-family:var(--font-body); font-size:.55em; font-style:normal; }
   @keyframes creative-flow { from { transform:translate3d(-25%,0,0); } to { transform:translate3d(0,0,0); } }
   @keyframes route-draw { 45%,100% { stroke-dashoffset:0; } }

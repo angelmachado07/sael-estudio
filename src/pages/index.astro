@@ -9,11 +9,25 @@ import Process from "../components/Process.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import MotionController from "../components/MotionController.astro";
+import { SITE_URL } from "../config/site";
+
+const schema = {
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/#webpage`,
+  url: `${SITE_URL}/`,
+  name: "Diseño web, identidad y software en Uruguay | Sael Estudio",
+  description:
+    "Estudio de diseño y tecnología en Uruguay. Creamos identidades, sitios web, aplicaciones y soluciones digitales para marcas, profesionales y negocios.",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${SITE_URL}/#organization` },
+  inLanguage: "es-UY",
+};
 ---
 
 <BaseLayout
-  title="Sael Estudio"
-  description="Diseño y soluciones para que marcas y proyectos puedan verse, comunicar y funcionar mejor."
+  title="Diseño web, identidad y software en Uruguay | Sael Estudio"
+  description="Estudio de diseño y tecnología en Uruguay. Creamos identidades, sitios web, aplicaciones y soluciones digitales para marcas, profesionales y negocios."
+  schema={schema}
 >
   <Header />
 

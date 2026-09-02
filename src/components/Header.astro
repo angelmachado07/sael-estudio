@@ -1,139 +1,178 @@
 ---
 import ArrowIcon from "./ArrowIcon.astro";
 import BrandMonogram from "./BrandMonogram.astro";
-import { createWhatsAppUrl, GENERAL_WHATSAPP_MESSAGE, PROJECT_WHATSAPP_MESSAGE } from "../config/contact";
+import { createWhatsAppUrl, GENERAL_WHATSAPP_MESSAGE } from "../config/contact";
+import { services, servicePath } from "../config/site";
 
 const generalWhatsAppUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
-const projectWhatsAppUrl = createWhatsAppUrl(PROJECT_WHATSAPP_MESSAGE);
+const isHome = Astro.url.pathname === "/";
+const sectionHref = (hash: string) => `${isHome ? "" : "/"}${hash}`;
 
 const navigation = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Estudio", href: "#sobre-sael" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Estudio", href: sectionHref("#sobre-sael") },
+  { label: "Proyectos", href: sectionHref("#proyectos") },
+  { label: "Proceso", href: sectionHref("#proceso") },
 ];
 ---
 
-<header class="site-header" data-header>
-  <div class="scroll-progress" aria-hidden="true"></div>
+<header class:list={["site-header", { "is-inner": !isHome }]} data-header>
   <div class="header-shell container">
-    <a class="brand" href="#inicio" aria-label="Ir al inicio de Sael Estudio">
+    <a class="brand" href="/" aria-label="Ir al inicio de Sael Estudio">
       <BrandMonogram class="brand-symbol" />
-      <span>Sael</span><i aria-hidden="true"></i><small>Estudio</small>
+      <span class="brand-name">Sael</span><i aria-hidden="true"></i><small>Estudio</small>
     </a>
 
     <nav class="desktop-navigation" aria-label="Navegación principal">
-      <ul>{navigation.slice(1, 5).map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
+      <ul>
+        <li><a href={navigation[0].href}>{navigation[0].label}</a></li>
+        <li>
+          <details class="services-menu">
+            <summary>Servicios <span aria-hidden="true">+</span></summary>
+            <div class="services-popover">
+              <a href="/servicios/"><strong>Todos los servicios</strong><small>Una visión general</small></a>
+              {services.map((service) => (
+                <a href={servicePath(service.slug)} aria-current={Astro.url.pathname === servicePath(service.slug) ? "page" : undefined}>
+                  <span>{service.number}</span><strong>{service.shortTitle}</strong>
+                </a>
+              ))}
+            </div>
+          </details>
+        </li>
+        <li><a href={navigation[1].href}>{navigation[1].label}</a></li>
+        <li><a href={navigation[2].href}>{navigation[2].label}</a></li>
+      </ul>
     </nav>
 
-    <a class="header-contact" href={generalWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Hablemos por WhatsApp (abre en una pestaña nueva)">Hablemos <ArrowIcon /></a>
+    <a class="header-contact" href={generalWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Contanos tu proyecto por WhatsApp (abre en una pestaña nueva)">Contanos tu proyecto <ArrowIcon /></a>
 
     <details id="mobile-menu" class="mobile-menu">
       <summary aria-label="Abrir menú de navegación"><span>Menú</span><i aria-hidden="true"></i></summary>
       <div class="mobile-menu-panel">
-        <div class="menu-orbit" aria-hidden="true"></div>
         <nav aria-label="Navegación móvil">
-          <ul>
-            {navigation.map((item, index) => (
-              <li style={`--item-index:${index}`}><a href={item.href}><span>0{index + 1}</span>{item.label}</a></li>
-            ))}
+          <ul class="mobile-primary">
+            <li><a href="/"><span>01</span>Inicio</a></li>
+            <li><a href={sectionHref("#sobre-sael")}><span>02</span>Estudio</a></li>
+            <li><a href="/servicios/"><span>03</span>Servicios</a></li>
+            <li><a href={sectionHref("#proyectos")}><span>04</span>Proyectos</a></li>
+            <li><a href={sectionHref("#contacto")}><span>05</span>Contacto</a></li>
           </ul>
+          <div class="mobile-services" aria-label="Páginas de servicios">
+            {services.map((service) => <a href={servicePath(service.slug)}>{service.shortTitle}</a>)}
+          </div>
         </nav>
-        <p>Diseño, comunicación y tecnología para construir la solución correcta.</p>
-        <a class="menu-contact" href={projectWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Iniciar un proyecto por WhatsApp (abre en una pestaña nueva)">Iniciar un proyecto <ArrowIcon /></a>
+        <p>Diseño, marca y tecnología para construir y hacer crecer tu presencia digital.</p>
+        <a class="menu-contact" href={generalWhatsAppUrl} target="_blank" rel="noopener noreferrer">Contanos tu proyecto <ArrowIcon /></a>
       </div>
     </details>
   </div>
 </header>
 
 <style>
-  .site-header { position: fixed; inset: 0 0 auto; z-index: 100; height: var(--header-height); color: var(--color-espresso); transition: background-color 500ms var(--ease-out), color 500ms var(--ease-out), box-shadow 500ms var(--ease-out); }
-  .site-header.is-scrolled { background: rgba(243,239,231,.88); box-shadow: 0 1px rgba(44,46,38,.14); backdrop-filter: blur(18px); }
-  .header-shell { height: 100%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
-  .scroll-progress { position: absolute; inset: auto 0 0; height: 2px; background: var(--color-moss); transform: scaleX(0); transform-origin: left; }
-  @supports (animation-timeline:scroll()) { .scroll-progress { animation:progress linear both; animation-timeline:scroll(root block); } }
-  @keyframes progress { to { transform:scaleX(1); } }
-  .brand { position:relative; z-index:3; justify-self:start; display:inline-flex; align-items:center; gap:8px; margin-left:-12px; padding:6px 12px 6px 9px; border-radius:999px; background:rgba(243,239,231,.72); backdrop-filter:blur(12px); font-family:var(--font-heading); }
-  .brand :global(.brand-symbol) { width:34px; height:auto; flex:none; color:var(--color-moss); --monogram-dot-color:var(--color-olive); }
-  .brand > span { font-size: 1.85rem; font-weight: 650; letter-spacing: -.065em; }
-  .brand i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-  .brand small { font-family: var(--font-body); font-size: var(--font-size-meta); font-weight: 500; }
-  .desktop-navigation ul { display: flex; gap: 8px; margin: 0; padding: 5px; border: 1px solid rgba(44,46,38,.2); border-radius: 999px; background:rgba(243,239,231,.72); backdrop-filter:blur(12px); list-style: none; }
-  .desktop-navigation a { display: block; padding: 8px 16px; border-radius: 999px; font-size: var(--font-size-ui); font-weight: 500; transition: background-color var(--transition-normal), color var(--transition-normal); }
-  .desktop-navigation a:hover, .desktop-navigation a:focus-visible { background: var(--color-espresso); color: var(--color-cream); }
-  .header-contact { justify-self: end; display: inline-flex; align-items: center; gap: 24px; min-height: 44px; padding: 0 16px 0 19px; border: 1px solid currentColor; border-radius: 999px; background:rgba(243,239,231,.72); backdrop-filter:blur(12px); font-size: var(--font-size-ui); font-weight: 600; transition: background-color var(--transition-normal), color var(--transition-normal), transform var(--transition-normal); }
-  .header-contact:hover { background: var(--color-espresso); color: var(--color-cream); transform: translateY(-2px); }
-  .mobile-menu { display: none; justify-self: end; }
-  .mobile-menu summary { position: relative; z-index: 2; min-width: 100px; min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 15px; border: 1px solid currentColor; border-radius: 999px; cursor: pointer; list-style: none; font-size: var(--font-size-ui); font-weight: 600; }
+  .site-header { position:fixed; inset:0 0 auto; z-index:100; height:var(--header-height); padding-top:12px; color:var(--color-espresso); pointer-events:none; }
+  .header-shell { position:relative; height:62px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding-inline:16px; border:1px solid transparent; border-radius:999px; transition:width 700ms var(--ease-out),background-color 500ms ease,box-shadow 500ms ease,border-color 500ms ease; pointer-events:auto; }
+  .site-header.is-scrolled .header-shell,.site-header.is-inner .header-shell { width:min(calc(100% - (var(--container-padding) * 2)),1180px); border:1px solid rgba(44,46,38,.15); background:rgba(243,239,231,.92); box-shadow:0 14px 45px rgba(44,46,38,.11); backdrop-filter:blur(18px); }
+  .brand { position:relative; z-index:4; justify-self:start; display:inline-flex; align-items:center; gap:8px; min-height:44px; font-family:var(--font-heading); }
+  .brand :global(.brand-symbol) { width:32px; height:auto; color:var(--color-moss); --monogram-dot-color:var(--color-olive); }
+  .brand-name { font-size:1.9rem; line-height:1; }
+  .brand i { width:4px; height:4px; border-radius:50%; background:currentColor; }
+  .brand small { font-family:var(--font-body); font-size:.72rem; font-weight:600; }
+  .desktop-navigation>ul { display:flex; align-items:center; gap:2px; margin:0; padding:0; list-style:none; }
+  .desktop-navigation a,.services-menu summary { display:flex; align-items:center; gap:7px; min-height:42px; padding:0 14px; border-radius:999px; font-size:.78rem; font-weight:600; cursor:pointer; list-style:none; transition:background var(--transition-normal),color var(--transition-normal); }
+  .services-menu summary::-webkit-details-marker { display:none; }
+  .services-menu summary span { font-size:1rem; transition:transform var(--transition-normal); }
+  .services-menu[open] summary span { transform:rotate(45deg); }
+  .desktop-navigation a:hover,.desktop-navigation a:focus-visible,.services-menu summary:hover,.services-menu summary:focus-visible,.services-menu[open] summary { background:var(--color-espresso); color:var(--color-cream); }
+  .services-menu { position:relative; }
+  .services-popover { position:absolute; top:calc(100% + 12px); left:50%; width:330px; padding:10px; border:1px solid rgba(44,46,38,.15); border-radius:20px; background:var(--color-cream); box-shadow:0 24px 65px rgba(44,46,38,.18); transform:translateX(-50%); }
+  .services-popover a { display:grid; grid-template-columns:30px 1fr; min-height:50px; padding:8px 12px; border-radius:12px; }
+  .services-popover a:first-child { grid-template-columns:1fr; margin-bottom:6px; padding:13px 12px; border-bottom:1px solid rgba(44,46,38,.12); border-radius:12px 12px 5px 5px; }
+  .services-popover strong { font-family:var(--font-body); font-size:.78rem; font-weight:650; }
+  .services-popover small,.services-popover span { color:var(--color-olive); font-size:.66rem; }
+  .services-popover small { margin-top:3px; }
+  .header-contact { justify-self:end; display:inline-flex; align-items:center; gap:18px; min-height:44px; padding:0 15px 0 18px; border:1px solid currentColor; border-radius:999px; font-size:.76rem; font-weight:650; transition:background var(--transition-normal),color var(--transition-normal),transform var(--transition-normal); }
+  .header-contact:hover,.header-contact:focus-visible { background:var(--color-espresso); color:var(--color-cream); transform:translateY(-2px); }
+  .mobile-menu { display:none; justify-self:end; }
+  .mobile-menu summary { position:relative; z-index:3; min-width:96px; min-height:44px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:0 15px; border:1px solid currentColor; border-radius:999px; cursor:pointer; list-style:none; font-size:.78rem; font-weight:650; }
   .mobile-menu summary::-webkit-details-marker { display:none; }
-  .mobile-menu summary i { position: relative; width: 20px; height: 12px; }
-  .mobile-menu summary i::before, .mobile-menu summary i::after { content:""; position:absolute; left:0; width:20px; height:2px; background:currentColor; transform:translateZ(0) scaleY(.5); transform-origin:center; transition:top var(--transition-normal),transform var(--transition-normal); }
-  .mobile-menu summary i::before { top:3px; } .mobile-menu summary i::after { top:9px; }
-  .mobile-menu[open] summary i::before { top:6px; transform:rotate(45deg) scaleY(.5); } .mobile-menu[open] summary i::after { top:6px; transform:rotate(-45deg) scaleY(.5); }
+  .mobile-menu summary i { position:relative; width:18px; height:12px; }
+  .mobile-menu summary i::before,.mobile-menu summary i::after { position:absolute; left:0; width:18px; height:1px; background:currentColor; content:""; transition:top var(--transition-normal),transform var(--transition-normal); }
+  .mobile-menu summary i::before { top:3px; }.mobile-menu summary i::after { top:9px; }
+  .mobile-menu[open] summary i::before { top:6px; transform:rotate(45deg); }.mobile-menu[open] summary i::after { top:6px; transform:rotate(-45deg); }
   .mobile-menu:not([open]) .mobile-menu-panel { display:none; }
-  .mobile-menu-panel { position:fixed; inset:0; min-height:100dvh; display:grid; grid-template-columns:1fr auto; grid-template-rows:1fr auto; gap:40px; overflow-x:hidden; overflow-y:auto; padding:calc(var(--header-height) + 52px) var(--container-padding) 32px; background:var(--color-espresso); color:var(--color-cream); }
-  .mobile-menu-panel nav { position:relative; z-index:1; align-self:center; }
-  .mobile-menu-panel ul { margin:0; padding:0; list-style:none; }
-  .mobile-menu-panel li { border-bottom:1px solid rgba(243,239,231,.18); opacity:0; transform:translateY(28px); transition:opacity 500ms var(--ease-out) calc(var(--item-index)*55ms),transform 700ms var(--ease-out) calc(var(--item-index)*55ms); }
-  .mobile-menu[open] li { opacity:1; transform:none; }
-  .mobile-menu-panel nav a { display:grid; grid-template-columns:48px 1fr; align-items:baseline; padding-block:clamp(15px,2.4vh,25px); font-family:var(--font-heading); font-size:clamp(2.8rem,7vw,6.5rem); font-weight:500; line-height:.9; letter-spacing:-.055em; }
-  .mobile-menu-panel nav a span { font-family:var(--font-body); font-size:var(--font-size-meta); font-weight:500; opacity:.48; letter-spacing:0; }
-  .menu-orbit { position:absolute; right:-10vw; bottom:-34vw; width:55vw; aspect-ratio:1; border-radius:50%; background:var(--color-moss); filter:blur(.2px); }
-  .mobile-menu-panel > p { align-self:end; max-width:330px; margin:0; color:rgba(243,239,231,.48); font-size:var(--font-size-ui); line-height:1.6; }
-  .menu-contact { position:relative; z-index:1; align-self:end; display:inline-flex; align-items:center; gap:26px; min-height:46px; padding:0 18px; border:1px solid rgba(243,239,231,.5); border-radius:999px; font-size:var(--font-size-ui); font-weight:600; }
-  .site-header:has(.mobile-menu[open]) { color:var(--color-cream); background:transparent; box-shadow:none; backdrop-filter:none; }
-  .site-header:has(.mobile-menu[open]) .brand { background:transparent; backdrop-filter:none; }
+  .mobile-menu-panel { position:fixed; inset:0; min-height:100dvh; display:grid; grid-template-rows:1fr auto auto; gap:26px; overflow:auto; padding:calc(var(--header-height) + 46px) var(--container-padding) max(28px,env(safe-area-inset-bottom)); background:var(--color-espresso); color:var(--color-cream); }
+  .mobile-primary { margin:0; padding:0; list-style:none; }
+  .mobile-primary li { border-bottom:1px solid rgba(243,239,231,.16); }
+  .mobile-primary a { display:grid; grid-template-columns:38px 1fr; align-items:baseline; padding-block:clamp(13px,2.4vh,22px); font-family:var(--font-heading); font-size:clamp(3rem,12vw,5rem); line-height:.9; }
+  .mobile-primary span { font-family:var(--font-body); font-size:.68rem; opacity:.5; }
+  .mobile-services { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .mobile-services a { padding:9px 12px; border:1px solid rgba(243,239,231,.25); border-radius:999px; font-size:.72rem; }
+  .mobile-menu-panel>p { max-width:390px; margin:0; color:rgba(243,239,231,.62); font-size:.85rem; }
+  .menu-contact { width:max-content; display:inline-flex; align-items:center; gap:24px; min-height:46px; padding:0 17px; border:1px solid rgba(243,239,231,.6); border-radius:999px; font-size:.78rem; font-weight:650; }
+  .site-header:has(.mobile-menu[open]) { color:var(--color-cream); }
+  .site-header:has(.mobile-menu[open]) .header-shell { width:min(calc(100% - (var(--container-padding) * 2)),1180px); border-color:transparent; background:transparent; box-shadow:none; backdrop-filter:none; }
   .site-header:has(.mobile-menu[open]) .brand :global(.brand-symbol) { color:var(--color-cream); --monogram-dot-color:var(--color-stone); }
-  @media (max-width:900px) { .header-shell { grid-template-columns:1fr auto; } .desktop-navigation,.header-contact { display:none; } .mobile-menu { display:block; } }
-  @media (max-width:600px) { .brand > span { font-size:1.7rem; } .mobile-menu-panel { grid-template-columns:1fr; grid-template-rows:1fr auto auto; gap:24px; } .mobile-menu-panel nav a { grid-template-columns:38px 1fr; font-size:clamp(3.2rem,15vw,4.6rem); } .menu-orbit { right:-40vw; bottom:-10vw; width:100vw; } .mobile-menu-panel > p { display:none; } .menu-contact { justify-self:start; } }
-  @media (max-width:360px) { .brand { gap:7px; padding-right:10px; } .brand :global(.brand-symbol) { width:30px; } .brand i,.brand small { display:none; } }
+  @media(max-width:980px){.header-shell{grid-template-columns:1fr auto}.desktop-navigation,.header-contact{display:none}.mobile-menu{display:block}}
+  @media(max-width:520px){.site-header{padding-top:8px}.header-shell,.site-header.is-scrolled .header-shell,.site-header.is-inner .header-shell{height:58px;width:calc(100% - 24px)}.brand small,.brand>i{display:none}.brand-name{font-size:1.7rem}.mobile-menu-panel{padding-inline:20px}.mobile-primary a{font-size:clamp(2.7rem,13.5vw,4rem)}}
+  @media(prefers-reduced-motion:reduce){.header-shell,.services-menu summary span{transition:none}}
 </style>
 
 <script>
   const header = document.querySelector<HTMLElement>("[data-header]");
   const mobileMenu = document.querySelector<HTMLDetailsElement>("#mobile-menu");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 24);
-  window.addEventListener("scroll", updateHeader, { passive: true });
+  const desktopServices = document.querySelector<HTMLDetailsElement>(".services-menu");
+  let headerFrame = 0;
+  const updateHeader = () => {
+    header?.classList.toggle("is-scrolled", window.scrollY > 52);
+    headerFrame = 0;
+  };
+  const requestHeaderUpdate = () => {
+    if (headerFrame) return;
+    headerFrame = window.requestAnimationFrame(updateHeader);
+  };
+  window.addEventListener("scroll", requestHeaderUpdate, { passive: true });
   updateHeader();
+
+  desktopServices?.addEventListener("focusout", (event) => {
+    if (!desktopServices.contains(event.relatedTarget as Node)) desktopServices.open = false;
+  });
+  document.addEventListener("click", (event) => {
+    if (desktopServices?.open && !desktopServices.contains(event.target as Node)) desktopServices.open = false;
+  });
+
   if (mobileMenu) {
     const summary = mobileMenu.querySelector<HTMLElement>("summary");
-    const internalLinks = Array.from(mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href^='#']"));
-    const focusableLinks = Array.from(mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href]"));
-    const menuContact = mobileMenu.querySelector<HTMLAnchorElement>(".menu-contact");
-    const sync = () => { document.body.classList.toggle("menu-open",mobileMenu.open); summary?.setAttribute("aria-label",mobileMenu.open ? "Cerrar menú de navegación" : "Abrir menú de navegación"); };
-    const close = (restore=false) => { mobileMenu.open=false; sync(); if (restore) summary?.focus(); };
-    internalLinks.forEach((link) =>
-      link.addEventListener("click", (event) => {
-        const targetId = link.hash.slice(1);
-        const target = document.getElementById(targetId);
-
-        if (!target) return;
-
-        event.preventDefault();
-        close();
-        window.requestAnimationFrame(() => {
-          target.scrollIntoView({
-            behavior: reducedMotion.matches ? "auto" : "smooth",
-            block: "start",
-          });
-          window.history.replaceState(null, "", `#${targetId}`);
-        });
-      }),
-    );
-    menuContact?.addEventListener("click", () => close());
-    mobileMenu.addEventListener("toggle",sync);
-    document.addEventListener("keydown",event=>{
+    const links = Array.from(mobileMenu.querySelectorAll<HTMLAnchorElement>("a[href]"));
+    const sync = () => {
+      document.body.classList.toggle("menu-open", mobileMenu.open);
+      summary?.setAttribute("aria-label", mobileMenu.open ? "Cerrar menú de navegación" : "Abrir menú de navegación");
+    };
+    const close = (restore = false) => {
+      mobileMenu.open = false;
+      sync();
+      if (restore) summary?.focus();
+    };
+    links.forEach((link) => link.addEventListener("click", () => close()));
+    mobileMenu.addEventListener("toggle", sync);
+    document.addEventListener("keydown", (event) => {
       if (!mobileMenu.open) return;
-      if (event.key==="Escape") { event.preventDefault(); close(true); return; }
-      if (event.key!=="Tab" || !summary || focusableLinks.length===0) return;
-      const last=focusableLinks.at(-1);
-      if (event.shiftKey && document.activeElement===summary) { event.preventDefault(); last?.focus(); }
-      else if (!event.shiftKey && document.activeElement===last) { event.preventDefault(); summary.focus(); }
+      if (event.key === "Escape") {
+        event.preventDefault();
+        close(true);
+        return;
+      }
+      if (event.key !== "Tab" || !summary || links.length === 0) return;
+      const last = links.at(-1);
+      if (event.shiftKey && document.activeElement === summary) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        summary.focus();
+      }
     });
-    window.addEventListener("resize",()=>{ if (window.innerWidth>900 && mobileMenu.open) close(); });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 980 && mobileMenu.open) close();
+    });
     sync();
   }
 </script>
