@@ -1,0 +1,260 @@
+---
+import { Image } from "astro:assets";
+import webServiceImage from "../../assets/services/web-software.png";
+import ArrowIcon from "../ArrowIcon.astro";
+import PrototypeHeader from "./PrototypeHeader.astro";
+import PrototypeMedallion from "./PrototypeMedallion.astro";
+import { createWhatsAppUrl, PROJECT_WHATSAPP_MESSAGE } from "../../config/contact";
+
+const whatsappUrl = createWhatsAppUrl(PROJECT_WHATSAPP_MESSAGE);
+const rotatingPhrases = [
+  "sitios web.",
+  "aplicaciones.",
+  "identidades.",
+  "soluciones digitales.",
+];
+---
+
+<PrototypeHeader />
+
+<main id="main-content" class="prototype-v3" data-prototype-root tabindex="-1">
+  <section class="prototype-intro" data-prototype-intro aria-label="Entrada de Sael Estudio">
+    <div class="prototype-intro-stage">
+      <p class="prototype-intro-brand" data-prototype-intro-brand aria-label="Sael Estudio">
+        <span>Sael</span><i aria-hidden="true"></i><small>Estudio</small>
+      </p>
+      <p class="prototype-scroll-hint"><span aria-hidden="true"></span>Deslizá para descubrir</p>
+    </div>
+  </section>
+
+  <section class="prototype-hero" aria-labelledby="prototype-title">
+    <div class="prototype-hero-light" aria-hidden="true"></div>
+    <div class="prototype-hero-shell">
+      <div class="prototype-hero-copy">
+        <p class="prototype-kicker">Estudio de diseño y tecnología · Uruguay</p>
+        <h1 id="prototype-title" aria-label="Diseñamos y desarrollamos soluciones digitales.">
+          <span class="prototype-stable-line" aria-hidden="true">Diseñamos y desarrollamos</span>
+          <span class="prototype-variable-lines" data-prototype-phrases aria-hidden="true">
+            {rotatingPhrases.map((phrase, index) => (
+              <span class:list={["prototype-variable-phrase", { "is-active": index === rotatingPhrases.length - 1 }]} data-phrase-index={index}>{phrase}</span>
+            ))}
+          </span>
+        </h1>
+
+        <p class="prototype-description">
+          Desde una identidad y sus primeros canales hasta una web, una app o un sistema completo. Construimos contigo la solución que tu proyecto necesita.
+        </p>
+
+        <div class="prototype-actions">
+          <a class="prototype-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            Contanos tu proyecto <ArrowIcon />
+          </a>
+          <a class="prototype-secondary" href="/#proyectos">
+            Ver proyectos <ArrowIcon />
+          </a>
+        </div>
+      </div>
+
+      <div class="prototype-hero-object">
+        <PrototypeMedallion />
+      </div>
+    </div>
+  </section>
+
+  <section class="prototype-services-transition" aria-labelledby="prototype-services-title">
+    <div class="prototype-transition-line" aria-hidden="true"><span></span></div>
+    <div class="prototype-services-shell">
+      <div class="prototype-service-copy">
+        <p>Primer capítulo · 01</p>
+        <h2 id="prototype-services-title">Web, apps<br />y software</h2>
+        <strong>De una primera web a una solución a medida.</strong>
+        <a href="/servicios/desarrollo-digital/">Conocer el servicio <ArrowIcon /></a>
+      </div>
+      <div class="prototype-service-image">
+        <Image
+          src={webServiceImage}
+          alt="Composición visual de una solución web desarrollada por Sael Estudio"
+          widths={[520, 760, 980]}
+          sizes="(max-width: 780px) 88vw, 52vw"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+  @font-face {
+    font-family:"Bricolage Grotesque";
+    src:url("/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+    font-style:normal;
+    font-weight:200 800;
+    font-display:swap;
+  }
+
+  :global(body:has(.prototype-v3)) {
+    background:#f3efe7;
+    font-family:Manrope,Arial,sans-serif;
+  }
+
+  :global(body.prototype-menu-open) { overflow:hidden; }
+  .prototype-v3 { overflow:clip; background:#f3efe7; color:#2c2e26; }
+  .prototype-v3 :is(h1,h2,h3) { font-family:"Bricolage Grotesque",Arial,sans-serif; font-style:normal; }
+  .prototype-intro { position:relative; height:160svh; background:#f3efe7; }
+  .prototype-intro-stage { position:sticky; top:0; height:100svh; display:grid; place-items:center; overflow:hidden; padding:30px; }
+  .prototype-intro-stage::before { position:absolute; inset:8%; border-radius:50%; background:radial-gradient(circle,rgba(216,210,196,.33),transparent 68%); content:""; pointer-events:none; }
+  .prototype-intro-brand { position:relative; z-index:1; display:inline-flex; align-items:center; gap:.08em; margin:0; font:650 clamp(8rem,22vw,21rem)/.75 "Bricolage Grotesque",Arial,sans-serif; letter-spacing:-.075em; transform-origin:left top; will-change:transform,opacity; }
+  .prototype-intro-brand i { width:.055em; height:.055em; flex:none; border-radius:50%; background:#6b745c; }
+  .prototype-intro-brand small { align-self:flex-end; margin:0 0 .08em .08em; font:600 .18em/1 Manrope,Arial,sans-serif; letter-spacing:-.02em; }
+  .prototype-scroll-hint { position:absolute; bottom:max(26px,env(safe-area-inset-bottom)); left:50%; display:flex; align-items:center; gap:12px; margin:0; color:rgba(44,46,38,.6); font-size:.65rem; font-weight:650; letter-spacing:.07em; text-transform:uppercase; transform:translateX(-50%); }
+  .prototype-scroll-hint span { width:34px; height:1px; background:currentColor; transform-origin:left; animation:prototype-hint 1.8s ease-in-out infinite; }
+  .prototype-hero { position:relative; min-height:108svh; padding:clamp(120px,11vw,170px) 0 clamp(190px,18vw,260px); background:#f3efe7; }
+  .prototype-hero-light { position:absolute; top:6%; right:-15%; width:58vw; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(216,210,196,.62),rgba(243,239,231,0) 68%); pointer-events:none; }
+  .prototype-hero-shell { position:relative; z-index:1; width:min(calc(100% - 80px),1340px); display:grid; grid-template-columns:minmax(0,1.12fr) minmax(440px,.72fr); gap:clamp(50px,7vw,110px); align-items:center; margin-inline:auto; }
+  .prototype-hero-copy { min-width:0; }
+  .prototype-kicker { margin:0 0 32px; color:#4f5a45; font-size:.69rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .prototype-hero h1 { margin:0; font-weight:600; letter-spacing:-.065em; }
+  .prototype-stable-line { display:block; max-width:780px; font-size:clamp(2.9rem,4.6vw,5.1rem); line-height:.9; }
+  .prototype-variable-lines { position:relative; width:100%; min-width:0; display:grid; min-height:clamp(9.7rem,16vw,15.5rem); margin-top:18px; }
+  .prototype-variable-phrase { grid-area:1/1; align-self:start; max-width:890px; visibility:hidden; opacity:0; font-size:clamp(5.5rem,9.6vw,10.2rem); line-height:.78; transition:opacity 420ms ease,transform 620ms cubic-bezier(.16,1,.3,1); transform:translateY(.18em); }
+  .prototype-variable-phrase:last-child,.prototype-variable-lines.is-looping .prototype-variable-phrase.is-active { visibility:visible; opacity:1; transform:none; }
+  .prototype-variable-lines.is-looping .prototype-variable-phrase:last-child:not(.is-active) { visibility:hidden; opacity:0; transform:translateY(-.12em); }
+  .prototype-description { max-width:670px; margin:34px 0 0; font-size:clamp(1rem,1.2vw,1.16rem); line-height:1.74; }
+  .prototype-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:32px; }
+  .prototype-primary,.prototype-secondary { min-height:52px; display:inline-flex; align-items:center; justify-content:space-between; gap:28px; padding:0 20px; border:1px solid #2c2e26; border-radius:999px; font-size:.78rem; font-weight:700; transition:background 220ms ease,color 220ms ease,transform 220ms ease; }
+  .prototype-primary { background:#2c2e26; color:#f3efe7; }
+  .prototype-primary:hover,.prototype-primary:focus-visible { background:#4f5a45; border-color:#4f5a45; transform:translateY(-3px); }
+  .prototype-secondary:hover,.prototype-secondary:focus-visible { background:#2c2e26; color:#f3efe7; transform:translateY(-3px); }
+  .prototype-hero-object { display:grid; place-items:center; }
+  .prototype-services-transition { position:relative; z-index:2; min-height:100svh; padding:clamp(90px,10vw,145px) 0 clamp(120px,13vw,190px); background:#2c2e26; color:#f3efe7; }
+  .prototype-services-transition::before { position:absolute; top:-120px; left:-10%; width:120%; height:145px; border-radius:50% 50% 0 0/100% 100% 0 0; background:#2c2e26; content:""; }
+  .prototype-transition-line { position:absolute; z-index:2; top:-58px; left:8%; width:min(46vw,620px); height:1px; background:rgba(79,90,69,.45); }
+  .prototype-transition-line span { position:absolute; top:50%; right:0; width:9px; height:9px; border-radius:50%; background:#6b745c; transform:translate(50%,-50%); }
+  .prototype-services-shell { position:relative; z-index:1; width:min(calc(100% - 80px),1340px); display:grid; grid-template-columns:.64fr 1fr; gap:clamp(60px,9vw,140px); align-items:center; margin-inline:auto; }
+  .prototype-service-copy>p { margin:0 0 35px; color:#d8d2c4; font-size:.67rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .prototype-service-copy h2 { margin:0; font-size:clamp(4.5rem,7.5vw,8rem); font-weight:600; line-height:.78; letter-spacing:-.065em; }
+  .prototype-service-copy strong { display:block; max-width:430px; margin-top:34px; color:rgba(243,239,231,.75); font-size:clamp(1rem,1.3vw,1.18rem); line-height:1.55; }
+  .prototype-service-copy a { width:max-content; min-height:46px; display:inline-flex; align-items:center; gap:25px; margin-top:30px; border-bottom:1px solid currentColor; font-size:.76rem; font-weight:700; }
+  .prototype-service-image { overflow:hidden; background:#d8d2c4; box-shadow:0 32px 80px rgba(0,0,0,.24); transform:rotate(1.2deg); }
+  .prototype-service-image :global(img) { width:100%; height:auto; display:block; }
+
+  @keyframes prototype-hint { 0%,100%{transform:scaleX(.28);opacity:.45} 50%{transform:scaleX(1);opacity:1} }
+
+  @media(max-width:1050px){
+    .prototype-hero-shell{grid-template-columns:minmax(0,1fr) minmax(380px,.7fr);width:min(calc(100% - 48px),960px);gap:34px}
+    .prototype-services-shell{width:min(calc(100% - 48px),960px)}
+    .prototype-variable-lines{min-height:clamp(9rem,17vw,12.5rem)}
+  }
+
+  @media(max-width:800px){
+    .prototype-intro{height:138svh}
+    .prototype-intro-brand{font-size:clamp(6.3rem,23vw,10.5rem)}
+    .prototype-hero{min-height:auto;padding:120px 0 210px}
+    .prototype-hero-shell{grid-template-columns:1fr;width:min(calc(100% - 40px),720px);gap:55px}
+    .prototype-stable-line{font-size:clamp(2.8rem,8vw,4.5rem)}
+    .prototype-variable-lines{min-height:clamp(8.6rem,27vw,13.5rem)}
+    .prototype-variable-phrase{font-size:clamp(5.1rem,15vw,8rem)}
+    .prototype-hero-object{grid-row:2}
+    .prototype-services-transition::before{top:-92px;height:110px}
+    .prototype-transition-line{top:-42px;width:58vw}
+    .prototype-services-shell{grid-template-columns:1fr;width:min(calc(100% - 40px),720px);gap:58px}
+    .prototype-service-image{grid-row:1}
+  }
+
+  @media(max-width:520px){
+    .prototype-intro{height:126svh}
+    .prototype-intro-stage{padding-inline:16px}
+    .prototype-intro-brand{font-size:clamp(6.3rem,29vw,8.2rem);letter-spacing:-.08em}
+    .prototype-intro-brand small{font-size:.17em}
+    .prototype-scroll-hint{width:max-content;font-size:.58rem}
+    .prototype-hero{padding:100px 0 180px}
+    .prototype-hero-shell{width:calc(100% - 36px);gap:42px}
+    .prototype-kicker{margin-bottom:25px;font-size:.61rem}
+    .prototype-stable-line{font-size:clamp(2.6rem,12.5vw,3.5rem);line-height:.88}
+    .prototype-variable-lines{min-height:clamp(8.8rem,46vw,11.5rem);margin-top:14px}
+    .prototype-variable-phrase{font-size:clamp(3.45rem,15vw,4.3rem);line-height:.82}
+    .prototype-description{margin-top:27px;font-size:.98rem;line-height:1.68}
+    .prototype-actions{display:grid;grid-template-columns:1fr}
+    .prototype-primary,.prototype-secondary{width:100%}
+    .prototype-services-transition{padding:70px 0 120px}
+    .prototype-services-transition::before{top:-78px;height:96px}
+    .prototype-transition-line{top:-35px;left:9%;width:62vw}
+    .prototype-services-shell{width:calc(100% - 36px);gap:45px}
+    .prototype-service-copy h2{font-size:clamp(4rem,20vw,5.3rem)}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .prototype-scroll-hint span,.prototype-variable-phrase,.prototype-primary,.prototype-secondary{animation:none;transition:none}
+  }
+</style>
+
+<script>
+  const prototypeRoot = document.querySelector<HTMLElement>("[data-prototype-root]");
+  const intro = document.querySelector<HTMLElement>("[data-prototype-intro]");
+  const introBrand = document.querySelector<HTMLElement>("[data-prototype-intro-brand]");
+  const header = document.querySelector<HTMLElement>("[data-prototype-header]");
+  const headerBrand = document.querySelector<HTMLElement>("[data-prototype-header-brand]");
+  const phrases = document.querySelector<HTMLElement>("[data-prototype-phrases]");
+  const phraseItems = Array.from(document.querySelectorAll<HTMLElement>("[data-phrase-index]"));
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion:reduce)");
+
+  if (prototypeRoot) document.documentElement.classList.add("prototype-motion-ready");
+
+  let introFrame = 0;
+  let targetX = 0;
+  let targetY = 0;
+  let targetScale = .1;
+
+  const measureIntroTarget = () => {
+    if (!introBrand || !headerBrand) return;
+    const brandBounds = introBrand.getBoundingClientRect();
+    const targetBounds = headerBrand.getBoundingClientRect();
+    targetX = targetBounds.left - brandBounds.left;
+    targetY = targetBounds.top - brandBounds.top;
+    targetScale = Math.max(.06, Math.min(.2, targetBounds.width / brandBounds.width));
+  };
+
+  const renderIntro = () => {
+    if (!intro || !introBrand || !header) return;
+    const travel = Math.max(1, intro.offsetHeight - window.innerHeight);
+    const progress = Math.max(0, Math.min(1, window.scrollY / travel));
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const fade = Math.max(0, Math.min(1, (progress - .7) / .18));
+
+    if (!reducedMotion.matches) {
+      const scale = 1 - (1 - targetScale) * eased;
+      introBrand.style.transform = `translate3d(${(targetX * eased).toFixed(2)}px, ${(targetY * eased).toFixed(2)}px, 0) scale(${scale.toFixed(4)})`;
+      introBrand.style.opacity = `${(1 - fade).toFixed(3)}`;
+    } else {
+      introBrand.style.opacity = `${(1 - Math.max(0, Math.min(1, (progress - .78) / .12))).toFixed(3)}`;
+    }
+
+    header.dataset.visible = progress >= .72 ? "true" : "false";
+    introFrame = 0;
+  };
+
+  const requestIntroRender = () => {
+    if (introFrame) return;
+    introFrame = window.requestAnimationFrame(renderIntro);
+  };
+
+  if (intro && introBrand && header && headerBrand) {
+    measureIntroTarget();
+    renderIntro();
+    window.addEventListener("scroll", requestIntroRender, { passive:true });
+    window.addEventListener("resize", () => {
+      measureIntroTarget();
+      requestIntroRender();
+    });
+  }
+
+  if (phrases && phraseItems.length > 0 && !reducedMotion.matches) {
+    let activePhrase = phraseItems.length - 1;
+    phrases.classList.add("is-looping");
+    window.setInterval(() => {
+      phraseItems[activePhrase]?.classList.remove("is-active");
+      activePhrase = (activePhrase + 1) % phraseItems.length;
+      phraseItems[activePhrase]?.classList.add("is-active");
+    }, 2000);
+  }
+</script>

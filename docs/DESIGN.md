@@ -1,273 +1,236 @@
-# Dirección de diseño digital — Sael Estudio
+# Sael Estudio — sistema de diseño digital
 
-## Autoridad y alcance
+Versión: 3.0
+Estado: dirección aprobada para implementación progresiva
 
-Este documento define la dirección visual e interactiva de la web de Sael. `PRODUCT.md` gobierna producto, posicionamiento y contenido; `DESIGN.md` gobierna expresión visual, composición y movimiento; `SPECS.md` define comportamiento verificable.
+## 1. Autoridad y propósito
 
-Las referencias externas sirven para estudiar patrones. No deben copiarse literalmente ni prevalecer sobre este sistema.
+Este documento define la dirección visual y de interacción de la web de Sael Estudio. Tiene prioridad sobre reglas genéricas de diseño, recomendaciones automáticas y referencias externas. Taste Skill puede utilizarse como herramienta de auditoría, pero no puede sustituir estas decisiones.
 
-## Concepto
+La web debe funcionar como el primer producto demostrable de Sael: tiene que atraer, transmitir confianza, profesionalismo y cercanía, y demostrar capacidad real en diseño y tecnología.
 
-**Tecnología creativa con narrativa editorial.**
+## 2. Posicionamiento
 
-Sael combina diseño, marca y desarrollo. La web debe sentirse expresiva y contemporánea, con tipografía protagonista, continuidad durante el scroll y movimiento con identidad propia.
+Sael es un estudio de diseño, marca y tecnología. Puede resolver desde la presencia digital inicial de un pequeño emprendimiento hasta una web, una aplicación o un sistema a medida.
 
-Debe transmitir:
+Promesa breve:
 
-- confianza;
-- profesionalismo;
-- cercanía;
-- capacidad creativa;
-- capacidad tecnológica.
+> Diseño, marca y tecnología para construir una presencia digital completa.
 
-## Elementos fijos
+“Presencia digital inicial” es una modalidad dentro de identidad y acompañamiento. No es un quinto servicio.
 
-### Logo
+Orden comercial de servicios:
 
-El monograma oficial `S + e + punto` se conserva. Funciona como firma, avatar, favicon y objeto protagonista. El nombre Sael Estudio debe mantenerse visible o accesible cuando el contexto lo necesite.
+1. Web, apps y software.
+2. Identidad y estrategia de marca.
+3. UX/UI y comunicación visual.
+4. Acompañamiento creativo y digital.
+
+## 3. Elementos fijos
 
 ### Paleta
 
-- crema `#F3EFE7`;
-- piedra `#D8D2C4`;
-- oliva `#6B745C`;
-- musgo `#4F5A45`;
-- espresso `#2C2E26`.
+| Token | Valor | Función principal |
+|---|---|---|
+| Cream | `#f3efe7` | Fondo principal y superficies claras |
+| Stone | `#d8d2c4` | Profundidad, superficies secundarias |
+| Olive | `#6b745c` | Detalles, estados y acentos suaves |
+| Moss | `#4f5a45` | Marca, CTA y fondos protagonistas |
+| Espresso | `#2c2e26` | Texto y fondos oscuros |
 
-No incorporar colores saturados o acentos ajenos. Las variaciones de luz, sombra, transparencia y gradiente deben derivarse de esta paleta.
+No agregar nuevos colores de marca sin una decisión explícita.
 
-## Tipografía
+### Monograma
 
-- **Display:** Instrument Serif.
-- **Texto e interfaz:** Manrope.
+- Fuente única: PNG oficial “Se.”.
+- No redibujar, trazar automáticamente ni reconstruir con tipografía.
+- Se permite optimizar tamaño, crear transparencia o generar variantes técnicas si la geometría no cambia.
+- No repetirlo decorativamente en cada sección o ilustración.
+- Debe verse con claridad en navbar, hero y footer cuando corresponda.
 
-Instrument Serif se utiliza en palabras expresivas, títulos o contrastes editoriales. Manrope sostiene navegación, cuerpo, botones, labels y microcopy.
+## 4. Tipografía
 
-Las fuentes deben alojarse localmente, con formatos web modernos, subconjunto latino suficiente y `font-display` apropiado. Deben probarse tildes, signos españoles y longitudes reales.
+### Bricolage Grotesque
 
-No usar Instrument Serif en grandes bloques de lectura ni convertir todo el sitio en una composición serif. El contraste entre ambas fuentes es parte del sistema.
+Usar para:
 
-## Escala y composición
+- marca tipográfica;
+- `h1`, `h2`, `h3`;
+- cifras y frases protagonistas;
+- títulos de proyectos y servicios.
 
-- Tipografía de gran escala en momentos principales.
-- Contraste claro entre Hero, títulos de sección y contenido.
-- Composiciones asimétricas controladas.
-- Espacio negativo con tensión visual.
-- Superposiciones y elementos fuera de la grilla cuando tengan función narrativa.
-- Evitar grillas de tarjetas genéricas, glassmorphism, neón, partículas y apariencia SaaS.
+Pesos recomendados: 500–700. No utilizar itálicas falsas.
 
-## Hero
+### Manrope
 
-### Mensaje
+Usar para:
 
-Línea estable:
+- párrafos;
+- navegación;
+- botones;
+- etiquetas y metadata;
+- listas, FAQ y contenido funcional.
 
-> Diseñamos y desarrollamos
+Pesos recomendados: 400–700.
 
-Línea variable:
+Ambas fuentes deben servirse localmente en producción.
 
-- sitios web.
-- aplicaciones.
-- identidades.
-- soluciones digitales.
+## 5. Carácter visual
 
-Texto de apoyo:
+- Creativo y tecnológico, pero cálido.
+- Editorial y expresivo, sin parecer una plantilla de agencia.
+- Grandes cambios de escala con suficiente aire.
+- Profundidad 2.5D mediante capas, sombras, recortes y movimiento leve.
+- Evitar escenas 3D pesadas, estética futurista fría y decoración sin función.
 
-> Desde una identidad y sus primeros canales hasta una web, una app o un sistema completo. Construimos contigo la solución que tu proyecto necesita.
-
-CTA principal: `Contanos tu proyecto`.
-CTA secundario: `Ver proyectos`.
-
-### Comportamiento
-
-- La línea variable realiza una secuencia legible y termina en “soluciones digitales”.
-- La secuencia no se repite frenéticamente.
-- Con movimiento reducido se muestra una versión estática y completa o un estado final comprensible.
-- El contenido debe existir en HTML y no depender de JavaScript para ser indexable o legible.
-
-### Medallón
-
-El campo circular actual se reemplaza por un medallón o sello digital basado en el monograma.
-
-El objeto puede usar capas, relieve, borde, sombras tintadas, perspectiva y desplazamientos relativos. En desktop puede responder suavemente al cursor. En mobile debe simplificarse y conservar estabilidad.
-
-La primera implementación debe priorizar CSS, SVG y JavaScript nativo. No introducir Three.js, WebGL o un asset 3D pesado salvo que una prueba documentada demuestre que el resultado no puede lograrse con calidad suficiente.
-
-## Entrada de marca
-
-Al cargar, Sael o Sael Estudio aparece en gran escala como parte del Hero. Al comenzar el scroll, la marca se reduce e integra visualmente en la navegación.
-
-La transición no debe convertirse en splash screen, bloquear contenido o retrasar la interacción. La versión mobile puede usar una transición simplificada.
-
-Si se utiliza un clon visual para el morph, debe ser decorativo y no duplicar headings o enlaces en el árbol accesible.
-
-## Navegación
-
-- En la parte superior se integra con el Hero sin una caja dominante.
-- Después de un umbral de scroll, marca, navegación y CTA forman una única cápsula.
-- Desktop conserva marca a la izquierda, navegación al centro y CTA a la derecha.
-- Mobile conserva monograma/nombre y control de menú dentro de una unidad coherente.
-- Servicios puede desplegar enlaces a la página general y las cuatro páginas específicas.
-- El menú debe funcionar con teclado, touch y Escape, con foco gestionado correctamente.
-
-## Continuidad entre secciones
-
-Las secciones permanecen semánticamente separadas, pero visualmente forman un recorrido continuo.
-
-Recursos permitidos:
-
-- fondos que evolucionan gradualmente;
-- elementos que atraviesan límites de sección;
-- líneas, puntos o palabras con continuidad;
-- superposición controlada de proyectos;
-- sticky puntual;
-- transiciones cromáticas dentro de la paleta;
-- textura o iluminación ambiental compartida.
-
-Evitar cortes arbitrarios, bloques aislados y cambios de color sin transición.
-
-## Escenas claras y oscuras
-
-La web combina escenas claras y oscuras dentro de un recorrido dirigido. No incluye selector global de modo claro/oscuro en el lanzamiento.
-
-- Claro: crema/piedra con texto espresso y acentos oliva/musgo.
-- Oscuro: espresso/musgo con texto crema y acentos piedra/oliva.
-
-Los cambios deben conservar contraste y continuidad. El uso de escenas no justifica duplicar la interfaz completa.
-
-## Servicios
-
-Los cuatro servicios se presentan como capítulos editoriales, no como tarjetas convencionales. El contenido principal permanece visible y cada servicio enlaza su página específica.
-
-Cada capítulo puede combinar título, resumen, capacidades, visual, microinteracción y CTA `Conocer el servicio`.
-
-Presencia digital inicial aparece como modalidad destacada dentro de Identidad y Acompañamiento, sin convertirse en un quinto capítulo.
-
-## Páginas de servicios
-
-Comparten sistema visual, navegación y cierre, pero cada una debe tener identidad compositiva suficiente para no parecer una plantilla repetida.
-
-Estructura orientativa:
-
-1. Hero específico.
-2. Problema que resuelve.
-3. Para quién es.
-4. Qué puede incluir.
-5. Cómo trabaja Sael.
-6. Ejemplos de soluciones.
-7. Servicios relacionados.
-8. Preguntas frecuentes.
-9. CTA.
-
-La variación visual no debe perjudicar coherencia, rendimiento o mantenibilidad.
-
-## Proyectos
-
-Los proyectos reales son la principal evidencia comercial. Deben tener más peso que los recursos decorativos.
-
-La Home conserva Olimpo Construcciones y Favorita como selección. No inventar métricas, resultados o disciplinas no realizadas. Las futuras páginas de casos quedan fuera del lanzamiento inicial.
-
-## Cursor y hovers
-
-Puede existir un cursor personalizado inspirado en el punto del monograma solamente cuando `(hover: hover) and (pointer: fine)` sea verdadero.
-
-- No ocultar información necesaria.
-- Mantener affordance reconocible en enlaces y controles.
-- Desactivar con movimiento reducido.
-- No aplicar en touch.
-- No generar retraso molesto.
-
-Los hovers deben tener intención y limitarse a controles, servicios, proyectos, medallón y enlaces relevantes.
-
-## Footer
-
-El cierre visible utiliza solamente íconos para:
-
-- Instagram;
-- WhatsApp;
-- correo.
-
-Cada enlace debe conservar nombre accesible, foco visible, área táctil suficiente y tooltip opcional. Debe existir un CTA claro antes del footer para no depender exclusivamente de los íconos.
-
-## Movimiento
-
-Orientación general:
+Parámetros orientativos:
 
 - variación visual: 6/10;
 - intensidad de movimiento: 5/10;
-- densidad: 3/10.
+- densidad visual: 3/10.
 
-Principios:
+## 6. Entrada y hero
 
-- movimiento visible pero sereno;
-- preferir `transform` y `opacity`;
-- usar `requestAnimationFrame` en efectos vinculados a scroll/pointer;
-- evitar lecturas frecuentes que provoquen layout thrashing;
-- no usar scroll hijacking;
-- no esconder contenido esencial hasta que JavaScript lo revele;
-- respetar `prefers-reduced-motion`;
-- degradar correctamente sin JavaScript.
+### Entrada de marca
 
-## Responsive
+- Primera vista completa sin navbar visible.
+- “Sael · Estudio” en Bricolage Grotesque, de escala muy grande.
+- La marca debe dominar claramente el viewport en desktop y mobile.
+- Al hacer scroll, se reduce y se integra visualmente a la navbar.
+- La transición puede coordinar dos instancias si mantiene la ilusión de continuidad.
 
-Mobile es una composición propia.
+### Navbar
 
-- Simplificar el morph de marca y el medallón.
-- No trasladar interacciones de hover.
-- Conservar mensaje, CTA y personalidad.
-- Evitar overflow desde 320 px.
-- Mantener áreas táctiles de al menos 44 px.
-- Probar navegación, páginas internas y textos variables.
+- Oculta durante la primera vista.
+- Aparece como un único bloque cuando finaliza la entrada.
+- Conservar el comportamiento unificado aprobado en la v2.
+- El monograma debe proceder del PNG oficial y tener contraste suficiente.
 
-## Accesibilidad
+### Hero principal
 
-- Un solo `h1` visible y semántico por página.
-- Landmarks correctos.
-- Skip link.
-- Navegación completa por teclado.
-- Foco visible.
-- Contraste suficiente en todas las escenas.
-- Decoración fuera del árbol accesible.
-- Contenido completo con movimiento reducido.
-- Estados accesibles para desplegables y menú.
-- Nombres accesibles para íconos del footer.
+Estructura:
 
-## Rendimiento
+> Diseñamos y desarrollamos
+> sitios web. / aplicaciones. / identidades. / soluciones digitales.
 
-- Astro como base estática.
-- HTML, CSS y JavaScript nativo como primera opción.
-- No agregar frameworks cliente.
-- Justificar cualquier dependencia nueva.
-- Fuentes locales y assets optimizados.
-- Evitar video o 3D pesado en el camino crítico.
-- Reducir JavaScript por página y limpiar listeners.
-- Preservar Core Web Vitals razonables.
+- “Diseñamos y desarrollamos” debe tener más presencia que una etiqueta, sin competir con las palabras variables.
+- Las palabras funcionan en loop infinito cada 1,8–2,2 segundos.
+- El contenedor reserva el espacio de la frase más alta y larga.
+- Descripción y CTA nunca pueden superponerse con el título.
+- Sin JavaScript debe verse “soluciones digitales.”.
+- Con movimiento reducido debe mostrarse una frase estática.
 
-## SEO visual y de contenido
+### Objeto 2.5D
 
-- El contenido esencial debe estar en HTML.
-- Las animaciones no deben duplicar headings indexables.
-- Las páginas internas deben tener copy único.
-- Títulos, descripciones y Open Graph deben corresponder a cada ruta.
-- Las imágenes funcionales requieren `alt`; la decoración usa `aria-hidden` o `alt=""`.
+- Hasta tres discos superpuestos.
+- Capas posteriores espresso y moss.
+- Frente cream/stone con el PNG oficial.
+- Movimiento flotante pequeño y luz muy sutil.
+- Respuesta al cursor únicamente con mouse preciso.
+- Sin cuadrículas, órbitas, anillos punteados, textos técnicos ni símbolos inventados.
 
-## Idiomas futuros
+## 7. Continuidad entre secciones
 
-El lanzamiento es exclusivamente en español. Portugués e inglés quedan en roadmap.
+Los cambios de color están permitidos. No deben sentirse como rectángulos independientes.
 
-La implementación debe evitar acoplar textos importantes a scripts y permitir longitudes variables, pero no debe instalar ni mostrar un selector de idiomas todavía.
+Usar únicamente estos recursos de conexión:
 
-## Evitar
+1. Curvas o superficies que solapen de 80 a 160 px la sección contigua.
+2. Línea y punto que comiencen en una sección y terminen en otra.
 
-- copiar literalmente referencias;
-- estética genérica de IA;
-- 3D sin propósito;
-- exceso de animaciones simultáneas;
-- glassmorphism dominante;
-- partículas, neón o estética gamer;
-- flores y hojas decorativas;
-- estética wellness o cute;
-- tarjetas SaaS genéricas;
-- textos corporativos vacíos;
-- interacción dependiente exclusivamente de hover;
-- contenido invisible si falla JavaScript.
+Evitar bordes horizontales duros consecutivos. No diseñar una transición distinta para cada bloque.
+
+## 8. Imágenes
+
+### Imágenes aprobadas de servicios
+
+Conservar sin regenerar:
+
+- `web-software.png`;
+- `identidad-marca.png`;
+- `diseno-comunicacion.png`;
+- `acompanamiento.png`.
+
+Son la familia visual principal de los servicios en la portada.
+
+### Política para páginas internas
+
+- No generar imágenes durante la implementación.
+- Eliminar las imágenes con cuadrículas, papelería ficticia y logos repetidos de la v2.
+- Reutilizar la imagen aprobada de cada servicio con otro recorte, profundidad o tratamiento de movimiento.
+- Incorporar en el futuro capturas y casos reales cuando existan.
+
+## 9. Páginas de servicio
+
+Jerarquía:
+
+1. Servicio y promesa clara.
+2. Resumen de dos o tres líneas.
+3. Imagen aprobada.
+4. Cuatro necesidades o soluciones concretas.
+5. Proceso compacto.
+6. Preguntas frecuentes.
+7. Servicios relacionados y CTA.
+
+No todos los bloques pueden tener titulares gigantes. Priorizar comprensión para una persona que todavía no conoce el lenguaje de diseño o desarrollo.
+
+## 10. Footer
+
+- Instagram, WhatsApp y email como íconos sin círculo ni borde visible.
+- Tamaño visual aproximado: 25–28 px.
+- Área interactiva mínima: 44 × 44 px.
+- Tooltip o nombre accesible para teclado y lectores de pantalla.
+- Hover discreto mediante desplazamiento, escala o cambio de color.
+
+## 11. Movimiento
+
+- Priorizar `transform` y `opacity`.
+- Ninguna animación puede bloquear lectura o navegación.
+- Interacciones con cursor solo en dispositivos compatibles.
+- Mobile debe usar scroll y touch, sin depender del hover.
+- Respetar `prefers-reduced-motion`.
+- El contenido debe permanecer visible si JavaScript falla.
+
+## 12. Responsive y accesibilidad
+
+Verificar como mínimo:
+
+- 1440 × 900;
+- 1024 × 768;
+- 768 × 1024;
+- 390 × 844;
+- 360 × 800.
+
+Criterios:
+
+- sin overflow horizontal;
+- CTA táctiles de al menos 44 px;
+- navegación completa por teclado;
+- foco visible;
+- contraste WCAG AA;
+- orden semántico y jerarquía correcta de encabezados;
+- un solo `h1` por página;
+- imágenes con dimensiones reservadas para evitar saltos.
+
+## 13. Rendimiento y SEO
+
+- No usar Three.js ni WebGL.
+- No incorporar una nueva librería de animación sin justificación y aprobación.
+- Optimizar PNG aprobados a formatos responsivos sin alterar su apariencia.
+- Mantener contenido crítico en HTML.
+- Preservar rutas, metadatos, schema, canonicals, sitemap y robots de la v2 como base.
+- Realizar una nueva auditoría SEO después de la aprobación visual final y antes de Search Console.
+
+## 14. Prohibiciones
+
+- No generar logos ni reinterpretar el monograma.
+- No generar imágenes de servicios durante una tarea de código.
+- No reintroducir Instrument Serif.
+- No convertir la web en una demostración 3D.
+- No ocultar contenido esencial hasta que JavaScript lo revele.
+- No modificar `main` antes de aprobar la rama de trabajo.
+- No ampliar el alcance de una etapa sin aprobación.
+
+## 15. Método de aprobación
+
+Cada etapa debe entregar capturas desktop/mobile, video corto de scroll, archivos modificados y resultado del build. Codex debe detenerse después de cada punto de control.
