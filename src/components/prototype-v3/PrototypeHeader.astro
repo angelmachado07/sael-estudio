@@ -14,7 +14,9 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
         height="547"
         alt=""
       />
-      <span>Sael</span><i aria-hidden="true"></i><small>Estudio</small>
+      <span class="prototype-wordmark" data-prototype-wordmark-target>
+        <span>Sael</span><i aria-hidden="true"></i><small>Estudio</small>
+      </span>
     </a>
 
     <nav class="prototype-desktop-nav" aria-label="Navegación principal">
@@ -51,14 +53,14 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
 <style>
   .prototype-header {
     position:fixed;
-    inset:12px 0 auto;
+    inset:14px 0 auto;
     z-index:100;
-    color:#2c2e26;
+    color:#4f5a45;
     visibility:hidden;
     opacity:0;
-    transform:translateY(-22px) scale(.985);
+    transform:translateY(-14px);
     pointer-events:none;
-    transition:opacity 420ms ease,visibility 420ms ease,transform 600ms cubic-bezier(.16,1,.3,1);
+    transition:opacity 360ms ease,visibility 360ms ease,transform 600ms cubic-bezier(.16,1,.3,1);
   }
 
   .prototype-header[data-visible="true"] {
@@ -69,6 +71,7 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
   }
 
   .prototype-header-shell {
+    position:relative;
     width:min(calc(100% - 40px),1180px);
     height:62px;
     display:grid;
@@ -76,11 +79,34 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
     align-items:center;
     margin-inline:auto;
     padding-inline:16px;
-    border:1px solid rgba(44,46,38,.15);
     border-radius:999px;
+    background:rgba(243,239,231,0);
+    box-shadow:0 14px 45px rgba(44,46,38,0);
+    backdrop-filter:blur(0);
+    transition:background 520ms ease,box-shadow 520ms ease,backdrop-filter 520ms ease;
+  }
+
+  .prototype-header-shell::before {
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    border:1px solid rgba(44,46,38,.18);
+    border-radius:inherit;
+    content:"";
+    opacity:0;
+    clip-path:inset(0 100% 0 0 round 999px);
+    transition:clip-path 720ms cubic-bezier(.16,1,.3,1),opacity 240ms ease;
+  }
+
+  .prototype-header[data-framed="true"] .prototype-header-shell {
     background:rgba(243,239,231,.92);
     box-shadow:0 14px 45px rgba(44,46,38,.11);
     backdrop-filter:blur(18px);
+  }
+
+  .prototype-header[data-framed="true"] .prototype-header-shell::before {
+    opacity:1;
+    clip-path:inset(0 round 999px);
   }
 
   .prototype-brand {
@@ -93,19 +119,26 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
     min-height:44px;
     font-family:"Bricolage Grotesque",Arial,sans-serif;
     font-weight:650;
+    opacity:0;
+    transition:opacity 280ms ease;
   }
 
-  .prototype-brand img { width:34px; height:30px; object-fit:contain; }
-  .prototype-brand>span { font-size:1.45rem; line-height:1; letter-spacing:-.045em; }
-  .prototype-brand>i { width:4px; height:4px; border-radius:50%; background:currentColor; }
-  .prototype-brand>small { font:600 .7rem/1 Manrope,Arial,sans-serif; }
+  .prototype-header[data-brand-visible="true"] .prototype-brand { opacity:1; }
+  .prototype-brand img { width:34px; height:30px; object-fit:contain; opacity:0; transform:scale(.72); transition:opacity 360ms ease,transform 520ms cubic-bezier(.16,1,.3,1); }
+  .prototype-header[data-framed="true"] .prototype-brand img { opacity:1; transform:none; }
+  .prototype-wordmark { display:inline-flex; align-items:center; gap:6px; }
+  .prototype-wordmark>span { font-size:1.45rem; line-height:1; letter-spacing:-.045em; }
+  .prototype-wordmark>i { width:4px; height:4px; border-radius:50%; background:currentColor; }
+  .prototype-wordmark>small { font:600 .7rem/1 Manrope,Arial,sans-serif; }
   .prototype-desktop-nav { display:flex; align-items:center; gap:2px; }
   .prototype-desktop-nav a { min-height:42px; display:flex; align-items:center; padding:0 14px; border-radius:999px; font-size:.76rem; font-weight:650; transition:background 220ms ease,color 220ms ease; }
   .prototype-desktop-nav a:hover,.prototype-desktop-nav a:focus-visible { background:#2c2e26; color:#f3efe7; }
-  .prototype-contact { justify-self:end; min-height:44px; display:inline-flex; align-items:center; gap:18px; padding:0 15px 0 18px; border:1px solid currentColor; border-radius:999px; font-size:.74rem; font-weight:650; transition:background 220ms ease,color 220ms ease,transform 220ms ease; }
+  .prototype-contact { justify-self:end; min-height:44px; display:inline-flex; align-items:center; gap:18px; padding:0 15px 0 18px; border:1px solid transparent; border-radius:999px; font-size:.74rem; font-weight:650; transition:background 220ms ease,color 220ms ease,transform 220ms ease,border-color 420ms ease; }
+  .prototype-header[data-framed="true"] .prototype-contact { border-color:currentColor; }
   .prototype-contact:hover,.prototype-contact:focus-visible { background:#2c2e26; color:#f3efe7; transform:translateY(-2px); }
   .prototype-mobile-menu { display:none; justify-self:end; }
-  .prototype-mobile-menu summary { position:relative; z-index:4; min-width:96px; min-height:44px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:0 15px; border:1px solid currentColor; border-radius:999px; cursor:pointer; list-style:none; font-size:.76rem; font-weight:650; }
+  .prototype-mobile-menu summary { position:relative; z-index:4; min-width:96px; min-height:44px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:0 15px; border:1px solid transparent; border-radius:999px; cursor:pointer; list-style:none; font-size:.76rem; font-weight:650; transition:border-color 420ms ease; }
+  .prototype-header[data-framed="true"] .prototype-mobile-menu summary { border-color:currentColor; }
   .prototype-mobile-menu summary::-webkit-details-marker { display:none; }
   .prototype-mobile-menu summary i { position:relative; width:18px; height:12px; }
   .prototype-mobile-menu summary i::before,.prototype-mobile-menu summary i::after { position:absolute; left:0; width:18px; height:1px; background:currentColor; content:""; transition:top 220ms ease,transform 220ms ease; }
@@ -132,13 +165,15 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
   @media(max-width:520px){
     .prototype-header{top:8px}
     .prototype-header-shell{width:calc(100% - 24px);height:58px;padding-inline:12px}
-    .prototype-brand>small,.prototype-brand>i{display:none}
+    .prototype-wordmark{gap:4px}
+    .prototype-wordmark>i{display:block;width:3px;height:3px}
+    .prototype-wordmark>small{display:inline;font-size:.62rem}
     .prototype-brand img{width:32px;height:28px}
-    .prototype-brand>span{font-size:1.32rem}
+    .prototype-wordmark>span{font-size:1.32rem}
   }
 
   @media(prefers-reduced-motion:reduce){
-    .prototype-header,.prototype-contact,.prototype-mobile-menu summary i::before,.prototype-mobile-menu summary i::after{transition:none}
+    .prototype-header,.prototype-header-shell,.prototype-header-shell::before,.prototype-brand,.prototype-brand img,.prototype-contact,.prototype-mobile-menu summary,.prototype-mobile-menu summary i::before,.prototype-mobile-menu summary i::after{transition:none}
   }
 </style>
 

@@ -1,7 +1,7 @@
 # Sael Estudio — sistema de diseño digital
 
-Versión: 3.0
-Estado: dirección aprobada para implementación progresiva
+Versión: 3.1
+Estado: etapa 1 del prototipo v3 aprobada visualmente; pendiente de integración
 
 ## 1. Autoridad y propósito
 
@@ -95,15 +95,17 @@ Parámetros orientativos:
 
 - Primera vista completa sin navbar visible.
 - “Sael · Estudio” en Bricolage Grotesque, de escala muy grande.
-- La marca debe dominar claramente el viewport en desktop y mobile.
-- Al hacer scroll, se reduce y se integra visualmente a la navbar.
+- La marca domina el ancho del viewport en desktop y mobile: “Sael” tiene mayor protagonismo, “Estudio” funciona como palabra secundaria y el punto central organiza la composición.
+- La entrada llega automáticamente desde arriba y se estabiliza antes de la interacción.
+- Al hacer scroll, el fondo y la marca invierten sus colores, la marca se reduce y se integra visualmente a la navbar.
 - La transición puede coordinar dos instancias si mantiene la ilusión de continuidad.
 
 ### Navbar
 
 - Oculta durante la primera vista.
-- Aparece como un único bloque cuando finaliza la entrada.
-- Conservar el comportamiento unificado aprobado en la v2.
+- Aparece durante la transición como una navbar unificada: primero sin contorno y luego completa progresivamente su marco al unirse con el hero.
+- Debe conservar monograma oficial, “Sael · Estudio”, navegación y CTA dentro de una única composición.
+- En mobile también debe mostrar monograma y “Sael · Estudio”, junto al control de menú.
 - El monograma debe proceder del PNG oficial y tener contraste suficiente.
 
 ### Hero principal
@@ -120,14 +122,16 @@ Estructura:
 - Sin JavaScript debe verse “soluciones digitales.”.
 - Con movimiento reducido debe mostrarse una frase estática.
 
-### Objeto 2.5D
+### Composición interactiva de servicios
 
-- Hasta tres discos superpuestos.
-- Capas posteriores espresso y moss.
-- Frente cream/stone con el PNG oficial.
-- Movimiento flotante pequeño y luz muy sutil.
-- Respuesta al cursor únicamente con mouse preciso.
-- Sin cuadrículas, órbitas, anillos punteados, textos técnicos ni símbolos inventados.
+- El medallón o moneda 2.5D queda descartado como decisión visual aprobada y no debe reintroducirse sin una nueva aprobación.
+- El hero utiliza una composición interactiva de las cuatro imágenes aprobadas de servicios.
+- Las imágenes se diferencian mediante encuadres, proporciones, profundidad y movimiento leve, sin alterar sus archivos fuente.
+- El protagonismo rota automáticamente cada 2,8 segundos.
+- Cualquier imagen puede seleccionarse mediante clic o teclado y debe pasar al frente.
+- En dispositivos táctiles la selección debe funcionar sin depender del hover.
+- Con `prefers-reduced-motion` no hay rotación automática ni movimiento ornamental, pero la selección manual permanece disponible.
+- Sin JavaScript, las cuatro imágenes deben permanecer visibles como composición estática.
 
 ## 7. Continuidad entre secciones
 
@@ -152,6 +156,8 @@ Conservar sin regenerar:
 - `acompanamiento.png`.
 
 Son la familia visual principal de los servicios en la portada.
+
+No regenerar, reinterpretar, sustituir ni eliminar estas cuatro imágenes sin aprobación explícita. Se permiten únicamente recortes, optimización responsive, profundidad y tratamientos de movimiento que no alteren su contenido.
 
 ### Política para páginas internas
 
@@ -189,6 +195,8 @@ No todos los bloques pueden tener titulares gigantes. Priorizar comprensión par
 - Interacciones con cursor solo en dispositivos compatibles.
 - Mobile debe usar scroll y touch, sin depender del hover.
 - Respetar `prefers-reduced-motion`.
+- Mantener operables mediante teclado todos los controles y selecciones interactivas.
+- Cuando se reduzca el movimiento, conservar la jerarquía visual y los estados funcionales sin depender de animaciones.
 - El contenido debe permanecer visible si JavaScript falla.
 
 ## 12. Responsive y accesibilidad
@@ -225,6 +233,8 @@ Criterios:
 
 - No generar logos ni reinterpretar el monograma.
 - No generar imágenes de servicios durante una tarea de código.
+- No regenerar ni sustituir las cuatro imágenes aprobadas de servicios sin aprobación explícita.
+- No reintroducir el medallón o moneda 2.5D descartado en la etapa 1 sin una nueva aprobación.
 - No reintroducir Instrument Serif.
 - No convertir la web en una demostración 3D.
 - No ocultar contenido esencial hasta que JavaScript lo revele.
