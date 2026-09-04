@@ -29,7 +29,7 @@ const navigation = [
           <details class="services-menu">
             <summary>Servicios <span aria-hidden="true">+</span></summary>
             <div class="services-popover">
-              <a href="/servicios/"><strong>Todos los servicios</strong><small>Una visión general</small></a>
+              <a href="/#servicios"><strong>Todos los servicios</strong><small>Ver en la portada</small></a>
               {services.map((service) => (
                 <a href={servicePath(service.slug)} aria-current={Astro.url.pathname === servicePath(service.slug) ? "page" : undefined}>
                   <span>{service.number}</span><strong>{service.shortTitle}</strong>
@@ -52,7 +52,7 @@ const navigation = [
           <ul class="mobile-primary">
             <li><a href="/"><span>01</span>Inicio</a></li>
             <li><a href={sectionHref("#sobre-sael")}><span>02</span>Estudio</a></li>
-            <li><a href="/servicios/"><span>03</span>Servicios</a></li>
+            <li><a href="/#servicios"><span>03</span>Servicios</a></li>
             <li><a href={sectionHref("#proyectos")}><span>04</span>Proyectos</a></li>
             <li><a href={sectionHref("#contacto")}><span>05</span>Contacto</a></li>
           </ul>

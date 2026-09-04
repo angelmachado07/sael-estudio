@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { SITE_URL, services, servicePath } from "../config/site";
 
-const routes = ["/", "/servicios/", ...services.map((service) => servicePath(service.slug))];
+const routes = ["/", ...services.map((service) => servicePath(service.slug))];
 
 export const GET: APIRoute = () => {
   const urls = routes

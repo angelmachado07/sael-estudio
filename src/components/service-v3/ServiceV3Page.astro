@@ -1,0 +1,131 @@
+---
+import { Image } from "astro:assets";
+import webVisual from "../../assets/services/web-software.png";
+import brandVisual from "../../assets/services/identidad-marca.png";
+import uxVisual from "../../assets/services/diseno-comunicacion.png";
+import supportVisual from "../../assets/services/acompanamiento.png";
+import { createWhatsAppUrl } from "../../config/contact";
+import { getService, servicePath, services, type ServiceSlug } from "../../config/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArrowIcon from "../ArrowIcon.astro";
+import Footer from "../Footer.astro";
+import HomeHeader from "../home-v3/HomeHeader.astro";
+import SectionBridge from "../home-v3/SectionBridge.astro";
+
+interface Props { slug?: ServiceSlug; }
+const { slug = "desarrollo-digital" } = Astro.props;
+const service = getService(slug);
+const whatsapp = createWhatsAppUrl(service.message);
+const pageContent = {
+  "desarrollo-digital": {
+    hero: "De una primera web a una solución a medida.",
+    summary: "Diseñamos y desarrollamos productos digitales alrededor de una necesidad concreta: desde sitios para presentar y hacer crecer un negocio hasta aplicaciones, sistemas e integraciones que simplifican procesos.",
+    possibilitiesTitle: "La tecnología toma la forma que el proyecto necesita.",
+    possibilities: [["Sitios web","Landing pages, portfolios, catálogos y sitios institucionales para comunicar, mostrar servicios y recibir consultas."],["Aplicaciones web o móviles","Productos digitales creados alrededor de una experiencia, una tarea o una necesidad específica."],["Sistemas a medida","Herramientas internas para organizar información, centralizar procesos y reducir tareas repetitivas."],["Integraciones y evolución","Conexión entre herramientas, mejoras sobre productos existentes y crecimiento por etapas."]],
+    startingTitle: "Podemos empezar simple y crecer con el proyecto.",
+    startingText: "El alcance se adapta a la etapa, los objetivos y los recursos disponibles. Podemos resolver una necesidad puntual o construir una solución integral preparada para evolucionar.",
+    scales: [["Empezar","Una landing, un portfolio o una primera presencia profesional."],["Ordenar","Rediseñar una experiencia, centralizar información o mejorar un proceso existente."],["Crecer","Desarrollar una aplicación, un sistema o una solución conectada con otras herramientas."]],
+    process: [["Entender","Relevamos el objetivo, las personas y el contexto."],["Definir","Organizamos alcance, contenido, funciones y prioridades."],["Diseñar","Hacemos visible la experiencia antes de construirla."],["Desarrollar","Implementamos, probamos, publicamos y dejamos una base preparada para evolucionar."]],
+    visual: webVisual, alt: "Composición de dispositivos que representa sitios web, aplicaciones y software",
+  },
+  "identidad-de-marca": {
+    hero: "Una marca clara antes de multiplicar sus formas.", summary: service.summary,
+    possibilitiesTitle: "Una idea central puede ordenar todo lo que la marca expresa.",
+    possibilities: [["Estrategia y definición","Clarificamos posicionamiento, público y criterios para orientar cada decisión de marca."],["Concepto, nombre y tono","Construimos una idea reconocible y una voz coherente con el proyecto y su contexto."],["Identidad visual","Diseñamos logo, identificadores, colores y tipografías como partes de un mismo sistema."],["Sistema y aplicaciones","Preparamos recursos y usos prioritarios para sostener la marca en sus distintos puntos de contacto."]],
+    startingTitle: "La identidad puede acompañar cada etapa del proyecto.", startingText: "El alcance parte de lo que la marca necesita hoy y deja una base coherente para sumar nuevas aplicaciones, canales y experiencias.",
+    scales: [["Comenzar","Una presencia digital inicial con identidad clara y los primeros recursos necesarios."],["Ordenar","Revisar una marca existente y convertir piezas dispersas en un sistema consistente."],["Evolucionar","Actualizar la identidad cuando el proyecto creció, cambió o necesita ampliar su alcance."]],
+    process: service.process.map(({title,text})=>[title,text]), visual: brandVisual, alt: "Composición visual del servicio de identidad y estrategia de marca",
+  },
+  "diseno-ux-ui": {
+    hero: "Diseñar para entender, usar y recordar.", summary: service.summary,
+    possibilitiesTitle: "La experiencia y la comunicación se diseñan como un sistema.",
+    possibilities: [["Arquitectura de información","Ordenamos contenido y jerarquías para que cada persona encuentre lo que necesita."],["Experiencia y flujos","Definimos recorridos claros alrededor de objetivos, tareas y puntos de decisión."],["Wireframes e interfaces","Prototipamos y diseñamos pantallas antes de preparar una implementación consistente."],["Comunicación visual","Creamos piezas y sistemas gráficos que conectan el producto con la forma en que la marca comunica."]],
+    startingTitle: "Podemos aclarar una idea antes de llevarla a producción.", startingText: "El trabajo puede enfocarse en una experiencia puntual o integrar estructura, prototipo, interfaz y comunicación visual.",
+    scales: [["Explorar","Dar forma a una idea mediante arquitectura, recorridos y primeros wireframes."],["Validar","Construir un prototipo para revisar decisiones antes del desarrollo."],["Consolidar","Diseñar una interfaz y un sistema visual preparado para crecer con el producto."]],
+    process: service.process.map(({title,text})=>[title,text]), visual: uxVisual, alt: "Composición visual del servicio de UX, UI y comunicación",
+  },
+  "acompanamiento-digital": {
+    hero: "Un recorrido claro para poner la presencia en movimiento.", summary: service.summary,
+    possibilitiesTitle: "Conectamos decisiones, canales y herramientas en el orden adecuado.",
+    possibilities: [["Diagnóstico y prioridades","Revisamos el punto de partida y definimos qué conviene resolver primero."],["Identidad y canales","Organizamos la relación entre marca, Instagram, contenido inicial, WhatsApp y email."],["Presencia local","Evaluamos Google Business Profile y Maps cuando el negocio y su modalidad lo hacen pertinente."],["Lanzamiento y evolución","Acompañamos la implementación, revisamos resultados y ordenamos los próximos pasos."]],
+    startingTitle: "Una presencia digital inicial también puede construirse con criterio.", startingText: "Adaptamos prioridades y alcance a los recursos disponibles, sin separar decisiones que necesitan funcionar juntas.",
+    scales: [["Comenzar","Preparar identidad, canales y contenido inicial para presentarse con claridad."],["Articular","Conectar herramientas y ordenar una presencia que creció de forma fragmentada."],["Acompañar","Coordinar un lanzamiento y sostener una evolución coherente después de publicarlo."]],
+    process: service.process.map(({title,text})=>[title,text]), visual: supportVisual, alt: "Composición visual del servicio de acompañamiento creativo y digital",
+  },
+} satisfies Record<ServiceSlug, any>;
+const content = pageContent[slug];
+const related = services.filter(({slug: itemSlug})=>itemSlug!==slug).map(({shortTitle,slug:itemSlug})=>[shortTitle,itemSlug] as const);
+const schemas = [{"@context":"https://schema.org","@type":"Service",name:service.title,description:service.description,provider:{"@type":"ProfessionalService",name:"Sael Estudio",url:"https://saelestudio.com.uy"},areaServed:{"@type":"Country",name:"Uruguay"},serviceType:service.title},{"@context":"https://schema.org","@type":"FAQPage",mainEntity:service.questions.map(({question,answer})=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))}];
+---
+
+<BaseLayout title={service.metaTitle} description={service.description} canonicalPath={servicePath(service.slug)} schemas={schemas} headingFont="bricolage">
+  <HomeHeader />
+  <main id="main-content" class="digital-service">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Servicio {service.number} <i></i> {service.shortTitle}</p>
+          <h1 id="page-title">{content.hero}</h1>
+          <p>{content.summary}</p>
+          <div class="actions"><a class="button primary" href={whatsapp} target="_blank" rel="noopener noreferrer">Contanos tu proyecto <ArrowIcon /></a><a class="button" href="#posibilidades">Explorar posibilidades <span>↓</span></a></div>
+        </div>
+        <div class="hero-visual">
+          <span class="orbit" aria-hidden="true"><i></i></span>
+          <div class="image-frame"><Image src={content.visual} alt={content.alt} widths={[480,720,960]} sizes="(max-width: 760px) 88vw, 43vw" loading="eager" /></div>
+          <small aria-hidden="true">{service.number} — pensar · construir</small>
+        </div>
+      </div>
+    </section>
+    <SectionBridge from="cream" to="moss" side="right" />
+
+    <section class="possibilities" id="posibilidades" aria-labelledby="possibilities-title">
+      <div class="container split">
+        <header><p class="eyebrow">Qué podemos crear</p><h2 id="possibilities-title">{content.possibilitiesTitle}</h2></header>
+        <ol class="chapters">{content.possibilities.map(([title,text]: string[],i:number)=><li><span>0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div><b aria-hidden="true">↗</b></li>)}</ol>
+      </div>
+    </section>
+    <SectionBridge from="moss" to="cream" />
+
+    <section class="starting" aria-labelledby="starting-title">
+      <div class="container">
+        <header class="wide-heading"><p class="eyebrow">Según el punto de partida</p><h2 id="starting-title">{content.startingTitle}</h2><p>{content.startingText}</p></header>
+        <div class="scale-path"><svg viewBox="0 0 1000 170" preserveAspectRatio="none" aria-hidden="true"><path d="M10 130 C180 10 305 155 480 82 S795 8 990 55"></path></svg>{content.scales.map(([title,text]:string[],i:number)=><article><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section class="process" aria-labelledby="process-title"><div class="container split"><header><p class="eyebrow">Cómo trabajamos</p><h2 id="process-title">Un proceso claro para construir lo necesario.</h2></header><ol class="timeline">{content.process.map(([title,text]:string[],i:number)=><li><span>0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol></div></section>
+    <SectionBridge from="espresso" to="cream" side="right" />
+
+    <section class="faq" aria-labelledby="faq-title"><div class="container split"><header><p class="eyebrow">Preguntas frecuentes</p><h2 id="faq-title">Antes de empezar.</h2><p>Algunas respuestas para entender cómo podemos trabajar juntos.</p></header><div class="accordions">{service.questions.map((item,i)=><details open={i===0}><summary><span>{item.question}</span><i aria-hidden="true"></i></summary><div><p>{item.answer}</p></div></details>)}</div></div></section>
+
+    <section class="related" aria-labelledby="related-title"><div class="container split"><header><p class="eyebrow">Servicios relacionados</p><h2 id="related-title">El proyecto puede necesitar más de una mirada.</h2></header><nav aria-label="Servicios relacionados">{related.map(([title,slug],i)=><a href={servicePath(slug)}><span>0{i+2}</span>{title}<ArrowIcon /></a>)}</nav></div></section>
+
+    <section class="contact" aria-labelledby="contact-title"><div class="container"><p class="eyebrow">Hablemos</p><h2 id="contact-title">Contanos qué necesita tu proyecto.</h2><p>Podemos empezar por una conversación simple, entender el punto de partida y definir juntos el alcance adecuado.</p><a class="button primary" href={whatsapp} target="_blank" rel="noopener noreferrer">Iniciar una conversación <ArrowIcon /></a></div></section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  @font-face{font-family:"Bricolage Grotesque";src:url("/fonts/bricolage-grotesque-latin.woff2") format("woff2");font-display:swap;font-weight:200 800}
+  :global(body[data-path^="/servicios/"]){background:var(--color-cream);color:var(--color-espresso)}
+  :global(body[data-path^="/servicios/"]) .home-header{visibility:visible;opacity:1;transform:none;pointer-events:auto}
+  :global(body[data-path^="/servicios/"]) .home-header-shell{background:rgba(243,239,231,.92);box-shadow:0 14px 45px rgba(44,46,38,.11)}
+  :global(body[data-path^="/servicios/"]) .home-header-shell::before{opacity:1;clip-path:inset(0 round 999px)}
+  :global(body[data-path^="/servicios/"]) .home-brand{opacity:1}
+  :global(body[data-path^="/servicios/"]) .home-brand img{opacity:1;transform:none}
+  :global(body[data-path^="/servicios/"]) .home-contact{border-color:currentColor}
+  .digital-service{overflow:hidden;font-family:var(--font-body)}.digital-service h1,.digital-service h2,.digital-service h3{margin:0;font-family:"Bricolage Grotesque",Arial,sans-serif;font-style:normal;text-wrap:balance}.digital-service p{margin:0}.eyebrow{display:flex;align-items:center;gap:9px;color:var(--color-moss);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.eyebrow i{width:5px;height:5px;border-radius:50%;background:currentColor}
+  .button{width:max-content;min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:20px;padding:0 22px;border:1px solid;border-radius:999px;font-size:.76rem;font-weight:700;transition:.22s}.button :global(svg){width:14px}.button:hover,.button:focus-visible{transform:translateY(-2px);background:var(--color-espresso);color:var(--color-cream)}.primary{background:var(--color-espresso);color:var(--color-cream)}.primary:hover,.primary:focus-visible{background:var(--color-moss)}
+  .hero{position:relative;min-height:min(880px,100svh);display:grid;align-items:center;padding:clamp(128px,14vw,185px) 0 clamp(150px,15vw,205px)}.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.72fr);gap:clamp(36px,6vw,95px);align-items:center}.hero-copy{position:relative;z-index:2}.hero h1{max-width:810px;margin:24px 0 28px;font-size:clamp(4rem,7.25vw,7.35rem);font-weight:620;line-height:.88;letter-spacing:-.065em}.hero-copy>p:last-of-type{max-width:690px;font-size:clamp(1rem,1.25vw,1.2rem);line-height:1.7}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+  .hero-visual{position:relative;isolation:isolate;min-width:0;padding:9% 2% 12%}.image-frame{position:relative;z-index:2;overflow:hidden;border-radius:45% 45% 12% 12%/30% 30% 10% 10%;background:var(--color-stone);box-shadow:0 28px 65px rgba(44,46,38,.2);transform:rotate(2deg);transition:.65s}.image-frame :global(img){display:block;width:100%;height:auto;transform:scale(1.035)}.hero-visual:hover .image-frame{transform:rotate(0) translateY(-6px)}.orbit{position:absolute;inset:0 4% 5% -7%;z-index:0;border:1px solid rgba(79,90,69,.35);border-radius:50%;transform:rotate(-14deg)}.orbit i{position:absolute;top:19%;right:2%;width:12px;height:12px;border:4px solid var(--color-cream);border-radius:50%;background:var(--color-olive)}.hero-visual small{position:absolute;right:-7%;bottom:2%;z-index:3;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transform:rotate(90deg);transform-origin:right center}
+  .split{display:grid;grid-template-columns:minmax(270px,.72fr) minmax(0,1fr);gap:clamp(50px,10vw,150px);align-items:start}.split>header{position:sticky;top:120px}.split h2{margin-top:24px;font-size:clamp(2.9rem,5.3vw,5.7rem);font-weight:580;line-height:.93;letter-spacing:-.055em}
+  .possibilities{position:relative;z-index:9;margin-top:-1px;padding:clamp(75px,10vw,145px) 0 clamp(155px,16vw,220px);background:var(--color-moss);color:var(--color-cream)}.possibilities .eyebrow,.process .eyebrow{color:var(--color-stone)}.chapters{margin:0;padding:0;list-style:none;border-top:1px solid rgba(243,239,231,.25)}.chapters li{display:grid;grid-template-columns:48px 1fr auto;gap:18px;padding:28px 4px;border-bottom:1px solid rgba(243,239,231,.25);transition:.28s}.chapters li:hover{padding-left:14px;background:rgba(243,239,231,.055)}.chapters li>span{padding-top:6px;color:var(--color-stone);font-size:.64rem}.chapters h3{font-size:clamp(1.55rem,2.4vw,2.4rem);font-weight:570;letter-spacing:-.04em}.chapters p{max-width:580px;margin-top:10px;color:rgba(243,239,231,.7);font-size:.9rem;line-height:1.65}
+  .starting{position:relative;z-index:9;margin-top:-1px;padding:clamp(80px,10vw,145px) 0 clamp(155px,18vw,240px);background:var(--color-cream)}.wide-heading{display:grid;grid-template-columns:.35fr 1fr .55fr;gap:clamp(28px,5vw,76px)}.wide-heading h2{font-size:clamp(3.1rem,6vw,6.5rem);font-weight:600;line-height:.9;letter-spacing:-.06em}.wide-heading>p:last-child{padding-top:10px;font-size:.94rem;line-height:1.75}.scale-path{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,6vw,94px);margin-top:clamp(90px,11vw,150px)}.scale-path svg{position:absolute;z-index:0;top:-42px;width:100%;height:130px}.scale-path path{fill:none;stroke:var(--color-olive);stroke-width:1;vector-effect:non-scaling-stroke}.scale-path article{position:relative;z-index:1;padding:45px 12px 0}.scale-path article::before{position:absolute;z-index:2;top:0;left:12px;width:12px;height:12px;border:4px solid var(--color-cream);border-radius:50%;background:var(--color-moss);box-shadow:0 0 0 7px var(--color-cream),0 0 0 8px var(--color-moss);content:""}.scale-path article:nth-of-type(2){margin-top:-54px}.scale-path article:nth-of-type(3){margin-top:-96px}.scale-path article>span,.scale-path h3,.scale-path p{position:relative;z-index:2}.scale-path article>span,.scale-path h3{width:fit-content;background:var(--color-cream);box-shadow:0 0 0 8px var(--color-cream);box-decoration-break:clone;-webkit-box-decoration-break:clone}.scale-path h3{max-width:100%;margin:12px 0 10px;font-size:clamp(2rem,3.2vw,3.4rem);font-weight:580;line-height:1.05}.scale-path p{font-size:.86rem;line-height:1.65}
+  .process{position:relative;padding:clamp(92px,11vw,155px) 0 clamp(165px,17vw,225px);background:var(--color-espresso);color:var(--color-cream)}.timeline{position:relative;margin:0;padding:0;list-style:none}.timeline::before{position:absolute;top:20px;bottom:20px;left:19px;width:1px;background:rgba(243,239,231,.25);content:""}.timeline li{position:relative;display:grid;grid-template-columns:40px 1fr;gap:24px;padding-bottom:38px}.timeline li>span{z-index:1;width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(243,239,231,.45);border-radius:50%;background:var(--color-espresso);font-size:.58rem}.timeline h3{font-size:clamp(1.8rem,2.8vw,3rem);font-weight:570}.timeline p{max-width:560px;margin-top:8px;color:rgba(243,239,231,.66);font-size:.88rem;line-height:1.65}
+  .faq{position:relative;z-index:9;margin-top:-1px;padding:clamp(80px,10vw,145px) 0 clamp(110px,12vw,170px);background:var(--color-cream)}.faq header>p:last-child{max-width:370px;margin-top:18px;line-height:1.65}.accordions{border-top:1px solid rgba(44,46,38,.3)}.accordions details{border-bottom:1px solid rgba(44,46,38,.3)}.accordions summary{min-height:82px;display:grid;grid-template-columns:1fr 32px;gap:20px;align-items:center;padding:16px 4px;cursor:pointer;list-style:none;font:560 clamp(1.3rem,2vw,1.8rem)/1.2 "Bricolage Grotesque",Arial,sans-serif}.accordions summary::-webkit-details-marker{display:none}.accordions summary i{position:relative;width:30px;height:30px;border:1px solid;border-radius:50%}.accordions summary i::before,.accordions summary i::after{position:absolute;top:50%;left:50%;width:10px;height:1px;background:currentColor;content:"";transform:translate(-50%,-50%)}.accordions summary i::after{transform:translate(-50%,-50%) rotate(90deg)}.accordions details[open] summary i::after{transform:translate(-50%,-50%)}.accordions details div p{max-width:650px;padding:0 52px 26px 4px;font-size:.9rem;line-height:1.7}
+  .related{padding:clamp(80px,9vw,125px) 0;background:var(--color-stone)}.related nav{border-top:1px solid rgba(44,46,38,.32)}.related nav a{min-height:82px;display:grid;grid-template-columns:38px 1fr auto;gap:18px;align-items:center;border-bottom:1px solid rgba(44,46,38,.32);font:570 clamp(1.2rem,2vw,1.75rem)/1.2 "Bricolage Grotesque",Arial,sans-serif;transition:.24s}.related nav a span{font:700 .62rem/1 var(--font-body);color:var(--color-moss)}.related nav a :global(svg){width:15px}.related nav a:hover,.related nav a:focus-visible{padding-inline:10px;color:var(--color-moss)}
+  .contact{position:relative;overflow:hidden;padding:clamp(105px,13vw,185px) 0;background:var(--color-moss);color:var(--color-cream);text-align:center}.contact::before{position:absolute;top:-34vw;left:50%;width:110vw;aspect-ratio:2/1;border:1px solid rgba(243,239,231,.16);border-radius:50%;content:"";transform:translateX(-50%)}.contact .container{position:relative}.contact .eyebrow{justify-content:center;color:var(--color-stone)}.contact h2{max-width:970px;margin:28px auto;font-size:clamp(3.7rem,8vw,8.2rem);font-weight:600;line-height:.86;letter-spacing:-.065em}.contact .container>p:nth-of-type(2){max-width:650px;margin:auto;color:rgba(243,239,231,.75);line-height:1.7}.contact .button{margin:38px auto 0;background:var(--color-cream);color:var(--color-espresso)}
+  @media(max-width:980px){.hero{min-height:auto}.hero-grid,.split{grid-template-columns:1fr}.hero-visual{width:min(70vw,590px);margin-left:auto}.split>header{position:static}.chapters{margin-left:12vw}.wide-heading{grid-template-columns:1fr 1fr}.wide-heading .eyebrow{grid-column:1/-1}}
+  @media(max-width:700px){.hero{padding:112px 0 135px}.hero h1{font-size:clamp(3.35rem,16vw,5.4rem)}.actions .button{width:100%}.hero-visual{width:94%;margin:48px auto 0}.chapters{margin-left:0}.chapters li{grid-template-columns:36px 1fr}.chapters b{display:none}.wide-heading{grid-template-columns:1fr}.wide-heading .eyebrow{grid-column:auto}.scale-path{grid-template-columns:1fr;margin-top:70px;padding-left:28px}.scale-path svg{display:none}.scale-path::before{position:absolute;top:6px;bottom:8px;left:6px;width:1px;background:var(--color-olive);content:""}.scale-path article,.scale-path article:nth-of-type(2),.scale-path article:nth-of-type(3){margin:0;padding:0 0 42px 24px}.scale-path article::before{top:7px;left:-28px}.related nav a{grid-template-columns:30px 1fr auto;gap:10px}.contact h2{font-size:clamp(3.4rem,15vw,5.4rem)}.contact .button{width:100%}}
+  @media(prefers-reduced-motion:reduce){.button,.image-frame,.chapters li,.related nav a{transition:none!important}}
+</style>

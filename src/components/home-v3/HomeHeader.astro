@@ -3,6 +3,13 @@ import ArrowIcon from "../ArrowIcon.astro";
 import { createWhatsAppUrl, GENERAL_WHATSAPP_MESSAGE } from "../../config/contact";
 
 const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
+const currentPath = Astro.url.pathname;
+const serviceLinks = [
+  ["Web, apps y software", "/servicios/desarrollo-digital/"],
+  ["Identidad y estrategia de marca", "/servicios/identidad-de-marca/"],
+  ["UX/UI y comunicación visual", "/servicios/diseno-ux-ui/"],
+  ["Acompañamiento creativo y digital", "/servicios/acompanamiento-digital/"],
+] as const;
 ---
 
 <header class="home-header" data-home-header aria-label="Navegación principal">
@@ -13,7 +20,14 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
     </a>
 
     <nav class="home-desktop-nav" aria-label="Navegación principal">
-      <a href="/#sobre-sael">Estudio</a><a href="/#servicios">Servicios</a><a href="/#proyectos">Proyectos</a><a href="/#proceso">Proceso</a>
+      <a href="/#sobre-sael">Estudio</a>
+      <details class="home-services-menu" data-services-menu>
+        <summary aria-expanded="false" aria-controls="desktop-services-panel"><span>Servicios</span><i aria-hidden="true"></i></summary>
+        <div class="home-services-panel" id="desktop-services-panel">
+          {serviceLinks.map(([label, href], index) => <a href={href} aria-current={currentPath === href ? "page" : undefined}><span>0{index + 1}</span>{label}</a>)}
+        </div>
+      </details>
+      <a href="/#proyectos">Proyectos</a><a href="/#proceso">Proceso</a>
     </nav>
 
     <a class="home-contact" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Contanos tu proyecto <ArrowIcon /></a>
@@ -22,7 +36,12 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
       <summary aria-label="Abrir menú de navegación"><span>Menú</span><i aria-hidden="true"></i></summary>
       <div class="home-mobile-panel">
         <nav aria-label="Navegación móvil">
-          <a href="/"><span>01</span>Inicio</a><a href="/#sobre-sael"><span>02</span>Estudio</a><a href="/#servicios"><span>03</span>Servicios</a><a href="/#proyectos"><span>04</span>Proyectos</a><a href="/#contacto"><span>05</span>Contacto</a>
+          <a href="/"><span>01</span>Inicio</a><a href="/#sobre-sael"><span>02</span>Estudio</a>
+          <details class="home-mobile-services" data-mobile-services>
+            <summary aria-expanded="false" aria-controls="mobile-services-panel"><span>03</span><b>Servicios</b><i aria-hidden="true"></i></summary>
+            <div id="mobile-services-panel">{serviceLinks.map(([label, href], index) => <a href={href} aria-current={currentPath === href ? "page" : undefined}><span>0{index + 1}</span>{label}</a>)}</div>
+          </details>
+          <a href="/#proyectos"><span>04</span>Proyectos</a><a href="/#contacto"><span>05</span>Contacto</a>
         </nav>
         <a class="home-mobile-contact" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Contanos tu proyecto <ArrowIcon /></a>
       </div>
@@ -47,24 +66,42 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
   .home-wordmark{display:inline-flex;align-items:center;gap:6px}.home-wordmark>span{font-size:1.45rem;line-height:1;letter-spacing:-.045em}.home-wordmark>i{width:4px;height:4px;border-radius:50%;background:currentColor}.home-wordmark>small{font:600 .7rem/1 Manrope,Arial,sans-serif}
   .home-desktop-nav{display:flex;align-items:center;gap:2px}.home-desktop-nav a{min-height:42px;display:flex;align-items:center;padding:0 14px;border-radius:999px;font-size:.76rem;font-weight:650;transition:background 220ms ease,color 220ms ease}.home-desktop-nav a:hover,.home-desktop-nav a:focus-visible{background:#2c2e26;color:#f3efe7}
   .home-contact{justify-self:end;min-height:44px;display:inline-flex;align-items:center;gap:18px;padding:0 15px 0 18px;border:1px solid currentColor;border-radius:999px;font-size:.74rem;font-weight:650;transition:background 220ms ease,color 220ms ease,transform 220ms ease,border-color 420ms ease}:global(.home-motion-ready) .home-contact{border-color:transparent}.home-header[data-framed="true"] .home-contact{border-color:currentColor}.home-contact:hover,.home-contact:focus-visible{background:#2c2e26;color:#f3efe7;transform:translateY(-2px)}
-  .home-mobile-menu{display:none;justify-self:end}.home-mobile-menu summary{position:relative;z-index:4;min-width:96px;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 15px;border:1px solid currentColor;border-radius:999px;cursor:pointer;list-style:none;font-size:.76rem;font-weight:650}.home-mobile-menu summary::-webkit-details-marker{display:none}.home-mobile-menu summary i{position:relative;width:18px;height:12px}.home-mobile-menu summary i::before,.home-mobile-menu summary i::after{position:absolute;left:0;width:18px;height:1px;background:currentColor;content:"";transition:top 220ms ease,transform 220ms ease}.home-mobile-menu summary i::before{top:3px}.home-mobile-menu summary i::after{top:9px}.home-mobile-menu[open] summary i::before{top:6px;transform:rotate(45deg)}.home-mobile-menu[open] summary i::after{top:6px;transform:rotate(-45deg)}.home-mobile-menu:not([open]) .home-mobile-panel{display:none}
-  .home-mobile-panel{position:fixed;inset:-12px 0 0;z-index:2;min-height:100svh;display:grid;grid-template-rows:1fr auto;gap:30px;overflow:auto;padding:125px 24px 34px;background:#2c2e26;color:#f3efe7}.home-mobile-panel nav{display:grid;align-content:start}.home-mobile-panel nav>a{display:grid;grid-template-columns:38px 1fr;align-items:baseline;padding:17px 0;border-bottom:1px solid rgba(243,239,231,.17);font:550 clamp(2.8rem,12vw,4.8rem)/.9 "Bricolage Grotesque",Arial,sans-serif;letter-spacing:-.045em}.home-mobile-panel nav>a span{font:600 .65rem/1 Manrope,Arial,sans-serif;opacity:.5}.home-mobile-contact{width:max-content;min-height:48px;display:inline-flex;align-items:center;gap:22px;padding:0 18px;border:1px solid rgba(243,239,231,.55);border-radius:999px;font-size:.76rem;font-weight:650}.home-mobile-menu[open] summary{color:#f3efe7}.home-header:has(.home-mobile-menu[open]) .home-brand{color:#f3efe7}.home-header:has(.home-mobile-menu[open]) .home-brand img{padding:3px;border-radius:7px;background:#f3efe7}
+  .home-mobile-menu{display:none;justify-self:end}.home-mobile-menu>summary{position:relative;z-index:4;min-width:96px;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 15px;border:1px solid currentColor;border-radius:999px;cursor:pointer;list-style:none;font-size:.76rem;font-weight:650}.home-mobile-menu>summary::-webkit-details-marker{display:none}.home-mobile-menu>summary i{position:relative;width:18px;height:12px}.home-mobile-menu>summary i::before,.home-mobile-menu>summary i::after{position:absolute;left:0;width:18px;height:1px;background:currentColor;content:"";transition:top 220ms ease,transform 220ms ease}.home-mobile-menu>summary i::before{top:3px}.home-mobile-menu>summary i::after{top:9px}.home-mobile-menu[open]>summary i::before{top:6px;transform:rotate(45deg)}.home-mobile-menu[open]>summary i::after{top:6px;transform:rotate(-45deg)}.home-mobile-menu:not([open]) .home-mobile-panel{display:none}
+  .home-mobile-panel{position:fixed;inset:-12px 0 0;z-index:2;min-height:100svh;display:grid;grid-template-rows:1fr auto;gap:30px;overflow:auto;padding:125px 24px 34px;background:#2c2e26;color:#f3efe7}.home-mobile-panel nav{display:grid;align-content:start}.home-mobile-panel nav>a{display:grid;grid-template-columns:38px 1fr;align-items:baseline;padding:17px 0;border-bottom:1px solid rgba(243,239,231,.17);font:550 clamp(2.8rem,12vw,4.8rem)/.9 "Bricolage Grotesque",Arial,sans-serif;letter-spacing:-.045em}.home-mobile-panel nav>a span{font:600 .65rem/1 Manrope,Arial,sans-serif;opacity:.5}.home-mobile-contact{width:max-content;min-height:48px;display:inline-flex;align-items:center;gap:22px;padding:0 18px;border:1px solid rgba(243,239,231,.55);border-radius:999px;font-size:.76rem;font-weight:650}.home-mobile-menu[open]>summary{color:#f3efe7}.home-header:has(.home-mobile-menu[open]) .home-brand{color:#f3efe7}.home-header:has(.home-mobile-menu[open]) .home-brand img{padding:3px;border-radius:7px;background:#f3efe7}
+  .home-services-menu{position:relative}.home-services-menu>summary{min-height:42px;display:flex;align-items:center;gap:7px;padding:0 14px;border-radius:999px;cursor:pointer;list-style:none;font-size:.76rem;font-weight:650;transition:background 220ms ease,color 220ms ease}.home-services-menu>summary::-webkit-details-marker{display:none}.home-services-menu>summary:hover,.home-services-menu>summary:focus-visible,.home-services-menu[open]>summary{background:#2c2e26;color:#f3efe7}.home-services-menu>summary i{width:6px;height:6px;border-right:1px solid;border-bottom:1px solid;transform:translateY(-2px) rotate(45deg);transition:transform 220ms ease}.home-services-menu[open]>summary i{transform:translateY(2px) rotate(225deg)}
+  .home-services-panel{position:absolute;top:calc(100% + 14px);left:50%;width:310px;padding:8px;border:1px solid rgba(44,46,38,.16);border-radius:22px;background:rgba(243,239,231,.98);box-shadow:0 20px 55px rgba(44,46,38,.16);transform:translateX(-50%)}.home-services-menu:not([open]) .home-services-panel{display:none}.home-services-panel a{min-height:48px;display:grid;grid-template-columns:34px 1fr;align-items:center;padding:7px 12px;border-radius:15px;color:#4f5a45;font-size:.75rem;font-weight:650;line-height:1.3}.home-services-panel a span{font-size:.58rem;opacity:.55}.home-services-panel a:hover,.home-services-panel a:focus-visible{background:#d8d2c4;color:#2c2e26}.home-services-panel a[aria-current="page"]{background:#4f5a45;color:#f3efe7}
+  .home-mobile-services>summary{position:relative;display:grid;grid-template-columns:38px 1fr;align-items:baseline;min-height:64px;padding:17px 0;border:0;border-bottom:1px solid rgba(243,239,231,.17);border-radius:0;background:transparent;cursor:pointer;list-style:none;font:550 clamp(2.8rem,12vw,4.8rem)/.9 "Bricolage Grotesque",Arial,sans-serif;letter-spacing:-.045em}.home-mobile-services>summary::-webkit-details-marker{display:none}.home-mobile-services>summary:focus-visible{outline:0;box-shadow:inset 4px 0 0 #d8d2c4}.home-mobile-services>summary>span{font:600 .65rem/1 Manrope,Arial,sans-serif;opacity:.5}.home-mobile-services>summary b{font:inherit}.home-mobile-services>summary i{position:absolute;right:7px;top:50%;width:12px;height:12px;border-right:1px solid;border-bottom:1px solid;transform:translateY(-70%) rotate(45deg);transition:transform 220ms ease}.home-mobile-services[open]>summary i{transform:translateY(-30%) rotate(225deg)}.home-mobile-services:not([open])>div{display:none}.home-mobile-services>div{padding:5px 0 15px 38px;border-bottom:1px solid rgba(243,239,231,.17)}.home-mobile-services>div a{min-height:48px;display:grid;grid-template-columns:28px 1fr;align-items:center;padding:6px 10px;border-radius:12px;font-size:.8rem;font-weight:650;line-height:1.3}.home-mobile-services>div a span{font-size:.58rem;opacity:.45}.home-mobile-services>div a[aria-current="page"]{background:rgba(243,239,231,.12);color:#d8d2c4}
   @media(max-width:980px){.home-header-shell{grid-template-columns:1fr auto}.home-desktop-nav,.home-contact{display:none}.home-mobile-menu{display:block}}
   @media(max-width:520px){.home-header{top:8px}.home-header-shell{width:calc(100% - 24px);height:58px;padding-inline:12px}.home-wordmark{gap:4px}.home-wordmark>i{width:3px;height:3px}.home-wordmark>small{font-size:.62rem}.home-brand img{width:32px;height:28px}.home-wordmark>span{font-size:1.32rem}}
   @media(prefers-reduced-motion:reduce){.home-header,.home-header-shell,.home-header-shell::before,.home-brand,.home-brand img,.home-contact,.home-mobile-menu summary i::before,.home-mobile-menu summary i::after{transition:none}}
 </style>
 
 <script>
-  const menu = document.querySelector<HTMLDetailsElement>("[data-home-mobile-menu]");
+  const header = document.querySelector<HTMLElement>("[data-home-header]");
+  const desktopServices = header?.querySelector<HTMLDetailsElement>("[data-services-menu]");
+  const desktopSummary = desktopServices?.querySelector<HTMLElement>(":scope > summary");
+  const syncDesktop = () => desktopSummary?.setAttribute("aria-expanded", String(Boolean(desktopServices?.open)));
+  const closeDesktop = (restore=false) => { if (!desktopServices) return; desktopServices.open=false; syncDesktop(); if (restore) desktopSummary?.focus(); };
+  desktopServices?.addEventListener("toggle", syncDesktop);
+  desktopServices?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => closeDesktop()));
+  document.addEventListener("pointerdown", (event) => { if (desktopServices?.open && !desktopServices.contains(event.target as Node)) closeDesktop(); });
+  syncDesktop();
+
+  const menu = header?.querySelector<HTMLDetailsElement>("[data-home-mobile-menu]");
   if (menu) {
-    const summary = menu.querySelector<HTMLElement>("summary");
+    const summary = menu.querySelector<HTMLElement>(":scope > summary");
     const links = Array.from(menu.querySelectorAll<HTMLAnchorElement>("a[href]"));
+    const mobileServices = menu.querySelector<HTMLDetailsElement>("[data-mobile-services]");
+    const mobileSummary = mobileServices?.querySelector<HTMLElement>(":scope > summary");
+    const syncMobileServices = () => mobileSummary?.setAttribute("aria-expanded", String(Boolean(mobileServices?.open)));
+    mobileServices?.addEventListener("toggle", syncMobileServices);
     const sync = () => { document.body.classList.toggle("home-menu-open", menu.open); summary?.setAttribute("aria-label", menu.open ? "Cerrar menú de navegación" : "Abrir menú de navegación"); };
     const close = (restore=false) => { menu.open=false; sync(); if (restore) summary?.focus(); };
     links.forEach((link) => link.addEventListener("click", () => close()));
     menu.addEventListener("toggle", sync);
     document.addEventListener("keydown", (event) => {
       if (!menu.open) return;
+      if (event.key === "Escape" && mobileServices?.open) { event.preventDefault(); mobileServices.open=false; syncMobileServices(); mobileSummary?.focus(); return; }
       if (event.key === "Escape") { event.preventDefault(); close(true); return; }
       if (event.key !== "Tab" || !summary || links.length === 0) return;
       const last = links.at(-1);
@@ -72,5 +109,7 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); summary.focus(); }
     });
     sync();
+    syncMobileServices();
   }
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape" && desktopServices?.open) { event.preventDefault(); closeDesktop(true); } });
 </script>

@@ -31,9 +31,7 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
 </footer>
 
 <style>
-  .site-footer { overflow:hidden; background:var(--color-espresso); color:var(--color-cream); }
-  :global(body[data-path="/"]) .site-footer { --font-heading:"Bricolage Grotesque",Arial,sans-serif; }
-  :global(body[data-path="/"]) .footer-word { font-style:normal; font-weight:650; }
+  .site-footer { --font-heading:"Bricolage Grotesque",Arial,sans-serif; overflow:hidden; background:var(--color-espresso); color:var(--color-cream); }
   .footer-shell { padding-top:clamp(70px,8vw,112px); }
   .footer-top { display:flex; align-items:flex-start; justify-content:space-between; gap:30px; }
   .footer-top>a { min-height:44px; display:flex; align-items:center; gap:12px; font-family:var(--font-heading); font-size:2.2rem; }
@@ -41,7 +39,7 @@ const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
   .footer-top>a>span { display:inline-flex; align-items:center; gap:8px; }
   .footer-top i { width:4px; height:4px; border-radius:50%; background:currentColor; }
   .footer-top p { margin:0; color:rgba(243,239,231,.62); font-size:.82rem; line-height:1.6; text-align:right; }
-  .footer-word { margin:clamp(82px,10vw,150px) 0 clamp(24px,3vw,42px); font-family:var(--font-heading); font-size:clamp(8rem,28vw,25rem); font-style:italic; line-height:.62; letter-spacing:-.08em; }
+  .footer-word { margin:clamp(82px,10vw,150px) 0 clamp(24px,3vw,42px); font-family:var(--font-heading); font-size:clamp(8rem,28vw,25rem); font-style:normal; font-weight:650; line-height:.62; letter-spacing:-.08em; }
   .footer-bottom { min-height:92px; display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center; border-top:1px solid rgba(243,239,231,.15); }
   .footer-bottom>p { margin:0; color:rgba(243,239,231,.5); font-size:.7rem; }
   .footer-bottom nav { display:flex; gap:4px; }
