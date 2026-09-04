@@ -2,114 +2,120 @@
 
 ## Qué es Sael Estudio
 
-Sael Estudio es un estudio creativo boutique que trabaja entre marca, diseño, comunicación y tecnología para resolver necesidades concretas de proyectos y negocios.
+Sael Estudio es un estudio de diseño y tecnología que acompaña a emprendimientos, profesionales, negocios y empresas a construir o hacer crecer su presencia digital.
 
-**Bajada:** Diseño + soluciones.
+Puede resolver una necesidad puntual o acompañar un proyecto integral, desde la identidad visual y sus primeros canales hasta sitios web, aplicaciones y sistemas.
+
+**Síntesis:** Diseño, marca y tecnología para construir y hacer crecer tu presencia digital.
 
 **Frase de marca:** Diseño con intención. Marcas con alma.
 
 ## Propósito de la web
 
-La web presenta a Sael, comunica su enfoque y sus servicios, genera confianza y facilita el inicio de una conversación con potenciales clientes.
+La web es la principal presentación comercial y una muestra directa de las capacidades de Sael. Debe atraer, generar confianza, expresar criterio creativo y demostrar calidad de diseño y desarrollo en desktop y mobile.
 
-No debe limitarse a informar: debe transmitir el criterio creativo del estudio y producir una impresión memorable sin sacrificar claridad, serenidad ni facilidad de uso.
+Debe permitir que una persona comprenda:
+
+- qué puede resolver Sael;
+- que puede contratar una necesidad puntual o un proyecto integral;
+- cómo se desarrolla el trabajo;
+- qué proyectos reales respaldan la propuesta;
+- cómo iniciar una conversación.
 
 ## Audiencia
 
-La audiencia general incluye marcas, emprendimientos, proyectos, profesionales independientes y pequeños negocios que necesitan construir, ordenar o elevar su identidad, comunicación, presencia digital u operación. Puede encontrarse tanto en una etapa inicial como en un proceso de evolución, profesionalización o transformación digital.
+La audiencia incluye emprendimientos, profesionales independientes, comercios, negocios locales, pequeñas y medianas empresas, estudios, proyectos y organizaciones que necesitan construir, ordenar, profesionalizar o ampliar su presencia digital.
+
+También incluye empresas que necesitan sitios, aplicaciones, sistemas, interfaces o soluciones digitales específicas.
+
+Sael trabaja con proyectos de distintos niveles de madurez y alcance. La comunicación debe expresar flexibilidad y soluciones escalables sin prometer adaptación a cualquier presupuesto.
 
 ## Propuesta de valor
 
-Sael escucha y entiende cada necesidad para diseñar la solución que el proyecto realmente necesita. Puede ayudar a una marca a verse y comunicar mejor, y también construir experiencias, aplicaciones, sistemas o herramientas que le permitan funcionar mejor.
+Sael integra marca, diseño, comunicación y tecnología en un mismo proceso. Escucha la necesidad, ayuda a definir la solución adecuada y acompaña su diseño, implementación y lanzamiento.
 
-Una síntesis explicativa de la propuesta es: **diseñamos soluciones para que marcas y proyectos puedan verse mejor, comunicar mejor y funcionar mejor.**
+**Propuesta breve:** Diseño, marca y tecnología para construir y hacer crecer tu presencia digital.
+
+**Propuesta extendida:** Sael diseña y desarrolla soluciones digitales para marcas, profesionales, negocios y empresas. Creamos identidades, sitios web, aplicaciones y sistemas, acompañando cada proyecto desde la idea y la estrategia hasta su lanzamiento y evolución.
+
+**Principio comercial:** Trabajamos tanto en necesidades puntuales como en proyectos integrales, adaptando el alcance a la etapa y los objetivos de cada cliente.
 
 ## Servicios
 
-1. **Identidad y marca:** identidad visual y de marca, dirección, sistemas gráficos, aplicaciones y lineamientos para sostener coherencia.
-2. **Diseño y comunicación:** piezas digitales e impresas, redes, contenido visual, materiales comerciales y presencia cotidiana de la marca.
-3. **Web, apps y software:** desde landing pages, webs institucionales y portfolios profesionales hasta aplicaciones, sistemas internos, herramientas digitales y software a medida. Puede integrar estructura SEO, SEO local, Google Business Profile, Maps y otros puntos de la presencia digital cuando el proyecto lo requiera.
-4. **Acompañamiento y soluciones:** dirección e implementación para necesidades que no entran en una única categoría. Puede incluir ordenar canales y prioridades, configurar herramientas, articular presencia local, contacto y procesos, y dar seguimiento adaptado al proyecto como parte de una solución acordada.
+### 1. Web, apps y software
 
-Para profesionales independientes, estudios y oficios especializados, Sael puede articular una presencia profesional completa —identidad, portfolio o web, contacto, Google Business, SEO local y redes cuando corresponda— sin convertir cada elemento en un servicio aislado.
+Diseñamos y desarrollamos sitios web, aplicaciones, sistemas y soluciones digitales adaptadas a cada proyecto.
 
-Sael no se posiciona como agencia SEO o de community management, call center ni soporte administrativo general. La optimización, configuración o gestión de presencia digital aparece como complemento personalizado de una solución más amplia y no implica garantías de posicionamiento.
+Puede incluir landing pages, portfolios, sitios institucionales, catálogos, aplicaciones web o móviles, sistemas a medida, integraciones, mantenimiento y evolución.
 
-## Arquitectura actual de la experiencia
+### 2. Identidad y estrategia de marca
 
-La web es una landing estática con una única ruta. El recorrido actual está compuesto por:
+Construimos marcas claras y coherentes, desde la definición inicial hasta su sistema visual.
 
-- Header;
-- Hero;
-- Sobre Sael;
-- Servicios;
-- Proyectos seleccionados;
-- Proceso;
-- Contacto;
-- Footer.
+Puede incluir definición y posicionamiento, nombre y concepto, logo, paleta, tipografías, identidad visual y lineamientos de marca.
 
-Esta estructura es la base vigente. Cambiarla de forma sustancial requiere una decisión explícita de producto.
+### 3. UX/UI y comunicación visual
 
-## Personalidad de marca
+Diseñamos experiencias, interfaces y piezas visuales que ayudan a comunicar y utilizar mejor cada producto o servicio.
 
-La experiencia debe sentirse:
+Puede incluir UX/UI, prototipos, interfaces, diseño gráfico, contenido para redes, presentaciones y materiales digitales o impresos.
 
-- editorial;
-- cálida;
-- elegante;
-- serena;
-- boutique;
-- profesional;
-- creativa;
-- cuidada;
-- memorable.
+### 4. Acompañamiento creativo y digital
 
-Debe evitar una apariencia corporativa fría, genérica, tipo Canva, wellness o cute; también colores saturados y efectos visuales sin intención.
+Ayudamos a ordenar, lanzar y hacer evolucionar la presencia digital de cada proyecto.
 
-## Identidad visual
+Puede incluir estrategia digital, configuración de canales, Instagram y redes, Google Business Profile, Maps, dirección creativa y acompañamiento posterior al lanzamiento.
 
-Paleta principal:
+### Presencia digital inicial
 
-- crema `#F3EFE7`;
-- piedra `#D8D2C4`;
-- oliva `#6B745C`;
-- musgo `#4F5A45`;
-- espresso `#2C2E26`.
+Presencia digital inicial es una modalidad dentro de Identidad y Acompañamiento, no un quinto servicio. Está pensada para emprendimientos y profesionales que necesitan comenzar con una identidad clara y canales preparados para presentarse al público.
 
-La tipografía display es Bricolage Grotesque y la tipografía de texto e interfaz es Figtree. La combinación aporta una voz digital contemporánea y distintiva, con precisión y legibilidad en textos y controles.
+Puede articular identidad visual básica, Instagram, biografía, destacadas, primeras publicaciones, WhatsApp, email, Google Business Profile y lineamientos iniciales.
 
-El sistema visual utiliza líneas finas, divisores, punto central, símbolo de línea más punto, marcos, espacio negativo y composiciones editoriales. Se amplía con planos superpuestos, papeles, retículas, rutas, nodos y pequeñas interfaces abstractas que representan la relación entre marca, comunicación y tecnología.
+Sael no se posiciona como agencia de community management, call center ni proveedor administrativo. Redes, SEO local, Maps y configuración de canales forman parte de soluciones acordadas cuando aportan valor al proyecto.
 
-El símbolo oficial es un monograma construido a partir de **S + e + punto**. Funciona como firma, avatar y favicon, y convive con el nombre visible **Sael Estudio** mientras la marca consolida reconocimiento. En interfaces pequeñas puede utilizarse una firma compacta, siempre manteniendo el nombre disponible visual o accesiblemente según el contexto.
+## Arquitectura del producto
 
-## Dirección: Editorial con impacto
+La versión de lanzamiento incluye:
 
-El nivel de impacto visual buscado es alto pero sofisticado. La web debe sorprender por dirección de arte, composición, interacción y atención al detalle, no por acumulación de efectos. La tecnología debe sostener la experiencia sin competir con Sael como protagonista.
+- `/`: portada narrativa;
+- `/servicios/`: visión general de servicios;
+- `/servicios/desarrollo-digital/`;
+- `/servicios/identidad-de-marca/`;
+- `/servicios/diseno-ux-ui/`;
+- `/servicios/acompanamiento-digital/`.
 
-La evolución del producto debe aprovechar mejor el viewport, especialmente en desktop, mediante composiciones full-width, tipografía de gran escala, asimetrías, superposiciones y recursos gráficos o visuales de gran formato cuando aporten valor. Se busca superar una sucesión plana de bloques rectangulares y construir un recorrido con personalidad.
+La portada conserva el recorrido principal: Header, Hero, Sobre Sael, Servicios, Proyectos seleccionados, Proceso, Contacto y Footer. Las páginas interiores amplían la información sin duplicar literalmente la Home.
 
-Hero, Servicios y Proyectos seleccionados son los principales momentos de impacto. La selección curada conecta capacidades con trabajo real mediante casos reconocibles; Sobre Sael y Proceso funcionan como respiraciones narrativas, mientras que Contacto recupera intensidad para cerrar con una invitación clara a trabajar con el estudio.
+## Personalidad
 
-El movimiento y la interacción son partes visibles del lenguaje digital de Sael. Deben formar un sistema coherente, con entradas controladas, reveals, líneas, máscaras, transformaciones y hovers refinados según corresponda. No se permite scroll hijacking y siempre debe existir una experiencia adecuada para `prefers-reduced-motion`.
+La experiencia debe sentirse profesional, creativa, contemporánea, cálida, cercana, segura, cuidada y memorable.
 
-El sistema puede ampliarse con mockups, piezas de identidad, materiales impresos, texturas sutiles, símbolos, tipografía, imágenes conceptuales o motion assets. Los recursos deben sentirse propios de Sael; no se incorporarán assets genéricos solo para llenar espacio.
+Debe evitar una apariencia corporativa fría, una landing genérica de IA, estética Canva, wellness, cute, colores saturados, jerga vacía y efectos sin intención.
 
-## Principios UX/UI
+## Principios de comunicación
 
-- Comunicar con claridad antes que impresionar por exceso.
-- Crear impacto mediante composición, escala, ritmo y detalle.
-- Dar una intención concreta a cada movimiento e interacción y mantener un lenguaje de motion global.
-- Mantener continuidad visual durante todo el recorrido.
-- Usar recursos contemporáneos sin adoptar una estética SaaS o tecnológica.
-- Evitar saturación, movimiento frenético, scroll hijacking, partículas genéricas, neón, glassmorphism o 3D sin propósito.
-- Mantener navegación, lectura y llamados a la acción evidentes.
-- Integrar accesibilidad y rendimiento como parte de la calidad de la experiencia.
+- Hablar con claridad antes que con grandilocuencia.
+- Mostrar capacidad mediante la experiencia y proyectos reales.
+- No inventar años, equipo, clientes, cifras ni resultados.
+- Explicar tecnología sin tecnicismos innecesarios.
+- Hacer sentir bienvenido tanto a quien necesita empezar como a quien necesita una solución compleja.
+- Usar lenguaje humano, directo y profesional.
 
-## Principios responsive
+## Objetivos de negocio
 
-- Diseñar mobile como una composición propia, no como una versión comprimida de desktop.
-- Reorganizar contenido, escalas y jerarquías cuando el espacio lo requiera.
-- Simplificar motion y eliminar elementos secundarios si mejoran claridad o rendimiento.
-- Adaptar interacciones dependientes de hover.
-- Conservar identidad, personalidad y recordación en todos los tamaños.
-- Evitar overflow horizontal y mantener áreas táctiles adecuadas.
+- Recibir consultas calificadas.
+- Comunicar qué servicio o combinación de servicios resuelve cada necesidad.
+- Convertir la web en la primera muestra del trabajo de Sael.
+- Facilitar consultas desde la web y desde Instagram.
+- Construir presencia orgánica en Google.
+- Registrar origen, servicio consultado, presupuesto enviado y proyecto cerrado.
+
+## Principios UX y técnicos
+
+- Claridad antes que impacto gratuito.
+- Mobile como composición propia.
+- Accesibilidad, rendimiento y SEO como parte de la calidad.
+- Movimiento intencional y progresivo.
+- Contenido esencial disponible sin depender de animaciones.
+- Astro, HTML semántico, CSS y JavaScript pequeño como base.

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
+import HomeExperience from "../components/home-v3/HomeExperience.astro";
+import SectionBridge from "../components/home-v3/SectionBridge.astro";
 import About from "../components/About.astro";
 import Services from "../components/Services.astro";
 import Projects from "../components/Projects.astro";
@@ -9,23 +9,40 @@ import Process from "../components/Process.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import MotionController from "../components/MotionController.astro";
+import { SITE_URL } from "../config/site";
+
+const schema = {
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/#webpage`,
+  url: `${SITE_URL}/`,
+  name: "Diseño web, identidad y software en Uruguay | Sael Estudio",
+  description:
+    "Estudio de diseño y tecnología en Uruguay. Creamos identidades, sitios web, aplicaciones y soluciones digitales para marcas, profesionales y negocios.",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${SITE_URL}/#organization` },
+  inLanguage: "es-UY",
+};
 ---
 
 <BaseLayout
-  title="Sael Estudio"
-  description="Diseño y soluciones para que marcas y proyectos puedan verse, comunicar y funcionar mejor."
+  title="Diseño web, identidad y software en Uruguay | Sael Estudio"
+  description="Estudio de diseño y tecnología en Uruguay. Creamos identidades, sitios web, aplicaciones y soluciones digitales para marcas, profesionales y negocios."
+  schema={schema}
+  headingFont="bricolage"
 >
-  <Header />
-
-  <main id="main-content" tabindex="-1">
-    <Hero />
+  <HomeExperience>
+    <SectionBridge from="cream" to="moss" />
     <About />
+    <SectionBridge from="moss" to="espresso" side="right" />
     <Services />
+    <SectionBridge from="espresso" to="moss" />
     <Projects />
+    <SectionBridge from="moss" to="cream" side="right" />
     <Process />
+    <SectionBridge from="cream" to="moss" />
     <Contact />
-  </main>
-
+  </HomeExperience>
+  <SectionBridge from="moss" to="espresso" side="right" />
   <Footer />
   <MotionController />
 </BaseLayout>

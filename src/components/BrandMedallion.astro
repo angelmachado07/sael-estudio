@@ -1,0 +1,35 @@
+---
+import BrandMonogram from "./BrandMonogram.astro";
+---
+
+<div class="medallion" data-medallion aria-hidden="true">
+  <div class="medallion-shadow"></div>
+  <div class="medallion-edge medallion-edge--back"><BrandMonogram /></div>
+  <div class="medallion-edge medallion-edge--middle"><BrandMonogram /></div>
+  <div class="medallion-face">
+    <span class="medallion-ring"></span>
+    <BrandMonogram />
+    <i></i>
+  </div>
+</div>
+
+<style>
+  .medallion { --medallion-x:0deg; --medallion-y:0deg; position:relative; width:min(31vw,440px); aspect-ratio:1; transform:perspective(900px) rotateX(var(--medallion-y)) rotateY(var(--medallion-x)) rotate(-7deg); transform-style:preserve-3d; transition:transform 700ms var(--ease-out); }
+  .medallion-shadow { position:absolute; inset:14% 5% -7% 13%; border-radius:50%; background:rgba(44,46,38,.38); filter:blur(30px); transform:translateZ(-40px) rotate(9deg); }
+  .medallion-edge,.medallion-face { position:absolute; inset:0; display:grid; place-items:center; border-radius:50%; }
+  .medallion-edge { overflow:hidden; border:1px solid rgba(44,46,38,.18); background:var(--color-olive); color:rgba(243,239,231,.28); }
+  .medallion-edge :global(svg) { width:46%; }
+  .medallion-edge--back { transform:translate3d(16px,22px,-28px); background:var(--color-espresso); }
+  .medallion-edge--middle { transform:translate3d(8px,11px,-14px); background:var(--color-moss); }
+  .medallion-face { overflow:hidden; border:1px solid rgba(44,46,38,.25); background:radial-gradient(circle at 34% 26%,#f8f4ec 0 9%,var(--color-stone) 45%,#bab4a7 100%); box-shadow:inset -22px -28px 45px rgba(44,46,38,.16),inset 14px 16px 30px rgba(255,255,255,.38); color:var(--color-moss); transform:translateZ(2px); }
+  .medallion-face::before { position:absolute; inset:4%; border:1px solid rgba(44,46,38,.22); border-radius:50%; content:""; }
+  .medallion-face::after { position:absolute; top:-15%; left:-24%; width:74%; height:130%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent); content:""; transform:rotate(12deg); animation:medallion-light 7s var(--ease-in-out) infinite alternate; }
+  .medallion-face :global(svg) { position:relative; z-index:2; width:48%; filter:drop-shadow(4px 6px 0 rgba(243,239,231,.4)); --monogram-dot-color:var(--color-espresso); }
+  .medallion-ring { position:absolute; inset:15%; border:1px dashed rgba(44,46,38,.2); border-radius:50%; animation:medallion-ring 22s linear infinite; }
+  .medallion-face i { position:absolute; right:14%; bottom:17%; z-index:3; width:10px; height:10px; border-radius:50%; background:var(--color-espresso); box-shadow:0 0 0 7px rgba(44,46,38,.1); }
+  @keyframes medallion-light { to { transform:translateX(95%) rotate(12deg); } }
+  @keyframes medallion-ring { to { transform:rotate(360deg); } }
+  @media(max-width:920px){.medallion{width:min(42vw,370px)}}
+  @media(max-width:680px){.medallion{width:min(68vw,310px);transform:rotate(-8deg)}.medallion-edge--back{transform:translate3d(10px,14px,-18px)}.medallion-edge--middle{transform:translate3d(5px,7px,-9px)}}
+  @media(prefers-reduced-motion:reduce){.medallion,.medallion-face::after,.medallion-ring{animation:none;transition:none;transform:rotate(-7deg)}}
+</style>

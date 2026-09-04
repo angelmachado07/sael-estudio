@@ -1,121 +1,129 @@
 ---
 import ArrowIcon from "./ArrowIcon.astro";
+import BrandMedallion from "./BrandMedallion.astro";
 import { createWhatsAppUrl, PROJECT_WHATSAPP_MESSAGE } from "../config/contact";
 
 const projectWhatsAppUrl = createWhatsAppUrl(PROJECT_WHATSAPP_MESSAGE);
+const words = ["sitios web.", "aplicaciones.", "identidades.", "soluciones digitales."];
 ---
 
 <section id="inicio" class="hero" aria-labelledby="hero-title" data-hero>
-  <div class="hero-layer hero-base">
-    <div class="hero-stage container">
-      <p class="hero-kicker">Estudio creativo independiente</p>
-      <h1 id="hero-title"><span>Diseñamos</span><span>soluciones.</span></h1>
-      <div class="hero-footer">
-        <p>Identidad, comunicación y tecnología para que cada proyecto pueda avanzar.</p>
-        <a href={projectWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Iniciar un proyecto por WhatsApp (abre en una pestaña nueva)">Iniciar un proyecto <ArrowIcon /></a>
+  <div class="hero-ambient" aria-hidden="true"><span></span><i></i></div>
+  <div class="hero-brand-intro" aria-hidden="true" data-hero-brand>SAEL</div>
+
+  <div class="container hero-shell">
+    <div class="hero-copy">
+      <p class="hero-kicker">Estudio de diseño y tecnología · Uruguay</p>
+      <h1 id="hero-title">
+        <span class="hero-static">Diseñamos y desarrollamos</span>
+        <span class="hero-words" data-hero-words>
+          {words.map((word, index) => <span class:list={[{ "is-current": index === words.length - 1 }]} data-word={index}>{word}</span>)}
+        </span>
+      </h1>
+      <p class="hero-description">Desde una identidad y sus primeros canales hasta una web, una app o un sistema completo. Construimos contigo la solución que tu proyecto necesita.</p>
+      <div class="hero-actions">
+        <a class="button-primary" href={projectWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Contanos tu proyecto por WhatsApp (abre en una pestaña nueva)">Contanos tu proyecto <ArrowIcon /></a>
+        <a class="button-secondary" href="#proyectos">Ver proyectos <ArrowIcon /></a>
       </div>
     </div>
-  </div>
 
-  <div class="hero-layer hero-reveal" aria-hidden="true">
-    <div class="hero-stage container">
-      <p class="hero-kicker">Diseño + pensamiento + código</p>
-      <h1><span>Diseñamos</span><span>soluciones.</span></h1>
-      <div class="hero-footer"><p>La forma cambia. La intención permanece.</p></div>
+    <div class="hero-object" data-medallion-zone>
+      <BrandMedallion />
+      <p aria-hidden="true"><span>SAEL / 02</span><i></i><span>DISEÑO + TECNOLOGÍA</span></p>
     </div>
   </div>
 
-  <div class="hero-coordinate" aria-hidden="true"><span></span><i></i></div>
-  <p class="hero-hint" aria-hidden="true">Mové para explorar</p>
+  <div class="hero-foot container" aria-hidden="true"><span>Marca</span><i></i><span>Diseño</span><i></i><span>Desarrollo</span></div>
 </section>
 
 <style>
-  .hero { --lens-x:68%; --lens-y:43%; --lens-size:31vw; position:relative; min-height:100svh; overflow:hidden; background:var(--color-stone); color:var(--color-espresso); }
-  .hero-layer { position:absolute; inset:0; }
-  .hero-base { background:var(--color-stone); }
-  .hero-reveal { z-index:2; pointer-events:none; background:var(--color-moss); color:var(--color-cream); clip-path:circle(var(--lens-size) at var(--lens-x) var(--lens-y)); will-change:clip-path; }
-  .hero-stage { position:relative; height:100%; min-height:100svh; padding-top:calc(var(--header-height) + clamp(48px,7vh,82px)); padding-bottom:38px; font-size:18px; }
-  .hero-kicker { margin:0 0 clamp(38px,5vh,58px); font-size:var(--font-size-ui); font-weight:600; }
-  h1 { position:relative; z-index:1; margin:0; font-size:clamp(7.6rem,14.3vw,13.6rem); font-weight:550; line-height:.69; letter-spacing:-.078em; }
-  h1 span { display:block; width:max-content; max-width:100%; }
-  h1 span:first-child { padding-inline:0; border:0; border-radius:0; }
-  h1 span:last-child { margin-top:.08em; margin-left:clamp(32px,10vw,156px); }
-  .hero-footer { position:absolute; right:0; bottom:38px; left:0; display:flex; align-items:end; justify-content:space-between; gap:40px; }
-  .hero-footer p { max-width:390px; margin:0; font-size:16px; line-height:1.6; }
-  .hero-base .hero-footer p { position:relative; z-index:1; }
-  .hero-footer a { display:inline-flex; align-items:center; justify-content:space-between; gap:34px; min-height:52px; padding:0 19px 0 22px; border:1px solid currentColor; border-radius:999px; font-size:var(--font-size-ui); font-weight:600; transition:background-color var(--transition-normal),color var(--transition-normal),transform var(--transition-normal); }
-  .hero-base .hero-footer a { position:relative; z-index:4; background:rgba(243,239,231,.9); backdrop-filter:blur(10px); }
-  .hero-footer a:hover { background:var(--color-espresso); color:var(--color-cream); transform:translateY(-3px); }
-  .hero-reveal .hero-footer { justify-content:flex-start; }
-  .hero-coordinate { position:absolute; z-index:3; left:var(--lens-x); top:var(--lens-y); width:44px; height:44px; pointer-events:none; transform:translate(-50%,-50%); transition:left 120ms linear,top 120ms linear; }
-  .hero-coordinate::before,.hero-coordinate::after { content:""; position:absolute; background:rgba(243,239,231,.6); }
-  .hero-coordinate::before { top:21px; left:-18px; width:80px; height:1px; }
-  .hero-coordinate::after { left:21px; top:-18px; width:1px; height:80px; }
-  .hero-coordinate i { position:absolute; inset:17px; border:1px solid var(--color-cream); border-radius:50%; }
-  .hero-hint { position:absolute; z-index:3; right:var(--container-padding); bottom:108px; margin:0; font-size:var(--font-size-meta); font-weight:600; opacity:.52; transform:rotate(-90deg) translateX(100%); transform-origin:right bottom; }
-  @media (max-width:900px) { .hero { --lens-x:70%; --lens-y:49%; --lens-size:38vw; } h1 { font-size:clamp(6.7rem,16.2vw,9rem); } }
-  @media (max-width:680px) {
-    .hero { --lens-x:72%; --lens-y:44%; --lens-size:43vw; }
-    .hero::after { content:""; position:absolute; z-index:3; top:21%; right:-37vw; width:104vw; aspect-ratio:1; border:1px solid rgba(79,90,69,.34); border-radius:50%; pointer-events:none; animation:mobile-orbit-drift 9s var(--ease-in-out) 1.2s infinite alternate; }
-    .hero-stage { z-index:1; padding-top:calc(var(--header-height) + 40px); padding-bottom:28px; }
-    .hero-kicker { margin-bottom:clamp(44px,8vh,68px); animation:mobile-copy-arrival 700ms var(--ease-out) 80ms both; }
-    .hero-reveal { display:block; clip-path:circle(43vw at 72% 44%); animation:mobile-lens-arrival 1450ms var(--ease-out) both,mobile-lens-drift 8s var(--ease-in-out) 1450ms infinite alternate; }
-    .hero-coordinate { display:none; }
-    h1 { font-size:clamp(4.1rem,19vw,5.4rem); line-height:.75; letter-spacing:-.072em; }
-    h1 span { animation:mobile-title-arrival 1050ms var(--ease-out) 180ms both; }
-    h1 span:last-child { animation-delay:320ms; }
-    h1 span:last-child { margin-top:.12em; margin-left:0; }
-    .hero-footer { bottom:30px; flex-direction:column; align-items:flex-start; gap:24px; }
-    .hero-footer p { max-width:310px; animation:mobile-copy-arrival 850ms var(--ease-out) 610ms both; }
-    .hero-footer a { width:100%; animation:mobile-cta-arrival 900ms var(--ease-out) 750ms both; }
-    .hero-reveal .hero-footer { display:none; }
-    .hero-hint { display:none; }
-  }
-  @media (max-width:420px) { h1 { font-size:clamp(4rem,17.5vw,4.6rem); } }
-  @keyframes mobile-lens-arrival { from { clip-path:circle(0 at 88% 30%); } to { clip-path:circle(43vw at 72% 44%); } }
-  @keyframes mobile-lens-drift { from { clip-path:circle(39vw at 76% 41%); } to { clip-path:circle(49vw at 64% 49%); } }
-  @keyframes mobile-orbit-drift { to { transform:translate3d(-9vw,7vw,0) rotate(24deg) scale(.9); } }
-  @keyframes mobile-title-arrival { from { opacity:0; transform:translate3d(0,42px,0) skewY(2deg); } to { opacity:1; transform:none; } }
-  @keyframes mobile-copy-arrival { from { opacity:0; transform:translate3d(0,20px,0); } to { opacity:1; transform:none; } }
-  @keyframes mobile-cta-arrival { from { opacity:0; transform:translate3d(0,24px,0) scale(.97); } to { opacity:1; transform:none; } }
-  @media (prefers-reduced-motion:reduce) { .hero { --lens-x:72%; --lens-y:43%; --lens-size:29vw; } .hero-coordinate { display:none; } .hero::after,.hero-reveal,.hero-kicker,h1 span,.hero-footer p,.hero-footer a { animation:none; } }
+  .hero { --hero-progress:0; position:relative; min-height:100svh; overflow:hidden; padding:calc(var(--header-height) + 76px) 0 clamp(42px,5vw,70px); background:linear-gradient(130deg,var(--color-cream) 0 36%,var(--color-stone) 100%); color:var(--color-espresso); isolation:isolate; }
+  .hero::after { position:absolute; right:-20vw; bottom:-42vw; z-index:-1; width:72vw; aspect-ratio:1; border:1px solid rgba(79,90,69,.18); border-radius:50%; content:""; }
+  .hero-ambient { position:absolute; inset:0; z-index:-1; opacity:.65; }
+  .hero-ambient::before,.hero-ambient::after { position:absolute; background:rgba(79,90,69,.16); content:""; }
+  .hero-ambient::before { top:0; bottom:0; left:64%; width:1px; }
+  .hero-ambient::after { top:57%; right:0; left:0; height:1px; }
+  .hero-ambient span { position:absolute; top:57%; left:64%; width:11px; height:11px; border-radius:50%; background:var(--color-moss); transform:translate(-50%,-50%); }
+  .hero-ambient i { position:absolute; top:calc(57% - 70px); left:calc(64% - 70px); width:140px; aspect-ratio:1; border:1px dashed rgba(79,90,69,.2); border-radius:50%; animation:hero-orbit 18s linear infinite; }
+  .hero-brand-intro { position:absolute; top:2vh; left:-.045em; z-index:-1; color:rgba(79,90,69,.07); font-family:var(--font-heading); font-size:min(35vw,34rem); line-height:.72; letter-spacing:-.085em; transform:translate3d(calc(var(--hero-progress) * 14vw),calc(var(--hero-progress) * -9vh),0) scale(calc(1 - var(--hero-progress) * .22)); transform-origin:left top; opacity:calc(1 - var(--hero-progress) * 1.5); pointer-events:none; }
+  .hero-shell { position:relative; z-index:2; min-height:calc(100svh - var(--header-height) - 150px); display:grid; grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr); gap:clamp(38px,6vw,96px); align-items:center; }
+  .hero-copy { max-width:920px; }
+  .hero-kicker { margin:0 0 clamp(32px,4.8vh,58px); color:var(--color-moss); font-size:.78rem; font-weight:650; letter-spacing:.07em; text-transform:uppercase; }
+  h1 { margin:0; line-height:.8; letter-spacing:-.052em; }
+  .hero-static { display:block; font-family:var(--font-body); font-size:clamp(1.05rem,1.65vw,1.55rem); font-weight:650; letter-spacing:-.035em; line-height:1.1; }
+  .hero-words { position:relative; display:block; min-height:1.08em; margin-top:.06em; font-size:clamp(5.6rem,10.7vw,11.2rem); font-style:italic; }
+  .hero-words>span { display:none; width:max-content; max-width:100%; padding-right:.08em; }
+  .hero-words>span:last-child { display:block; }
+  .hero-words.is-sequencing>span { position:absolute; inset:0 auto auto 0; display:block; opacity:0; transform:translate3d(0,28%,0) skewY(3deg); transition:opacity 360ms ease,transform 760ms var(--ease-out); }
+  .hero-words.is-sequencing>span.is-current { opacity:1; transform:none; }
+  .hero-description { max-width:570px; margin:clamp(30px,4vw,52px) 0 0; font-size:clamp(1rem,1.2vw,1.16rem); line-height:1.7; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:34px; }
+  .hero-object { position:relative; justify-self:end; align-self:center; }
+  .hero-object>p { display:flex; align-items:center; gap:9px; margin:30px 0 0; color:rgba(44,46,38,.6); font-size:.58rem; font-weight:650; letter-spacing:.11em; }
+  .hero-object>p i { flex:1; height:1px; background:rgba(44,46,38,.24); }
+  .hero-foot { position:absolute; right:0; bottom:20px; left:0; display:flex; align-items:center; gap:16px; color:rgba(44,46,38,.48); font-size:.64rem; font-weight:650; letter-spacing:.1em; text-transform:uppercase; }
+  .hero-foot i { flex:0 1 90px; height:1px; background:rgba(44,46,38,.24); }
+  @keyframes hero-orbit { to { transform:rotate(360deg); } }
+  @media(max-width:1000px){.hero{padding-top:calc(var(--header-height) + 58px)}.hero-shell{grid-template-columns:minmax(0,1.1fr) minmax(260px,.6fr)}.hero-words{font-size:clamp(5rem,10.5vw,7.4rem)}}
+  @media(max-width:760px){.hero{min-height:auto;padding:calc(var(--header-height) + 52px) 0 76px}.hero::after{right:-48vw;bottom:-30vw;width:125vw}.hero-ambient::before{left:78%}.hero-ambient::after{top:62%}.hero-ambient span{top:62%;left:78%}.hero-ambient i{display:none}.hero-brand-intro{top:11vh;font-size:55vw}.hero-shell{min-height:0;grid-template-columns:1fr;gap:42px}.hero-copy{display:contents}.hero-kicker{order:1;margin-bottom:0}.hero-copy h1{order:2}.hero-description{order:3;margin-top:0}.hero-actions{order:5;margin-top:0}.hero-object{order:4;justify-self:center;margin-block:6px}.hero-static{font-size:.98rem}.hero-words{font-size:clamp(4.3rem,18vw,6rem);min-height:1.82em;line-height:.84}.hero-words>span{width:min-content;max-width:100%}.hero-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.hero-actions a{padding-inline:16px}.hero-foot{display:none}}
+  @media(max-width:480px){.hero{padding-bottom:62px}.hero-words{font-size:clamp(3.8rem,17vw,4.8rem)}.hero-description{font-size:.96rem}.hero-actions{grid-template-columns:1fr}.hero-object>p{display:none}}
+  @media(prefers-reduced-motion:reduce){.hero-brand-intro{transform:none;opacity:.07}.hero-ambient i{animation:none}.hero-words.is-sequencing>span{transition:none}.hero-words.is-sequencing>span:not(:last-child){display:none}.hero-words.is-sequencing>span:last-child{position:static;display:block;opacity:1;transform:none}}
 </style>
 
 <script>
   const hero = document.querySelector<HTMLElement>("[data-hero]");
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (hero && !reduced.matches) {
-    let targetX=68, targetY=43, currentX=68, currentY=43, frame=0;
-    const render=()=>{
-      currentX+=(targetX-currentX)*.12; currentY+=(targetY-currentY)*.12;
-      hero.style.setProperty("--lens-x",`${currentX.toFixed(2)}%`);
-      hero.style.setProperty("--lens-y",`${currentY.toFixed(2)}%`);
-      if (Math.abs(targetX-currentX)>.05 || Math.abs(targetY-currentY)>.05) frame=requestAnimationFrame(render); else frame=0;
+  const wordGroup = hero?.querySelector<HTMLElement>("[data-hero-words]");
+  const wordElements = Array.from(wordGroup?.querySelectorAll<HTMLElement>("[data-word]") ?? []);
+  const medallionZone = hero?.querySelector<HTMLElement>("[data-medallion-zone]");
+  const medallion = hero?.querySelector<HTMLElement>("[data-medallion]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const precisePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+  if (wordGroup && wordElements.length && !reducedMotion.matches) {
+    wordGroup.classList.add("is-sequencing");
+    wordElements.forEach((word) => word.classList.remove("is-current"));
+    let activeWord = 0;
+    wordElements[activeWord].classList.add("is-current");
+    const advanceWord = () => {
+      wordElements[activeWord].classList.remove("is-current");
+      activeWord += 1;
+      wordElements[activeWord].classList.add("is-current");
+      if (activeWord < wordElements.length - 1) window.setTimeout(advanceWord, 1150);
     };
-    hero.addEventListener("pointermove",event=>{
-      if (window.innerWidth <= 680 || event.pointerType === "touch") return;
-      const bounds=hero.getBoundingClientRect();
-      targetX=((event.clientX-bounds.left)/bounds.width)*100;
-      targetY=((event.clientY-bounds.top)/bounds.height)*100;
-      if (!frame) frame=requestAnimationFrame(render);
+    window.setTimeout(advanceWord, 1250);
+  }
+
+  if (hero && !reducedMotion.matches) {
+    let scrollFrame = 0;
+    const updateHero = () => {
+      const progress = Math.max(0, Math.min(1, window.scrollY / Math.max(1, hero.offsetHeight * .55)));
+      hero.style.setProperty("--hero-progress", progress.toFixed(3));
+      scrollFrame = 0;
+    };
+    window.addEventListener("scroll", () => {
+      if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateHero);
+    }, { passive: true });
+    updateHero();
+  }
+
+  if (medallionZone && medallion && precisePointer.matches && !reducedMotion.matches) {
+    let pointerFrame = 0;
+    let nextX = 0;
+    let nextY = 0;
+    medallionZone.addEventListener("pointermove", (event) => {
+      const bounds = medallionZone.getBoundingClientRect();
+      nextX = (event.clientX - bounds.left) / bounds.width - .5;
+      nextY = (event.clientY - bounds.top) / bounds.height - .5;
+      if (pointerFrame) return;
+      pointerFrame = window.requestAnimationFrame(() => {
+        medallion.style.setProperty("--medallion-x", `${(nextX * 12).toFixed(2)}deg`);
+        medallion.style.setProperty("--medallion-y", `${(nextY * -10).toFixed(2)}deg`);
+        pointerFrame = 0;
+      });
     });
-    hero.addEventListener("pointerleave",()=>{
-      if (window.innerWidth <= 680) return;
-      targetX=68;
-      targetY=43;
-      if (!frame) frame=requestAnimationFrame(render);
+    medallionZone.addEventListener("pointerleave", () => {
+      medallion.style.setProperty("--medallion-x", "0deg");
+      medallion.style.setProperty("--medallion-y", "0deg");
     });
-    const updateLens=()=>{
-      const progress=Math.max(0,Math.min(1,-hero.getBoundingClientRect().top/hero.offsetHeight));
-      if (window.innerWidth <= 680) return;
-      const base=31;
-      hero.style.setProperty("--lens-size",`${base + progress*70}vw`);
-    };
-    let scrollFrame=0;
-    const requestLensUpdate=()=>{
-      if (scrollFrame) return;
-      scrollFrame=requestAnimationFrame(()=>{ updateLens(); scrollFrame=0; });
-    };
-    window.addEventListener("scroll",requestLensUpdate,{passive:true}); updateLens();
   }
 </script>

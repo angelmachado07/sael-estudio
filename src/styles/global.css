@@ -1,5 +1,29 @@
 @import "./variables.css";
 
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-regular-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-italic-latin.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/manrope-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -82,9 +106,86 @@ h1,
 h2,
 h3 {
   font-family: var(--font-heading);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 0.98;
   text-wrap: balance;
+}
+
+strong {
+  font-weight: 650;
+}
+
+.button-primary,
+.button-secondary,
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 50px;
+  padding: 0 19px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: var(--font-size-ui);
+  font-weight: 650;
+  transition:
+    color var(--transition-normal),
+    background-color var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+.button-primary {
+  background: var(--color-espresso);
+  color: var(--color-cream);
+}
+
+.button-secondary {
+  background: transparent;
+}
+
+.button-primary:hover,
+.button-primary:focus-visible,
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  transform: translateY(-3px);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--color-moss);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  background: var(--color-espresso);
+  color: var(--color-cream);
+}
+
+.text-link {
+  min-height: 44px;
+  padding-inline: 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: var(--color-olive);
+  font-size: var(--font-size-meta);
+  font-weight: 650;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  content: "";
 }
 
 ::selection {

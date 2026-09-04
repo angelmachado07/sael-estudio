@@ -1,45 +1,54 @@
 ---
 import { CONTACT_EMAIL, createWhatsAppUrl, GENERAL_WHATSAPP_MESSAGE, INSTAGRAM_URL } from "../config/contact";
 import BrandMonogram from "./BrandMonogram.astro";
+import EmailIcon from "./EmailIcon.astro";
 import InstagramIcon from "./InstagramIcon.astro";
 import WhatsAppIcon from "./WhatsAppIcon.astro";
 
-const currentYear=new Date().getFullYear();
-const whatsappUrl=createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
+const currentYear = new Date().getFullYear();
+const whatsappUrl = createWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
 ---
+
 <footer class="site-footer">
   <div class="container footer-shell">
-    <div class="footer-top"><a href="#inicio" aria-label="Ir al inicio de Sael Estudio"><BrandMonogram class="footer-symbol" /><span>Sael<i></i>Estudio</span></a><p>Diseño + soluciones</p></div>
+    <div class="footer-top">
+      <a href="/" aria-label="Ir al inicio de Sael Estudio"><BrandMonogram class="footer-symbol" /><span>Sael<i></i>Estudio</span></a>
+      <p>Diseño, marca y tecnología<br />para tu presencia digital.</p>
+    </div>
+
     <div class="footer-word" aria-hidden="true">SAEL</div>
-    <div class="footer-bottom"><p>© {currentYear} Sael Estudio</p><div><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a><a class="footer-social-link" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Seguir a Sael Estudio en Instagram (abre en una pestaña nueva)"><InstagramIcon /> Instagram · @saelestudio</a><a class="footer-social-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Escribir a Sael Estudio por WhatsApp (abre en una pestaña nueva)"><WhatsAppIcon /> WhatsApp · +598 92 934 906</a></div><a href="#inicio">Arriba ↑</a></div>
+
+    <div class="footer-bottom">
+      <p>© {currentYear} Sael Estudio · Uruguay</p>
+      <nav aria-label="Contacto y redes">
+        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram de Sael Estudio (abre en una pestaña nueva)" data-label="Instagram"><InstagramIcon /></a>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Sael Estudio (abre en una pestaña nueva)" data-label="WhatsApp"><WhatsAppIcon /></a>
+        <a href={`mailto:${CONTACT_EMAIL}`} aria-label={`Escribir a ${CONTACT_EMAIL}`} data-label="Email"><EmailIcon /></a>
+      </nav>
+      <a class="footer-up" href="#main-content">Volver arriba <span aria-hidden="true">↑</span></a>
+    </div>
   </div>
 </footer>
+
 <style>
-  .site-footer { overflow:hidden; background:var(--color-espresso); color:var(--color-cream); }
+  .site-footer { --font-heading:"Bricolage Grotesque",Arial,sans-serif; overflow:hidden; background:var(--color-espresso); color:var(--color-cream); }
   .footer-shell { padding-top:clamp(70px,8vw,112px); }
-  .footer-top { display:flex; align-items:center; justify-content:space-between; gap:30px; }
-  .footer-top > a { min-height:44px; display:flex; align-items:center; gap:13px; font-family:var(--font-heading); font-size:2rem; font-weight:600; letter-spacing:-.06em; }
-  .footer-top > a :global(.footer-symbol) { width:50px; height:auto; flex:none; color:var(--color-cream); --monogram-dot-color:var(--color-stone); }
-  .footer-top > a > span { display:inline-flex; align-items:center; gap:9px; }
-  .footer-top i { width:5px; height:5px; border-radius:50%; background:currentColor; }
-  .footer-top p { margin:0; color:rgba(243,239,231,.58); font-size:var(--font-size-ui); }
-  .footer-word { margin:clamp(90px,11vw,170px) 0 clamp(20px,2.4vw,38px); font-family:var(--font-heading); font-size:clamp(8rem,27.5vw,25rem); font-weight:650; line-height:.67; letter-spacing:-.095em; }
-  .footer-bottom { min-height:86px; display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center; border-top:1px solid rgba(243,239,231,.15); }
-  .footer-bottom p { margin:0; color:rgba(243,239,231,.48); font-size:var(--font-size-meta); }
-  .footer-bottom div { display:flex; gap:22px; }
-  .footer-bottom a { min-height:44px; display:inline-flex; align-items:center; color:rgba(243,239,231,.68); font-size:var(--font-size-meta); }
-  .footer-social-link { gap:6px; }
-  .footer-social-link :global(svg) { width:15px; height:15px; flex:none; }
-  .footer-bottom > a { justify-self:end; }
-  @media (max-width:600px) {
-    .footer-shell { padding-bottom:max(18px,env(safe-area-inset-bottom)); }
-    .footer-top { align-items:flex-start; gap:20px; }
-    .footer-top > a { gap:9px; font-size:1.6rem; }
-    .footer-top > a :global(.footer-symbol) { width:38px; }
-    .footer-word { margin-top:82px; font-size:31vw; }
-    .footer-bottom { grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto auto; gap:22px 14px; min-height:0; padding:26px 0 max(34px,calc(env(safe-area-inset-bottom) + 22px)); }
-    .footer-bottom div { grid-column:1/-1; grid-row:1; flex-wrap:wrap; row-gap:10px; }
-    .footer-bottom p { grid-column:1; grid-row:2; }
-    .footer-bottom > a { grid-column:2; grid-row:2; }
-  }
+  .footer-top { display:flex; align-items:flex-start; justify-content:space-between; gap:30px; }
+  .footer-top>a { min-height:44px; display:flex; align-items:center; gap:12px; font-family:var(--font-heading); font-size:2.2rem; }
+  .footer-top>a :global(.footer-symbol) { width:48px; height:auto; color:var(--color-cream); --monogram-dot-color:var(--color-stone); }
+  .footer-top>a>span { display:inline-flex; align-items:center; gap:8px; }
+  .footer-top i { width:4px; height:4px; border-radius:50%; background:currentColor; }
+  .footer-top p { margin:0; color:rgba(243,239,231,.62); font-size:.82rem; line-height:1.6; text-align:right; }
+  .footer-word { margin:clamp(82px,10vw,150px) 0 clamp(24px,3vw,42px); font-family:var(--font-heading); font-size:clamp(8rem,28vw,25rem); font-style:normal; font-weight:650; line-height:.62; letter-spacing:-.08em; }
+  .footer-bottom { min-height:92px; display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center; border-top:1px solid rgba(243,239,231,.15); }
+  .footer-bottom>p { margin:0; color:rgba(243,239,231,.5); font-size:.7rem; }
+  .footer-bottom nav { display:flex; gap:4px; }
+  .footer-bottom nav a { position:relative; display:grid; place-items:center; width:44px; height:44px; color:rgba(243,239,231,.78); transition:color var(--transition-normal),transform var(--transition-normal); }
+  .footer-bottom nav a::after { position:absolute; bottom:calc(100% + 8px); left:50%; padding:5px 8px; border-radius:6px; background:var(--color-cream); color:var(--color-espresso); content:attr(data-label); font-size:.62rem; opacity:0; pointer-events:none; transform:translate(-50%,5px); transition:opacity var(--transition-fast),transform var(--transition-fast); }
+  .footer-bottom nav a:hover,.footer-bottom nav a:focus-visible { color:var(--color-cream); transform:translateY(-3px) scale(1.06); }
+  .footer-bottom nav a:hover::after,.footer-bottom nav a:focus-visible::after { opacity:1; transform:translate(-50%,0); }
+  .footer-bottom nav :global(svg) { width:26px; height:26px; }
+  .footer-up { justify-self:end; min-height:44px; display:flex; align-items:center; gap:9px; color:rgba(243,239,231,.68); font-size:.7rem; }
+  @media(max-width:600px){.footer-shell{padding-bottom:max(18px,env(safe-area-inset-bottom))}.footer-top{gap:20px}.footer-top>a{font-size:1.8rem}.footer-top>a :global(.footer-symbol){width:38px}.footer-top p{max-width:150px}.footer-word{margin-top:78px;font-size:31vw}.footer-bottom{grid-template-columns:1fr auto;grid-template-rows:auto auto;gap:20px 12px;padding:25px 0 max(30px,calc(env(safe-area-inset-bottom) + 20px))}.footer-bottom nav{grid-column:1/-1;grid-row:1}.footer-bottom>p{grid-column:1;grid-row:2}.footer-up{grid-column:2;grid-row:2}}
+  @media(prefers-reduced-motion:reduce){.footer-bottom nav a,.footer-bottom nav a::after{transition:none}}
 </style>

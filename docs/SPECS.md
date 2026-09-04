@@ -382,3 +382,135 @@ Restablecer una jerarquía clara con el Hero como máximo impacto y convertir Se
 - No quedan controles de apertura ni contenido comercial oculto en Servicios.
 - Cada servicio incluye visual, descripción, capacidades y CTA visible.
 - Sin overflow horizontal ni errores de consola en desktop, notebook, tablet y mobile.
+
+---
+
+## Rediseño comercial y expansión de servicios v2
+
+**Estado:** Ready
+
+### Problema
+
+La web actual tiene identidad y una base técnica sólida, pero su Hero, sistema tipográfico, navegación y arquitectura ya no representan completamente el posicionamiento aprobado. Sael necesita funcionar como su primera muestra comercial, presentar tecnología como capacidad principal, recibir necesidades puntuales y proyectos integrales, y preparar un lanzamiento coordinado con SEO e Instagram.
+
+### Objetivo
+
+Transformar la web en una experiencia continua, memorable, profesional y cercana que demuestre capacidad de diseño y desarrollo, explique cuatro servicios reorganizados y amplíe la arquitectura con páginas de servicio antes del lanzamiento.
+
+### Alcance
+
+- Actualizar documentación de producto, diseño, decisiones y roadmap.
+- Migrar tipografías a Instrument Serif + Manrope alojadas localmente.
+- Rediseñar Hero con copy aprobado, palabras variables y medallón del monograma.
+- Integrar la entrada de marca con la navegación.
+- Unificar Header en una cápsula al hacer scroll.
+- Rediseñar continuidad y transiciones entre secciones.
+- Implementar cursor personalizado solo para puntero preciso.
+- Reorganizar copy y presentación de los cuatro servicios.
+- Integrar Presencia digital inicial dentro de Identidad y Acompañamiento.
+- Crear `/servicios/` y cuatro rutas específicas.
+- Actualizar navegación desktop/mobile y enlaces internos.
+- Simplificar el footer a íconos accesibles de Instagram, WhatsApp y correo.
+- Aplicar correcciones SEO técnicas y sociales pendientes.
+- Actualizar sitemap, robots, canonical, metadata, Open Graph y datos estructurados.
+- Verificar responsive, accesibilidad, rendimiento y funcionamiento sin JavaScript.
+
+### Fuera de alcance
+
+- Portugués e inglés.
+- Selector de tema.
+- Páginas individuales de casos de estudio.
+- CMS, backend o base de datos.
+- Formulario de diagnóstico.
+- Three.js, WebGL o librería 3D sin aprobación.
+- Community management recurrente como servicio genérico.
+- Inventar proyectos, testimonios, métricas o experiencia.
+- Fusionar a `main` o publicar producción sin aprobación.
+
+### Rutas
+
+- `/`
+- `/servicios/`
+- `/servicios/desarrollo-digital/`
+- `/servicios/identidad-de-marca/`
+- `/servicios/diseno-ux-ui/`
+- `/servicios/acompanamiento-digital/`
+
+### Comportamiento esperado
+
+- La marca aparece en gran escala como parte de la entrada y se integra visualmente al Header durante el scroll.
+- El Hero comunica “Diseñamos y desarrollamos” y presenta, en secuencia legible, sitios web, aplicaciones, identidades y soluciones digitales.
+- El estado final del Hero permanece comprensible y no rota indefinidamente de forma distractora.
+- El medallón tiene profundidad y reacción suave en desktop; mobile usa una versión estable y simplificada.
+- La navegación superior se percibe integrada; tras un umbral forma una cápsula única.
+- Las secciones mantienen continuidad visual sin perder separación semántica.
+- Los servicios permanecen comprensibles sin hover o animación y enlazan a páginas específicas.
+- Las páginas interiores tienen copy único, jerarquía clara, preguntas frecuentes, relacionados y CTA.
+- El footer utiliza íconos accesibles y existe un CTA claro antes del cierre.
+- Sin JavaScript, todo contenido esencial permanece visible y navegable.
+
+### Responsive
+
+- Diseñar mobile, tablet y desktop como composiciones intencionales.
+- No trasladar cursor ni hovers a touch.
+- Simplificar morph, medallón, sticky y parallax cuando sea necesario.
+- Evitar overflow horizontal desde 320 px.
+- Mantener CTA, navegación y contenido prioritario disponibles.
+
+### Accesibilidad
+
+- Un `h1` por página.
+- Landmarks y headings ordenados.
+- Skip link funcional.
+- Menús y desplegables operables con teclado.
+- Foco visible y áreas táctiles de al menos 44 px.
+- Contraste suficiente en escenas claras y oscuras.
+- `prefers-reduced-motion` ofrece una experiencia completa.
+- Elementos decorativos fuera del árbol accesible.
+- Íconos de contacto con nombres accesibles.
+
+### SEO
+
+- Título y description únicos por ruta.
+- URL canónica absoluta.
+- Open Graph y Twitter Cards.
+- Imagen social coherente con el nuevo sistema.
+- Un solo `h1` por ruta.
+- Sitemap con rutas canónicas publicables.
+- `robots.txt` correcto.
+- Datos estructurados válidos y sin afirmaciones inventadas.
+- Enlaces internos entre Home, servicios y relacionados.
+- No incluir en sitemap rutas inexistentes o no publicadas.
+
+### Rendimiento
+
+- Astro estático, CSS y JavaScript nativo como primera opción.
+- Fuentes locales optimizadas.
+- Animaciones mediante `transform` y `opacity` cuando corresponda.
+- Scroll y pointer coordinados con `requestAnimationFrame`.
+- No introducir dependencias sin justificar beneficio y costo.
+- Optimizar imágenes y evitar cargas pesadas en el camino crítico.
+
+### Criterios de aceptación
+
+- Build de Astro finaliza sin errores.
+- Todas las rutas responden correctamente y tienen metadata única.
+- Hero aprobado visible y legible en desktop y mobile.
+- No quedan duplicados de `h1` en el DOM accesible.
+- Header funciona al inicio, con scroll, teclado, touch y menú mobile.
+- Servicios y Presencia digital inicial coinciden con `PRODUCT.md`.
+- Cada tarjeta/capítulo enlaza su ruta correcta.
+- Las páginas de servicio contienen información sustancial y no duplican literalmente la Home.
+- El footer contiene solo íconos visibles de Instagram, WhatsApp y correo, con labels accesibles.
+- No existe scroll hijacking, overflow horizontal, errores de consola o contenido esencial oculto por JavaScript.
+- `prefers-reduced-motion` elimina motion no esencial sin ocultar información.
+- Lighthouse o revisión equivalente no detecta regresiones graves de accesibilidad, SEO o rendimiento.
+- Sitemap, robots, canonical, Open Graph y schema se validan.
+- Se verifica Safari/iOS, Chromium/Android y desktop en los tamaños disponibles.
+- `git diff --check` y las verificaciones del repositorio pasan.
+
+### Decisiones abiertas
+
+No existen decisiones de producto bloqueantes. Codex puede resolver detalles técnicos, composición, easing, breakpoints, estructura de componentes y progressive enhancement dentro de `PRODUCT.md` y `DESIGN.md`.
+
+Debe detenerse antes de introducir dependencias nuevas relevantes, cambiar copy comercial aprobado, alterar las rutas, usar 3D pesado o publicar en producción.

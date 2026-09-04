@@ -16,13 +16,13 @@
   --color-primary: var(--color-moss);
 
   /* Tipografías principales */
-  --font-heading: "Bricolage Grotesque", Arial, sans-serif;
-  --font-body: "Figtree", Arial, sans-serif;
+  --font-heading: "Instrument Serif", Georgia, serif;
+  --font-body: "Manrope", Arial, sans-serif;
   --font-size-label: clamp(0.9rem, 1.05vw, 1rem);
   --font-size-ui: 0.88rem;
   --font-size-meta: 0.82rem;
-  --font-size-section-title: clamp(3.8rem, 6.6vw, 6.7rem);
-  --font-size-feature-title: clamp(2.2rem, 3.7vw, 4rem);
+  --font-size-section-title: clamp(4.2rem, 7.4vw, 7.4rem);
+  --font-size-feature-title: clamp(2.7rem, 4.4vw, 4.8rem);
 
   /* Layout */
   --container-width: 1340px;
