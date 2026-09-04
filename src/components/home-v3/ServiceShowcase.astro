@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import webSoftware from "../../assets/services/web-software.png";
+import identidadMarca from "../../assets/services/identidad-marca.png";
+import disenoComunicacion from "../../assets/services/diseno-comunicacion.png";
+import acompanamiento from "../../assets/services/acompanamiento.png";
+
+const items=[
+  {src:webSoftware,kind:"web",label:"Web, apps y software"},{src:identidadMarca,kind:"brand",label:"Identidad y estrategia de marca"},{src:disenoComunicacion,kind:"design",label:"UX/UI y comunicación visual"},{src:acompanamiento,kind:"guidance",label:"Acompañamiento creativo y digital"},
+];
+---
+<div class="service-showcase" data-service-showcase role="group" aria-label="Imágenes de los servicios de Sael Estudio">
+  <div class="service-showcase-stage">
+    {items.map((item,index)=><button type="button" class:list={["service-showcase-card",`is-${item.kind}`,{"is-featured":index===0}]} data-showcase-card aria-label={`Destacar ${item.label}`} aria-pressed={index===0?"true":"false"} style={`--stack-order:${index+1}`}>
+      <Image src={item.src} alt="" widths={[320,480,640,800]} sizes="(max-width:520px) 70vw, (max-width:900px) 50vw, 30vw" format="webp" quality={84} loading={index===0?"eager":"lazy"} fetchpriority={index===0?"high":"auto"}/>
+    </button>)}
+  </div>
+</div>
+<style>
+  .service-showcase{position:relative;width:min(43vw,610px);aspect-ratio:1;perspective:1300px}.service-showcase::before{position:absolute;inset:71% 7% 7%;border-radius:50%;background:rgba(44,46,38,.23);filter:blur(30px);content:"";transform:scaleX(.84)}.service-showcase-stage{position:absolute;inset:3%;transform:rotateX(var(--showcase-y,-2deg)) rotateY(var(--showcase-x,2deg));transform-style:preserve-3d;transition:transform 500ms cubic-bezier(.16,1,.3,1)}
+  .service-showcase-card{--rotation:0deg;position:absolute;display:block;overflow:hidden;margin:0;padding:0;border:1px solid rgba(44,46,38,.14);border-radius:var(--card-radius,24px);background:#f3efe7;box-shadow:0 22px 48px rgba(44,46,38,.18);cursor:pointer;z-index:var(--stack-order,1);transform:translate3d(0,var(--float,0),var(--depth,0)) rotate(var(--rotation)) scale(var(--scale,1));transition:transform 700ms cubic-bezier(.16,1,.3,1),filter 700ms ease,opacity 500ms ease,box-shadow 500ms ease;animation:showcase-float 7s ease-in-out infinite;will-change:transform}.service-showcase-card :global(img){width:100%;height:100%;display:block;object-fit:cover;object-position:var(--image-position,50% 50%);transform:scale(var(--image-scale,1.08));transition:transform 900ms cubic-bezier(.16,1,.3,1)}.service-showcase-card.is-featured{--float:-14px;--scale:1.075;filter:saturate(1.04) contrast(1.015);box-shadow:0 32px 65px rgba(44,46,38,.24)}.service-showcase-card:focus-visible{outline:3px solid #4f5a45;outline-offset:5px}.service-showcase-card.is-featured :global(img){transform:scale(calc(var(--image-scale,1.08) + .035))}
+  .is-web{top:16%;left:10%;width:72%;aspect-ratio:1.16;--rotation:-3.5deg;--depth:4px;--card-radius:30px 15px;--image-position:50% 45%;--image-scale:1.12}.is-brand{top:0;right:1%;width:44%;aspect-ratio:.88;--rotation:5.5deg;--depth:34px;--card-radius:18px 44px;--image-position:56% 50%;--image-scale:1.2;animation-delay:-1.8s}.is-design{bottom:0;left:0;width:39%;aspect-ratio:.82;--rotation:-6deg;--depth:54px;--card-radius:48px 18px;--image-position:49% 45%;--image-scale:1.22;animation-delay:-3.4s}.is-guidance{right:0;bottom:5%;width:46%;aspect-ratio:1.13;--rotation:4deg;--depth:74px;--card-radius:16px 36px;--image-position:52% 48%;--image-scale:1.16;animation-delay:-5.1s}
+  @keyframes showcase-float{0%,100%{translate:0 0}50%{translate:0 -7px}}@media(max-width:900px){.service-showcase{width:min(78vw,560px)}}@media(max-width:520px){.service-showcase{width:min(94vw,430px)}.service-showcase-stage{inset:2%}.service-showcase-card{box-shadow:0 15px 34px rgba(44,46,38,.16)}}@media(prefers-reduced-motion:reduce){.service-showcase-stage{transform:rotateX(-2deg) rotateY(2deg);transition:none}.service-showcase-card{animation:none;transition:none}.service-showcase-card.is-featured{--float:0;--scale:1}.service-showcase-card.is-featured :global(img){transform:scale(var(--image-scale,1.08))}}
+</style>
+<script>
+  const showcase=document.querySelector<HTMLElement>("[data-service-showcase]");
+  const cards=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-service-showcase] [data-showcase-card]"));
+  const fine=window.matchMedia("(hover:hover) and (pointer:fine)"); const reduced=window.matchMedia("(prefers-reduced-motion:reduce)");
+  if(showcase&&cards.length){let active=0,timer=0;const activate=(next:number)=>{active=next;cards.forEach((card,index)=>{const distance=(index-active+cards.length)%cards.length;card.classList.toggle("is-featured",index===active);card.setAttribute("aria-pressed",index===active?"true":"false");card.style.setProperty("--stack-order",`${cards.length-distance}`)})};const rotate=()=>{clearInterval(timer);timer=window.setInterval(()=>activate((active+1)%cards.length),2800)};cards.forEach((card,index)=>card.addEventListener("click",()=>{activate(index);if(!reduced.matches)rotate()}));activate(0);if(!reduced.matches)rotate();if(fine.matches&&!reduced.matches){let frame=0,x=2,y=-2;const render=()=>{showcase.style.setProperty("--showcase-x",`${x.toFixed(2)}deg`);showcase.style.setProperty("--showcase-y",`${y.toFixed(2)}deg`);frame=0};showcase.addEventListener("pointermove",event=>{const box=showcase.getBoundingClientRect();x=((event.clientX-box.left)/box.width-.5)*6;y=((event.clientY-box.top)/box.height-.5)*-6;if(!frame)frame=requestAnimationFrame(render)});showcase.addEventListener("pointerleave",()=>{x=2;y=-2;if(!frame)frame=requestAnimationFrame(render)})}}
+</script>

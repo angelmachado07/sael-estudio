@@ -1,0 +1,14 @@
+---
+interface Props { from: "cream"|"espresso"|"moss"; to: "cream"|"espresso"|"moss"; side?: "left"|"right"; }
+const {from,to,side="left"}=Astro.props;
+const colors={cream:"var(--color-cream)",espresso:"var(--color-espresso)",moss:"var(--color-moss)"};
+---
+<div class:list={["section-bridge",`is-${side}`]} style={`--bridge-from:${colors[from]};--bridge-to:${colors[to]}`} aria-hidden="true"><span></span></div>
+<style>
+  .section-bridge{position:relative;z-index:8;height:clamp(88px,8vw,126px);margin-top:clamp(-96px,-7vw,-70px);margin-bottom:-1px;overflow:hidden;background:var(--bridge-from);pointer-events:none}
+  .section-bridge::before{position:absolute;inset:28% -9% -88%;border-radius:50% 50% 0 0/100% 100% 0 0;background:var(--bridge-to);content:""}
+  .section-bridge::after{position:absolute;top:54%;left:8%;width:min(44vw,620px);height:1px;background:color-mix(in srgb,var(--color-stone) 45%,transparent);content:""}
+  .section-bridge span{position:absolute;z-index:1;top:54%;left:calc(8% + min(44vw,620px));width:9px;height:9px;border-radius:50%;background:var(--color-olive);transform:translate(-50%,-50%)}
+  .section-bridge.is-right::after{right:8%;left:auto}.section-bridge.is-right span{right:calc(8% + min(44vw,620px));left:auto;transform:translate(50%,-50%)}
+  @media(max-width:560px){.section-bridge{height:82px;margin-top:-62px}.section-bridge::after{width:58vw}.section-bridge span{left:calc(8% + 58vw)}.section-bridge.is-right span{right:calc(8% + 58vw);left:auto}}
+</style>

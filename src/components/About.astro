@@ -1,31 +1,46 @@
 ---
 const creativeFlowItems = ["Pensar", "Explorar", "Diseñar", "Probar", "Hacer", "Ajustar"];
 const creativeFlowCopies = Array.from({ length: 4 });
+const focusAreas = [
+  { title: "Marca y presencia", text: "Identidad, comunicación y canales para comenzar o crecer con coherencia." },
+  { title: "Experiencia digital", text: "Interfaces y recorridos claros para presentar, comunicar y facilitar acciones." },
+  { title: "Web, apps y software", text: "Productos digitales y herramientas construidas alrededor de una necesidad real." },
+];
 ---
 
 <section id="sobre-sael" class="about" aria-labelledby="about-title">
   <div class="container about-shell">
-    <div class="about-intro">
-      <p class="section-label" data-reveal>El estudio</p>
-      <div class="about-principle">
-        <p>Sael integra marca, diseño y tecnología en un mismo proceso. Escuchamos la necesidad, definimos la solución adecuada y acompañamos su implementación.</p>
-        <div class="about-mark" aria-hidden="true">
-          <svg viewBox="0 0 320 138" focusable="false">
-            <path class="route-base" d="M18 70H92C126 70 126 25 160 25H302" />
-            <path class="route-base" d="M92 70C126 70 126 114 160 114H302" />
-            <path class="route-active" d="M18 70H92C126 70 126 25 160 25H302" />
-            <circle cx="18" cy="70" r="5" /><circle cx="92" cy="70" r="5" />
-            <circle cx="160" cy="25" r="6" /><circle cx="160" cy="114" r="5" />
-            <circle class="route-end" cx="302" cy="25" r="7" />
-          </svg>
-        </div>
+    <p class="section-label" data-reveal>El estudio</p>
+    <h2 id="about-title">
+      <span data-reveal="mask">Unimos diseño y tecnología</span>
+      <span data-reveal="mask" style="--reveal-delay:70ms">para hacer avanzar</span>
+      <span data-reveal="mask" style="--reveal-delay:140ms">tu proyecto.</span>
+    </h2>
+
+    <div class="about-context" data-reveal>
+      <p>Somos Sael, un estudio independiente en Uruguay. Trabajamos con emprendimientos, profesionales, negocios y empresas para convertir una necesidad en una marca, una presencia o una solución digital clara.</p>
+      <p>Podemos acompañar desde los primeros pasos —identidad, canales y contenido inicial— hasta el diseño y desarrollo de sitios web, aplicaciones y sistemas a medida.</p>
+      <div class="about-mark" aria-hidden="true">
+        <svg viewBox="0 0 320 138" focusable="false">
+          <path class="route-base" d="M18 70H92C126 70 126 25 160 25H302" />
+          <path class="route-base" d="M92 70C126 70 126 114 160 114H302" />
+          <path class="route-active" d="M18 70H92C126 70 126 25 160 25H302" />
+          <circle cx="18" cy="70" r="5" /><circle cx="92" cy="70" r="5" />
+          <circle cx="160" cy="25" r="6" /><circle cx="160" cy="114" r="5" />
+          <circle class="route-end" cx="302" cy="25" r="7" />
+        </svg>
       </div>
     </div>
 
-    <h2 id="about-title">
-      <span data-reveal="mask">Una idea puede</span>
-      <span data-reveal="mask" style="--reveal-delay:70ms">tomar muchas formas.</span>
-    </h2>
+    <ol class="about-areas" aria-label="Áreas de trabajo de Sael Estudio">
+      {focusAreas.map((area, index) => (
+        <li data-reveal style={`--reveal-delay:${index * 70}ms`}>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{area.title}</h3>
+          <p>{area.text}</p>
+        </li>
+      ))}
+    </ol>
   </div>
 
   <div class="creative-flow" aria-hidden="true">
@@ -40,27 +55,36 @@ const creativeFlowCopies = Array.from({ length: 4 });
 </section>
 
 <style>
-  .about { position:relative; z-index:3; overflow:hidden; padding-top:clamp(110px,13vw,190px); background:var(--color-moss); color:var(--color-cream); }
-  .about-shell { display:grid; grid-template-columns:minmax(220px,.42fr) minmax(0,1fr); gap:clamp(60px,8vw,125px); }
-  .about-intro { display:flex; flex-direction:column; min-height:clamp(360px,42vw,560px); }
-  .about-intro .section-label { color:rgba(243,239,231,.78); }
-  .about-principle { margin-top:clamp(58px,8vw,108px); }
-  .about-principle > p { max-width:360px; margin:0; color:rgba(243,239,231,.84); font-size:clamp(1.05rem,1.15vw,1.2rem); line-height:1.65; }
-  .about-mark { width:100%; max-width:360px; margin-top:34px; border-block:1px solid rgba(243,239,231,.22); }
+  .about { position:relative; z-index:3; overflow:hidden; padding-top:clamp(120px,13vw,190px); background:var(--color-moss); color:var(--color-cream); }
+  .about-shell { display:grid; grid-template-columns:minmax(190px,.28fr) minmax(0,1fr); column-gap:clamp(52px,8vw,125px); row-gap:clamp(68px,8vw,112px); }
+  .about .section-label { align-self:start; color:rgba(243,239,231,.78); }
+  h2 { min-width:0; margin:0; font-size:clamp(4.5rem,7.7vw,8.2rem); font-weight:600; line-height:.8; letter-spacing:-.058em; }
+  h2 span { display:block; width:max-content; max-width:100%; padding-bottom:.12em; margin-bottom:-.12em; }
+  h2 span:nth-child(2) { margin-left:clamp(0px,5vw,76px); }
+  h2 span:last-child { margin-left:clamp(34px,13vw,210px); color:var(--color-stone); }
+  .about-context { grid-column:1; align-self:start; }
+  .about-context > p { max-width:440px; margin:0; color:rgba(243,239,231,.86); font-size:clamp(1rem,1.1vw,1.14rem); line-height:1.72; }
+  .about-context > p + p { margin-top:24px; color:rgba(243,239,231,.68); }
+  .about-mark { width:100%; max-width:390px; margin-top:clamp(38px,5vw,64px); border-block:1px solid rgba(243,239,231,.22); }
   .about-mark svg { display:block; width:100%; height:auto; overflow:visible; }
   .about-mark path { fill:none; stroke:rgba(243,239,231,.35); stroke-width:1.5; }
   .about-mark .route-active { stroke:var(--color-stone); stroke-width:2; stroke-dasharray:340; stroke-dashoffset:340; animation:route-draw 4.8s var(--ease-in-out) infinite; }
   .about-mark circle { fill:var(--color-moss); stroke:rgba(243,239,231,.58); stroke-width:1.5; }
   .about-mark .route-end { fill:var(--color-stone); stroke:var(--color-stone); }
-  h2 { min-width:0; margin:0; font-size:var(--font-size-section-title); font-weight:400; line-height:.84; letter-spacing:-.045em; }
-  h2 span { display:block; width:max-content; max-width:100%; padding-bottom:.12em; margin-bottom:-.12em; }
+  .about-areas { grid-column:2; display:grid; align-self:start; gap:0; margin:0; padding:0; list-style:none; }
+  .about-areas li { display:grid; grid-template-columns:44px minmax(190px,.72fr) minmax(240px,1fr); gap:clamp(18px,3vw,46px); align-items:start; padding:clamp(25px,3vw,38px) 0; border-top:1px solid rgba(243,239,231,.24); }
+  .about-areas li:nth-child(2) { margin-left:clamp(0px,4vw,62px); }
+  .about-areas li:nth-child(3) { margin-left:clamp(0px,8vw,124px); }
+  .about-areas li > span { padding-top:.4em; color:rgba(243,239,231,.48); font-size:.66rem; font-weight:700; letter-spacing:.1em; }
+  .about-areas h3 { margin:0; font-size:clamp(1.55rem,2.3vw,2.55rem); font-weight:600; line-height:1; letter-spacing:-.04em; }
+  .about-areas p { max-width:390px; margin:0; color:rgba(243,239,231,.72); line-height:1.65; }
   .creative-flow { width:100%; margin-top:clamp(58px,8vw,110px); overflow:hidden; border-block:1px solid rgba(79,90,69,.22); background:var(--color-cream); color:var(--color-moss); }
   .creative-flow-track { width:max-content; display:flex; align-items:center; gap:clamp(12px,1.5vw,22px); padding-block:clamp(10px,1.25vw,14px); animation:creative-flow 26s linear infinite; will-change:transform; }
-  .creative-flow-set { display:flex; align-items:center; flex:none; gap:clamp(12px,1.5vw,22px); font-family:var(--font-heading); font-size:clamp(1.6rem,2.5vw,2.7rem); font-style:italic; font-weight:400; line-height:1; letter-spacing:-.025em; white-space:nowrap; }
+  .creative-flow-set { display:flex; align-items:center; flex:none; gap:clamp(12px,1.5vw,22px); font-family:var(--font-heading); font-size:clamp(1.6rem,2.5vw,2.7rem); font-style:normal; font-weight:550; line-height:1; letter-spacing:-.025em; white-space:nowrap; }
   .creative-flow-set i { color:var(--color-olive); font-family:var(--font-body); font-size:.55em; font-style:normal; }
   @keyframes creative-flow { from { transform:translate3d(-25%,0,0); } to { transform:translate3d(0,0,0); } }
   @keyframes route-draw { 45%,100% { stroke-dashoffset:0; } }
-  @media (max-width:800px) { .about-shell { grid-template-columns:1fr; } .about-intro { min-height:280px; } }
-  @media (max-width:560px) { .about-shell { gap:64px; } .about-intro { min-height:0; } .about-principle { margin-top:44px; } .about-mark { margin-top:26px; } .creative-flow { margin-top:58px; } .creative-flow-track,.creative-flow-set { gap:12px; } .creative-flow-track { padding-block:10px; } .creative-flow-set { font-size:clamp(1.35rem,6vw,1.65rem); } }
+  @media (max-width:980px) { .about-shell { grid-template-columns:1fr; row-gap:56px; } .about .section-label,h2,.about-context,.about-areas { grid-column:1; } h2 span:nth-child(2),h2 span:last-child { margin-left:0; } .about-context { display:grid; grid-template-columns:1fr 1fr; gap:26px 40px; } .about-context > p + p { margin-top:0; } .about-mark { grid-column:1/-1; } .about-areas li { grid-template-columns:38px minmax(180px,.65fr) minmax(220px,1fr); } }
+  @media (max-width:640px) { .about { padding-top:104px; } .about-shell { row-gap:45px; } h2 { font-size:clamp(3.25rem,15vw,4.25rem); line-height:.82; } .about-context { display:block; } .about-context > p { font-size:1rem; } .about-context > p + p { margin-top:22px; } .about-mark { margin-top:34px; } .about-areas li,.about-areas li:nth-child(2),.about-areas li:nth-child(3) { grid-template-columns:34px 1fr; gap:10px 12px; margin-left:0; padding:25px 0; } .about-areas h3 { font-size:clamp(1.55rem,8vw,2rem); } .about-areas p { grid-column:2; } .creative-flow { margin-top:58px; } .creative-flow-track,.creative-flow-set { gap:12px; } .creative-flow-track { padding-block:10px; } .creative-flow-set { font-size:clamp(1.35rem,6vw,1.65rem); } }
   @media (prefers-reduced-motion:reduce) { .creative-flow-track,.about-mark .route-active { animation:none; } .about-mark .route-active { stroke-dashoffset:0; } }
 </style>

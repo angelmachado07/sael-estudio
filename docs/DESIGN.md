@@ -1,7 +1,7 @@
 # Sael Estudio — sistema de diseño digital
 
-Versión: 3.1
-Estado: etapa 1 del prototipo v3 aprobada visualmente; pendiente de integración
+Versión: 3.2
+Estado: etapa 1 aprobada; etapa 2A integrada en `feat/redesign-v3-home` y pendiente de revisión
 
 ## 1. Autoridad y propósito
 
@@ -96,9 +96,13 @@ Parámetros orientativos:
 - Primera vista completa sin navbar visible.
 - “Sael · Estudio” en Bricolage Grotesque, de escala muy grande.
 - La marca domina el ancho del viewport en desktop y mobile: “Sael” tiene mayor protagonismo, “Estudio” funciona como palabra secundaria y el punto central organiza la composición.
-- La entrada llega automáticamente desde arriba y se estabiliza antes de la interacción.
+- La entrada llega automáticamente desde arriba durante aproximadamente 2,2 segundos, con una escala inicial 8 % mayor y una estabilización final leve, sin rebote elástico.
 - Al hacer scroll, el fondo y la marca invierten sus colores, la marca se reduce y se integra visualmente a la navbar.
 - La transición puede coordinar dos instancias si mantiene la ilusión de continuidad.
+- La entrada se muestra en cada nueva carga o visita a la portada; no conserva estado en `sessionStorage`.
+- Al volver por scroll al inicio absoluto, la transformación se revierte hasta reconstruir la marca grande centrada y ocultar la navbar, sin repetir la caída inicial.
+- El parámetro `?intro=1` se mantiene como URL compatible para revisión.
+- Si JavaScript falla, la portada debe conservar hero, navbar y contenido crítico visibles.
 
 ### Navbar
 
@@ -118,9 +122,20 @@ Estructura:
 - “Diseñamos y desarrollamos” debe tener más presencia que una etiqueta, sin competir con las palabras variables.
 - Las palabras funcionan en loop infinito cada 1,8–2,2 segundos.
 - El contenedor reserva el espacio de la frase más alta y larga.
+- La composición interactiva de las cuatro imágenes de servicios acompaña el hero y utiliza carga prioritaria solamente para su primera imagen.
 - Descripción y CTA nunca pueden superponerse con el título.
 - Sin JavaScript debe verse “soluciones digitales.”.
 - Con movimiento reducido debe mostrarse una frase estática.
+
+### Narrativa de la portada
+
+Orden aprobado: entrada, hero, estudio, servicios, proyectos, proceso, contacto y footer.
+
+- Estudio funciona como segundo escalón de la presentación: explica quién es Sael, a quién acompaña y el alcance posible antes de desarrollar las cuatro áreas concretas.
+- El primer bloque de Servicios es directamente “Primer capítulo · 01 / Web, apps y software”; no se agrega una segunda introducción genérica.
+- Las cuatro familias de servicio aparecen una sola vez y conservan el contenido comercial de la v2.
+- Curvas suaves y el motivo línea más punto conectan los cambios de fondo sin imponer scroll horizontal ni navegación por slides.
+- Olimpo y Favorita conservan sus visuales e interacciones existentes.
 
 ### Composición interactiva de servicios
 
