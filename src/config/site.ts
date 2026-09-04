@@ -1,6 +1,8 @@
 export const SITE_URL = "https://saelestudio.com.uy";
 export const SITE_NAME = "Sael Estudio";
-export const DEFAULT_OG_IMAGE = "/og/sael-estudio.jpg";
+export const DEFAULT_OG_IMAGE = "/og/sael-estudio-v3.png";
+export const DEFAULT_OG_IMAGE_ALT =
+  "Portada de Sael Estudio sobre fondo verde musgo con su marca y servicios principales";
 
 export type ServiceSlug =
   | "desarrollo-digital"
@@ -35,7 +37,7 @@ export const services: ServiceDefinition[] = [
     number: "01",
     shortTitle: "Web, apps y software",
     title: "Web, apps y software",
-    metaTitle: "Diseño web y software a medida en Uruguay | Sael Estudio",
+    metaTitle: "Web, apps y software en Uruguay | Sael Estudio",
     description:
       "Diseño y desarrollo de sitios web, aplicaciones, sistemas e integraciones para profesionales, negocios y empresas en Uruguay.",
     eyebrow: "Desarrollo digital",
@@ -84,7 +86,7 @@ export const services: ServiceDefinition[] = [
     number: "02",
     shortTitle: "Identidad y marca",
     title: "Identidad y estrategia de marca",
-    metaTitle: "Identidad visual y estrategia de marca en Uruguay | Sael Estudio",
+    metaTitle: "Identidad y estrategia de marca | Sael Estudio",
     description:
       "Estrategia, identidad visual y sistemas de marca para emprendimientos, profesionales y negocios que necesitan comunicar con claridad.",
     eyebrow: "Identidad de marca",
@@ -133,7 +135,7 @@ export const services: ServiceDefinition[] = [
     number: "03",
     shortTitle: "UX/UI y comunicación",
     title: "UX/UI y comunicación visual",
-    metaTitle: "Diseño UX/UI y comunicación visual en Uruguay | Sael Estudio",
+    metaTitle: "Diseño UX/UI y comunicación visual | Sael Estudio",
     description:
       "Diseño UX/UI, interfaces, prototipos y comunicación visual para productos, marcas y servicios digitales en Uruguay.",
     eyebrow: "Experiencia y comunicación",
@@ -182,7 +184,7 @@ export const services: ServiceDefinition[] = [
     number: "04",
     shortTitle: "Acompañamiento digital",
     title: "Acompañamiento creativo y digital",
-    metaTitle: "Acompañamiento creativo y presencia digital | Sael Estudio",
+    metaTitle: "Acompañamiento creativo y digital | Sael Estudio",
     description:
       "Dirección y acompañamiento para ordenar, lanzar y hacer evolucionar la presencia digital de emprendimientos, profesionales y negocios.",
     eyebrow: "Dirección y evolución",

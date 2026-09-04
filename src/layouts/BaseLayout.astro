@@ -1,31 +1,44 @@
 ---
 import "../styles/global.css";
 import { CONTACT_EMAIL, INSTAGRAM_URL, WHATSAPP_NUMBER } from "../config/contact";
-import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "../config/site";
+import {
+  DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_ALT,
+  SITE_NAME,
+  SITE_URL,
+} from "../config/site";
 
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: "website" | "article";
   robots?: string;
+  canonicalPath?: string;
   headingFont?: "instrument" | "bricolage";
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  schemas?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
   title = "Diseño web, identidad y software en Uruguay | Sael Estudio",
   description = "Estudio de diseño y tecnología en Uruguay. Creamos identidades, sitios web, aplicaciones y sistemas para marcas, profesionales y negocios.",
   ogImage = DEFAULT_OG_IMAGE,
+  ogImageAlt = DEFAULT_OG_IMAGE_ALT,
   ogType = "website",
-  robots,
+  robots = "index,follow",
+  canonicalPath = Astro.url.pathname,
   headingFont = "instrument",
   schema,
+  schemas,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, SITE_URL).toString();
+const canonical = new URL(canonicalPath, SITE_URL).toString();
 const absoluteOgImage = new URL(ogImage, SITE_URL).toString();
-const additionalSchema = Array.isArray(schema) ? schema : schema ? [schema] : [];
+const schemaItems = [schema, schemas]
+  .flatMap((item) => (Array.isArray(item) ? item : item ? [item] : []))
+  .map(({ "@context": _context, ...item }) => item);
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -33,8 +46,13 @@ const structuredData = {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
-      url: SITE_URL,
-      logo: `${SITE_URL}/brand-monogram.svg`,
+      url: `${SITE_URL}/`,
+      logo: {
+        "@type": "ImageObject",
+        "@id": `${SITE_URL}/#logo`,
+        url: `${SITE_URL}/brand/sael-monogram-official-transparent.png`,
+        contentUrl: `${SITE_URL}/brand/sael-monogram-official-transparent.png`,
+      },
       image: absoluteOgImage,
       email: CONTACT_EMAIL,
       telephone: WHATSAPP_NUMBER,
@@ -44,12 +62,12 @@ const structuredData = {
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       name: SITE_NAME,
       inLanguage: "es-UY",
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
-    ...additionalSchema,
+    ...schemaItems,
   ],
 };
 const serializedSchema = JSON.stringify(structuredData).replace(/</g, "\\u003c");
@@ -64,7 +82,7 @@ const headingFontHref = headingFont === "bricolage"
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    {robots && <meta name="robots" content={robots} />}
+    <meta name="robots" content={robots} />
     <meta name="theme-color" content="#F3EFE7" />
 
     <link rel="canonical" href={canonical} />
@@ -81,14 +99,17 @@ const headingFontHref = headingFont === "bricolage"
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:secure_url" content={absoluteOgImage} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Sael Estudio — diseño, marca y tecnología" />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <script type="application/ld+json" set:html={serializedSchema}></script>
     <title>{title}</title>
