@@ -5,7 +5,7 @@ import brandVisual from "../../assets/services/identidad-marca.png";
 import uxVisual from "../../assets/services/diseno-comunicacion.png";
 import supportVisual from "../../assets/services/acompanamiento.png";
 import { createWhatsAppUrl } from "../../config/contact";
-import { getService, servicePath, services, type ServiceSlug } from "../../config/site";
+import { getService, servicePath, services, SITE_URL, type ServiceSlug } from "../../config/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArrowIcon from "../ArrowIcon.astro";
 import Footer from "../Footer.astro";
@@ -55,10 +55,57 @@ const pageContent = {
 } satisfies Record<ServiceSlug, any>;
 const content = pageContent[slug];
 const related = services.filter(({slug: itemSlug})=>itemSlug!==slug).map(({shortTitle,slug:itemSlug})=>[shortTitle,itemSlug] as const);
-const schemas = [{"@context":"https://schema.org","@type":"Service",name:service.title,description:service.description,provider:{"@type":"ProfessionalService",name:"Sael Estudio",url:"https://saelestudio.com.uy"},areaServed:{"@type":"Country",name:"Uruguay"},serviceType:service.title},{"@context":"https://schema.org","@type":"FAQPage",mainEntity:service.questions.map(({question,answer})=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))}];
+const canonicalPath = servicePath(service.slug);
+const pageUrl = new URL(canonicalPath, SITE_URL).toString();
+const serviceId = `${pageUrl}#service`;
+const breadcrumbId = `${pageUrl}#breadcrumb`;
+const schemas = [
+  {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: service.metaTitle,
+    description: service.description,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": serviceId },
+    breadcrumb: { "@id": breadcrumbId },
+    inLanguage: "es-UY",
+  },
+  {
+    "@type": "Service",
+    "@id": serviceId,
+    url: pageUrl,
+    name: service.title,
+    description: service.description,
+    serviceType: service.title,
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: { "@type": "Country", name: "Uruguay" },
+    mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+  },
+  {
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    url: `${pageUrl}#faq`,
+    isPartOf: { "@id": `${pageUrl}#webpage` },
+    mainEntity: service.questions.map(({ question, answer }) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "@id": breadcrumbId,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Servicios", item: `${SITE_URL}/#servicios` },
+      { "@type": "ListItem", position: 3, name: service.title, item: pageUrl },
+    ],
+  },
+];
 ---
 
-<BaseLayout title={service.metaTitle} description={service.description} canonicalPath={servicePath(service.slug)} schemas={schemas} headingFont="bricolage">
+<BaseLayout title={service.metaTitle} description={service.description} canonicalPath={canonicalPath} schemas={schemas} headingFont="bricolage">
   <HomeHeader />
   <main id="main-content" class="digital-service">
     <section class="hero" aria-labelledby="page-title">
